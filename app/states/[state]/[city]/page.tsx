@@ -96,7 +96,7 @@ export default async function CityPage({
   // Fetch clinics
   const { data: clinics } = await supabase
     .from('clinics')
-    .select('id, name, address, city, state, zip_code, phone, is_24_7, current_status, has_surgery_suite, has_icu, has_exotic_specialist, accepts_care_credit, google_rating, google_review_count, availability_type, special_notes, is_featured')
+    .select('id, name, address, city, state, zip_code, phone, is_24_7, current_status, has_surgery_suite, has_icu, has_exotic_specialist, accepts_care_credit, google_rating, google_review_count, availability_type, special_notes, is_featured, accepts_walk_ins, requires_call_ahead')
     .eq('city', city.name)
     .eq('state', city.state)
     .eq('is_active', true)
@@ -195,7 +195,13 @@ export default async function CityPage({
                           {clinic.has_exotic_specialist && (
                             <span className="bg-purple-100 dark:bg-purple-900/30 text-purple-700 dark:text-purple-300 text-xs font-bold px-2 py-1 rounded-full">EXOTICS</span>
                           )}
-                          {clinic.availability_type === 'on-call-24-7' && (
+                          {clinic.accepts_walk_ins && (
+                            <span className="bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 text-xs font-bold px-2 py-1 rounded-full">WALK-INS</span>
+                          )}
+                          {clinic.requires_call_ahead && (
+                            <span className="bg-orange-100 dark:bg-orange-900/30 text-orange-700 dark:text-orange-300 text-xs font-bold px-2 py-1 rounded-full">CALL AHEAD</span>
+                          )}
+                          {clinic.availability_type === 'on-call-24-7' && !clinic.requires_call_ahead && (
                             <span className="bg-yellow-100 dark:bg-yellow-900/30 text-yellow-700 dark:text-yellow-300 text-xs font-bold px-2 py-1 rounded-full">CALL FIRST</span>
                           )}
                         </div>
