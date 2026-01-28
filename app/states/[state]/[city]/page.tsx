@@ -96,10 +96,11 @@ export default async function CityPage({
   // Fetch clinics
   const { data: clinics } = await supabase
     .from('clinics')
-    .select('id, name, address, city, state, zip_code, phone, is_24_7, current_status, has_surgery_suite, has_icu, has_exotic_specialist, accepts_care_credit, google_rating, google_review_count, availability_type, special_notes')
+    .select('id, name, address, city, state, zip_code, phone, is_24_7, current_status, has_surgery_suite, has_icu, has_exotic_specialist, accepts_care_credit, google_rating, google_review_count, availability_type, special_notes, is_featured')
     .eq('city', city.name)
     .eq('state', city.state)
     .eq('is_active', true)
+    .order('is_featured', { ascending: false })
     .order('is_24_7', { ascending: false })
     .order('google_rating', { ascending: false, nullsFirst: false })
 
