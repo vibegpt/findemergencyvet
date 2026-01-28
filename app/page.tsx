@@ -14,17 +14,17 @@ export default async function HomePageWrapper() {
     .order('clinic_count', { ascending: false })
     .limit(2)
 
-  // Fetch top 3 clinics per city (24/7 first)
+  // Fetch all clinics per city (24/7 first, then by rating)
   const cityClinics: Record<string, any[]> = {}
   for (const city of cities || []) {
     const { data: clinics } = await supabase
       .from('clinics')
-      .select('id, name, phone, address, city, state, is_24_7, current_status, has_exotic_specialist')
+      .select('id, name, phone, address, city, state, is_24_7, current_status, has_exotic_specialist, availability_type, google_rating, google_review_count')
       .eq('city', city.name)
       .eq('state', city.state)
       .eq('is_active', true)
       .order('is_24_7', { ascending: false })
-      .limit(3)
+      .order('google_rating', { ascending: false, nullsFirst: false })
     cityClinics[city.slug] = clinics || []
   }
 

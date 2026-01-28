@@ -60,8 +60,8 @@ export default function HomePage({ clinicCount, cities, cityClinics }: { clinicC
           </Link>
         </div>
 
-        {/* Clinics */}
-        <div className="divide-y divide-gray-100 dark:divide-slate-700">
+        {/* Clinics - Scrollable */}
+        <div className="divide-y divide-gray-100 dark:divide-slate-700 max-h-[360px] overflow-y-auto">
           {topClinics.map((clinic: any) => (
             <div key={clinic.id} className="flex items-center justify-between px-4 py-3 hover:bg-gray-50 dark:hover:bg-slate-700/30 transition-colors">
               <div className="flex-1 min-w-0">
@@ -73,8 +73,41 @@ export default function HomePage({ clinicCount, cities, cityClinics }: { clinicC
                   {clinic.has_exotic_specialist && (
                     <span className="inline-flex items-center bg-purple-100 dark:bg-purple-900/30 text-purple-700 dark:text-purple-300 text-[9px] font-bold px-1.5 py-0.5 rounded-full shrink-0">EXOTICS</span>
                   )}
+                  {/* Availability Type Badge */}
+                  {clinic.availability_type && clinic.availability_type !== 'true-24-7' && (
+                    <span className={`inline-flex items-center text-[9px] font-bold px-1.5 py-0.5 rounded-full shrink-0 ${
+                      clinic.availability_type === 'on-call-24-7'
+                        ? 'bg-yellow-100 dark:bg-yellow-900/30 text-yellow-700 dark:text-yellow-300'
+                        : clinic.availability_type === 'extended-hours'
+                        ? 'bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300'
+                        : clinic.availability_type === 'emergency-only'
+                        ? 'bg-orange-100 dark:bg-orange-900/30 text-orange-700 dark:text-orange-300'
+                        : 'bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-300'
+                    }`}>
+                      {clinic.availability_type === 'on-call-24-7' && 'CALL FIRST'}
+                      {clinic.availability_type === 'extended-hours' && 'EXTENDED HRS'}
+                      {clinic.availability_type === 'emergency-only' && 'APPT ONLY'}
+                      {clinic.availability_type === 'urgent-care' && 'URGENT CARE'}
+                    </span>
+                  )}
                 </div>
-                <span className="text-gray-500 dark:text-gray-400 text-xs">{clinic.phone}</span>
+                <div className="flex items-center gap-2 mt-0.5">
+                  <span className="text-gray-500 dark:text-gray-400 text-xs">{clinic.phone}</span>
+                  {/* Google Rating */}
+                  {clinic.google_rating && (
+                    <span className={`inline-flex items-center gap-0.5 text-xs ${
+                      clinic.google_rating >= 4.5 ? 'text-green-600 dark:text-green-400'
+                      : clinic.google_rating >= 3.5 ? 'text-yellow-600 dark:text-yellow-400'
+                      : 'text-red-600 dark:text-red-400'
+                    }`}>
+                      <span className="material-symbols-outlined text-[14px]" style={{fontVariationSettings: "'FILL' 1"}} aria-hidden="true">star</span>
+                      {clinic.google_rating}
+                      {clinic.google_review_count > 0 && (
+                        <span className="text-gray-400 dark:text-gray-500">({clinic.google_review_count})</span>
+                      )}
+                    </span>
+                  )}
+                </div>
               </div>
               <div className="flex gap-2 shrink-0 ml-3">
                 <a
@@ -99,13 +132,21 @@ export default function HomePage({ clinicCount, cities, cityClinics }: { clinicC
           ))}
         </div>
 
-        {/* View All CTA */}
+        {/* Scroll indicator if more than 3 clinics */}
+        {topClinics.length > 3 && (
+          <div className="flex items-center justify-center gap-1 py-2 bg-gray-50/50 dark:bg-slate-700/30 text-gray-400 dark:text-gray-500 text-xs border-t border-gray-100 dark:border-slate-700">
+            <span className="material-symbols-outlined text-[14px]" aria-hidden="true">expand_more</span>
+            Scroll for {topClinics.length - 3} more
+          </div>
+        )}
+
+        {/* View on Map CTA */}
         <Link
           href={`/locations/${city.state.toLowerCase()}/${city.slug}`}
           className="flex items-center justify-center gap-2 p-3 bg-gray-50 dark:bg-slate-700/50 text-[#137fec] text-sm font-bold hover:bg-gray-100 dark:hover:bg-slate-700 transition-colors focus:outline-none focus:ring-2 focus:ring-[#137fec] border-t border-gray-100 dark:border-slate-700"
         >
           <span className="material-symbols-outlined text-[18px]" aria-hidden="true">map</span>
-          See all {city.clinic_count} clinics with map
+          View on map
         </Link>
       </div>
     )
