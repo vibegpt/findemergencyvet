@@ -96,7 +96,7 @@ export default async function CityPage({
   // Fetch clinics
   const { data: clinics } = await supabase
     .from('clinics')
-    .select('id, name, address, city, state, zip_code, phone, is_24_7, current_status, has_surgery_suite, has_icu, has_exotic_specialist, accepts_care_credit, google_rating, google_review_count, availability_type')
+    .select('id, name, address, city, state, zip_code, phone, is_24_7, current_status, has_surgery_suite, has_icu, has_exotic_specialist, accepts_care_credit, google_rating, google_review_count, availability_type, special_notes')
     .eq('city', city.name)
     .eq('state', city.state)
     .eq('is_active', true)
@@ -224,6 +224,16 @@ export default async function CityPage({
                       {clinic.has_icu && <span className="bg-gray-100 dark:bg-slate-700 text-gray-700 dark:text-gray-300 px-2 py-1 rounded text-xs font-semibold">ICU</span>}
                       {clinic.accepts_care_credit && <span className="bg-gray-100 dark:bg-slate-700 text-gray-700 dark:text-gray-300 px-2 py-1 rounded text-xs font-semibold">CARECREDIT</span>}
                     </div>
+
+                    {/* Special Notes */}
+                    {clinic.special_notes && (
+                      <div className="bg-blue-50 dark:bg-blue-900/20 border border-blue-100 dark:border-blue-900/30 rounded-lg p-3 mb-4">
+                        <div className="flex items-start gap-2">
+                          <span className="material-symbols-outlined text-blue-600 dark:text-blue-400 text-[18px] mt-0.5">info</span>
+                          <p className="text-blue-800 dark:text-blue-200 text-sm">{clinic.special_notes}</p>
+                        </div>
+                      </div>
+                    )}
 
                     <div className="grid grid-cols-2 gap-3">
                       <a
