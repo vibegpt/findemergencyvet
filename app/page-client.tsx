@@ -1,162 +1,60 @@
 'use client'
 
 import Link from 'next/link'
-import { useState, useEffect } from 'react'
-import { WhyUsSection, FAQSection } from '@/components/SharedSections'
 
-export default function HomePage({ clinicCount, cities, cityClinics }: { clinicCount: number, cities: any[], cityClinics: Record<string, any[]> }) {
-  const [selectedArea, setSelectedArea] = useState<string>(cities?.[0]?.slug || 'westchester')
-  const [isLocating, setIsLocating] = useState(false)
+type City = {
+  id: string
+  name: string
+  state: string
+  slug: string
+  clinic_count: number
+}
 
-  // Auto-detect location on mount and set initial tab
-  useEffect(() => {
-    if ('geolocation' in navigator) {
-      setIsLocating(true)
-      navigator.geolocation.getCurrentPosition(
-        (position) => {
-          const { latitude, longitude } = position.coords
-          // Westchester area: roughly 40.85-41.35 lat, -73.4 to -74.0 lng
-          // Rochester area: roughly 42.8-43.3 lat, -77.3 to -78.0 lng
-          if (latitude >= 40.85 && latitude <= 41.4 && longitude >= -74.1 && longitude <= -73.3) {
-            setSelectedArea('westchester')
-          } else if (latitude >= 42.7 && latitude <= 43.4 && longitude >= -78.1 && longitude <= -76.9) {
-            setSelectedArea('rochester')
-          }
-          setIsLocating(false)
-        },
-        () => {
-          setIsLocating(false)
-        },
-        { timeout: 5000 }
-      )
-    }
-  }, [])
+type Clinic = {
+  id: string
+  name: string
+  phone: string
+  address: string
+  city: string
+  state: string
+  is_24_7: boolean
+  has_exotic_specialist: boolean
+  google_rating: number | null
+  google_review_count: number | null
+  availability_type: string | null
+}
 
-  // Helper to render clinic list
-  const renderClinicList = (city: any, compact = false) => {
-    const topClinics = cityClinics[city.slug] || []
-    return (
-      <div className={`bg-white dark:bg-slate-800 rounded-xl border border-gray-100 dark:border-slate-700 overflow-hidden ${compact ? '' : 'shadow-sm'}`}>
-        {/* City Header */}
-        <div className="flex items-center justify-between p-4 border-b border-gray-100 dark:border-slate-700 bg-gray-50 dark:bg-slate-700/50">
-          <div>
-            <h3 className="text-[#0d141b] dark:text-white font-bold text-lg">
-              {city.name}, {city.state}
-            </h3>
-            <span className="text-green-600 dark:text-green-400 text-xs font-bold flex items-center gap-1 mt-0.5">
-              <span className="relative flex h-2 w-2" aria-hidden="true">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
-                <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
-              </span>
-              {city.clinic_count} Emergency Vets
-            </span>
-          </div>
-          <Link
-            href={`/locations/${city.state.toLowerCase()}/${city.slug}`}
-            className="flex items-center gap-1 text-[#137fec] text-sm font-bold hover:underline focus:outline-none focus:ring-2 focus:ring-[#137fec] rounded px-3 py-2"
-          >
-            All
-            <span className="material-symbols-outlined text-sm" aria-hidden="true">arrow_forward</span>
-          </Link>
-        </div>
+export default function HomePage({
+  clinicCount,
+  cities,
+  cityClinics
+}: {
+  clinicCount: number
+  cities: City[]
+  cityClinics: Record<string, Clinic[]>
+}) {
+  // Group cities by state for the location section
+  const citiesByState = cities.reduce((acc: Record<string, City[]>, city) => {
+    if (!acc[city.state]) acc[city.state] = []
+    acc[city.state].push(city)
+    return acc
+  }, {})
 
-        {/* Clinics - Scrollable */}
-        <div className="divide-y divide-gray-100 dark:divide-slate-700 max-h-[360px] overflow-y-auto">
-          {topClinics.map((clinic: any) => (
-            <div key={clinic.id} className="flex items-center justify-between px-4 py-3 hover:bg-gray-50 dark:hover:bg-slate-700/30 transition-colors">
-              <div className="flex-1 min-w-0">
-                <div className="flex items-center gap-2 flex-wrap">
-                  <span className="text-[#0d141b] dark:text-white font-semibold text-sm">{clinic.name}</span>
-                  {clinic.is_24_7 && (
-                    <span className="inline-flex items-center gap-1 bg-green-500 text-white text-[9px] font-bold px-1.5 py-0.5 rounded-full shrink-0">24/7</span>
-                  )}
-                  {clinic.has_exotic_specialist && (
-                    <span className="inline-flex items-center bg-purple-100 dark:bg-purple-900/30 text-purple-700 dark:text-purple-300 text-[9px] font-bold px-1.5 py-0.5 rounded-full shrink-0">EXOTICS</span>
-                  )}
-                  {/* Availability Type Badge */}
-                  {clinic.availability_type && clinic.availability_type !== 'true-24-7' && (
-                    <span className={`inline-flex items-center text-[9px] font-bold px-1.5 py-0.5 rounded-full shrink-0 ${
-                      clinic.availability_type === 'on-call-24-7'
-                        ? 'bg-yellow-100 dark:bg-yellow-900/30 text-yellow-700 dark:text-yellow-300'
-                        : clinic.availability_type === 'extended-hours'
-                        ? 'bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300'
-                        : clinic.availability_type === 'emergency-only'
-                        ? 'bg-orange-100 dark:bg-orange-900/30 text-orange-700 dark:text-orange-300'
-                        : 'bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-300'
-                    }`}>
-                      {clinic.availability_type === 'on-call-24-7' && 'CALL FIRST'}
-                      {clinic.availability_type === 'extended-hours' && 'EXTENDED HRS'}
-                      {clinic.availability_type === 'emergency-only' && 'APPT ONLY'}
-                      {clinic.availability_type === 'urgent-care' && 'URGENT CARE'}
-                    </span>
-                  )}
-                </div>
-                <div className="flex items-center gap-2 mt-0.5">
-                  <span className="text-gray-500 dark:text-gray-400 text-xs">{clinic.phone}</span>
-                  {/* Google Rating */}
-                  {clinic.google_rating && (
-                    <span className={`inline-flex items-center gap-0.5 text-xs ${
-                      clinic.google_rating >= 4.5 ? 'text-green-600 dark:text-green-400'
-                      : clinic.google_rating >= 3.5 ? 'text-yellow-600 dark:text-yellow-400'
-                      : 'text-red-600 dark:text-red-400'
-                    }`}>
-                      <span className="material-symbols-outlined text-[14px]" style={{fontVariationSettings: "'FILL' 1"}} aria-hidden="true">star</span>
-                      {clinic.google_rating}
-                      {clinic.google_review_count > 0 && (
-                        <span className="text-gray-400 dark:text-gray-500">({clinic.google_review_count})</span>
-                      )}
-                    </span>
-                  )}
-                </div>
-              </div>
-              <div className="flex gap-2 shrink-0 ml-3">
-                <a
-                  href={`https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(`${clinic.address}, ${clinic.city}, ${clinic.state}`)}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center justify-center h-10 w-10 rounded-lg border-2 border-red-500 text-red-500 hover:bg-red-50 dark:hover:bg-red-900/20 focus:outline-none focus:ring-2 focus:ring-red-500"
-                  aria-label={`Get directions to ${clinic.name}`}
-                >
-                  <span className="material-symbols-outlined text-[20px]" style={{fontVariationSettings: "'FILL' 1"}} aria-hidden="true">location_on</span>
-                </a>
-                <a
-                  href={`tel:${clinic.phone}`}
-                  className="flex items-center justify-center gap-1.5 h-10 px-4 rounded-lg bg-[#137fec] text-white text-sm font-bold hover:bg-[#137fec]/90 focus:outline-none focus:ring-2 focus:ring-[#137fec]"
-                  aria-label={`Call ${clinic.name}`}
-                >
-                  <span className="material-symbols-outlined text-[18px]" aria-hidden="true">call</span>
-                  Call
-                </a>
-              </div>
-            </div>
-          ))}
-        </div>
-
-        {/* Scroll indicator if more than 3 clinics */}
-        {topClinics.length > 3 && (
-          <div className="flex items-center justify-center gap-1 py-2 bg-gray-50/50 dark:bg-slate-700/30 text-gray-400 dark:text-gray-500 text-xs border-t border-gray-100 dark:border-slate-700">
-            <span className="material-symbols-outlined text-[14px]" aria-hidden="true">expand_more</span>
-            Scroll for {topClinics.length - 3} more
-          </div>
-        )}
-
-        {/* View on Map CTA */}
-        <Link
-          href={`/locations/${city.state.toLowerCase()}/${city.slug}`}
-          className="flex items-center justify-center gap-2 p-3 bg-gray-50 dark:bg-slate-700/50 text-[#137fec] text-sm font-bold hover:bg-gray-100 dark:hover:bg-slate-700 transition-colors focus:outline-none focus:ring-2 focus:ring-[#137fec] border-t border-gray-100 dark:border-slate-700"
-        >
-          <span className="material-symbols-outlined text-[18px]" aria-hidden="true">map</span>
-          View on map
-        </Link>
-      </div>
-    )
+  const stateNames: Record<string, string> = {
+    NY: 'New York', CA: 'California', TX: 'Texas', FL: 'Florida',
+    GA: 'Georgia', VA: 'Virginia', SC: 'South Carolina', NC: 'North Carolina',
+    MN: 'Minnesota', MO: 'Missouri', MS: 'Mississippi', MI: 'Michigan',
   }
 
-  const selectedCity = cities?.find(c => c.slug === selectedArea)
+  const stateSlugs: Record<string, string> = {
+    NY: 'new-york', CA: 'california', TX: 'texas', FL: 'florida',
+    GA: 'georgia', VA: 'virginia', SC: 'south-carolina', NC: 'north-carolina',
+    MN: 'minnesota', MO: 'missouri', MS: 'mississippi', MI: 'michigan',
+  }
 
   return (
     <div className="min-h-screen bg-[#f6f7f8] dark:bg-[#101922]">
-      {/* Skip to content link */}
+      {/* Skip Link */}
       <a
         href="#main-content"
         className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:px-4 focus:py-2 focus:bg-[#137fec] focus:text-white focus:rounded-lg"
@@ -168,156 +66,253 @@ export default function HomePage({ clinicCount, cities, cityClinics }: { clinicC
       <div className="bg-red-600 text-white py-2 px-4 text-center text-sm font-bold">
         <span className="material-symbols-outlined text-sm align-middle mr-1" aria-hidden="true">emergency</span>
         CRITICAL EMERGENCY?
-        <a href="/triage" className="underline ml-2 focus:outline-none focus:ring-2 focus:ring-white">
-          Go to your nearest emergency vet immediately
-        </a>
+        <a href="#when-to-use" className="underline ml-2">Check if you need an emergency vet</a>
       </div>
 
-      {/* Top Navigation */}
-      <nav className="sticky top-0 z-50 flex items-center bg-[#f6f7f8]/80 dark:bg-[#101922]/80 backdrop-blur-md p-4 border-b border-gray-200 dark:border-gray-800 justify-between" aria-label="Main navigation">
-        <div className="flex items-center gap-2">
-          <span className="material-symbols-outlined text-[#137fec] text-3xl" aria-hidden="true">medical_services</span>
-          <h2 className="text-[#0d141b] dark:text-white text-lg font-bold leading-tight tracking-[-0.015em]">
-            FindEmergencyVet.com
-          </h2>
-        </div>
-        <div className="flex items-center gap-2">
+      {/* Navigation */}
+      <nav className="sticky top-0 z-50 bg-[#f6f7f8]/80 dark:bg-[#101922]/80 backdrop-blur-md border-b border-gray-200 dark:border-gray-800">
+        <div className="flex items-center p-4 justify-between max-w-5xl mx-auto">
+          <div className="flex items-center gap-2">
+            <span className="material-symbols-outlined text-[#137fec] text-3xl" aria-hidden="true">medical_services</span>
+            <span className="text-[#0d141b] dark:text-white text-lg font-bold">Emergency Vet Finder</span>
+          </div>
           <Link
-            href="/triage"
-            className="flex items-center justify-center rounded-lg h-10 w-10 bg-[#137fec]/10 text-[#137fec] focus:outline-none focus:ring-2 focus:ring-[#137fec]"
-            aria-label="Emergency triage checker"
+            href="/locations"
+            className="flex items-center gap-1 px-3 py-2 rounded-lg bg-[#137fec]/10 text-[#137fec] text-sm font-bold hover:bg-[#137fec]/20"
           >
-            <span className="material-symbols-outlined text-xl" aria-hidden="true">emergency</span>
+            <span className="material-symbols-outlined text-[18px]" aria-hidden="true">map</span>
+            All Locations
           </Link>
         </div>
       </nav>
 
-      <main id="main-content" className="max-w-6xl mx-auto">
-        {/* Hero - Compact */}
-        <div className="bg-gradient-to-r from-[#137fec] to-[#0d5bbd] px-4 py-6 md:py-8">
-          <div className="flex flex-col items-center text-center gap-2">
-            <div className="inline-flex items-center gap-1.5 rounded-full bg-white/20 px-3 py-1 text-xs font-bold text-white" role="status">
-              <span className="relative flex h-2 w-2" aria-hidden="true">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-white opacity-75"></span>
-                <span className="relative inline-flex rounded-full h-2 w-2 bg-white"></span>
-              </span>
-              {clinicCount} CLINICS • LIVE
-            </div>
-            <h1 className="text-white text-2xl md:text-3xl font-black leading-tight tracking-tight">
-              24/7 Emergency Vets
+      <main id="main-content" className="max-w-5xl mx-auto">
+        {/* Hero Section */}
+        <header className="bg-gradient-to-r from-[#137fec] to-[#0d5bbd] px-6 py-10 md:py-16">
+          <div className="max-w-3xl mx-auto text-center">
+            {/* H1 */}
+            <h1 className="text-white text-3xl md:text-5xl font-black mb-4 leading-tight">
+              Emergency Vet Finder — Fast Emergency Veterinary Care Near You
             </h1>
-            <p className="text-white/80 text-sm">
-              Westchester &amp; Rochester, NY
+
+            {/* Intro Paragraph */}
+            <p className="text-white/90 text-lg md:text-xl mb-6 leading-relaxed">
+              When your pet needs urgent medical attention, time matters. Emergency Vet Finder connects you to open emergency veterinary hospitals. We help pet owners find emergency care for their pet.
             </p>
-            {isLocating && (
-              <p className="text-white/60 text-xs flex items-center gap-2 mt-1">
-                <span className="material-symbols-outlined text-sm animate-spin" aria-hidden="true">progress_activity</span>
-                Detecting location...
+
+            {/* Live Stats */}
+            <div className="inline-flex items-center gap-2 bg-white/20 rounded-full px-4 py-2 text-white font-bold">
+              <span className="relative flex h-3 w-3">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-white opacity-75"></span>
+                <span className="relative inline-flex rounded-full h-3 w-3 bg-white"></span>
+              </span>
+              {clinicCount} Emergency Clinics • Live Directory
+            </div>
+          </div>
+        </header>
+
+        {/* H2: How Emergency Vet Finder Works */}
+        <section className="px-6 py-10 md:py-12">
+          <h2 className="text-[#0d141b] dark:text-white text-2xl md:text-3xl font-bold mb-6 text-center">
+            How Emergency Vet Finder Works
+          </h2>
+          <div className="grid md:grid-cols-3 gap-6 max-w-4xl mx-auto">
+            <div className="bg-white dark:bg-slate-800 rounded-xl p-6 text-center border border-gray-100 dark:border-slate-700">
+              <div className="w-12 h-12 bg-[#137fec]/10 rounded-full flex items-center justify-center mx-auto mb-4">
+                <span className="material-symbols-outlined text-[#137fec] text-2xl">search</span>
+              </div>
+              <h3 className="font-bold text-[#0d141b] dark:text-white mb-2">Search by City or State</h3>
+              <p className="text-gray-600 dark:text-gray-400 text-sm">Find emergency vets in your area instantly</p>
+            </div>
+            <div className="bg-white dark:bg-slate-800 rounded-xl p-6 text-center border border-gray-100 dark:border-slate-700">
+              <div className="w-12 h-12 bg-[#137fec]/10 rounded-full flex items-center justify-center mx-auto mb-4">
+                <span className="material-symbols-outlined text-[#137fec] text-2xl">visibility</span>
+              </div>
+              <h3 className="font-bold text-[#0d141b] dark:text-white mb-2">See Open Emergency Vets</h3>
+              <p className="text-gray-600 dark:text-gray-400 text-sm">Instantly see open emergency and referral vets</p>
+            </div>
+            <div className="bg-white dark:bg-slate-800 rounded-xl p-6 text-center border border-gray-100 dark:border-slate-700">
+              <div className="w-12 h-12 bg-[#137fec]/10 rounded-full flex items-center justify-center mx-auto mb-4">
+                <span className="material-symbols-outlined text-[#137fec] text-2xl">call</span>
+              </div>
+              <h3 className="font-bold text-[#0d141b] dark:text-white mb-2">Call Directly</h3>
+              <p className="text-gray-600 dark:text-gray-400 text-sm">No signups, no delays — just call</p>
+            </div>
+          </div>
+        </section>
+
+        {/* H2: When to Use an Emergency Vet */}
+        <section id="when-to-use" className="px-6 py-10 bg-white dark:bg-slate-800 border-y border-gray-100 dark:border-slate-700">
+          <div className="max-w-3xl mx-auto">
+            <h2 className="text-[#0d141b] dark:text-white text-2xl md:text-3xl font-bold mb-6 text-center">
+              When to Use an Emergency Vet
+            </h2>
+            <div className="bg-red-50 dark:bg-red-900/20 rounded-xl p-6 border border-red-100 dark:border-red-900/30">
+              <ul className="space-y-3 text-gray-700 dark:text-gray-300">
+                <li className="flex items-start gap-3">
+                  <span className="material-symbols-outlined text-red-500 mt-0.5">emergency</span>
+                  <span>Difficulty breathing</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <span className="material-symbols-outlined text-red-500 mt-0.5">emergency</span>
+                  <span>Severe bleeding or trauma</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <span className="material-symbols-outlined text-red-500 mt-0.5">emergency</span>
+                  <span>Seizures or collapse</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <span className="material-symbols-outlined text-red-500 mt-0.5">emergency</span>
+                  <span>Ingestion of toxins</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <span className="material-symbols-outlined text-red-500 mt-0.5">emergency</span>
+                  <span>Sudden pain, paralysis, or distress</span>
+                </li>
+              </ul>
+              <p className="mt-4 text-red-700 dark:text-red-300 font-semibold text-sm">
+                If you're unsure, it's safer to call an emergency vet immediately.
               </p>
-            )}
+            </div>
           </div>
-        </div>
+        </section>
 
-        {/* MOBILE: Tabs Interface */}
-        <div className="md:hidden">
-          {/* Tab Buttons */}
-          <div className="flex border-b border-gray-200 dark:border-gray-700 bg-white dark:bg-slate-800 sticky top-[73px] z-40">
-            {cities?.map((city) => (
-              <button
-                key={city.id}
-                onClick={() => setSelectedArea(city.slug)}
-                className={`flex-1 py-3 px-4 text-sm font-bold transition-colors focus:outline-none focus:ring-2 focus:ring-inset focus:ring-[#137fec] ${
-                  selectedArea === city.slug
-                    ? 'text-[#137fec] border-b-2 border-[#137fec] bg-white dark:bg-slate-800'
-                    : 'text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200'
-                }`}
+        {/* H2: Find Emergency Veterinary Care by Location */}
+        <section className="px-6 py-10 md:py-12">
+          <h2 className="text-[#0d141b] dark:text-white text-2xl md:text-3xl font-bold mb-6 text-center">
+            Find Emergency Veterinary Care by Location
+          </h2>
+
+          <div className="max-w-4xl mx-auto">
+            {/* Featured States with Active Cities */}
+            <div className="space-y-4">
+              {Object.entries(citiesByState)
+                .filter(([, stateCities]) => stateCities.some(c => c.clinic_count > 0))
+                .map(([stateAbbr, stateCities]) => {
+                  const stateName = stateNames[stateAbbr] || stateAbbr
+                  const stateSlug = stateSlugs[stateAbbr] || stateAbbr.toLowerCase()
+                  const activeCities = stateCities.filter(c => c.clinic_count > 0)
+                  const totalClinics = activeCities.reduce((sum, c) => sum + c.clinic_count, 0)
+
+                  return (
+                    <div key={stateAbbr} className="bg-white dark:bg-slate-800 rounded-xl border border-gray-100 dark:border-slate-700 overflow-hidden">
+                      <div className="flex items-center justify-between p-4 bg-gray-50 dark:bg-slate-700/50 border-b border-gray-100 dark:border-slate-700">
+                        <div>
+                          <h3 className="text-[#0d141b] dark:text-white font-bold text-lg">{stateName}</h3>
+                          <span className="text-gray-500 dark:text-gray-400 text-sm">
+                            {activeCities.length} {activeCities.length === 1 ? 'city' : 'cities'} • {totalClinics} clinics
+                          </span>
+                        </div>
+                        <Link
+                          href={`/states/${stateSlug}`}
+                          className="text-[#137fec] text-sm font-bold hover:underline"
+                        >
+                          View all →
+                        </Link>
+                      </div>
+                      <div className="p-4">
+                        <div className="flex flex-wrap gap-2">
+                          {activeCities.map(city => (
+                            <Link
+                              key={city.id}
+                              href={`/states/${stateSlug}/${city.slug}`}
+                              className="inline-flex items-center gap-1 px-3 py-2 bg-gray-50 dark:bg-slate-700 rounded-lg text-sm font-medium text-[#0d141b] dark:text-white hover:bg-[#137fec]/10 hover:text-[#137fec] transition-colors"
+                            >
+                              {city.name}
+                              <span className="text-green-600 text-xs font-bold">({city.clinic_count})</span>
+                            </Link>
+                          ))}
+                        </div>
+                      </div>
+                    </div>
+                  )
+                })}
+            </div>
+
+            {/* View All CTA */}
+            <div className="mt-6 text-center">
+              <Link
+                href="/locations"
+                className="inline-flex items-center gap-2 px-6 py-3 bg-[#137fec] text-white font-bold rounded-lg hover:bg-[#137fec]/90"
               >
-                {city.name}
-                <span className="ml-1.5 text-xs font-normal">({city.clinic_count})</span>
-              </button>
-            ))}
+                <span className="material-symbols-outlined text-[20px]">map</span>
+                View All Locations
+              </Link>
+            </div>
           </div>
+        </section>
 
-          {/* Tab Content */}
-          <div className="p-4">
-            {selectedCity && renderClinicList(selectedCity)}
-          </div>
-        </div>
-
-        {/* DESKTOP: Side-by-Side */}
-        <div className="hidden md:block p-6">
-          <div className="grid grid-cols-2 gap-6">
-            {cities?.map((city) => (
-              <div key={city.id}>
-                {renderClinicList(city)}
+        {/* H2: Why Pet Owners Trust Emergency Vet Finder */}
+        <section className="px-6 py-10 bg-gray-50 dark:bg-slate-800/50 border-t border-gray-100 dark:border-slate-700">
+          <div className="max-w-3xl mx-auto">
+            <h2 className="text-[#0d141b] dark:text-white text-2xl md:text-3xl font-bold mb-6 text-center">
+              Why Pet Owners Trust Emergency Vet Finder
+            </h2>
+            <div className="grid md:grid-cols-2 gap-4">
+              <div className="flex items-start gap-3 p-4 bg-white dark:bg-slate-800 rounded-xl border border-gray-100 dark:border-slate-700">
+                <span className="material-symbols-outlined text-[#137fec] text-2xl shrink-0">check_circle</span>
+                <div>
+                  <h3 className="font-bold text-[#0d141b] dark:text-white mb-1">Emergency Focus Only</h3>
+                  <p className="text-gray-600 dark:text-gray-400 text-sm">No general practice clutter — just emergency and referral care</p>
+                </div>
               </div>
-            ))}
-          </div>
-        </div>
-
-        {/* Emergency Triage Banner */}
-        <div className="p-4 md:px-6">
-          <div className="flex flex-col items-start justify-between gap-4 rounded-xl border-2 border-red-100 dark:border-red-900/30 bg-red-50 dark:bg-red-900/10 p-5 sm:flex-row sm:items-center">
-            <div className="flex gap-4">
-              <div className="flex size-12 shrink-0 items-center justify-center rounded-full bg-red-100 dark:bg-red-900/40 text-red-600 dark:text-red-400" aria-hidden="true">
-                <span className="material-symbols-outlined text-2xl font-bold">priority_high</span>
+              <div className="flex items-start gap-3 p-4 bg-white dark:bg-slate-800 rounded-xl border border-gray-100 dark:border-slate-700">
+                <span className="material-symbols-outlined text-[#137fec] text-2xl shrink-0">smartphone</span>
+                <div>
+                  <h3 className="font-bold text-[#0d141b] dark:text-white mb-1">Built for Mobile</h3>
+                  <p className="text-gray-600 dark:text-gray-400 text-sm">Designed for high-stress situations on any device</p>
+                </div>
               </div>
-              <div className="flex flex-col gap-1">
-                <p className="text-red-800 dark:text-red-300 text-base font-bold leading-tight">Is This An Emergency?</p>
-                <p className="text-red-700/80 dark:text-red-400/80 text-sm font-normal leading-tight">
-                  Check for difficulty breathing, seizures, or toxin ingestion.
-                </p>
+              <div className="flex items-start gap-3 p-4 bg-white dark:bg-slate-800 rounded-xl border border-gray-100 dark:border-slate-700">
+                <span className="material-symbols-outlined text-[#137fec] text-2xl shrink-0">update</span>
+                <div>
+                  <h3 className="font-bold text-[#0d141b] dark:text-white mb-1">Continuously Updated</h3>
+                  <p className="text-gray-600 dark:text-gray-400 text-sm">Live availability signals and verified information</p>
+                </div>
+              </div>
+              <div className="flex items-start gap-3 p-4 bg-white dark:bg-slate-800 rounded-xl border border-gray-100 dark:border-slate-700">
+                <span className="material-symbols-outlined text-[#137fec] text-2xl shrink-0">thumb_up</span>
+                <div>
+                  <h3 className="font-bold text-[#0d141b] dark:text-white mb-1">No Paid Placements</h3>
+                  <p className="text-gray-600 dark:text-gray-400 text-sm">Results prioritize proximity and availability, not ads</p>
+                </div>
               </div>
             </div>
-            <Link
-              href="/triage"
-              className="flex w-full sm:w-auto min-w-[120px] cursor-pointer items-center justify-center rounded-lg h-10 px-5 bg-red-600 text-white text-sm font-bold shadow-md shadow-red-200 dark:shadow-none hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-800"
-            >
-              Quick Triage
-            </Link>
           </div>
-        </div>
+        </section>
 
-        {/* Why Us Section */}
-        <WhyUsSection />
-
-        {/* FAQ Section */}
-        <FAQSection />
-
-        {/* Help Banner */}
-        <div className="p-4 md:px-6 mb-10">
-          <div className="bg-[#137fec] rounded-xl p-6 text-white flex flex-col items-center text-center gap-4">
-            <span className="material-symbols-outlined text-4xl" aria-hidden="true">pets</span>
-            <h3 className="text-xl font-bold">Every Second Counts</h3>
-            <p className="text-white/80 text-sm">
-              We maintain accurate emergency veterinary clinic information to help you and your pet when it matters most.
-            </p>
+        {/* Register CTA */}
+        <section className="px-6 py-10">
+          <div className="max-w-3xl mx-auto bg-[#137fec] rounded-xl p-8 text-center text-white">
+            <span className="material-symbols-outlined text-4xl mb-3" aria-hidden="true">add_business</span>
+            <h3 className="text-xl font-bold mb-2">Are You an Emergency Veterinary Clinic?</h3>
+            <p className="text-white/80 mb-4">List your clinic to help pet owners find you in emergencies.</p>
             <Link
               href="/register"
-              className="bg-white text-[#137fec] font-bold px-6 py-2 rounded-full text-sm hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-white"
+              className="inline-flex items-center gap-2 px-6 py-3 bg-white text-[#137fec] font-bold rounded-lg hover:bg-gray-100"
             >
               Register Your Clinic
             </Link>
           </div>
-        </div>
+        </section>
+
+        {/* Footer */}
+        <footer className="px-6 py-8 text-center border-t border-gray-200 dark:border-slate-700">
+          <p className="text-gray-500 dark:text-gray-400 text-xs">
+            Emergency Vet Finder is an independent directory. Availability and hours may change.
+            Always call the clinic to confirm emergency services.
+          </p>
+        </footer>
       </main>
 
-      {/* Bottom Navigation - Mobile Only */}
-      <nav className="md:hidden fixed bottom-0 left-0 right-0 bg-white/90 dark:bg-slate-900/90 backdrop-blur-md border-t border-gray-200 dark:border-slate-800 px-6 py-3 flex justify-between items-center z-50" aria-label="Bottom navigation">
-        <Link href="/" className="flex flex-col items-center gap-1 text-[#137fec] min-w-[48px] min-h-[48px] justify-center focus:outline-none focus:ring-2 focus:ring-[#137fec] rounded">
-          <span className="material-symbols-outlined" aria-hidden="true">home</span>
+      {/* Bottom Nav - Mobile */}
+      <nav className="md:hidden fixed bottom-0 left-0 right-0 z-50 bg-white/90 dark:bg-slate-900/90 backdrop-blur-md border-t border-gray-200 dark:border-slate-800 px-6 py-3 flex justify-around">
+        <Link href="/" className="flex flex-col items-center gap-1 text-[#137fec]">
+          <span className="material-symbols-outlined" style={{fontVariationSettings: "'FILL' 1"}}>home</span>
           <span className="text-[10px] font-bold">Home</span>
         </Link>
-        <Link href="/triage" className="flex flex-col items-center gap-1 text-gray-400 hover:text-[#137fec] min-w-[48px] min-h-[48px] justify-center focus:outline-none focus:ring-2 focus:ring-[#137fec] rounded">
-          <span className="material-symbols-outlined" aria-hidden="true">medical_information</span>
-          <span className="text-[10px] font-bold">Triage</span>
-        </Link>
-        <Link href="/costs" className="flex flex-col items-center gap-1 text-gray-400 hover:text-[#137fec] min-w-[48px] min-h-[48px] justify-center focus:outline-none focus:ring-2 focus:ring-[#137fec] rounded">
-          <span className="material-symbols-outlined" aria-hidden="true">payments</span>
-          <span className="text-[10px] font-bold">Costs</span>
-        </Link>
-        <Link href="/locations" className="flex flex-col items-center gap-1 text-gray-400 hover:text-[#137fec] min-w-[48px] min-h-[48px] justify-center focus:outline-none focus:ring-2 focus:ring-[#137fec] rounded">
-          <span className="material-symbols-outlined" aria-hidden="true">map</span>
+        <Link href="/locations" className="flex flex-col items-center gap-1 text-gray-400">
+          <span className="material-symbols-outlined">map</span>
           <span className="text-[10px] font-bold">Locations</span>
         </Link>
       </nav>

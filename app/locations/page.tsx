@@ -54,6 +54,17 @@ export default async function LocationsPage() {
     WI: 'Wisconsin', WV: 'West Virginia',
   }
 
+  const stateSlugs: Record<string, string> = {
+    AL: 'alabama', AR: 'arkansas', CA: 'california', CT: 'connecticut',
+    FL: 'florida', GA: 'georgia', IA: 'iowa', IL: 'illinois',
+    LA: 'louisiana', MD: 'maryland', ME: 'maine', MI: 'michigan',
+    MN: 'minnesota', MO: 'missouri', MS: 'mississippi', NC: 'north-carolina',
+    NE: 'nebraska', NH: 'new-hampshire', NJ: 'new-jersey', NY: 'new-york',
+    OK: 'oklahoma', OR: 'oregon', PA: 'pennsylvania', SC: 'south-carolina',
+    TN: 'tennessee', TX: 'texas', VA: 'virginia', VT: 'vermont',
+    WI: 'wisconsin', WV: 'west-virginia',
+  }
+
   return (
     <div className="min-h-screen bg-[#f6f7f8] dark:bg-[#101922]">
       {/* Emergency Banner */}
@@ -131,7 +142,7 @@ export default async function LocationsPage() {
                   </div>
                   {hasActiveCities && (
                     <Link
-                      href={`/locations/${state.toLowerCase()}`}
+                      href={`/states/${stateSlugs[state] || state.toLowerCase()}`}
                       className="text-[#137fec] text-sm font-bold hover:underline"
                     >
                       View all
@@ -143,7 +154,7 @@ export default async function LocationsPage() {
                   {stateCities.map(city => (
                     <Link
                       key={city.id}
-                      href={`/locations/${state.toLowerCase()}/${city.slug}`}
+                      href={`/states/${stateSlugs[state] || state.toLowerCase()}/${city.slug}`}
                       className={`flex items-center justify-between p-3 hover:bg-gray-50 dark:hover:bg-slate-700/30 transition-colors ${
                         city.clinic_count === 0 ? 'opacity-60' : ''
                       }`}
