@@ -81,10 +81,10 @@ export default function HomePage({ clinicCount, cities, cityClinics }: { clinicC
                   href={`https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(`${clinic.address}, ${clinic.city}, ${clinic.state}`)}`}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center justify-center h-10 w-10 rounded-lg border-2 border-[#137fec] text-[#137fec] hover:bg-[#137fec]/10 focus:outline-none focus:ring-2 focus:ring-[#137fec]"
+                  className="flex items-center justify-center h-10 w-10 rounded-lg border-2 border-red-500 text-red-500 hover:bg-red-50 dark:hover:bg-red-900/20 focus:outline-none focus:ring-2 focus:ring-red-500"
                   aria-label={`Get directions to ${clinic.name}`}
                 >
-                  <span className="material-symbols-outlined text-[20px]" aria-hidden="true">directions</span>
+                  <span className="material-symbols-outlined text-[20px]" style={{fontVariationSettings: "'FILL' 1"}} aria-hidden="true">location_on</span>
                 </a>
                 <a
                   href={`tel:${clinic.phone}`}
