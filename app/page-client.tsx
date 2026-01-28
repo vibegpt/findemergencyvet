@@ -1,34 +1,36 @@
 'use client'
 
 import Link from 'next/link'
-import Image from 'next/image'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { WhyUsSection, FAQSection } from '@/components/SharedSections'
 
 export default function HomePage({ clinicCount, cities, cityClinics }: { clinicCount: number, cities: any[], cityClinics: Record<string, any[]> }) {
-  const [searchQuery, setSearchQuery] = useState('')
+  const [detectedArea, setDetectedArea] = useState<string | null>(null)
   const [isLocating, setIsLocating] = useState(false)
 
-  const handleGeolocation = () => {
-    setIsLocating(true)
-    
+  // Auto-detect location on mount
+  useEffect(() => {
     if ('geolocation' in navigator) {
+      setIsLocating(true)
       navigator.geolocation.getCurrentPosition(
         (position) => {
           const { latitude, longitude } = position.coords
-          // Redirect to search with coordinates
-          window.location.href = `/search?lat=${latitude}&lng=${longitude}`
-        },
-        (error) => {
-          alert('Unable to get your location. Please enter your city or zip code.')
+          // Westchester area: roughly 40.85-41.35 lat, -73.4 to -74.0 lng
+          // Rochester area: roughly 42.8-43.3 lat, -77.3 to -78.0 lng
+          if (latitude >= 40.85 && latitude <= 41.4 && longitude >= -74.1 && longitude <= -73.3) {
+            setDetectedArea('westchester')
+          } else if (latitude >= 42.7 && latitude <= 43.4 && longitude >= -78.1 && longitude <= -76.9) {
+            setDetectedArea('rochester')
+          }
           setIsLocating(false)
-        }
+        },
+        () => {
+          setIsLocating(false)
+        },
+        { timeout: 5000 }
       )
-    } else {
-      alert('Geolocation is not supported by your browser.')
-      setIsLocating(false)
     }
-  }
+  }, [])
 
   return (
     <div className="min-h-screen">
@@ -75,118 +77,54 @@ export default function HomePage({ clinicCount, cities, cityClinics }: { clinicC
       </nav>
 
       <main id="main-content">
-        {/* Hero Section */}
-        <div className="p-4">
-          <div 
-            className="flex min-h-[420px] flex-col gap-6 bg-cover bg-center bg-no-repeat rounded-xl items-center justify-center p-6 shadow-sm relative overflow-hidden"
-            role="banner"
-          >
-            <Image
-              src="https://images.unsplash.com/photo-1628009368231-7bb7cfcb0def?w=1200&auto=format&fit=crop&q=80"
-              alt="Veterinarian providing emergency care to a pet"
-              fill
-              priority
-              className="object-cover -z-10"
-              sizes="(max-width: 768px) 100vw, 1200px"
-            />
-            <div className="absolute inset-0 bg-gradient-to-b from-[#137fec]/70 to-[#101922]/85 -z-10" />
-            
-            <div className="flex flex-col gap-3 text-center z-10">
-              {/* Live Data Badge */}
-              <div className="inline-flex items-center justify-center gap-1.5 self-center rounded-full bg-green-500/20 px-3 py-1 text-xs font-bold text-green-400 border border-green-500/30" role="status">
-                <span className="relative flex h-2 w-2" aria-hidden="true">
-                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
-                  <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
-                </span>
-                LIVE DATA ACTIVE
-              </div>
-
-              {/* Keyword-Optimized Headline */}
-              <h1 className="text-white text-3xl font-black leading-tight tracking-tight sm:text-5xl">
-                Find 24/7 Emergency Vets Near You
-              </h1>
-
-              <p className="text-white/90 text-sm font-medium sm:text-base max-w-md mx-auto">
-                Open now, exotic pet specialists, real-time availability. Your pet's urgent care starts here.
-              </p>
-            </div>
-
-            {/* Search Bar - Primary Action */}
-            <div className="w-full max-w-[480px] space-y-3 z-10">
-              <form action="/search" method="GET" role="search">
-                <label htmlFor="location-search" className="sr-only">Enter your city or zip code</label>
-                <div className="flex w-full flex-1 items-stretch rounded-lg h-16 shadow-lg overflow-hidden">
-                  <div className="text-gray-400 flex bg-white dark:bg-slate-900 items-center justify-center pl-4 border-r-0" aria-hidden="true">
-                    <span className="material-symbols-outlined">location_on</span>
-                  </div>
-                  <input
-                    id="location-search"
-                    name="q"
-                    value={searchQuery}
-                    onChange={(e) => setSearchQuery(e.target.value)}
-                    className="flex w-full min-w-0 flex-1 border-0 bg-white dark:bg-slate-900 text-[#0d141b] dark:text-white focus:ring-2 focus:ring-[#137fec] h-full placeholder:text-gray-400 px-3 text-base font-medium"
-                    placeholder="Enter city or zip code..."
-                    type="text"
-                    autoComplete="off"
-                    aria-label="Location search"
-                  />
-                  <div className="flex items-center justify-center bg-white dark:bg-slate-900 pr-2">
-                    <button 
-                      type="submit"
-                      className="flex min-w-[80px] cursor-pointer items-center justify-center rounded-lg h-12 px-4 bg-[#137fec] text-white text-sm font-bold tracking-tight hover:bg-[#137fec]/90 focus:outline-none focus:ring-2 focus:ring-white"
-                    >
-                      Find
-                    </button>
-                  </div>
-                </div>
-              </form>
-
-              {/* Geolocation Button - Now Functional */}
-              <button 
-                type="button"
-                onClick={handleGeolocation}
-                disabled={isLocating}
-                className="flex w-full items-center justify-center gap-2 text-white/80 text-xs font-semibold uppercase tracking-wider hover:text-white focus:outline-none focus:ring-2 focus:ring-white rounded py-2 disabled:opacity-50 disabled:cursor-not-allowed"
-                aria-label="Use my current location"
-              >
-                <span className="material-symbols-outlined text-sm" aria-hidden="true">
-                  {isLocating ? 'progress_activity' : 'my_location'}
-                </span>
-                {isLocating ? 'Getting location...' : 'Use My Current Location'}
-              </button>
-
-              {/* Emergency Bypass Button */}
-              <Link
-                href="/locations/ny/westchester"
-                className="flex w-full items-center justify-center gap-2 py-3 px-4 bg-red-600 hover:bg-red-700 text-white font-bold rounded-lg shadow-md transition-colors focus:outline-none focus:ring-2 focus:ring-white"
-              >
-                <span className="material-symbols-outlined" aria-hidden="true">crisis_alert</span>
-                Show All Emergency Vets Near Me
-              </Link>
-            </div>
+        {/* Compact Hero */}
+        <div className="bg-gradient-to-b from-[#137fec] to-[#0d5bbd] px-4 py-8 text-center">
+          <div className="inline-flex items-center justify-center gap-1.5 rounded-full bg-white/20 px-3 py-1 text-xs font-bold text-white mb-4" role="status">
+            <span className="relative flex h-2 w-2" aria-hidden="true">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-white opacity-75"></span>
+              <span className="relative inline-flex rounded-full h-2 w-2 bg-white"></span>
+            </span>
+            {clinicCount} CLINICS • LIVE DATA
           </div>
+          <h1 className="text-white text-2xl font-black leading-tight tracking-tight sm:text-4xl mb-2">
+            24/7 Emergency Vets
+          </h1>
+          <p className="text-white/80 text-sm mb-4">
+            Select your area to find open clinics now
+          </p>
+          {isLocating && (
+            <p className="text-white/60 text-xs flex items-center justify-center gap-2">
+              <span className="material-symbols-outlined text-sm animate-spin" aria-hidden="true">progress_activity</span>
+              Detecting your location...
+            </p>
+          )}
+          {detectedArea && (
+            <p className="text-green-300 text-xs font-semibold">
+              ✓ We detected you're near {detectedArea === 'westchester' ? 'Westchester' : 'Rochester'}
+            </p>
+          )}
         </div>
 
-        {/* Stats Bar */}
-        <div className="flex flex-wrap gap-4 px-4 py-2">
-          <div className="flex flex-1 items-center gap-3 rounded-xl p-4 bg-white dark:bg-slate-800 border border-gray-100 dark:border-slate-700 shadow-sm min-w-[200px]">
-            <div className="flex size-10 items-center justify-center rounded-full bg-[#137fec]/10 text-[#137fec]" aria-hidden="true">
-              <span className="material-symbols-outlined">local_hospital</span>
-            </div>
-            <div>
-              <p className="text-gray-500 dark:text-gray-400 text-xs font-bold uppercase tracking-wider">Clinics Listed</p>
-              <p className="text-[#0d141b] dark:text-white text-xl font-black">{clinicCount}</p>
-            </div>
-          </div>
-
-          <div className="flex flex-1 items-center gap-3 rounded-xl p-4 bg-white dark:bg-slate-800 border border-gray-100 dark:border-slate-700 shadow-sm min-w-[200px]">
-            <div className="flex size-10 items-center justify-center rounded-full bg-[#137fec]/10 text-[#137fec]" aria-hidden="true">
-              <span className="material-symbols-outlined">verified</span>
-            </div>
-            <div>
-              <p className="text-gray-500 dark:text-gray-400 text-xs font-bold uppercase tracking-wider">Data Quality</p>
-              <p className="text-[#0d141b] dark:text-white text-xl font-black">Verified</p>
-            </div>
+        {/* Service Area Selection - THE MAIN FOCUS */}
+        <div className="px-4 py-4 -mt-4">
+          <div className="grid grid-cols-2 gap-3">
+            {cities?.map((city) => (
+              <a
+                key={city.id}
+                href={`#${city.slug}`}
+                className={`flex flex-col items-center justify-center p-4 rounded-xl border-2 transition-all ${
+                  detectedArea === city.slug
+                    ? 'bg-[#137fec] border-[#137fec] text-white shadow-lg scale-105'
+                    : 'bg-white dark:bg-slate-800 border-gray-200 dark:border-slate-700 text-[#0d141b] dark:text-white hover:border-[#137fec]'
+                }`}
+              >
+                <span className="material-symbols-outlined text-2xl mb-1" aria-hidden="true">location_on</span>
+                <span className="font-bold text-sm">{city.name}</span>
+                <span className={`text-xs ${detectedArea === city.slug ? 'text-white/80' : 'text-gray-500'}`}>
+                  {city.state} • {city.clinic_count} vets
+                </span>
+              </a>
+            ))}
           </div>
         </div>
 
@@ -217,16 +155,13 @@ export default function HomePage({ clinicCount, cities, cityClinics }: { clinicC
         <WhyUsSection />
 
         {/* Section Header */}
-        <div className="flex items-center justify-between px-4 pt-4">
+        <div className="px-4 pt-4">
           <h2 className="text-[#0d141b] dark:text-white text-xl font-bold leading-tight tracking-tight">
-            Popular Service Areas
+            Emergency Vets Open Now
           </h2>
-          <Link 
-            href="/locations" 
-            className="text-[#137fec] text-sm font-semibold hover:underline focus:outline-none focus:ring-2 focus:ring-[#137fec] rounded px-2 py-1"
-          >
-            See All
-          </Link>
+          <p className="text-gray-500 dark:text-gray-400 text-sm mt-1">
+            Tap to call directly or view all clinics
+          </p>
         </div>
 
         {/* Featured Locations with Top Clinics */}
@@ -236,7 +171,8 @@ export default function HomePage({ clinicCount, cities, cityClinics }: { clinicC
             return (
               <div
                 key={city.id}
-                className="rounded-xl bg-white dark:bg-slate-800 shadow-sm border border-gray-100 dark:border-slate-700 overflow-hidden"
+                id={city.slug}
+                className="rounded-xl bg-white dark:bg-slate-800 shadow-sm border border-gray-100 dark:border-slate-700 overflow-hidden scroll-mt-20"
               >
                 {/* City Header */}
                 <div className="flex items-center justify-between p-4 border-b border-gray-100 dark:border-slate-700">
