@@ -5,7 +5,7 @@ import Image from 'next/image'
 import { useState } from 'react'
 import { WhyUsSection, FAQSection } from '@/components/SharedSections'
 
-export default function HomePage({ clinicCount, cities }: { clinicCount: number, cities: any[] }) {
+export default function HomePage({ clinicCount, cities, cityClinics }: { clinicCount: number, cities: any[], cityClinics: Record<string, any[]> }) {
   const [searchQuery, setSearchQuery] = useState('')
   const [isLocating, setIsLocating] = useState(false)
 
@@ -229,34 +229,77 @@ export default function HomePage({ clinicCount, cities }: { clinicCount: number,
           </Link>
         </div>
 
-        {/* Featured Locations */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 p-4">
-          {cities?.map((city) => (
-            <Link
-              key={city.id}
-              href={`/locations/${city.state.toLowerCase()}/${city.slug}`}
-              className="group relative flex flex-col gap-2 rounded-xl bg-white dark:bg-slate-800 p-3 shadow-sm border border-gray-100 dark:border-slate-700 hover:shadow-md transition-shadow focus:outline-none focus:ring-2 focus:ring-[#137fec]"
-            >
-              <div className="relative h-24 w-full rounded-lg mb-1 overflow-hidden">
-                <Image
-                  src="https://images.unsplash.com/photo-1477959858617-67f85cf4f1df?w=400&auto=format&fit=crop&q=60"
-                  alt={`Emergency veterinary services in ${city.name}, ${city.state}`}
-                  fill
-                  className="object-cover"
-                  sizes="(max-width: 768px) 100vw, 400px"
-                />
+        {/* Featured Locations with Top Clinics */}
+        <div className="flex flex-col gap-4 p-4">
+          {cities?.map((city) => {
+            const topClinics = cityClinics[city.slug] || []
+            return (
+              <div
+                key={city.id}
+                className="rounded-xl bg-white dark:bg-slate-800 shadow-sm border border-gray-100 dark:border-slate-700 overflow-hidden"
+              >
+                {/* City Header */}
+                <div className="flex items-center justify-between p-4 border-b border-gray-100 dark:border-slate-700">
+                  <div>
+                    <h3 className="text-[#0d141b] dark:text-white font-bold text-lg">
+                      {city.name}, {city.state}
+                    </h3>
+                    <span className="text-green-600 dark:text-green-400 text-xs font-bold flex items-center gap-1 mt-0.5">
+                      <span className="relative flex h-2 w-2" aria-hidden="true">
+                        <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+                        <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
+                      </span>
+                      {city.clinic_count} Emergency Vets
+                    </span>
+                  </div>
+                  <Link
+                    href={`/locations/${city.state.toLowerCase()}/${city.slug}`}
+                    className="flex items-center gap-1 text-[#137fec] text-sm font-bold hover:underline focus:outline-none focus:ring-2 focus:ring-[#137fec] rounded px-3 py-2"
+                  >
+                    View All
+                    <span className="material-symbols-outlined text-sm" aria-hidden="true">arrow_forward</span>
+                  </Link>
+                </div>
+
+                {/* Top Clinics */}
+                <div className="divide-y divide-gray-100 dark:divide-slate-700">
+                  {topClinics.map((clinic: any) => (
+                    <div key={clinic.id} className="flex items-center justify-between px-4 py-3">
+                      <div className="flex-1 min-w-0">
+                        <div className="flex items-center gap-2">
+                          <span className="text-[#0d141b] dark:text-white font-semibold text-sm truncate">{clinic.name}</span>
+                          {clinic.is_24_7 && (
+                            <span className="inline-flex items-center gap-1 bg-green-500 text-white text-[9px] font-bold px-1.5 py-0.5 rounded-full shrink-0">24/7</span>
+                          )}
+                          {clinic.has_exotic_specialist && (
+                            <span className="inline-flex items-center bg-purple-100 dark:bg-purple-900/30 text-purple-700 dark:text-purple-300 text-[9px] font-bold px-1.5 py-0.5 rounded-full shrink-0">EXOTICS</span>
+                          )}
+                        </div>
+                        <span className="text-gray-500 dark:text-gray-400 text-xs">{clinic.phone}</span>
+                      </div>
+                      <a
+                        href={`tel:${clinic.phone}`}
+                        className="flex items-center justify-center gap-1.5 h-10 px-4 rounded-lg bg-[#137fec] text-white text-sm font-bold hover:bg-[#137fec]/90 focus:outline-none focus:ring-2 focus:ring-[#137fec] shrink-0 ml-3"
+                        aria-label={`Call ${clinic.name}`}
+                      >
+                        <span className="material-symbols-outlined text-[18px]" aria-hidden="true">call</span>
+                        Call
+                      </a>
+                    </div>
+                  ))}
+                </div>
+
+                {/* View All CTA */}
+                <Link
+                  href={`/locations/${city.state.toLowerCase()}/${city.slug}`}
+                  className="flex items-center justify-center gap-2 p-3 bg-gray-50 dark:bg-slate-700/50 text-[#137fec] text-sm font-bold hover:bg-gray-100 dark:hover:bg-slate-700 transition-colors focus:outline-none focus:ring-2 focus:ring-[#137fec]"
+                >
+                  <span className="material-symbols-outlined text-[18px]" aria-hidden="true">map</span>
+                  See all {city.clinic_count} clinics with map &amp; filters
+                </Link>
               </div>
-              <div className="flex flex-col">
-                <span className="text-[#0d141b] dark:text-white font-bold text-sm">
-                  {city.name}, {city.state}
-                </span>
-                <span className="text-green-600 dark:text-green-400 text-[10px] font-bold uppercase tracking-widest flex items-center gap-1">
-                  <span className="h-1.5 w-1.5 rounded-full bg-green-500" aria-hidden="true"></span>
-                  {city.clinic_count} Vets Listed
-                </span>
-              </div>
-            </Link>
-          ))}
+            )
+          })}
         </div>
 
         {/* FAQ Section */}

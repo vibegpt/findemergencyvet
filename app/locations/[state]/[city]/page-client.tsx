@@ -15,6 +15,8 @@ type Clinic = {
   state: string
   zip_code: string | null
   phone: string
+  latitude: number | null
+  longitude: number | null
   is_24_7: boolean
   current_status: string
   has_surgery_suite: boolean
@@ -103,6 +105,38 @@ export default function CityPage({
             </div>
           </div>
         </div>
+
+        {/* Map with Clinic Pins */}
+        {filteredClinics.length > 0 && filteredClinics.some(c => c.latitude && c.longitude) && (
+          <div className="px-4 pt-4">
+            <div className="rounded-xl overflow-hidden border border-gray-200 dark:border-gray-700 shadow-sm">
+              <iframe
+                title={`Map of emergency vets in ${city.name}, ${city.state}`}
+                width="100%"
+                height="280"
+                style={{ border: 0 }}
+                loading="lazy"
+                src={(() => {
+                  const clinicsWithCoords = filteredClinics.filter(c => c.latitude && c.longitude)
+                  const markers = clinicsWithCoords.map(c => `${c.latitude},${c.longitude}`).join('|')
+                  const centerLat = clinicsWithCoords.reduce((s, c) => s + Number(c.latitude), 0) / clinicsWithCoords.length
+                  const centerLng = clinicsWithCoords.reduce((s, c) => s + Number(c.longitude), 0) / clinicsWithCoords.length
+                  return `https://www.openstreetmap.org/export/embed.html?bbox=${centerLng - 0.15},${centerLat - 0.1},${centerLng + 0.15},${centerLat + 0.1}&layer=mapnik`
+                })()}
+              />
+            </div>
+            <p className="text-xs text-gray-500 dark:text-gray-400 mt-2 text-center">
+              <a
+                href={`https://www.google.com/maps/search/emergency+veterinary+clinic+${encodeURIComponent(city.name + ' ' + city.state)}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-[#137fec] hover:underline focus:outline-none focus:ring-2 focus:ring-[#137fec] rounded"
+              >
+                Open in Google Maps
+              </a>
+            </p>
+          </div>
+        )}
 
         {/* Working Filter Chips */}
         <div className="sticky top-[137px] z-40 bg-[#f6f8f8] dark:bg-[#101f22] py-3 border-b border-gray-100 dark:border-gray-800">
