@@ -5,12 +5,14 @@ import CityPage from './page-client'
 export default async function CityPageWrapper({
   params,
 }: {
-  params: { state: string; city: string }
+  params: Promise<{ state: string; city: string }>
 }) {
+  const { city: citySlug } = await params
+
   const { data: city } = await supabase
     .from('cities')
     .select('*')
-    .eq('slug', params.city)
+    .eq('slug', citySlug)
     .single()
 
   if (!city) notFound()
