@@ -76,14 +76,25 @@ export default function HomePage({ clinicCount, cities, cityClinics }: { clinicC
                 </div>
                 <span className="text-gray-500 dark:text-gray-400 text-xs">{clinic.phone}</span>
               </div>
-              <a
-                href={`tel:${clinic.phone}`}
-                className="flex items-center justify-center gap-1.5 h-10 px-4 rounded-lg bg-[#137fec] text-white text-sm font-bold hover:bg-[#137fec]/90 focus:outline-none focus:ring-2 focus:ring-[#137fec] shrink-0 ml-3"
-                aria-label={`Call ${clinic.name}`}
-              >
-                <span className="material-symbols-outlined text-[18px]" aria-hidden="true">call</span>
-                Call
-              </a>
+              <div className="flex gap-2 shrink-0 ml-3">
+                <a
+                  href={`https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(`${clinic.address}, ${clinic.city}, ${clinic.state}`)}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center justify-center h-10 w-10 rounded-lg border-2 border-[#137fec] text-[#137fec] hover:bg-[#137fec]/10 focus:outline-none focus:ring-2 focus:ring-[#137fec]"
+                  aria-label={`Get directions to ${clinic.name}`}
+                >
+                  <span className="material-symbols-outlined text-[20px]" aria-hidden="true">directions</span>
+                </a>
+                <a
+                  href={`tel:${clinic.phone}`}
+                  className="flex items-center justify-center gap-1.5 h-10 px-4 rounded-lg bg-[#137fec] text-white text-sm font-bold hover:bg-[#137fec]/90 focus:outline-none focus:ring-2 focus:ring-[#137fec]"
+                  aria-label={`Call ${clinic.name}`}
+                >
+                  <span className="material-symbols-outlined text-[18px]" aria-hidden="true">call</span>
+                  Call
+                </a>
+              </div>
             </div>
           ))}
         </div>

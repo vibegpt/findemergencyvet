@@ -19,7 +19,7 @@ export default async function HomePageWrapper() {
   for (const city of cities || []) {
     const { data: clinics } = await supabase
       .from('clinics')
-      .select('id, name, phone, is_24_7, current_status, has_exotic_specialist')
+      .select('id, name, phone, address, city, state, is_24_7, current_status, has_exotic_specialist')
       .eq('city', city.name)
       .eq('state', city.state)
       .eq('is_active', true)
