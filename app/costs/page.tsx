@@ -28,9 +28,9 @@ export default function CostGuidePage() {
       {/* Emergency Banner */}
       <div className="bg-red-600 text-white py-2 px-4 text-center text-sm font-bold">
         <span className="material-symbols-outlined text-sm align-middle mr-1" aria-hidden="true">emergency</span>
-        CRITICAL EMERGENCY? 
-        <a href="tel:911" className="underline ml-2 focus:outline-none focus:ring-2 focus:ring-white">
-          Call 911 immediately
+        CRITICAL EMERGENCY?
+        <a href="/triage" className="underline ml-2 focus:outline-none focus:ring-2 focus:ring-white">
+          Go to your nearest emergency vet immediately
         </a>
       </div>
 

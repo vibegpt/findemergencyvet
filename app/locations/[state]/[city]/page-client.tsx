@@ -57,7 +57,7 @@ export default function CityPage({
 
       <div className="bg-red-600 text-white py-2 px-4 text-center text-sm font-bold">
         <span className="material-symbols-outlined text-sm align-middle mr-1" aria-hidden="true">emergency</span>
-        CRITICAL EMERGENCY? <a href="tel:911" className="underline ml-2 focus:ring-2 focus:ring-white">Call 911</a>
+        CRITICAL EMERGENCY? <a href="/triage" className="underline ml-2 focus:ring-2 focus:ring-white">Go to your nearest emergency vet immediately</a>
       </div>
 
       <nav className="sticky top-0 z-50 bg-[#f6f8f8]/80 dark:bg-[#101f22]/80 backdrop-blur-md border-b border-gray-200 dark:border-gray-800">
