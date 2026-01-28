@@ -143,24 +143,22 @@ export default function HomePage({ clinicCount, cities, cityClinics }: { clinicC
       <main id="main-content" className="max-w-6xl mx-auto">
         {/* Hero - Compact */}
         <div className="bg-gradient-to-r from-[#137fec] to-[#0d5bbd] px-4 py-6 md:py-8">
-          <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
-            <div>
-              <div className="inline-flex items-center gap-1.5 rounded-full bg-white/20 px-3 py-1 text-xs font-bold text-white mb-2" role="status">
-                <span className="relative flex h-2 w-2" aria-hidden="true">
-                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-white opacity-75"></span>
-                  <span className="relative inline-flex rounded-full h-2 w-2 bg-white"></span>
-                </span>
-                {clinicCount} CLINICS • LIVE
-              </div>
-              <h1 className="text-white text-2xl md:text-3xl font-black leading-tight tracking-tight">
-                24/7 Emergency Vets
-              </h1>
-              <p className="text-white/80 text-sm mt-1">
-                Westchester &amp; Rochester, NY
-              </p>
+          <div className="flex flex-col items-center text-center gap-2">
+            <div className="inline-flex items-center gap-1.5 rounded-full bg-white/20 px-3 py-1 text-xs font-bold text-white" role="status">
+              <span className="relative flex h-2 w-2" aria-hidden="true">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-white opacity-75"></span>
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-white"></span>
+              </span>
+              {clinicCount} CLINICS • LIVE
             </div>
+            <h1 className="text-white text-2xl md:text-3xl font-black leading-tight tracking-tight">
+              24/7 Emergency Vets
+            </h1>
+            <p className="text-white/80 text-sm">
+              Westchester &amp; Rochester, NY
+            </p>
             {isLocating && (
-              <p className="text-white/60 text-xs flex items-center gap-2">
+              <p className="text-white/60 text-xs flex items-center gap-2 mt-1">
                 <span className="material-symbols-outlined text-sm animate-spin" aria-hidden="true">progress_activity</span>
                 Detecting location...
               </p>
