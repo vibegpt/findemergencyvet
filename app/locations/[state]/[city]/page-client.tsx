@@ -240,7 +240,38 @@ export default function CityPage({
             ))}
           </div>
 
-          {filteredClinics.length === 0 && (
+          {/* Coming Soon - No clinics in database yet */}
+          {allClinics.length === 0 && (
+            <div className="bg-[#137fec]/5 dark:bg-[#137fec]/10 border-2 border-dashed border-[#137fec]/30 rounded-xl p-8 text-center">
+              <span className="material-symbols-outlined text-5xl text-[#137fec] mb-4" aria-hidden="true">add_location</span>
+              <h3 className="text-xl font-bold text-[#0d141b] dark:text-white mb-2">Coming Soon</h3>
+              <p className="text-gray-600 dark:text-gray-400 text-sm mb-4 max-w-md mx-auto">
+                We're actively adding emergency veterinary clinics in {city.name}, {city.state}.
+                In the meantime, try searching Google Maps or call a nearby city's emergency vet.
+              </p>
+              <div className="flex flex-col sm:flex-row gap-3 justify-center">
+                <a
+                  href={`https://www.google.com/maps/search/emergency+vet+${encodeURIComponent(city.name + ' ' + city.state)}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center justify-center gap-2 px-4 py-2 bg-white dark:bg-slate-800 border-2 border-gray-200 dark:border-slate-700 text-[#0d141b] dark:text-white font-bold rounded-lg hover:border-[#137fec]"
+                >
+                  <span className="material-symbols-outlined text-[18px]" aria-hidden="true">map</span>
+                  Search Google Maps
+                </a>
+                <Link
+                  href="/register"
+                  className="inline-flex items-center justify-center gap-2 px-4 py-2 bg-[#137fec] text-white font-bold rounded-lg hover:bg-[#137fec]/90"
+                >
+                  <span className="material-symbols-outlined text-[18px]" aria-hidden="true">add_business</span>
+                  Register Your Clinic
+                </Link>
+              </div>
+            </div>
+          )}
+
+          {/* Filtered results empty */}
+          {allClinics.length > 0 && filteredClinics.length === 0 && (
             <div className="bg-gray-100 dark:bg-slate-800 rounded-xl p-8 text-center">
               <span className="material-symbols-outlined text-5xl text-gray-400 mb-4" aria-hidden="true">search_off</span>
               <h3 className="text-lg font-bold text-gray-700 dark:text-gray-300 mb-2">No clinics match your filters</h3>
