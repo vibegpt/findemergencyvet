@@ -11,15 +11,71 @@ const nextConfig: NextConfig = {
   },
   async redirects() {
     return [
-      // State abbreviation to full name redirects
+      // ============================================
+      // NY hierarchical URL redirects
+      // ============================================
+      // State hub (old /states/ path)
+      {
+        source: '/states/new-york',
+        destination: '/new-york',
+        permanent: true,
+      },
+      // Old /states/new-york/:city → new /new-york/:city
+      {
+        source: '/states/new-york/:city',
+        destination: '/new-york/:city',
+        permanent: true,
+      },
+      // Old abbreviation redirects for NY
       {
         source: '/locations/ny/:city',
-        destination: '/states/new-york/:city',
+        destination: '/new-york/:city',
         permanent: true,
       },
       {
         source: '/locations/ny',
-        destination: '/states/new-york',
+        destination: '/new-york',
+        permanent: true,
+      },
+      // Old flat URLs → new hierarchical URLs
+      {
+        source: '/westchester-ny',
+        destination: '/new-york/westchester',
+        permanent: true,
+      },
+      {
+        source: '/rochester-ny',
+        destination: '/new-york/rochester',
+        permanent: true,
+      },
+      {
+        source: '/buffalo-ny',
+        destination: '/new-york/buffalo',
+        permanent: true,
+      },
+      {
+        source: '/albany-ny',
+        destination: '/new-york/albany',
+        permanent: true,
+      },
+      {
+        source: '/syracuse-ny',
+        destination: '/new-york/syracuse',
+        permanent: true,
+      },
+      {
+        source: '/long-island-ny',
+        destination: '/new-york/long-island',
+        permanent: true,
+      },
+      {
+        source: '/nyc-ny',
+        destination: '/new-york/nyc',
+        permanent: true,
+      },
+      {
+        source: '/ithaca-ny',
+        destination: '/new-york/ithaca',
         permanent: true,
       },
       {

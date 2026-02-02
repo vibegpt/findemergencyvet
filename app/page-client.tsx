@@ -194,6 +194,12 @@ export default function HomePage({
                   const activeCities = stateCities.filter(c => c.clinic_count > 0)
                   const totalClinics = activeCities.reduce((sum, c) => sum + c.clinic_count, 0)
 
+                  // NY uses flat URLs (hub-and-spoke)
+                  const isNY = stateAbbr === 'NY'
+                  const stateHref = isNY ? '/new-york' : `/states/${stateSlug}`
+                  const cityHref = (citySlug: string) =>
+                    isNY ? `/new-york/${citySlug}` : `/states/${stateSlug}/${citySlug}`
+
                   return (
                     <div key={stateAbbr} className="bg-white dark:bg-slate-800 rounded-xl border border-gray-100 dark:border-slate-700 overflow-hidden">
                       <div className="flex items-center justify-between p-4 bg-gray-50 dark:bg-slate-700/50 border-b border-gray-100 dark:border-slate-700">
@@ -204,7 +210,7 @@ export default function HomePage({
                           </span>
                         </div>
                         <Link
-                          href={`/states/${stateSlug}`}
+                          href={stateHref}
                           className="text-[#137fec] text-sm font-bold hover:underline"
                         >
                           View all →
@@ -215,7 +221,7 @@ export default function HomePage({
                           {activeCities.map(city => (
                             <Link
                               key={city.id}
-                              href={`/states/${stateSlug}/${city.slug}`}
+                              href={cityHref(city.slug)}
                               className="inline-flex items-center gap-1 px-3 py-2 bg-gray-50 dark:bg-slate-700 rounded-lg text-sm font-medium text-[#0d141b] dark:text-white hover:bg-[#137fec]/10 hover:text-[#137fec] transition-colors"
                             >
                               {city.name}

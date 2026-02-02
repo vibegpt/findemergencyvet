@@ -65,6 +65,9 @@ export default async function LocationsPage() {
     WI: 'wisconsin', WV: 'west-virginia',
   }
 
+  // States with flat hub-and-spoke URLs
+  const flatUrlStates = new Set(['NY'])
+
   return (
     <div className="min-h-screen bg-[#f6f7f8] dark:bg-[#101922]">
       {/* Emergency Banner */}
@@ -142,7 +145,7 @@ export default async function LocationsPage() {
                   </div>
                   {hasActiveCities && (
                     <Link
-                      href={`/states/${stateSlugs[state] || state.toLowerCase()}`}
+                      href={flatUrlStates.has(state) ? `/${stateSlugs[state]}` : `/states/${stateSlugs[state] || state.toLowerCase()}`}
                       className="text-[#137fec] text-sm font-bold hover:underline"
                     >
                       View all
@@ -154,7 +157,7 @@ export default async function LocationsPage() {
                   {stateCities.map(city => (
                     <Link
                       key={city.id}
-                      href={`/states/${stateSlugs[state] || state.toLowerCase()}/${city.slug}`}
+                      href={flatUrlStates.has(state) ? `/new-york/${city.slug}` : `/states/${stateSlugs[state] || state.toLowerCase()}/${city.slug}`}
                       className={`flex items-center justify-between p-3 hover:bg-gray-50 dark:hover:bg-slate-700/30 transition-colors ${
                         city.clinic_count === 0 ? 'opacity-60' : ''
                       }`}
