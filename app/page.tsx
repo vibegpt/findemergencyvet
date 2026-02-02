@@ -1,5 +1,12 @@
 import { supabase } from '@/lib/supabase'
+import { Metadata } from 'next'
 import HomePage from './page-client'
+
+export const metadata: Metadata = {
+  alternates: {
+    canonical: 'https://findemergencyvet.com',
+  },
+}
 
 export default async function HomePageWrapper() {
   // Fetch total clinic count
