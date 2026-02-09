@@ -1,6 +1,10 @@
 'use client'
 
+import './homepage.css'
 import Link from 'next/link'
+import { useMemo, useState, useRef, useEffect } from 'react'
+import { useRouter } from 'next/navigation'
+import { stateNameByAbbr, stateSlugByAbbr } from '@/lib/state-data'
 
 type City = {
   id: string
@@ -10,320 +14,414 @@ type City = {
   clinic_count: number
 }
 
-type Clinic = {
-  id: string
-  name: string
-  phone: string
-  address: string
-  city: string
-  state: string
-  is_24_7: boolean
-  has_exotic_specialist: boolean
-  google_rating: number | null
-  google_review_count: number | null
-  availability_type: string | null
-}
-
 export default function HomePage({
   clinicCount,
-  cities,
-  cityClinics
+  allCities,
 }: {
   clinicCount: number
-  cities: City[]
-  cityClinics: Record<string, Clinic[]>
+  allCities: City[]
 }) {
-  // Group cities by state for the location section
-  const citiesByState = cities.reduce((acc: Record<string, City[]>, city) => {
-    if (!acc[city.state]) acc[city.state] = []
-    acc[city.state].push(city)
-    return acc
-  }, {})
+  const router = useRouter()
+  const [query, setQuery] = useState('')
+  const [errorMessage, setErrorMessage] = useState<string | null>(null)
+  const [showSuggestions, setShowSuggestions] = useState(false)
+  const searchRef = useRef<HTMLDivElement>(null)
 
-  const stateNames: Record<string, string> = {
-    NY: 'New York', CA: 'California', TX: 'Texas', FL: 'Florida',
-    GA: 'Georgia', VA: 'Virginia', SC: 'South Carolina', NC: 'North Carolina',
-    MN: 'Minnesota', MO: 'Missouri', MS: 'Mississippi', MI: 'Michigan',
+  // Compute state stats from city data
+  const stateStats = useMemo(() => {
+    const stats: Record<string, { abbr: string; name: string; slug: string; cityCount: number }> = {}
+    for (const city of allCities) {
+      if (city.clinic_count === 0) continue
+      if (!stats[city.state]) {
+        stats[city.state] = {
+          abbr: city.state,
+          name: stateNameByAbbr[city.state] || city.state,
+          slug: stateSlugByAbbr[city.state] || city.state.toLowerCase(),
+          cityCount: 0,
+        }
+      }
+      stats[city.state].cityCount++
+    }
+    return Object.values(stats).sort((a, b) => b.cityCount - a.cityCount)
+  }, [allCities])
+
+  // Popular cities by clinic count
+  const popularCities = useMemo(() => {
+    return [...allCities]
+      .filter(c => c.clinic_count > 0)
+      .sort((a, b) => b.clinic_count - a.clinic_count)
+      .slice(0, 6)
+  }, [allCities])
+
+  const quickLinkCities = popularCities.slice(0, 4)
+
+  // Search autocomplete
+  const stateMatches = useMemo(() => {
+    const trimmed = query.trim().toLowerCase()
+    if (!trimmed) return []
+    return Object.entries(stateNameByAbbr)
+      .filter(([, name]) => name.toLowerCase().includes(trimmed))
+      .slice(0, 4)
+  }, [query])
+
+  const cityMatches = useMemo(() => {
+    const trimmed = query.trim().toLowerCase()
+    if (!trimmed) return []
+    return allCities
+      .filter(city => {
+        const stateName = stateNameByAbbr[city.state] || city.state
+        return (
+          city.name.toLowerCase().includes(trimmed) ||
+          `${city.name.toLowerCase()}, ${stateName.toLowerCase()}`.includes(trimmed) ||
+          `${city.name.toLowerCase()}, ${city.state.toLowerCase()}`.includes(trimmed)
+        )
+      })
+      .slice(0, 6)
+  }, [allCities, query])
+
+  const hasSuggestions = cityMatches.length > 0 || stateMatches.length > 0
+
+  // Close suggestions on click outside
+  useEffect(() => {
+    function handleClickOutside(e: MouseEvent) {
+      if (searchRef.current && !searchRef.current.contains(e.target as Node)) {
+        setShowSuggestions(false)
+      }
+    }
+    document.addEventListener('mousedown', handleClickOutside)
+    return () => document.removeEventListener('mousedown', handleClickOutside)
+  }, [])
+
+  const findCityMatch = (input: string): City | null => {
+    const trimmed = input.trim()
+    if (!trimmed) return null
+    const lower = trimmed.toLowerCase()
+
+    const commaParts = trimmed.split(',').map(part => part.trim())
+    if (commaParts.length >= 2) {
+      const cityName = commaParts[0].toLowerCase()
+      const statePart = commaParts[1].toUpperCase()
+      const exact = allCities.find(city => city.name.toLowerCase() === cityName && city.state === statePart)
+      if (exact) return exact
+    }
+
+    const byExactCity = allCities.find(city => city.name.toLowerCase() === lower)
+    if (byExactCity) return byExactCity
+
+    return cityMatches[0] || null
   }
 
-  const stateSlugs: Record<string, string> = {
-    NY: 'new-york', CA: 'california', TX: 'texas', FL: 'florida',
-    GA: 'georgia', VA: 'virginia', SC: 'south-carolina', NC: 'north-carolina',
-    MN: 'minnesota', MO: 'missouri', MS: 'mississippi', MI: 'michigan',
+  const handleSearch = (event: React.FormEvent) => {
+    event.preventDefault()
+    setErrorMessage(null)
+    setShowSuggestions(false)
+    const trimmed = query.trim()
+    if (!trimmed) return
+
+    const cityMatch = findCityMatch(trimmed)
+    if (cityMatch) {
+      const slug = stateSlugByAbbr[cityMatch.state]
+      if (slug) {
+        router.push(`/states/${slug}/${cityMatch.slug}`)
+        return
+      }
+    }
+
+    const stateMatch = Object.entries(stateNameByAbbr).find(([, name]) =>
+      name.toLowerCase() === trimmed.toLowerCase()
+    )
+    if (stateMatch) {
+      const slug = stateSlugByAbbr[stateMatch[0]]
+      router.push(`/states/${slug}`)
+      return
+    }
+
+    setErrorMessage('Try a city like "Eden Prairie, MN" or a state like "Florida".')
+  }
+
+  const navigateToCity = (city: City) => {
+    const slug = stateSlugByAbbr[city.state]
+    if (slug) router.push(`/states/${slug}/${city.slug}`)
+  }
+
+  const navigateToState = (abbr: string) => {
+    const slug = stateSlugByAbbr[abbr]
+    if (slug) router.push(`/states/${slug}`)
   }
 
   return (
-    <div className="min-h-screen bg-[#f6f7f8] dark:bg-[#101922]">
-      {/* Skip Link */}
-      <a
-        href="#main-content"
-        className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:px-4 focus:py-2 focus:bg-[#137fec] focus:text-white focus:rounded-lg"
-      >
-        Skip to main content
-      </a>
-
-      {/* Emergency Banner */}
-      <div className="bg-red-600 text-white py-2 px-4 text-center text-sm font-bold">
-        <span className="material-symbols-outlined text-sm align-middle mr-1" aria-hidden="true">emergency</span>
-        CRITICAL EMERGENCY?
-        <a href="#when-to-use" className="underline ml-2">Check if you need an emergency vet</a>
-      </div>
-
+    <div className="homepage">
       {/* Navigation */}
-      <nav className="sticky top-0 z-50 bg-[#f6f7f8]/80 dark:bg-[#101922]/80 backdrop-blur-md border-b border-gray-200 dark:border-gray-800">
-        <div className="flex items-center p-4 justify-between max-w-5xl mx-auto">
-          <div className="flex items-center gap-2">
-            <span className="material-symbols-outlined text-[#137fec] text-3xl" aria-hidden="true">medical_services</span>
-            <span className="text-[#0d141b] dark:text-white text-lg font-bold">Emergency Vet Finder</span>
-          </div>
-          <Link
-            href="/locations"
-            className="flex items-center gap-1 px-3 py-2 rounded-lg bg-[#137fec]/10 text-[#137fec] text-sm font-bold hover:bg-[#137fec]/20"
-          >
-            <span className="material-symbols-outlined text-[18px]" aria-hidden="true">map</span>
-            All Locations
-          </Link>
+      <nav>
+        <div className="nav-inner">
+          <Link href="/" className="logo">Find<span>Emergency</span>Vet</Link>
+          <ul className="nav-links">
+            <li><Link href="/guides">Resources</Link></li>
+            <li><Link href="/locations">All Locations</Link></li>
+          </ul>
         </div>
       </nav>
 
-      <main id="main-content" className="max-w-5xl mx-auto">
-        {/* Hero Section */}
-        <header className="bg-gradient-to-r from-[#137fec] to-[#0d5bbd] px-6 py-10 md:py-16">
-          <div className="max-w-3xl mx-auto text-center">
-            {/* H1 */}
-            <h1 className="text-white text-3xl md:text-5xl font-black mb-4 leading-tight">
-              Emergency Vet Finder — Fast Emergency Veterinary Care Near You
-            </h1>
+      {/* Hero */}
+      <section className="hero">
+        <span className="hero-eyebrow">
+          <span className="status-dot" />
+          Verified listings updated daily
+        </span>
 
-            {/* Intro Paragraph */}
-            <p className="text-white/90 text-lg md:text-xl mb-6 leading-relaxed">
-              When your pet needs urgent medical attention, time matters. Emergency Vet Finder connects you to open emergency veterinary hospitals. We help pet owners find emergency care for their pet.
-            </p>
+        <h1>Find emergency vet care.<br />Right now.</h1>
 
-            {/* Live Stats */}
-            <div className="inline-flex items-center gap-2 bg-white/20 rounded-full px-4 py-2 text-white font-bold">
-              <span className="relative flex h-3 w-3">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-white opacity-75"></span>
-                <span className="relative inline-flex rounded-full h-3 w-3 bg-white"></span>
+        <p className="hero-subtitle">
+          Instantly locate 24-hour animal hospitals and after-hours clinics near you. Verified hours. Real availability.
+        </p>
+
+        {/* Search */}
+        <div className="search-container" ref={searchRef}>
+          <div className="search-box-wrapper">
+            <form className="search-box" onSubmit={handleSearch}>
+              <span className="search-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" />
+                </svg>
               </span>
-              {clinicCount} Emergency Clinics • Live Directory
-            </div>
-          </div>
-        </header>
+              <input
+                type="text"
+                value={query}
+                onChange={e => { setQuery(e.target.value); setShowSuggestions(true); setErrorMessage(null) }}
+                onFocus={() => setShowSuggestions(true)}
+                placeholder="Enter your city or zip code"
+                autoComplete="off"
+              />
+              <button type="submit" className="search-btn">Search</button>
+            </form>
 
-        {/* H2: How Emergency Vet Finder Works */}
-        <section className="px-6 py-10 md:py-12">
-          <h2 className="text-[#0d141b] dark:text-white text-2xl md:text-3xl font-bold mb-6 text-center">
-            How Emergency Vet Finder Works
-          </h2>
-          <div className="grid md:grid-cols-3 gap-6 max-w-4xl mx-auto">
-            <div className="bg-white dark:bg-slate-800 rounded-xl p-6 text-center border border-gray-100 dark:border-slate-700">
-              <div className="w-12 h-12 bg-[#137fec]/10 rounded-full flex items-center justify-center mx-auto mb-4">
-                <span className="material-symbols-outlined text-[#137fec] text-2xl">search</span>
+            {showSuggestions && hasSuggestions && (
+              <div className="suggestions-dropdown">
+                {cityMatches.map(city => (
+                  <button
+                    key={city.id}
+                    className="suggestion-item"
+                    onClick={() => { setShowSuggestions(false); navigateToCity(city) }}
+                  >
+                    <span className="suggestion-name">{city.name}, {stateNameByAbbr[city.state] || city.state}</span>
+                    <span className="suggestion-count">{city.clinic_count} clinics</span>
+                  </button>
+                ))}
+                {stateMatches.map(([abbr, name]) => (
+                  <button
+                    key={abbr}
+                    className="suggestion-item"
+                    onClick={() => { setShowSuggestions(false); navigateToState(abbr) }}
+                  >
+                    <span className="suggestion-name">{name}</span>
+                    <span className="suggestion-count">View state</span>
+                  </button>
+                ))}
               </div>
-              <h3 className="font-bold text-[#0d141b] dark:text-white mb-2">Search by City or State</h3>
-              <p className="text-gray-600 dark:text-gray-400 text-sm">Find emergency vets in your area instantly</p>
-            </div>
-            <div className="bg-white dark:bg-slate-800 rounded-xl p-6 text-center border border-gray-100 dark:border-slate-700">
-              <div className="w-12 h-12 bg-[#137fec]/10 rounded-full flex items-center justify-center mx-auto mb-4">
-                <span className="material-symbols-outlined text-[#137fec] text-2xl">visibility</span>
-              </div>
-              <h3 className="font-bold text-[#0d141b] dark:text-white mb-2">See Open Emergency Vets</h3>
-              <p className="text-gray-600 dark:text-gray-400 text-sm">Instantly see open emergency and referral vets</p>
-            </div>
-            <div className="bg-white dark:bg-slate-800 rounded-xl p-6 text-center border border-gray-100 dark:border-slate-700">
-              <div className="w-12 h-12 bg-[#137fec]/10 rounded-full flex items-center justify-center mx-auto mb-4">
-                <span className="material-symbols-outlined text-[#137fec] text-2xl">call</span>
-              </div>
-              <h3 className="font-bold text-[#0d141b] dark:text-white mb-2">Call Directly</h3>
-              <p className="text-gray-600 dark:text-gray-400 text-sm">No signups, no delays — just call</p>
-            </div>
+            )}
           </div>
-        </section>
 
-        {/* H2: When to Use an Emergency Vet */}
-        <section id="when-to-use" className="px-6 py-10 bg-white dark:bg-slate-800 border-y border-gray-100 dark:border-slate-700">
-          <div className="max-w-3xl mx-auto">
-            <h2 className="text-[#0d141b] dark:text-white text-2xl md:text-3xl font-bold mb-6 text-center">
-              When to Use an Emergency Vet
-            </h2>
-            <div className="bg-red-50 dark:bg-red-900/20 rounded-xl p-6 border border-red-100 dark:border-red-900/30">
-              <ul className="space-y-3 text-gray-700 dark:text-gray-300">
-                <li className="flex items-start gap-3">
-                  <span className="material-symbols-outlined text-red-500 mt-0.5">emergency</span>
-                  <span>Difficulty breathing</span>
-                </li>
-                <li className="flex items-start gap-3">
-                  <span className="material-symbols-outlined text-red-500 mt-0.5">emergency</span>
-                  <span>Severe bleeding or trauma</span>
-                </li>
-                <li className="flex items-start gap-3">
-                  <span className="material-symbols-outlined text-red-500 mt-0.5">emergency</span>
-                  <span>Seizures or collapse</span>
-                </li>
-                <li className="flex items-start gap-3">
-                  <span className="material-symbols-outlined text-red-500 mt-0.5">emergency</span>
-                  <span>Ingestion of toxins</span>
-                </li>
-                <li className="flex items-start gap-3">
-                  <span className="material-symbols-outlined text-red-500 mt-0.5">emergency</span>
-                  <span>Sudden pain, paralysis, or distress</span>
-                </li>
-              </ul>
-              <p className="mt-4 text-red-700 dark:text-red-300 font-semibold text-sm">
-                If you're unsure, it's safer to call an emergency vet immediately.
-              </p>
-            </div>
-          </div>
-        </section>
+          {errorMessage ? (
+            <p className="search-error">{errorMessage}</p>
+          ) : (
+            <p className="search-hint">Try: &ldquo;Austin, TX&rdquo; or &ldquo;Eden Prairie, MN&rdquo;</p>
+          )}
 
-        {/* H2: Find Emergency Veterinary Care by Location */}
-        <section className="px-6 py-10 md:py-12">
-          <h2 className="text-[#0d141b] dark:text-white text-2xl md:text-3xl font-bold mb-6 text-center">
-            Find Emergency Veterinary Care by Location
-          </h2>
-
-          <div className="max-w-4xl mx-auto">
-            {/* Featured States with Active Cities */}
-            <div className="space-y-4">
-              {Object.entries(citiesByState)
-                .filter(([, stateCities]) => stateCities.some(c => c.clinic_count > 0))
-                .map(([stateAbbr, stateCities]) => {
-                  const stateName = stateNames[stateAbbr] || stateAbbr
-                  const stateSlug = stateSlugs[stateAbbr] || stateAbbr.toLowerCase()
-                  const activeCities = stateCities.filter(c => c.clinic_count > 0)
-                  const totalClinics = activeCities.reduce((sum, c) => sum + c.clinic_count, 0)
-
-                  // NY uses flat URLs (hub-and-spoke)
-                  const isNY = stateAbbr === 'NY'
-                  const stateHref = isNY ? '/new-york' : `/states/${stateSlug}`
-                  const cityHref = (citySlug: string) =>
-                    isNY ? `/new-york/${citySlug}` : `/states/${stateSlug}/${citySlug}`
-
-                  return (
-                    <div key={stateAbbr} className="bg-white dark:bg-slate-800 rounded-xl border border-gray-100 dark:border-slate-700 overflow-hidden">
-                      <div className="flex items-center justify-between p-4 bg-gray-50 dark:bg-slate-700/50 border-b border-gray-100 dark:border-slate-700">
-                        <div>
-                          <h3 className="text-[#0d141b] dark:text-white font-bold text-lg">{stateName}</h3>
-                          <span className="text-gray-500 dark:text-gray-400 text-sm">
-                            {activeCities.length} {activeCities.length === 1 ? 'city' : 'cities'} • {totalClinics} clinics
-                          </span>
-                        </div>
-                        <Link
-                          href={stateHref}
-                          className="text-[#137fec] text-sm font-bold hover:underline"
-                        >
-                          View all →
-                        </Link>
-                      </div>
-                      <div className="p-4">
-                        <div className="flex flex-wrap gap-2">
-                          {activeCities.map(city => (
-                            <Link
-                              key={city.id}
-                              href={cityHref(city.slug)}
-                              className="inline-flex items-center gap-1 px-3 py-2 bg-gray-50 dark:bg-slate-700 rounded-lg text-sm font-medium text-[#0d141b] dark:text-white hover:bg-[#137fec]/10 hover:text-[#137fec] transition-colors"
-                            >
-                              {city.name}
-                              <span className="text-green-600 text-xs font-bold">({city.clinic_count})</span>
-                            </Link>
-                          ))}
-                        </div>
-                      </div>
-                    </div>
-                  )
-                })}
-            </div>
-
-            {/* View All CTA */}
-            <div className="mt-6 text-center">
+          <div className="quick-links">
+            {quickLinkCities.map(city => (
               <Link
-                href="/locations"
-                className="inline-flex items-center gap-2 px-6 py-3 bg-[#137fec] text-white font-bold rounded-lg hover:bg-[#137fec]/90"
+                key={city.id}
+                href={`/states/${stateSlugByAbbr[city.state]}/${city.slug}`}
+                className="quick-link"
               >
-                <span className="material-symbols-outlined text-[20px]">map</span>
-                View All Locations
+                {city.name}, {city.state}
               </Link>
-            </div>
+            ))}
           </div>
-        </section>
+        </div>
 
-        {/* H2: Why Pet Owners Trust Emergency Vet Finder */}
-        <section className="px-6 py-10 bg-gray-50 dark:bg-slate-800/50 border-t border-gray-100 dark:border-slate-700">
-          <div className="max-w-3xl mx-auto">
-            <h2 className="text-[#0d141b] dark:text-white text-2xl md:text-3xl font-bold mb-6 text-center">
-              Why Pet Owners Trust Emergency Vet Finder
-            </h2>
-            <div className="grid md:grid-cols-2 gap-4">
-              <div className="flex items-start gap-3 p-4 bg-white dark:bg-slate-800 rounded-xl border border-gray-100 dark:border-slate-700">
-                <span className="material-symbols-outlined text-[#137fec] text-2xl shrink-0">check_circle</span>
-                <div>
-                  <h3 className="font-bold text-[#0d141b] dark:text-white mb-1">Emergency Focus Only</h3>
-                  <p className="text-gray-600 dark:text-gray-400 text-sm">No general practice clutter — just emergency and referral care</p>
-                </div>
-              </div>
-              <div className="flex items-start gap-3 p-4 bg-white dark:bg-slate-800 rounded-xl border border-gray-100 dark:border-slate-700">
-                <span className="material-symbols-outlined text-[#137fec] text-2xl shrink-0">smartphone</span>
-                <div>
-                  <h3 className="font-bold text-[#0d141b] dark:text-white mb-1">Built for Mobile</h3>
-                  <p className="text-gray-600 dark:text-gray-400 text-sm">Designed for high-stress situations on any device</p>
-                </div>
-              </div>
-              <div className="flex items-start gap-3 p-4 bg-white dark:bg-slate-800 rounded-xl border border-gray-100 dark:border-slate-700">
-                <span className="material-symbols-outlined text-[#137fec] text-2xl shrink-0">update</span>
-                <div>
-                  <h3 className="font-bold text-[#0d141b] dark:text-white mb-1">Continuously Updated</h3>
-                  <p className="text-gray-600 dark:text-gray-400 text-sm">Live availability signals and verified information</p>
-                </div>
-              </div>
-              <div className="flex items-start gap-3 p-4 bg-white dark:bg-slate-800 rounded-xl border border-gray-100 dark:border-slate-700">
-                <span className="material-symbols-outlined text-[#137fec] text-2xl shrink-0">thumb_up</span>
-                <div>
-                  <h3 className="font-bold text-[#0d141b] dark:text-white mb-1">No Paid Placements</h3>
-                  <p className="text-gray-600 dark:text-gray-400 text-sm">Results prioritize proximity and availability, not ads</p>
-                </div>
-              </div>
-            </div>
+        {/* Trust Indicators */}
+        <div className="trust-bar">
+          <div className="trust-item">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+            Verified 24/7 clinics
           </div>
-        </section>
+          <div className="trust-item">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+            Real-time hours
+          </div>
+          <div className="trust-item">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+            </svg>
+            Direct phone numbers
+          </div>
+        </div>
+      </section>
 
-        {/* Register CTA */}
-        <section className="px-6 py-10">
-          <div className="max-w-3xl mx-auto bg-[#137fec] rounded-xl p-8 text-center text-white">
-            <span className="material-symbols-outlined text-4xl mb-3" aria-hidden="true">add_business</span>
-            <h3 className="text-xl font-bold mb-2">Are You an Emergency Veterinary Clinic?</h3>
-            <p className="text-white/80 mb-4">List your clinic to help pet owners find you in emergencies.</p>
+      {/* Browse by State */}
+      <section className="states-section">
+        <div className="section-header">
+          <h2>Browse by state</h2>
+          <p>Find emergency veterinary care anywhere in the United States</p>
+        </div>
+
+        <div className="states-grid">
+          {stateStats.map((state, i) => (
             <Link
-              href="/register"
-              className="inline-flex items-center gap-2 px-6 py-3 bg-white text-[#137fec] font-bold rounded-lg hover:bg-gray-100"
+              key={state.abbr}
+              href={`/states/${state.slug}`}
+              className={`state-card${i < 2 ? ' featured' : ''}`}
             >
-              Register Your Clinic
+              <div className="state-name">{state.name}</div>
+              <div className="state-count">
+                {state.cityCount} {state.cityCount === 1 ? 'city' : 'cities'}
+              </div>
             </Link>
+          ))}
+        </div>
+      </section>
+
+      {/* Popular Cities */}
+      <section className="cities-section">
+        <div className="section-header">
+          <h2>Popular cities</h2>
+          <p>Frequently searched emergency vet locations</p>
+        </div>
+
+        <div className="cities-grid">
+          {popularCities.map(city => (
+            <Link
+              key={city.id}
+              href={`/states/${stateSlugByAbbr[city.state]}/${city.slug}`}
+              className="city-card"
+            >
+              <div className="city-header">
+                <div>
+                  <div className="city-name">{city.name}</div>
+                  <div className="city-state">{stateNameByAbbr[city.state] || city.state}</div>
+                </div>
+                <span className="city-badge emergency">24/7</span>
+              </div>
+              <div className="city-stats">
+                <div className="city-stat">
+                  <span className="city-stat-value">{city.clinic_count}</span>
+                  <span className="city-stat-label">Clinics</span>
+                </div>
+              </div>
+            </Link>
+          ))}
+        </div>
+      </section>
+
+      {/* Value Props */}
+      <section className="value-section">
+        <div className="section-header">
+          <h2>Why pet owners trust us</h2>
+          <p>When every minute matters, we help you find care faster</p>
+        </div>
+
+        <div className="value-grid">
+          <div className="value-item">
+            <div className="value-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 12.75L11.25 15 15 9.75M21 12c0 1.268-.63 2.39-1.593 3.068a3.745 3.745 0 01-1.043 3.296 3.745 3.745 0 01-3.296 1.043A3.745 3.745 0 0112 21c-1.268 0-2.39-.63-3.068-1.593a3.746 3.746 0 01-3.296-1.043 3.745 3.745 0 01-1.043-3.296A3.745 3.745 0 013 12c0-1.268.63-2.39 1.593-3.068a3.745 3.745 0 011.043-3.296 3.746 3.746 0 013.296-1.043A3.746 3.746 0 0112 3c1.268 0 2.39.63 3.068 1.593a3.746 3.746 0 013.296 1.043 3.746 3.746 0 011.043 3.296A3.745 3.745 0 0121 12z" />
+              </svg>
+            </div>
+            <h3 className="value-title">Verified information</h3>
+            <p className="value-desc">We call clinics directly to verify hours, services, and walk-in policies. No guessing.</p>
           </div>
-        </section>
 
-        {/* Footer */}
-        <footer className="px-6 py-8 text-center border-t border-gray-200 dark:border-slate-700">
-          <p className="text-gray-500 dark:text-gray-400 text-xs">
-            Emergency Vet Finder is an independent directory. Availability and hours may change.
-            Always call the clinic to confirm emergency services.
-          </p>
-        </footer>
-      </main>
+          <div className="value-item">
+            <div className="value-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+            </div>
+            <h3 className="value-title">True 24-hour vs after-hours</h3>
+            <p className="value-desc">We clearly distinguish between always-open ERs and clinics with limited emergency hours.</p>
+          </div>
 
-      {/* Bottom Nav - Mobile */}
-      <nav className="md:hidden fixed bottom-0 left-0 right-0 z-50 bg-white/90 dark:bg-slate-900/90 backdrop-blur-md border-t border-gray-200 dark:border-slate-800 px-6 py-3 flex justify-around">
-        <Link href="/" className="flex flex-col items-center gap-1 text-[#137fec]">
-          <span className="material-symbols-outlined" style={{fontVariationSettings: "'FILL' 1"}}>home</span>
-          <span className="text-[10px] font-bold">Home</span>
-        </Link>
-        <Link href="/locations" className="flex flex-col items-center gap-1 text-gray-400">
-          <span className="material-symbols-outlined">map</span>
-          <span className="text-[10px] font-bold">Locations</span>
-        </Link>
-      </nav>
+          <div className="value-item">
+            <div className="value-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z" />
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z" />
+              </svg>
+            </div>
+            <h3 className="value-title">Genuinely local</h3>
+            <p className="value-desc">Find the closest option fast with accurate addresses and distance information.</p>
+          </div>
+        </div>
+      </section>
 
-      <div className="h-20 md:h-0"></div>
+      {/* Emergency CTA */}
+      <section className="emergency-cta">
+        <h2>Is your pet having an emergency?</h2>
+        <p>Don&apos;t wait. Find 24-hour care near you now.</p>
+        <button
+          className="emergency-btn"
+          onClick={() => {
+            const input = document.querySelector('.homepage .search-box input') as HTMLInputElement
+            if (input) {
+              input.focus()
+              window.scrollTo({ top: 0, behavior: 'smooth' })
+            }
+          }}
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" />
+          </svg>
+          Search now
+        </button>
+      </section>
+
+      {/* Footer */}
+      <footer>
+        <div className="footer-inner">
+          <div className="footer-brand">
+            <Link href="/" className="logo">Find<span>Emergency</span>Vet</Link>
+            <p>Helping pet owners find emergency veterinary care when every minute counts. Verified clinic information across the United States.</p>
+          </div>
+
+          <div className="footer-col">
+            <h4>Popular States</h4>
+            <ul>
+              {stateStats.slice(0, 4).map(state => (
+                <li key={state.abbr}>
+                  <Link href={`/states/${state.slug}`}>{state.name}</Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div className="footer-col">
+            <h4>Resources</h4>
+            <ul>
+              <li><Link href="/guides">Emergency Guides</Link></li>
+              <li><Link href="/locations">All Locations</Link></li>
+            </ul>
+          </div>
+
+          <div className="footer-col">
+            <h4>Company</h4>
+            <ul>
+              <li><Link href="/about">About</Link></li>
+              <li><Link href="/contact">Contact</Link></li>
+              <li><Link href="/privacy">Privacy</Link></li>
+            </ul>
+          </div>
+        </div>
+
+        <div className="footer-bottom">
+          <span>&copy; 2026 FindEmergencyVet.com</span>
+          <span>Not a substitute for professional veterinary advice</span>
+        </div>
+      </footer>
     </div>
   )
 }

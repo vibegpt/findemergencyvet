@@ -1,0 +1,7509 @@
+{
+  "FL": {
+    "bradenton": [
+      {
+        "keyword": "24 hour emergency vet bradenton fl",
+        "volume": "30",
+        "kd": "0",
+        "intent": "Commercial",
+        "cpc": null
+      },
+      {
+        "keyword": "emergency vet bradenton fl",
+        "volume": "390",
+        "kd": "9",
+        "intent": "Informational",
+        "cpc": null
+      }
+    ],
+    "port charlotte": [
+      {
+        "keyword": "emergency vet in port charlotte fl",
+        "volume": "90",
+        "kd": "0",
+        "intent": "Commercial",
+        "cpc": null
+      },
+      {
+        "keyword": "emergency vet port charlotte fl",
+        "volume": "170",
+        "kd": "14",
+        "intent": "Informational, Transactional",
+        "cpc": null
+      }
+    ],
+    "jacksonville beach": [
+      {
+        "keyword": "emergency vet jacksonville beach fl",
+        "volume": "50",
+        "kd": "0",
+        "intent": "Informational",
+        "cpc": null
+      }
+    ],
+    "longwood": [
+      {
+        "keyword": "emergency vet longwood fl",
+        "volume": "30",
+        "kd": "0",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "pensacola": [
+      {
+        "keyword": "24 hour emergency vet pensacola fl",
+        "volume": "40",
+        "kd": "1",
+        "intent": "Commercial",
+        "cpc": null
+      },
+      {
+        "keyword": "emergency vet pensacola fl",
+        "volume": "90",
+        "kd": "5",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "casselberry": [
+      {
+        "keyword": "emergency vet casselberry florida",
+        "volume": "110",
+        "kd": "2",
+        "intent": "Informational",
+        "cpc": null
+      },
+      {
+        "keyword": "emergency vet casselberry fl",
+        "volume": "140",
+        "kd": "10",
+        "intent": "Informational, Transactional",
+        "cpc": null
+      }
+    ],
+    "largo": [
+      {
+        "keyword": "emergency vet largo fl",
+        "volume": "90",
+        "kd": "2",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "gainesville": [
+      {
+        "keyword": "24 hour emergency vet gainesville fl",
+        "volume": "50",
+        "kd": "6",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "destin": [
+      {
+        "keyword": "emergency vet destin fl",
+        "volume": "110",
+        "kd": "8",
+        "intent": "Informational",
+        "cpc": null
+      }
+    ],
+    "leesburg": [
+      {
+        "keyword": "emergency vet leesburg fl",
+        "volume": "140",
+        "kd": "8",
+        "intent": "Informational",
+        "cpc": null
+      }
+    ],
+    "spring hill": [
+      {
+        "keyword": "emergency vet spring hill fl",
+        "volume": "210",
+        "kd": "9",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "homestead": [
+      {
+        "keyword": "emergency vet homestead fl",
+        "volume": "30",
+        "kd": "10",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "lake county": [
+      {
+        "keyword": "emergency vet lake county fl",
+        "volume": "40",
+        "kd": "10",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "sebring": [
+      {
+        "keyword": "emergency vet sebring fl",
+        "volume": "40",
+        "kd": "11",
+        "intent": "Informational, Commercial",
+        "cpc": null
+      }
+    ],
+    "boynton beach": [
+      {
+        "keyword": "emergency vet boynton beach fl",
+        "volume": "110",
+        "kd": "12",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "niceville": [
+      {
+        "keyword": "emergency vet niceville fl",
+        "volume": "390",
+        "kd": "13",
+        "intent": "Navigational",
+        "cpc": null
+      },
+      {
+        "keyword": "emergency vet niceville florida",
+        "volume": "210",
+        "kd": "17",
+        "intent": "Navigational",
+        "cpc": null
+      },
+      {
+        "keyword": "emergency vet in niceville fl",
+        "volume": "170",
+        "kd": "23",
+        "intent": "Navigational",
+        "cpc": null
+      }
+    ],
+    "panama city": [
+      {
+        "keyword": "emergency vet panama city fl",
+        "volume": "170",
+        "kd": "13",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "vero beach": [
+      {
+        "keyword": "emergency vet vero beach fl",
+        "volume": "170",
+        "kd": "14",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "rockledge": [
+      {
+        "keyword": "emergency vet rockledge fl",
+        "volume": "70",
+        "kd": "15",
+        "intent": "Navigational",
+        "cpc": null
+      }
+    ],
+    "ocala": [
+      {
+        "keyword": "best 24 hour emergency vet ocala fl",
+        "volume": "70",
+        "kd": "16",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "wesley chapel": [
+      {
+        "keyword": "emergency vet wesley chapel fl",
+        "volume": "90",
+        "kd": "17",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "st augustine": [
+      {
+        "keyword": "emergency vet st augustine fl",
+        "volume": "140",
+        "kd": "18",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "clinic niceville": [
+      {
+        "keyword": "emergency vet clinic niceville florida",
+        "volume": "70",
+        "kd": "20",
+        "intent": "Navigational",
+        "cpc": null
+      }
+    ],
+    "st petersburg": [
+      {
+        "keyword": "emergency vet st petersburg fl",
+        "volume": "170",
+        "kd": "20",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "davenport": [
+      {
+        "keyword": "emergency vet davenport fl",
+        "volume": "50",
+        "kd": "21",
+        "intent": "Transactional",
+        "cpc": null
+      }
+    ],
+    "lake mary": [
+      {
+        "keyword": "emergency vet lake mary fl",
+        "volume": "70",
+        "kd": "23",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "palm harbor": [
+      {
+        "keyword": "emergency vet palm harbor fl",
+        "volume": "90",
+        "kd": "23",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "bonita springs": [
+      {
+        "keyword": "emergency vet bonita springs fl",
+        "volume": "40",
+        "kd": "24",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "lake city": [
+      {
+        "keyword": "emergency vet lake city fl",
+        "volume": "70",
+        "kd": "24",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "tallahassee": [
+      {
+        "keyword": "emergency vet tallahassee fl",
+        "volume": "210",
+        "kd": "24",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "orange park": [
+      {
+        "keyword": "emergency vet orange park fl",
+        "volume": "110",
+        "kd": "25",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "panama city beach": [
+      {
+        "keyword": "emergency vet panama city beach fl",
+        "volume": "90",
+        "kd": "27",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "englewood": [
+      {
+        "keyword": "emergency vet englewood fl",
+        "volume": "30",
+        "kd": "28",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "brandon": [
+      {
+        "keyword": "emergency vet brandon fl",
+        "volume": "140",
+        "kd": "29",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ]
+  },
+  "VA": {
+    "chesapeake": [
+      {
+        "keyword": "24 hour emergency vet chesapeake va",
+        "volume": "70",
+        "kd": "0",
+        "intent": "Commercial",
+        "cpc": null
+      },
+      {
+        "keyword": "emergency vet in chesapeake va",
+        "volume": "30",
+        "kd": "18",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "mechanicsville": [
+      {
+        "keyword": "emergency vet mechanicsville va",
+        "volume": "110",
+        "kd": "0",
+        "intent": "Informational",
+        "cpc": null
+      }
+    ],
+    "manassas": [
+      {
+        "keyword": "emergency vet manassas va",
+        "volume": "170",
+        "kd": "1",
+        "intent": "Informational",
+        "cpc": null
+      }
+    ],
+    "richmond": [
+      {
+        "keyword": "24 hour emergency vet richmond va",
+        "volume": "90",
+        "kd": "2",
+        "intent": "Commercial",
+        "cpc": null
+      },
+      {
+        "keyword": "emergency vet richmond va",
+        "volume": "720",
+        "kd": "6",
+        "intent": "Commercial",
+        "cpc": null
+      },
+      {
+        "keyword": "emergency vet in richmond va",
+        "volume": "50",
+        "kd": "14",
+        "intent": "Commercial",
+        "cpc": null
+      },
+      {
+        "keyword": "best 24 hour emergency vet richmond va",
+        "volume": "40",
+        "kd": "16",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "lynchburg": [
+      {
+        "keyword": "24 hour emergency vet lynchburg va",
+        "volume": "40",
+        "kd": "5",
+        "intent": "Commercial",
+        "cpc": null
+      },
+      {
+        "keyword": "emergency vet in lynchburg va",
+        "volume": "320",
+        "kd": "6",
+        "intent": "Commercial",
+        "cpc": null
+      },
+      {
+        "keyword": "emergency vet lynchburg va",
+        "volume": "390",
+        "kd": "9",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "chesterfield": [
+      {
+        "keyword": "24 hour emergency vet chesterfield va",
+        "volume": "90",
+        "kd": "6",
+        "intent": "Commercial",
+        "cpc": null
+      },
+      {
+        "keyword": "emergency vet chesterfield va",
+        "volume": "70",
+        "kd": "14",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "christiansburg": [
+      {
+        "keyword": "emergency vet christiansburg va",
+        "volume": "50",
+        "kd": "6",
+        "intent": "Navigational",
+        "cpc": null
+      }
+    ],
+    "fredericksburg": [
+      {
+        "keyword": "emergency vet in fredericksburg va",
+        "volume": "110",
+        "kd": "6",
+        "intent": "Informational",
+        "cpc": null
+      },
+      {
+        "keyword": "24 hour emergency vet fredericksburg va",
+        "volume": "40",
+        "kd": "9",
+        "intent": "Commercial",
+        "cpc": null
+      },
+      {
+        "keyword": "emergency vet fredericksburg va",
+        "volume": "390",
+        "kd": "9",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "williamsburg": [
+      {
+        "keyword": "24 hour emergency vet williamsburg va",
+        "volume": "30",
+        "kd": "7",
+        "intent": "Commercial",
+        "cpc": null
+      },
+      {
+        "keyword": "emergency vet in williamsburg va",
+        "volume": "70",
+        "kd": "7",
+        "intent": "Commercial",
+        "cpc": null
+      },
+      {
+        "keyword": "emergency vet williamsburg va",
+        "volume": "260",
+        "kd": "15",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "winchester": [
+      {
+        "keyword": "emergency vet in winchester va",
+        "volume": "50",
+        "kd": "7",
+        "intent": "Informational",
+        "cpc": null
+      },
+      {
+        "keyword": "emergency vet winchester va",
+        "volume": "320",
+        "kd": "10",
+        "intent": "Informational",
+        "cpc": null
+      }
+    ],
+    "warrenton": [
+      {
+        "keyword": "emergency vet warrenton va",
+        "volume": "40",
+        "kd": "7",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "arlington": [
+      {
+        "keyword": "emergency vet arlington va",
+        "volume": "90",
+        "kd": "8",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "charlottesville": [
+      {
+        "keyword": "emergency vet charlottesville va",
+        "volume": "390",
+        "kd": "8",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "falls church": [
+      {
+        "keyword": "emergency vet falls church va",
+        "volume": "70",
+        "kd": "8",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "norfolk": [
+      {
+        "keyword": "emergency vet norfolk va",
+        "volume": "210",
+        "kd": "8",
+        "intent": "Commercial",
+        "cpc": null
+      },
+      {
+        "keyword": "24 hour emergency vet norfolk va",
+        "volume": "40",
+        "kd": "24",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "suffolk": [
+      {
+        "keyword": "emergency vet suffolk va",
+        "volume": "90",
+        "kd": "8",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "woodbridge": [
+      {
+        "keyword": "emergency vet woodbridge va",
+        "volume": "170",
+        "kd": "9",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "culpeper": [
+      {
+        "keyword": "emergency vet culpeper va",
+        "volume": "30",
+        "kd": "10",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "cary street richmond": [
+      {
+        "keyword": "emergency vet cary street richmond va",
+        "volume": "110",
+        "kd": "12",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "alexandria": [
+      {
+        "keyword": "24 hour emergency vet alexandria va",
+        "volume": "50",
+        "kd": "13",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "henrico": [
+      {
+        "keyword": "emergency vet henrico va",
+        "volume": "40",
+        "kd": "13",
+        "intent": "Informational",
+        "cpc": null
+      }
+    ],
+    "roanoke": [
+      {
+        "keyword": "emergency vet roanoke va",
+        "volume": "590",
+        "kd": "13",
+        "intent": "Navigational",
+        "cpc": null
+      }
+    ],
+    "services roanoke": [
+      {
+        "keyword": "emergency vet services roanoke va",
+        "volume": "40",
+        "kd": "14",
+        "intent": "Navigational",
+        "cpc": null
+      }
+    ],
+    "midlothian": [
+      {
+        "keyword": "emergency vet midlothian va",
+        "volume": "390",
+        "kd": "16",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "staunton": [
+      {
+        "keyword": "emergency vet staunton va",
+        "volume": "70",
+        "kd": "16",
+        "intent": "Informational",
+        "cpc": null
+      }
+    ],
+    "clinic richmond": [
+      {
+        "keyword": "emergency vet clinic richmond va",
+        "volume": "720",
+        "kd": "17",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "harrisonburg": [
+      {
+        "keyword": "emergency vet in harrisonburg va",
+        "volume": "40",
+        "kd": "17",
+        "intent": "Commercial",
+        "cpc": null
+      },
+      {
+        "keyword": "emergency vet harrisonburg va",
+        "volume": "90",
+        "kd": "18",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "springfield": [
+      {
+        "keyword": "emergency vet springfield va",
+        "volume": "70",
+        "kd": "17",
+        "intent": "Navigational",
+        "cpc": null
+      }
+    ],
+    "verona": [
+      {
+        "keyword": "emergency vet verona va",
+        "volume": "320",
+        "kd": "17",
+        "intent": "Navigational",
+        "cpc": null
+      },
+      {
+        "keyword": "emergency vet in verona va",
+        "volume": "140",
+        "kd": "18",
+        "intent": "Navigational",
+        "cpc": null
+      }
+    ],
+    "danville": [
+      {
+        "keyword": "emergency vet danville va",
+        "volume": "70",
+        "kd": "18",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "yorktown": [
+      {
+        "keyword": "emergency vet yorktown va",
+        "volume": "320",
+        "kd": "18",
+        "intent": "Commercial",
+        "cpc": null
+      },
+      {
+        "keyword": "emergency vet yorktown virginia",
+        "volume": "110",
+        "kd": "25",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "rocky mount": [
+      {
+        "keyword": "emergency vet rocky mount va",
+        "volume": "30",
+        "kd": "20",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "wytheville": [
+      {
+        "keyword": "emergency vet wytheville va",
+        "volume": "50",
+        "kd": "23",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "emergency vets richmond": [
+      {
+        "keyword": "emergency vets richmond va",
+        "volume": "40",
+        "kd": "25",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "blacksburg": [
+      {
+        "keyword": "emergency vet blacksburg va",
+        "volume": "50",
+        "kd": "26",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "parkersburg west": [
+      {
+        "keyword": "emergency vet parkersburg west virginia",
+        "volume": "110",
+        "kd": "28",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "west": [
+      {
+        "keyword": "emergency vet west virginia",
+        "volume": "40",
+        "kd": "28",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ]
+  },
+  "SC": {
+    "myrtle beach": [
+      {
+        "keyword": "24 hour emergency vet myrtle beach sc",
+        "volume": "30",
+        "kd": "0",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "florence": [
+      {
+        "keyword": "emergency vet in florence sc",
+        "volume": "40",
+        "kd": "0",
+        "intent": "Informational",
+        "cpc": null
+      },
+      {
+        "keyword": "emergency vet florence sc",
+        "volume": "210",
+        "kd": "1",
+        "intent": "Informational",
+        "cpc": null
+      }
+    ],
+    "anderson": [
+      {
+        "keyword": "emergency vet anderson sc",
+        "volume": "110",
+        "kd": "2",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "fort mill": [
+      {
+        "keyword": "emergency vet fort mill sc",
+        "volume": "90",
+        "kd": "3",
+        "intent": "Informational",
+        "cpc": null
+      }
+    ],
+    "newberry": [
+      {
+        "keyword": "emergency vet newberry sc",
+        "volume": "30",
+        "kd": "3",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "charleston": [
+      {
+        "keyword": "24 hour emergency vet charleston sc",
+        "volume": "30",
+        "kd": "5",
+        "intent": "Informational, Commercial",
+        "cpc": null
+      }
+    ],
+    "bluffton": [
+      {
+        "keyword": "emergency vet bluffton sc",
+        "volume": "140",
+        "kd": "5",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "columbia": [
+      {
+        "keyword": "emergency vet columbia south carolina",
+        "volume": "210",
+        "kd": "5",
+        "intent": "Commercial",
+        "cpc": null
+      },
+      {
+        "keyword": "emergency vet columbia sc",
+        "volume": "390",
+        "kd": "16",
+        "intent": "Commercial",
+        "cpc": null
+      },
+      {
+        "keyword": "emergency vet in columbia sc",
+        "volume": "50",
+        "kd": "29",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "spartanburg": [
+      {
+        "keyword": "emergency vet in spartanburg sc",
+        "volume": "50",
+        "kd": "5",
+        "intent": "Commercial",
+        "cpc": null
+      },
+      {
+        "keyword": "emergency vet spartanburg sc",
+        "volume": "390",
+        "kd": "21",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "greenwood": [
+      {
+        "keyword": "emergency vet greenwood sc",
+        "volume": "90",
+        "kd": "6",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "seneca": [
+      {
+        "keyword": "emergency vet seneca sc",
+        "volume": "50",
+        "kd": "6",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "camden": [
+      {
+        "keyword": "emergency vet camden sc",
+        "volume": "30",
+        "kd": "8",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "north myrtle beach": [
+      {
+        "keyword": "emergency vet north myrtle beach sc",
+        "volume": "50",
+        "kd": "10",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "clinic columbia": [
+      {
+        "keyword": "emergency vet clinic columbia sc",
+        "volume": "170",
+        "kd": "12",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "greenville": [
+      {
+        "keyword": "emergency vet greenville sc",
+        "volume": "720",
+        "kd": "14",
+        "intent": "Commercial",
+        "cpc": null
+      },
+      {
+        "keyword": "emergency vet in greenville sc",
+        "volume": "30",
+        "kd": "28",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "summerville": [
+      {
+        "keyword": "emergency vet summerville sc",
+        "volume": "210",
+        "kd": "15",
+        "intent": "Informational, Commercial",
+        "cpc": null
+      }
+    ],
+    "surfside beach": [
+      {
+        "keyword": "emergency vet surfside beach sc",
+        "volume": "30",
+        "kd": "16",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "rock hill": [
+      {
+        "keyword": "emergency vet rock hill sc",
+        "volume": "170",
+        "kd": "17",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "clinic spartanburg": [
+      {
+        "keyword": "emergency vet clinic spartanburg sc",
+        "volume": "140",
+        "kd": "23",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "north charleston": [
+      {
+        "keyword": "emergency vet north charleston sc",
+        "volume": "50",
+        "kd": "26",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ]
+  },
+  "IA": {
+    "ames": [
+      {
+        "keyword": "emergency vet ames iowa",
+        "volume": "30",
+        "kd": "0",
+        "intent": "Informational",
+        "cpc": null
+      },
+      {
+        "keyword": "emergency vet ames ia",
+        "volume": "50",
+        "kd": "1",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "fort dodge": [
+      {
+        "keyword": "emergency vet fort dodge iowa",
+        "volume": "30",
+        "kd": "1",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "ottumwa": [
+      {
+        "keyword": "emergency vet ottumwa iowa",
+        "volume": "40",
+        "kd": "1",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "davenport": [
+      {
+        "keyword": "emergency vet davenport ia",
+        "volume": "110",
+        "kd": "3",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "waterloo": [
+      {
+        "keyword": "emergency vet waterloo ia",
+        "volume": "50",
+        "kd": "9",
+        "intent": "Commercial",
+        "cpc": null
+      },
+      {
+        "keyword": "emergency vet waterloo iowa",
+        "volume": "50",
+        "kd": "27",
+        "intent": "Informational",
+        "cpc": null
+      }
+    ],
+    "mason city": [
+      {
+        "keyword": "emergency vet mason city iowa",
+        "volume": "30",
+        "kd": "13",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "iowa city": [
+      {
+        "keyword": "emergency vet iowa city ia",
+        "volume": "110",
+        "kd": "19",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ]
+  },
+  "CA": {
+    "antioch": [
+      {
+        "keyword": "emergency vet antioch ca",
+        "volume": "70",
+        "kd": "0",
+        "intent": "Informational",
+        "cpc": null
+      },
+      {
+        "keyword": "emergency vet in antioch ca",
+        "volume": "30",
+        "kd": "0",
+        "intent": "Informational",
+        "cpc": null
+      }
+    ],
+    "riverside": [
+      {
+        "keyword": "24 hour emergency vet riverside ca",
+        "volume": "50",
+        "kd": "1",
+        "intent": "Commercial",
+        "cpc": null
+      },
+      {
+        "keyword": "emergency vet riverside ca",
+        "volume": "140",
+        "kd": "20",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "elk grove": [
+      {
+        "keyword": "emergency vet elk grove ca",
+        "volume": "110",
+        "kd": "2",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "napa": [
+      {
+        "keyword": "emergency vet napa ca",
+        "volume": "90",
+        "kd": "4",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "vista": [
+      {
+        "keyword": "emergency vet vista ca",
+        "volume": "30",
+        "kd": "4",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "carlsbad": [
+      {
+        "keyword": "emergency vet carlsbad ca",
+        "volume": "70",
+        "kd": "5",
+        "intent": "Informational",
+        "cpc": null
+      }
+    ],
+    "oakland": [
+      {
+        "keyword": "emergency vet oakland ca",
+        "volume": "210",
+        "kd": "5",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "campbell": [
+      {
+        "keyword": "emergency vet campbell ca",
+        "volume": "50",
+        "kd": "6",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "truckee": [
+      {
+        "keyword": "emergency vet truckee ca",
+        "volume": "50",
+        "kd": "6",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "sacramento": [
+      {
+        "keyword": "emergency vet sacramento ca",
+        "volume": "110",
+        "kd": "7",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "grand terrace": [
+      {
+        "keyword": "emergency vet grand terrace ca",
+        "volume": "140",
+        "kd": "8",
+        "intent": "Navigational",
+        "cpc": null
+      }
+    ],
+    "monterey": [
+      {
+        "keyword": "emergency vet monterey ca",
+        "volume": "140",
+        "kd": "8",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "fairfield": [
+      {
+        "keyword": "emergency vet fairfield ca",
+        "volume": "110",
+        "kd": "9",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "rohnert park": [
+      {
+        "keyword": "emergency vet rohnert park ca",
+        "volume": "90",
+        "kd": "9",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "tulare": [
+      {
+        "keyword": "emergency vet tulare ca",
+        "volume": "50",
+        "kd": "9",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "corona": [
+      {
+        "keyword": "24 hour emergency vet corona ca",
+        "volume": "40",
+        "kd": "11",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "escondido": [
+      {
+        "keyword": "emergency vet escondido ca",
+        "volume": "90",
+        "kd": "11",
+        "intent": "Informational",
+        "cpc": null
+      }
+    ],
+    "fullerton": [
+      {
+        "keyword": "emergency vet fullerton ca",
+        "volume": "70",
+        "kd": "11",
+        "intent": "Informational",
+        "cpc": null
+      }
+    ],
+    "modesto": [
+      {
+        "keyword": "emergency vet in modesto ca",
+        "volume": "140",
+        "kd": "11",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "tracy": [
+      {
+        "keyword": "emergency vet tracy ca",
+        "volume": "90",
+        "kd": "11",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "visalia": [
+      {
+        "keyword": "emergency vet visalia ca",
+        "volume": "210",
+        "kd": "11",
+        "intent": "Informational",
+        "cpc": null
+      }
+    ],
+    "palm desert": [
+      {
+        "keyword": "emergency vet palm desert ca",
+        "volume": "110",
+        "kd": "12",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "santa rosa": [
+      {
+        "keyword": "emergency vet santa rosa ca",
+        "volume": "210",
+        "kd": "12",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "redlands": [
+      {
+        "keyword": "emergency vet redlands ca",
+        "volume": "320",
+        "kd": "13",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "roseville": [
+      {
+        "keyword": "emergency vet roseville ca",
+        "volume": "210",
+        "kd": "14",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "torrance": [
+      {
+        "keyword": "emergency vet torrance ca",
+        "volume": "70",
+        "kd": "14",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "redding": [
+      {
+        "keyword": "emergency vet redding ca",
+        "volume": "140",
+        "kd": "15",
+        "intent": "Informational",
+        "cpc": null
+      }
+    ],
+    "san ramon": [
+      {
+        "keyword": "emergency vet san ramon ca",
+        "volume": "30",
+        "kd": "15",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "la mesa": [
+      {
+        "keyword": "emergency vet la mesa ca",
+        "volume": "140",
+        "kd": "17",
+        "intent": "Informational, Transactional",
+        "cpc": null
+      }
+    ],
+    "san rafael": [
+      {
+        "keyword": "emergency vet san rafael ca",
+        "volume": "260",
+        "kd": "19",
+        "intent": "Informational, Transactional",
+        "cpc": null
+      }
+    ],
+    "vallejo": [
+      {
+        "keyword": "emergency vet vallejo ca",
+        "volume": "50",
+        "kd": "20",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "oceanside": [
+      {
+        "keyword": "emergency vet oceanside ca",
+        "volume": "110",
+        "kd": "21",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "concord": [
+      {
+        "keyword": "emergency vet concord ca",
+        "volume": "40",
+        "kd": "22",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "davis": [
+      {
+        "keyword": "emergency vet davis ca",
+        "volume": "50",
+        "kd": "22",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "sonora": [
+      {
+        "keyword": "emergency vet sonora ca",
+        "volume": "50",
+        "kd": "23",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "anaheim": [
+      {
+        "keyword": "emergency vet anaheim ca",
+        "volume": "50",
+        "kd": "24",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "lodi": [
+      {
+        "keyword": "emergency vet lodi ca",
+        "volume": "40",
+        "kd": "24",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "stockton": [
+      {
+        "keyword": "emergency vet stockton ca",
+        "volume": "140",
+        "kd": "25",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "vacaville": [
+      {
+        "keyword": "emergency vet vacaville ca",
+        "volume": "70",
+        "kd": "26",
+        "intent": "Informational",
+        "cpc": null
+      }
+    ],
+    "santa cruz": [
+      {
+        "keyword": "emergency vet santa cruz ca",
+        "volume": "140",
+        "kd": "27",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "fresno": [
+      {
+        "keyword": "emergency vet fresno ca",
+        "volume": "170",
+        "kd": "28",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "turlock": [
+      {
+        "keyword": "emergency vet turlock ca",
+        "volume": "90",
+        "kd": "28",
+        "intent": "Navigational",
+        "cpc": null
+      }
+    ],
+    "woodland hills": [
+      {
+        "keyword": "emergency vet woodland hills ca",
+        "volume": "40",
+        "kd": "28",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "victorville": [
+      {
+        "keyword": "emergency vet victorville ca",
+        "volume": "90",
+        "kd": "29",
+        "intent": "Informational",
+        "cpc": null
+      }
+    ]
+  },
+  "NC": {
+    "benson": [
+      {
+        "keyword": "emergency vet benson nc",
+        "volume": "30",
+        "kd": "0",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "mebane": [
+      {
+        "keyword": "emergency vet mebane nc",
+        "volume": "30",
+        "kd": "0",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "fayetteville": [
+      {
+        "keyword": "emergency vet in fayetteville nc",
+        "volume": "40",
+        "kd": "1",
+        "intent": "Commercial",
+        "cpc": null
+      },
+      {
+        "keyword": "emergency vet fayetteville nc",
+        "volume": "260",
+        "kd": "25",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "vass": [
+      {
+        "keyword": "emergency vet in vass nc",
+        "volume": "90",
+        "kd": "1",
+        "intent": "Informational",
+        "cpc": null
+      },
+      {
+        "keyword": "emergency vet vass nc",
+        "volume": "140",
+        "kd": "1",
+        "intent": "Informational",
+        "cpc": null
+      }
+    ],
+    "albemarle": [
+      {
+        "keyword": "emergency vet albemarle nc",
+        "volume": "30",
+        "kd": "3",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "clinic gastonia": [
+      {
+        "keyword": "emergency vet clinic gastonia nc",
+        "volume": "30",
+        "kd": "3",
+        "intent": "Informational",
+        "cpc": null
+      }
+    ],
+    "thomasville": [
+      {
+        "keyword": "emergency vet thomasville nc",
+        "volume": "40",
+        "kd": "4",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "burlington": [
+      {
+        "keyword": "emergency vet in burlington nc",
+        "volume": "50",
+        "kd": "6",
+        "intent": "Informational, Transactional",
+        "cpc": null
+      },
+      {
+        "keyword": "emergency vet burlington nc",
+        "volume": "170",
+        "kd": "9",
+        "intent": "Informational, Transactional",
+        "cpc": null
+      }
+    ],
+    "southport": [
+      {
+        "keyword": "emergency vet southport nc",
+        "volume": "30",
+        "kd": "6",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "waynesville": [
+      {
+        "keyword": "emergency vet waynesville nc",
+        "volume": "70",
+        "kd": "6",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "belmont": [
+      {
+        "keyword": "emergency vet in belmont nc",
+        "volume": "70",
+        "kd": "7",
+        "intent": "Commercial",
+        "cpc": null
+      },
+      {
+        "keyword": "emergency vet belmont nc",
+        "volume": "90",
+        "kd": "8",
+        "intent": "Informational",
+        "cpc": null
+      }
+    ],
+    "murphy": [
+      {
+        "keyword": "emergency vet murphy nc",
+        "volume": "30",
+        "kd": "7",
+        "intent": "Informational",
+        "cpc": null
+      }
+    ],
+    "shelby": [
+      {
+        "keyword": "emergency vet shelby nc",
+        "volume": "70",
+        "kd": "8",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "outer banks": [
+      {
+        "keyword": "24 hour emergency vet outer banks nc",
+        "volume": "30",
+        "kd": "9",
+        "intent": "Informational",
+        "cpc": null
+      }
+    ],
+    "chapel hill": [
+      {
+        "keyword": "emergency vet chapel hill nc",
+        "volume": "90",
+        "kd": "9",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "durham": [
+      {
+        "keyword": "emergency vet in durham nc",
+        "volume": "30",
+        "kd": "9",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "knightdale": [
+      {
+        "keyword": "emergency vet knightdale nc",
+        "volume": "140",
+        "kd": "11",
+        "intent": "Navigational",
+        "cpc": null
+      }
+    ],
+    "greenville emergency vet": [
+      {
+        "keyword": "greenville emergency vet nc",
+        "volume": "30",
+        "kd": "11",
+        "intent": "Informational",
+        "cpc": null
+      }
+    ],
+    "garner": [
+      {
+        "keyword": "emergency vet garner nc",
+        "volume": "30",
+        "kd": "12",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "kernersville": [
+      {
+        "keyword": "emergency vet kernersville nc",
+        "volume": "50",
+        "kd": "12",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "elizabeth city": [
+      {
+        "keyword": "emergency vet elizabeth city nc",
+        "volume": "110",
+        "kd": "13",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "kannapolis": [
+      {
+        "keyword": "emergency vet kannapolis nc",
+        "volume": "170",
+        "kd": "13",
+        "intent": "Informational",
+        "cpc": null
+      }
+    ],
+    "holly springs": [
+      {
+        "keyword": "emergency vet holly springs nc",
+        "volume": "170",
+        "kd": "14",
+        "intent": "Informational, Transactional",
+        "cpc": null
+      }
+    ],
+    "southern pines": [
+      {
+        "keyword": "emergency vet southern pines nc",
+        "volume": "70",
+        "kd": "14",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "boone": [
+      {
+        "keyword": "emergency vet boone nc",
+        "volume": "320",
+        "kd": "15",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "asheville": [
+      {
+        "keyword": "emergency vet asheville nc",
+        "volume": "170",
+        "kd": "18",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "concord": [
+      {
+        "keyword": "emergency vet concord nc",
+        "volume": "210",
+        "kd": "18",
+        "intent": "Informational",
+        "cpc": null
+      }
+    ],
+    "denver": [
+      {
+        "keyword": "emergency vet denver nc",
+        "volume": "140",
+        "kd": "19",
+        "intent": "Informational",
+        "cpc": null
+      }
+    ],
+    "wilmington": [
+      {
+        "keyword": "emergency vet in wilmington nc",
+        "volume": "30",
+        "kd": "19",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "cary": [
+      {
+        "keyword": "24 hour emergency vet cary nc",
+        "volume": "30",
+        "kd": "20",
+        "intent": "Commercial",
+        "cpc": null
+      },
+      {
+        "keyword": "emergency vet in cary nc",
+        "volume": "30",
+        "kd": "28",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "clayton": [
+      {
+        "keyword": "emergency vet clayton nc",
+        "volume": "70",
+        "kd": "20",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "clinic wilmington": [
+      {
+        "keyword": "emergency vet clinic wilmington nc",
+        "volume": "210",
+        "kd": "21",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "franklin": [
+      {
+        "keyword": "emergency vet franklin nc",
+        "volume": "40",
+        "kd": "21",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "gastonia": [
+      {
+        "keyword": "emergency vet gastonia nc",
+        "volume": "210",
+        "kd": "22",
+        "intent": "Informational",
+        "cpc": null
+      }
+    ],
+    "clinic fayetteville": [
+      {
+        "keyword": "emergency vet clinic fayetteville nc",
+        "volume": "170",
+        "kd": "23",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "havelock": [
+      {
+        "keyword": "emergency vet havelock nc",
+        "volume": "210",
+        "kd": "23",
+        "intent": "Navigational",
+        "cpc": null
+      }
+    ],
+    "clinic greenville": [
+      {
+        "keyword": "emergency vet clinic greenville nc",
+        "volume": "40",
+        "kd": "24",
+        "intent": "Informational, Transactional",
+        "cpc": null
+      }
+    ],
+    "swansboro": [
+      {
+        "keyword": "emergency vet swansboro nc",
+        "volume": "40",
+        "kd": "24",
+        "intent": "Navigational",
+        "cpc": null
+      }
+    ],
+    "lenoir": [
+      {
+        "keyword": "emergency vet lenoir nc",
+        "volume": "30",
+        "kd": "25",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "greenville": [
+      {
+        "keyword": "emergency vet greenville nc",
+        "volume": "260",
+        "kd": "26",
+        "intent": "Informational",
+        "cpc": null
+      }
+    ],
+    "wilkesboro": [
+      {
+        "keyword": "emergency vet wilkesboro nc",
+        "volume": "30",
+        "kd": "27",
+        "intent": "Informational, Transactional",
+        "cpc": null
+      }
+    ],
+    "clinic cary": [
+      {
+        "keyword": "emergency vet clinic cary nc",
+        "volume": "170",
+        "kd": "28",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "raleigh": [
+      {
+        "keyword": "24 hour emergency vet raleigh nc",
+        "volume": "40",
+        "kd": "29",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "mooresville": [
+      {
+        "keyword": "emergency vet mooresville nc",
+        "volume": "140",
+        "kd": "29",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "rocky mount": [
+      {
+        "keyword": "emergency vet rocky mount nc",
+        "volume": "50",
+        "kd": "29",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ]
+  },
+  "MO": {
+    "bridgeton": [
+      {
+        "keyword": "emergency vet bridgeton mo",
+        "volume": "30",
+        "kd": "0",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "springfield": [
+      {
+        "keyword": "emergency vet in springfield mo",
+        "volume": "70",
+        "kd": "0",
+        "intent": "Commercial",
+        "cpc": null
+      },
+      {
+        "keyword": "emergency vet springfield missouri",
+        "volume": "70",
+        "kd": "1",
+        "intent": "Commercial",
+        "cpc": null
+      },
+      {
+        "keyword": "emergency vet springfield mo",
+        "volume": "880",
+        "kd": "5",
+        "intent": "Commercial",
+        "cpc": null
+      },
+      {
+        "keyword": "low cost emergency vet springfield mo",
+        "volume": "40",
+        "kd": "10",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "sedalia": [
+      {
+        "keyword": "emergency vet sedalia mo",
+        "volume": "40",
+        "kd": "0",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "sikeston": [
+      {
+        "keyword": "emergency vet sikeston mo",
+        "volume": "30",
+        "kd": "0",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "poplar bluff": [
+      {
+        "keyword": "emergency vet poplar bluff mo",
+        "volume": "40",
+        "kd": "2",
+        "intent": "Informational",
+        "cpc": null
+      }
+    ],
+    "clinic springfield": [
+      {
+        "keyword": "emergency vet clinic springfield mo",
+        "volume": "590",
+        "kd": "4",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "joplin": [
+      {
+        "keyword": "emergency vet joplin mo",
+        "volume": "210",
+        "kd": "4",
+        "intent": "Commercial",
+        "cpc": null
+      },
+      {
+        "keyword": "24 hour emergency vet joplin mo",
+        "volume": "30",
+        "kd": "5",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "hospital springfield": [
+      {
+        "keyword": "emergency vet hospital springfield mo",
+        "volume": "880",
+        "kd": "7",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "st peters": [
+      {
+        "keyword": "emergency vet st peters mo",
+        "volume": "70",
+        "kd": "7",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "gladstone": [
+      {
+        "keyword": "emergency vet gladstone mo",
+        "volume": "40",
+        "kd": "8",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "brentwood": [
+      {
+        "keyword": "emergency vet brentwood mo",
+        "volume": "50",
+        "kd": "9",
+        "intent": "Informational",
+        "cpc": null
+      }
+    ],
+    "st charles": [
+      {
+        "keyword": "emergency vet st charles mo",
+        "volume": "30",
+        "kd": "10",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "belton": [
+      {
+        "keyword": "emergency vet belton mo",
+        "volume": "30",
+        "kd": "11",
+        "intent": "Informational",
+        "cpc": null
+      }
+    ],
+    "kansas city": [
+      {
+        "keyword": "emergency vet kansas city mo",
+        "volume": "70",
+        "kd": "12",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "manchester": [
+      {
+        "keyword": "emergency vet manchester mo",
+        "volume": "50",
+        "kd": "15",
+        "intent": "Navigational",
+        "cpc": null
+      }
+    ],
+    "st joseph": [
+      {
+        "keyword": "emergency vet st joseph mo",
+        "volume": "90",
+        "kd": "16",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "st louis": [
+      {
+        "keyword": "emergency vet st louis mo",
+        "volume": "320",
+        "kd": "19",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "lees summit": [
+      {
+        "keyword": "emergency vet lees summit mo",
+        "volume": "90",
+        "kd": "20",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "independence": [
+      {
+        "keyword": "emergency vet independence mo",
+        "volume": "90",
+        "kd": "23",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "rolla": [
+      {
+        "keyword": "emergency vet rolla mo",
+        "volume": "50",
+        "kd": "23",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "blue springs": [
+      {
+        "keyword": "emergency vet blue springs mo",
+        "volume": "50",
+        "kd": "26",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "o'fallon": [
+      {
+        "keyword": "emergency vet o'fallon mo",
+        "volume": "50",
+        "kd": "26",
+        "intent": "Informational",
+        "cpc": null
+      }
+    ],
+    "festus": [
+      {
+        "keyword": "emergency vet festus mo",
+        "volume": "30",
+        "kd": "27",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ]
+  },
+  "MS": {
+    "flowood": [
+      {
+        "keyword": "emergency vet flowood ms",
+        "volume": "110",
+        "kd": "0",
+        "intent": "Informational",
+        "cpc": null
+      }
+    ],
+    "tupelo": [
+      {
+        "keyword": "emergency vet tupelo ms",
+        "volume": "140",
+        "kd": "2",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "jackson": [
+      {
+        "keyword": "emergency vet jackson ms",
+        "volume": "90",
+        "kd": "4",
+        "intent": "Informational",
+        "cpc": null
+      }
+    ],
+    "biloxi": [
+      {
+        "keyword": "emergency vet biloxi ms",
+        "volume": "90",
+        "kd": "11",
+        "intent": "Navigational",
+        "cpc": null
+      }
+    ],
+    "madison": [
+      {
+        "keyword": "emergency vet madison ms",
+        "volume": "50",
+        "kd": "13",
+        "intent": "Informational",
+        "cpc": null
+      }
+    ],
+    "hattiesburg": [
+      {
+        "keyword": "emergency vet hattiesburg ms",
+        "volume": "140",
+        "kd": "26",
+        "intent": "Informational",
+        "cpc": null
+      }
+    ]
+  },
+  "GA": {
+    "gainesville": [
+      {
+        "keyword": "emergency vet gainesville ga",
+        "volume": "140",
+        "kd": "0",
+        "intent": "Informational",
+        "cpc": null
+      },
+      {
+        "keyword": "emergency vet in gainesville ga",
+        "volume": "70",
+        "kd": "1",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "eatonton": [
+      {
+        "keyword": "emergency vet eatonton ga",
+        "volume": "30",
+        "kd": "1",
+        "intent": "Informational, Commercial",
+        "cpc": null
+      }
+    ],
+    "columbus": [
+      {
+        "keyword": "24 hour emergency vet columbus ga",
+        "volume": "90",
+        "kd": "2",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "milledgeville": [
+      {
+        "keyword": "emergency vet milledgeville ga",
+        "volume": "50",
+        "kd": "2",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "warner robins": [
+      {
+        "keyword": "emergency vet warner robins ga",
+        "volume": "320",
+        "kd": "2",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "savannah": [
+      {
+        "keyword": "emergency vet savannah ga",
+        "volume": "260",
+        "kd": "3",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "lagrange": [
+      {
+        "keyword": "emergency vet lagrange ga",
+        "volume": "40",
+        "kd": "4",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "valdosta": [
+      {
+        "keyword": "emergency vet valdosta ga",
+        "volume": "170",
+        "kd": "4",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "rome": [
+      {
+        "keyword": "emergency vet in rome ga",
+        "volume": "50",
+        "kd": "5",
+        "intent": "Navigational",
+        "cpc": null
+      },
+      {
+        "keyword": "emergency vet rome ga",
+        "volume": "260",
+        "kd": "11",
+        "intent": "Navigational",
+        "cpc": null
+      }
+    ],
+    "marietta": [
+      {
+        "keyword": "emergency vet marietta ga",
+        "volume": "140",
+        "kd": "6",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "snellville": [
+      {
+        "keyword": "emergency vet snellville ga",
+        "volume": "40",
+        "kd": "6",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "augusta": [
+      {
+        "keyword": "emergency vet augusta ga",
+        "volume": "260",
+        "kd": "7",
+        "intent": "Commercial",
+        "cpc": null
+      },
+      {
+        "keyword": "emergency vet in augusta ga",
+        "volume": "40",
+        "kd": "8",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "clinic savannah": [
+      {
+        "keyword": "emergency vet clinic savannah ga",
+        "volume": "140",
+        "kd": "7",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "sandy springs": [
+      {
+        "keyword": "emergency vet sandy springs ga",
+        "volume": "110",
+        "kd": "7",
+        "intent": "Informational",
+        "cpc": null
+      }
+    ],
+    "acworth": [
+      {
+        "keyword": "emergency vet acworth ga",
+        "volume": "40",
+        "kd": "8",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "braselton": [
+      {
+        "keyword": "emergency vet braselton ga",
+        "volume": "110",
+        "kd": "8",
+        "intent": "Informational",
+        "cpc": null
+      }
+    ],
+    "covington": [
+      {
+        "keyword": "emergency vet covington ga",
+        "volume": "140",
+        "kd": "8",
+        "intent": "Informational",
+        "cpc": null
+      }
+    ],
+    "kingsland": [
+      {
+        "keyword": "emergency vet kingsland ga",
+        "volume": "30",
+        "kd": "8",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "fayetteville": [
+      {
+        "keyword": "emergency vet in fayetteville ga",
+        "volume": "40",
+        "kd": "10",
+        "intent": "Commercial",
+        "cpc": null
+      },
+      {
+        "keyword": "emergency vet fayetteville ga",
+        "volume": "170",
+        "kd": "17",
+        "intent": "Informational",
+        "cpc": null
+      }
+    ],
+    "atlanta": [
+      {
+        "keyword": "emergency vet atlanta ga",
+        "volume": "70",
+        "kd": "11",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "blue ridge": [
+      {
+        "keyword": "emergency vet blue ridge georgia",
+        "volume": "110",
+        "kd": "11",
+        "intent": "Informational",
+        "cpc": null
+      },
+      {
+        "keyword": "emergency vet blue ridge ga",
+        "volume": "170",
+        "kd": "12",
+        "intent": "Informational, Transactional",
+        "cpc": null
+      }
+    ],
+    "dawsonville": [
+      {
+        "keyword": "emergency vet dawsonville ga",
+        "volume": "30",
+        "kd": "11",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "dublin": [
+      {
+        "keyword": "emergency vet dublin ga",
+        "volume": "30",
+        "kd": "11",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "alpharetta": [
+      {
+        "keyword": "emergency vet alpharetta ga",
+        "volume": "170",
+        "kd": "12",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "lawrenceville": [
+      {
+        "keyword": "emergency vet lawrenceville ga",
+        "volume": "90",
+        "kd": "14",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "conyers": [
+      {
+        "keyword": "emergency vet conyers ga",
+        "volume": "30",
+        "kd": "15",
+        "intent": "Informational",
+        "cpc": null
+      }
+    ],
+    "loganville": [
+      {
+        "keyword": "emergency vet loganville ga",
+        "volume": "40",
+        "kd": "15",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "perry": [
+      {
+        "keyword": "emergency vet perry ga",
+        "volume": "30",
+        "kd": "16",
+        "intent": "Informational, Commercial",
+        "cpc": null
+      }
+    ],
+    "douglasville": [
+      {
+        "keyword": "emergency vet douglasville ga",
+        "volume": "70",
+        "kd": "19",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "carrollton": [
+      {
+        "keyword": "emergency vet carrollton ga",
+        "volume": "70",
+        "kd": "20",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "hinesville": [
+      {
+        "keyword": "emergency vet hinesville ga",
+        "volume": "70",
+        "kd": "20",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "greensboro": [
+      {
+        "keyword": "emergency vet greensboro ga",
+        "volume": "30",
+        "kd": "21",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "smyrna": [
+      {
+        "keyword": "emergency vet smyrna ga",
+        "volume": "30",
+        "kd": "23",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "cumming": [
+      {
+        "keyword": "emergency vet cumming ga",
+        "volume": "30",
+        "kd": "24",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "clinic augusta": [
+      {
+        "keyword": "emergency vet clinic augusta ga",
+        "volume": "140",
+        "kd": "25",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "athens": [
+      {
+        "keyword": "emergency vet athens ga",
+        "volume": "260",
+        "kd": "27",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "dacula": [
+      {
+        "keyword": "emergency vet dacula ga",
+        "volume": "30",
+        "kd": "28",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "dallas": [
+      {
+        "keyword": "emergency vet dallas ga",
+        "volume": "70",
+        "kd": "28",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "statesboro": [
+      {
+        "keyword": "emergency vet statesboro ga",
+        "volume": "70",
+        "kd": "29",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "watkinsville": [
+      {
+        "keyword": "emergency vet watkinsville ga",
+        "volume": "30",
+        "kd": "29",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ]
+  },
+  "MI": {
+    "grand blanc": [
+      {
+        "keyword": "emergency vet grand blanc mi",
+        "volume": "40",
+        "kd": "0",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "lansing": [
+      {
+        "keyword": "emergency vet in lansing mi",
+        "volume": "50",
+        "kd": "0",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "madison heights": [
+      {
+        "keyword": "emergency vet madison heights mi",
+        "volume": "70",
+        "kd": "1",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "petoskey": [
+      {
+        "keyword": "emergency vet petoskey mi",
+        "volume": "30",
+        "kd": "1",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "clinton twp": [
+      {
+        "keyword": "emergency vet clinton twp mi",
+        "volume": "50",
+        "kd": "2",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "st joseph": [
+      {
+        "keyword": "emergency vet st joseph mi",
+        "volume": "40",
+        "kd": "3",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "jackson": [
+      {
+        "keyword": "emergency vet jackson mi",
+        "volume": "110",
+        "kd": "5",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "niles": [
+      {
+        "keyword": "emergency vet niles mi",
+        "volume": "40",
+        "kd": "5",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "auburn hills": [
+      {
+        "keyword": "emergency vet auburn hills mi",
+        "volume": "30",
+        "kd": "7",
+        "intent": "Informational",
+        "cpc": null
+      }
+    ],
+    "commerce": [
+      {
+        "keyword": "emergency vet commerce mi",
+        "volume": "40",
+        "kd": "8",
+        "intent": "Informational",
+        "cpc": null
+      }
+    ],
+    "troy": [
+      {
+        "keyword": "emergency vet troy mi",
+        "volume": "30",
+        "kd": "9",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "allen park": [
+      {
+        "keyword": "emergency vet allen park mi",
+        "volume": "110",
+        "kd": "10",
+        "intent": "Navigational",
+        "cpc": null
+      }
+    ],
+    "monroe": [
+      {
+        "keyword": "emergency vet monroe michigan",
+        "volume": "70",
+        "kd": "11",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "novi": [
+      {
+        "keyword": "emergency vet novi mi",
+        "volume": "140",
+        "kd": "11",
+        "intent": "Informational",
+        "cpc": null
+      }
+    ],
+    "plymouth": [
+      {
+        "keyword": "emergency vet plymouth mi",
+        "volume": "110",
+        "kd": "11",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "southgate": [
+      {
+        "keyword": "emergency vet southgate mi",
+        "volume": "50",
+        "kd": "12",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "ann arbor": [
+      {
+        "keyword": "emergency vet ann arbor mi",
+        "volume": "480",
+        "kd": "13",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "saginaw": [
+      {
+        "keyword": "emergency vet in saginaw mi",
+        "volume": "110",
+        "kd": "13",
+        "intent": "Informational",
+        "cpc": null
+      },
+      {
+        "keyword": "emergency vet saginaw mi",
+        "volume": "170",
+        "kd": "22",
+        "intent": "Informational",
+        "cpc": null
+      }
+    ],
+    "warren": [
+      {
+        "keyword": "emergency vet warren mi",
+        "volume": "50",
+        "kd": "13",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "clinton township": [
+      {
+        "keyword": "emergency vet clinton township mi",
+        "volume": "50",
+        "kd": "14",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "grand rapids": [
+      {
+        "keyword": "emergency vet grand rapids mi",
+        "volume": "170",
+        "kd": "14",
+        "intent": "Informational",
+        "cpc": null
+      }
+    ],
+    "rochester": [
+      {
+        "keyword": "emergency vet rochester mi",
+        "volume": "70",
+        "kd": "14",
+        "intent": "Informational",
+        "cpc": null
+      }
+    ],
+    "battle creek": [
+      {
+        "keyword": "emergency vet battle creek mi",
+        "volume": "70",
+        "kd": "19",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "midland": [
+      {
+        "keyword": "emergency vet midland mi",
+        "volume": "90",
+        "kd": "21",
+        "intent": "Informational",
+        "cpc": null
+      }
+    ],
+    "fenton": [
+      {
+        "keyword": "emergency vet fenton mi",
+        "volume": "30",
+        "kd": "25",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ]
+  },
+  "NH": {
+    "keene": [
+      {
+        "keyword": "emergency vet keene nh",
+        "volume": "50",
+        "kd": "0",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "brentwood emergency vet": [
+      {
+        "keyword": "brentwood emergency vet nh",
+        "volume": "30",
+        "kd": "6",
+        "intent": "Navigational",
+        "cpc": null
+      }
+    ],
+    "brentwood": [
+      {
+        "keyword": "emergency vet brentwood nh",
+        "volume": "50",
+        "kd": "6",
+        "intent": "Navigational",
+        "cpc": null
+      }
+    ],
+    "clinic newington": [
+      {
+        "keyword": "emergency vet clinic newington nh",
+        "volume": "70",
+        "kd": "7",
+        "intent": "Navigational",
+        "cpc": null
+      }
+    ],
+    "newington": [
+      {
+        "keyword": "emergency vet newington nh",
+        "volume": "50",
+        "kd": "7",
+        "intent": "Navigational",
+        "cpc": null
+      }
+    ],
+    "concord": [
+      {
+        "keyword": "emergency vet concord nh",
+        "volume": "210",
+        "kd": "8",
+        "intent": "Informational",
+        "cpc": null
+      }
+    ],
+    "littleton": [
+      {
+        "keyword": "emergency vet littleton nh",
+        "volume": "110",
+        "kd": "12",
+        "intent": "Navigational",
+        "cpc": null
+      }
+    ],
+    "manchester": [
+      {
+        "keyword": "emergency vet manchester nh",
+        "volume": "590",
+        "kd": "12",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "meredith": [
+      {
+        "keyword": "emergency vet meredith nh",
+        "volume": "70",
+        "kd": "13",
+        "intent": "Navigational",
+        "cpc": null
+      }
+    ],
+    "windham": [
+      {
+        "keyword": "emergency vet windham nh",
+        "volume": "90",
+        "kd": "13",
+        "intent": "Navigational",
+        "cpc": null
+      }
+    ],
+    "littleton emergency vet": [
+      {
+        "keyword": "littleton emergency vet nh",
+        "volume": "170",
+        "kd": "13",
+        "intent": "Navigational",
+        "cpc": null
+      }
+    ],
+    "dover": [
+      {
+        "keyword": "emergency vet dover nh",
+        "volume": "30",
+        "kd": "18",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "meredith emergency vet": [
+      {
+        "keyword": "meredith emergency vet nh",
+        "volume": "260",
+        "kd": "19",
+        "intent": "Navigational",
+        "cpc": null
+      }
+    ],
+    "ossipee": [
+      {
+        "keyword": "emergency vet ossipee nh",
+        "volume": "30",
+        "kd": "22",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "nashua": [
+      {
+        "keyword": "emergency vet nashua nh",
+        "volume": "210",
+        "kd": "25",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "portsmouth": [
+      {
+        "keyword": "emergency vet portsmouth nh",
+        "volume": "390",
+        "kd": "26",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ]
+  },
+  "NE": {
+    "lincoln": [
+      {
+        "keyword": "emergency vet lincoln nebraska",
+        "volume": "30",
+        "kd": "0",
+        "intent": "Informational",
+        "cpc": null
+      },
+      {
+        "keyword": "emergency vet lincoln ne",
+        "volume": "720",
+        "kd": "6",
+        "intent": "Informational",
+        "cpc": null
+      }
+    ],
+    "omaha": [
+      {
+        "keyword": "24 hour emergency vet omaha ne",
+        "volume": "30",
+        "kd": "3",
+        "intent": "Commercial",
+        "cpc": null
+      },
+      {
+        "keyword": "emergency vet omaha ne",
+        "volume": "480",
+        "kd": "24",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "papillion": [
+      {
+        "keyword": "emergency vet papillion ne",
+        "volume": "70",
+        "kd": "17",
+        "intent": "Informational, Transactional",
+        "cpc": null
+      }
+    ]
+  },
+  "WI": {
+    "mosinee": [
+      {
+        "keyword": "emergency vet mosinee wi",
+        "volume": "70",
+        "kd": "0",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "eau claire": [
+      {
+        "keyword": "emergency vet eau claire wi",
+        "volume": "170",
+        "kd": "3",
+        "intent": "Informational",
+        "cpc": null
+      }
+    ],
+    "kenosha": [
+      {
+        "keyword": "emergency vet kenosha wi",
+        "volume": "110",
+        "kd": "3",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "grafton": [
+      {
+        "keyword": "emergency vet grafton wi",
+        "volume": "170",
+        "kd": "5",
+        "intent": "Informational",
+        "cpc": null
+      }
+    ],
+    "marshfield": [
+      {
+        "keyword": "emergency vet marshfield wi",
+        "volume": "50",
+        "kd": "7",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "port washington": [
+      {
+        "keyword": "emergency vet port washington wi",
+        "volume": "70",
+        "kd": "7",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "appleton": [
+      {
+        "keyword": "emergency vet appleton wi",
+        "volume": "170",
+        "kd": "9",
+        "intent": "Informational",
+        "cpc": null
+      }
+    ],
+    "racine": [
+      {
+        "keyword": "emergency vet racine wi",
+        "volume": "110",
+        "kd": "11",
+        "intent": "Informational",
+        "cpc": null
+      }
+    ],
+    "clinic waukesha": [
+      {
+        "keyword": "emergency vet clinic waukesha wi",
+        "volume": "40",
+        "kd": "12",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "middleton": [
+      {
+        "keyword": "emergency vet middleton wi",
+        "volume": "110",
+        "kd": "17",
+        "intent": "Navigational",
+        "cpc": null
+      }
+    ],
+    "waukesha": [
+      {
+        "keyword": "emergency vet waukesha wi",
+        "volume": "210",
+        "kd": "19",
+        "intent": "Informational, Transactional",
+        "cpc": null
+      }
+    ],
+    "stoughton": [
+      {
+        "keyword": "emergency vet stoughton wi",
+        "volume": "30",
+        "kd": "23",
+        "intent": "Informational",
+        "cpc": null
+      }
+    ],
+    "beloit": [
+      {
+        "keyword": "emergency vet beloit wi",
+        "volume": "30",
+        "kd": "26",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "la crosse": [
+      {
+        "keyword": "emergency vet la crosse wi",
+        "volume": "90",
+        "kd": "26",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "greenfield": [
+      {
+        "keyword": "emergency vet greenfield wi",
+        "volume": "30",
+        "kd": "28",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ]
+  },
+  "TX": {
+    "mt pleasant": [
+      {
+        "keyword": "emergency vet mt pleasant tx",
+        "volume": "70",
+        "kd": "0",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "paris": [
+      {
+        "keyword": "emergency vet paris tx",
+        "volume": "40",
+        "kd": "0",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "prosper": [
+      {
+        "keyword": "emergency vet prosper tx",
+        "volume": "30",
+        "kd": "1",
+        "intent": "Informational",
+        "cpc": null
+      }
+    ],
+    "denison": [
+      {
+        "keyword": "emergency vet denison tx",
+        "volume": "110",
+        "kd": "2",
+        "intent": "Informational",
+        "cpc": null
+      }
+    ],
+    "euless": [
+      {
+        "keyword": "emergency vet euless tx",
+        "volume": "50",
+        "kd": "3",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "belton": [
+      {
+        "keyword": "emergency vet belton tx",
+        "volume": "30",
+        "kd": "4",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "killeen": [
+      {
+        "keyword": "emergency vet in killeen tx",
+        "volume": "140",
+        "kd": "5",
+        "intent": "Informational",
+        "cpc": null
+      },
+      {
+        "keyword": "emergency vet killeen tx",
+        "volume": "260",
+        "kd": "13",
+        "intent": "Transactional",
+        "cpc": null
+      }
+    ],
+    "midlothian": [
+      {
+        "keyword": "emergency vet midlothian tx",
+        "volume": "50",
+        "kd": "5",
+        "intent": "Navigational",
+        "cpc": null
+      }
+    ],
+    "weatherford": [
+      {
+        "keyword": "emergency vet weatherford tx",
+        "volume": "70",
+        "kd": "5",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "humble": [
+      {
+        "keyword": "emergency vet humble tx",
+        "volume": "90",
+        "kd": "6",
+        "intent": "Navigational",
+        "cpc": null
+      }
+    ],
+    "league city": [
+      {
+        "keyword": "emergency vet league city tx",
+        "volume": "70",
+        "kd": "6",
+        "intent": "Informational",
+        "cpc": null
+      }
+    ],
+    "round rock": [
+      {
+        "keyword": "emergency vet round rock texas",
+        "volume": "50",
+        "kd": "6",
+        "intent": "Commercial",
+        "cpc": null
+      },
+      {
+        "keyword": "emergency vet round rock tx",
+        "volume": "70",
+        "kd": "6",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "rockwall": [
+      {
+        "keyword": "emergency vet rockwall tx",
+        "volume": "70",
+        "kd": "7",
+        "intent": "Informational, Transactional",
+        "cpc": null
+      }
+    ],
+    "temple": [
+      {
+        "keyword": "emergency vet temple tx",
+        "volume": "170",
+        "kd": "7",
+        "intent": "Informational, Transactional",
+        "cpc": null
+      }
+    ],
+    "amarillo": [
+      {
+        "keyword": "emergency vet amarillo texas",
+        "volume": "50",
+        "kd": "8",
+        "intent": "Commercial",
+        "cpc": null
+      },
+      {
+        "keyword": "emergency vet amarillo tx",
+        "volume": "70",
+        "kd": "11",
+        "intent": "Commercial",
+        "cpc": null
+      },
+      {
+        "keyword": "emergency vet in amarillo tx",
+        "volume": "110",
+        "kd": "27",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "clinic amarillo": [
+      {
+        "keyword": "emergency vet clinic amarillo tx",
+        "volume": "90",
+        "kd": "8",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "grapevine": [
+      {
+        "keyword": "emergency vet grapevine tx",
+        "volume": "90",
+        "kd": "8",
+        "intent": "Navigational",
+        "cpc": null
+      }
+    ],
+    "burleson": [
+      {
+        "keyword": "emergency vet burleson tx",
+        "volume": "70",
+        "kd": "9",
+        "intent": "Navigational",
+        "cpc": null
+      }
+    ],
+    "allen": [
+      {
+        "keyword": "emergency vet allen tx",
+        "volume": "70",
+        "kd": "10",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "georgetown": [
+      {
+        "keyword": "emergency vet georgetown tx",
+        "volume": "70",
+        "kd": "10",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "mansfield": [
+      {
+        "keyword": "emergency vet mansfield texas",
+        "volume": "70",
+        "kd": "11",
+        "intent": "Informational",
+        "cpc": null
+      },
+      {
+        "keyword": "emergency vet mansfield tx",
+        "volume": "70",
+        "kd": "14",
+        "intent": "Informational",
+        "cpc": null
+      }
+    ],
+    "lubbock": [
+      {
+        "keyword": "emergency vet in lubbock tx",
+        "volume": "70",
+        "kd": "12",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "southlake": [
+      {
+        "keyword": "emergency vet southlake tx",
+        "volume": "70",
+        "kd": "12",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "longview": [
+      {
+        "keyword": "emergency vet longview tx",
+        "volume": "260",
+        "kd": "13",
+        "intent": "Informational",
+        "cpc": null
+      }
+    ],
+    "magnolia": [
+      {
+        "keyword": "emergency vet magnolia tx",
+        "volume": "70",
+        "kd": "13",
+        "intent": "Informational",
+        "cpc": null
+      }
+    ],
+    "nederland": [
+      {
+        "keyword": "emergency vet nederland tx",
+        "volume": "70",
+        "kd": "13",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "san marcos": [
+      {
+        "keyword": "emergency vet san marcos tx",
+        "volume": "110",
+        "kd": "13",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "south austin": [
+      {
+        "keyword": "emergency vet south austin tx",
+        "volume": "90",
+        "kd": "14",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "tyler": [
+      {
+        "keyword": "emergency vet tyler tx",
+        "volume": "320",
+        "kd": "14",
+        "intent": "Informational",
+        "cpc": null
+      }
+    ],
+    "new braunfels": [
+      {
+        "keyword": "emergency vet new braunfels tx",
+        "volume": "170",
+        "kd": "15",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "spring": [
+      {
+        "keyword": "emergency vet spring tx",
+        "volume": "50",
+        "kd": "15",
+        "intent": "Informational",
+        "cpc": null
+      }
+    ],
+    "grand prairie": [
+      {
+        "keyword": "emergency vet grand prairie tx",
+        "volume": "70",
+        "kd": "16",
+        "intent": "Informational",
+        "cpc": null
+      }
+    ],
+    "mckinney": [
+      {
+        "keyword": "emergency vet mckinney tx",
+        "volume": "170",
+        "kd": "16",
+        "intent": "Informational",
+        "cpc": null
+      }
+    ],
+    "mesquite": [
+      {
+        "keyword": "emergency vet mesquite tx",
+        "volume": "70",
+        "kd": "16",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "lockhart": [
+      {
+        "keyword": "emergency vet lockhart tx",
+        "volume": "30",
+        "kd": "17",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "beaumont": [
+      {
+        "keyword": "emergency vet beaumont tx",
+        "volume": "140",
+        "kd": "18",
+        "intent": "Commercial",
+        "cpc": null
+      },
+      {
+        "keyword": "emergency vet beaumont texas",
+        "volume": "30",
+        "kd": "21",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "bryan": [
+      {
+        "keyword": "emergency vet bryan tx",
+        "volume": "30",
+        "kd": "18",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "keller": [
+      {
+        "keyword": "emergency vet keller tx",
+        "volume": "30",
+        "kd": "18",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "wichita falls": [
+      {
+        "keyword": "emergency vet wichita falls tx",
+        "volume": "90",
+        "kd": "18",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "clinic abilene": [
+      {
+        "keyword": "emergency vet clinic abilene tx",
+        "volume": "40",
+        "kd": "19",
+        "intent": "Navigational",
+        "cpc": null
+      }
+    ],
+    "fort worth": [
+      {
+        "keyword": "emergency vet fort worth texas",
+        "volume": "170",
+        "kd": "19",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "conroe": [
+      {
+        "keyword": "emergency vet conroe tx",
+        "volume": "170",
+        "kd": "20",
+        "intent": "Informational",
+        "cpc": null
+      }
+    ],
+    "abilene": [
+      {
+        "keyword": "emergency vet abilene texas",
+        "volume": "170",
+        "kd": "21",
+        "intent": "Navigational",
+        "cpc": null
+      },
+      {
+        "keyword": "emergency vet abilene tx",
+        "volume": "390",
+        "kd": "22",
+        "intent": "Navigational",
+        "cpc": null
+      }
+    ],
+    "huntsville": [
+      {
+        "keyword": "emergency vet huntsville tx",
+        "volume": "30",
+        "kd": "21",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "katy": [
+      {
+        "keyword": "emergency vet katy tx",
+        "volume": "140",
+        "kd": "21",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "clinic odessa": [
+      {
+        "keyword": "emergency vet clinic odessa tx",
+        "volume": "140",
+        "kd": "22",
+        "intent": "Informational, Transactional",
+        "cpc": null
+      }
+    ],
+    "copperas cove": [
+      {
+        "keyword": "emergency vet copperas cove tx",
+        "volume": "30",
+        "kd": "23",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "laredo": [
+      {
+        "keyword": "emergency vet laredo tx",
+        "volume": "70",
+        "kd": "23",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "odessa": [
+      {
+        "keyword": "emergency vet odessa tx",
+        "volume": "320",
+        "kd": "23",
+        "intent": "Navigational",
+        "cpc": null
+      }
+    ],
+    "austin": [
+      {
+        "keyword": "24 hour emergency vet austin tx",
+        "volume": "30",
+        "kd": "25",
+        "intent": "Commercial",
+        "cpc": null
+      },
+      {
+        "keyword": "emergency vet austin texas",
+        "volume": "40",
+        "kd": "26",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "pflugerville": [
+      {
+        "keyword": "emergency vet pflugerville tx",
+        "volume": "70",
+        "kd": "25",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "clinic mckinney": [
+      {
+        "keyword": "emergency vet clinic mckinney tx",
+        "volume": "140",
+        "kd": "27",
+        "intent": "Navigational",
+        "cpc": null
+      }
+    ],
+    "flower mound": [
+      {
+        "keyword": "emergency vet flower mound tx",
+        "volume": "50",
+        "kd": "27",
+        "intent": "Navigational, Commercial",
+        "cpc": null
+      }
+    ],
+    "cedar park": [
+      {
+        "keyword": "emergency vet cedar park tx",
+        "volume": "90",
+        "kd": "28",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "frisco": [
+      {
+        "keyword": "emergency vet frisco tx",
+        "volume": "110",
+        "kd": "28",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "corpus christi": [
+      {
+        "keyword": "emergency vet corpus christi tx",
+        "volume": "140",
+        "kd": "29",
+        "intent": "Informational, Commercial",
+        "cpc": null
+      }
+    ],
+    "cypress": [
+      {
+        "keyword": "emergency vet cypress tx",
+        "volume": "70",
+        "kd": "29",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "richardson": [
+      {
+        "keyword": "emergency vet richardson texas",
+        "volume": "40",
+        "kd": "29",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ]
+  },
+  "WV": {
+    "beckley": [
+      {
+        "keyword": "emergency vet beckley wv",
+        "volume": "50",
+        "kd": "1",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "princeton": [
+      {
+        "keyword": "emergency vet princeton wv",
+        "volume": "30",
+        "kd": "8",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "fairmont": [
+      {
+        "keyword": "emergency vet fairmont wv",
+        "volume": "480",
+        "kd": "9",
+        "intent": "Navigational",
+        "cpc": null
+      },
+      {
+        "keyword": "emergency vet in fairmont wv",
+        "volume": "210",
+        "kd": "12",
+        "intent": "Informational",
+        "cpc": null
+      }
+    ],
+    "south charleston": [
+      {
+        "keyword": "emergency vet south charleston wv",
+        "volume": "90",
+        "kd": "9",
+        "intent": "Informational",
+        "cpc": null
+      }
+    ],
+    "charleston": [
+      {
+        "keyword": "emergency vet charleston wv",
+        "volume": "320",
+        "kd": "11",
+        "intent": "Informational",
+        "cpc": null
+      },
+      {
+        "keyword": "low cost emergency vet charleston wv",
+        "volume": "40",
+        "kd": "14",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "morgantown": [
+      {
+        "keyword": "emergency vet morgantown wv",
+        "volume": "90",
+        "kd": "17",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "parkersburg": [
+      {
+        "keyword": "emergency vet in parkersburg wv",
+        "volume": "90",
+        "kd": "29",
+        "intent": "Commercial",
+        "cpc": null
+      },
+      {
+        "keyword": "emergency vet parkersburg wv",
+        "volume": "170",
+        "kd": "29",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ]
+  },
+  "TN": {
+    "hermitage": [
+      {
+        "keyword": "emergency vet hermitage tn",
+        "volume": "40",
+        "kd": "1",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "clarksville": [
+      {
+        "keyword": "emergency vet clarksville tn",
+        "volume": "390",
+        "kd": "4",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "spring hill": [
+      {
+        "keyword": "emergency vet spring hill tn",
+        "volume": "40",
+        "kd": "5",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "blountville": [
+      {
+        "keyword": "emergency vet blountville tn",
+        "volume": "70",
+        "kd": "9",
+        "intent": "Navigational, Commercial",
+        "cpc": null
+      }
+    ],
+    "cookeville": [
+      {
+        "keyword": "emergency vet cookeville tn",
+        "volume": "90",
+        "kd": "9",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "kingsport": [
+      {
+        "keyword": "emergency vet in kingsport tn",
+        "volume": "70",
+        "kd": "9",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "nashville": [
+      {
+        "keyword": "emergency vet nashville tn",
+        "volume": "40",
+        "kd": "10",
+        "intent": "Commercial",
+        "cpc": null
+      },
+      {
+        "keyword": "emergency vet in nashville tn",
+        "volume": "320",
+        "kd": "11",
+        "intent": "Commercial",
+        "cpc": null
+      },
+      {
+        "keyword": "emergency vet nashville tennessee",
+        "volume": "320",
+        "kd": "12",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "johnson city": [
+      {
+        "keyword": "emergency vet johnson city tn",
+        "volume": "210",
+        "kd": "11",
+        "intent": "Commercial",
+        "cpc": null
+      },
+      {
+        "keyword": "emergency vet in johnson city tn",
+        "volume": "110",
+        "kd": "17",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "chattanooga": [
+      {
+        "keyword": "emergency vet chattanooga tn",
+        "volume": "110",
+        "kd": "13",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "franklin": [
+      {
+        "keyword": "emergency vet franklin tn",
+        "volume": "140",
+        "kd": "15",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "knoxville": [
+      {
+        "keyword": "emergency vet in knoxville tn",
+        "volume": "30",
+        "kd": "15",
+        "intent": "Commercial",
+        "cpc": null
+      },
+      {
+        "keyword": "emergency vet knoxville tn",
+        "volume": "720",
+        "kd": "20",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "antioch": [
+      {
+        "keyword": "emergency vet antioch tn",
+        "volume": "40",
+        "kd": "18",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "elizabethton": [
+      {
+        "keyword": "emergency vet elizabethton tn",
+        "volume": "30",
+        "kd": "18",
+        "intent": "Informational",
+        "cpc": null
+      }
+    ],
+    "murfreesboro": [
+      {
+        "keyword": "emergency vet in murfreesboro tn",
+        "volume": "140",
+        "kd": "18",
+        "intent": "Commercial",
+        "cpc": null
+      },
+      {
+        "keyword": "emergency vet murfreesboro tn",
+        "volume": "320",
+        "kd": "26",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "dickson": [
+      {
+        "keyword": "emergency vet dickson tn",
+        "volume": "50",
+        "kd": "19",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "clinic chattanooga": [
+      {
+        "keyword": "emergency vet clinic chattanooga tn",
+        "volume": "50",
+        "kd": "21",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "jackson": [
+      {
+        "keyword": "emergency vet jackson tn",
+        "volume": "260",
+        "kd": "23",
+        "intent": "Informational, Transactional",
+        "cpc": null
+      }
+    ],
+    "bartlett": [
+      {
+        "keyword": "emergency vet bartlett tn",
+        "volume": "110",
+        "kd": "24",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "hendersonville": [
+      {
+        "keyword": "emergency vet hendersonville tn",
+        "volume": "110",
+        "kd": "24",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "smyrna": [
+      {
+        "keyword": "emergency vet smyrna tn",
+        "volume": "90",
+        "kd": "25",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "millington": [
+      {
+        "keyword": "emergency vet millington tn",
+        "volume": "170",
+        "kd": "27",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "crossville": [
+      {
+        "keyword": "emergency vet crossville tn",
+        "volume": "50",
+        "kd": "29",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ]
+  },
+  "MD": {
+    "huntingtown": [
+      {
+        "keyword": "emergency vet huntingtown md",
+        "volume": "30",
+        "kd": "1",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "germantown": [
+      {
+        "keyword": "emergency vet germantown md",
+        "volume": "70",
+        "kd": "2",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "gaithersburg": [
+      {
+        "keyword": "emergency vet gaithersburg md",
+        "volume": "90",
+        "kd": "3",
+        "intent": "Informational",
+        "cpc": null
+      }
+    ],
+    "frederick": [
+      {
+        "keyword": "emergency vet frederick md",
+        "volume": "480",
+        "kd": "4",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "rockville": [
+      {
+        "keyword": "emergency vet rockville md",
+        "volume": "110",
+        "kd": "6",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "hagerstown": [
+      {
+        "keyword": "emergency vet hagerstown md",
+        "volume": "390",
+        "kd": "8",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "hospital hagerstown": [
+      {
+        "keyword": "emergency vet hospital hagerstown md",
+        "volume": "210",
+        "kd": "8",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "towson": [
+      {
+        "keyword": "emergency vet towson md",
+        "volume": "70",
+        "kd": "9",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "catonsville": [
+      {
+        "keyword": "emergency vet catonsville md",
+        "volume": "110",
+        "kd": "10",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "westminster": [
+      {
+        "keyword": "emergency vet in westminster md",
+        "volume": "90",
+        "kd": "14",
+        "intent": "Informational",
+        "cpc": null
+      },
+      {
+        "keyword": "emergency vet westminster md",
+        "volume": "170",
+        "kd": "14",
+        "intent": "Informational",
+        "cpc": null
+      }
+    ],
+    "annapolis": [
+      {
+        "keyword": "emergency vet annapolis md",
+        "volume": "320",
+        "kd": "17",
+        "intent": "Navigational",
+        "cpc": null
+      }
+    ],
+    "bel air": [
+      {
+        "keyword": "emergency vet bel air md",
+        "volume": "320",
+        "kd": "17",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "ellicott city": [
+      {
+        "keyword": "emergency vet ellicott city md",
+        "volume": "140",
+        "kd": "17",
+        "intent": "Navigational",
+        "cpc": null
+      }
+    ],
+    "bowie": [
+      {
+        "keyword": "emergency vet bowie md",
+        "volume": "90",
+        "kd": "19",
+        "intent": "Informational",
+        "cpc": null
+      }
+    ],
+    "baltimore": [
+      {
+        "keyword": "emergency vet baltimore md",
+        "volume": "50",
+        "kd": "20",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "la plata": [
+      {
+        "keyword": "emergency vet la plata md",
+        "volume": "70",
+        "kd": "20",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "cumberland": [
+      {
+        "keyword": "emergency vet cumberland md",
+        "volume": "30",
+        "kd": "21",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "ocean city": [
+      {
+        "keyword": "emergency vet ocean city md",
+        "volume": "40",
+        "kd": "22",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "waldorf": [
+      {
+        "keyword": "emergency vet waldorf md",
+        "volume": "170",
+        "kd": "22",
+        "intent": "Navigational",
+        "cpc": null
+      }
+    ],
+    "easton": [
+      {
+        "keyword": "emergency vet easton md",
+        "volume": "40",
+        "kd": "25",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ]
+  },
+  "LA": {
+    "lafayette": [
+      {
+        "keyword": "emergency vet lafayette louisiana",
+        "volume": "50",
+        "kd": "1",
+        "intent": "Commercial",
+        "cpc": null
+      },
+      {
+        "keyword": "emergency vet lafayette la",
+        "volume": "320",
+        "kd": "18",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "lake charles": [
+      {
+        "keyword": "emergency vet lake charles la",
+        "volume": "140",
+        "kd": "5",
+        "intent": "Informational, Transactional",
+        "cpc": null
+      }
+    ],
+    "monroe": [
+      {
+        "keyword": "emergency vet monroe la",
+        "volume": "170",
+        "kd": "6",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "baton rouge": [
+      {
+        "keyword": "emergency vet baton rouge la",
+        "volume": "90",
+        "kd": "7",
+        "intent": "Informational",
+        "cpc": null
+      }
+    ],
+    "west monroe": [
+      {
+        "keyword": "emergency vet west monroe la",
+        "volume": "90",
+        "kd": "11",
+        "intent": "Informational",
+        "cpc": null
+      },
+      {
+        "keyword": "emergency vet in west monroe la",
+        "volume": "40",
+        "kd": "29",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "mandeville": [
+      {
+        "keyword": "emergency vet mandeville la",
+        "volume": "40",
+        "kd": "16",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "clinic lafayette": [
+      {
+        "keyword": "emergency vet clinic lafayette la",
+        "volume": "170",
+        "kd": "17",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "clinic west monroe": [
+      {
+        "keyword": "emergency vet clinic west monroe la",
+        "volume": "70",
+        "kd": "17",
+        "intent": "Informational",
+        "cpc": null
+      }
+    ],
+    "shreveport": [
+      {
+        "keyword": "emergency vet shreveport la",
+        "volume": "70",
+        "kd": "19",
+        "intent": "Informational, Transactional",
+        "cpc": null
+      }
+    ]
+  },
+  "PA": {
+    "norristown": [
+      {
+        "keyword": "emergency vet norristown pa",
+        "volume": "30",
+        "kd": "1",
+        "intent": "Informational",
+        "cpc": null
+      }
+    ],
+    "york": [
+      {
+        "keyword": "emergency vet route 30 york pa",
+        "volume": "30",
+        "kd": "2",
+        "intent": "Commercial",
+        "cpc": null
+      },
+      {
+        "keyword": "24 hour emergency vet york pa",
+        "volume": "70",
+        "kd": "6",
+        "intent": "Commercial",
+        "cpc": null
+      },
+      {
+        "keyword": "emergency vet in york pa",
+        "volume": "70",
+        "kd": "9",
+        "intent": "Informational",
+        "cpc": null
+      },
+      {
+        "keyword": "emergency vet york pa",
+        "volume": "480",
+        "kd": "22",
+        "intent": "Informational",
+        "cpc": null
+      }
+    ],
+    "wyomissing": [
+      {
+        "keyword": "emergency vet wyomissing pa",
+        "volume": "50",
+        "kd": "6",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "indiana": [
+      {
+        "keyword": "emergency vet indiana pa",
+        "volume": "140",
+        "kd": "7",
+        "intent": "Informational",
+        "cpc": null
+      }
+    ],
+    "dubois": [
+      {
+        "keyword": "emergency vet dubois pa",
+        "volume": "30",
+        "kd": "9",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "queen street york": [
+      {
+        "keyword": "emergency vet queen street york pa",
+        "volume": "30",
+        "kd": "10",
+        "intent": "Informational, Transactional",
+        "cpc": null
+      }
+    ],
+    "shrewsbury": [
+      {
+        "keyword": "emergency vet shrewsbury pa",
+        "volume": "50",
+        "kd": "10",
+        "intent": "Navigational",
+        "cpc": null
+      }
+    ],
+    "emergency vets in harrisburg": [
+      {
+        "keyword": "emergency vets in harrisburg pa",
+        "volume": "50",
+        "kd": "10",
+        "intent": "Informational",
+        "cpc": null
+      }
+    ],
+    "langhorne": [
+      {
+        "keyword": "emergency vet langhorne pa",
+        "volume": "40",
+        "kd": "11",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "allentown": [
+      {
+        "keyword": "emergency vet allentown pa",
+        "volume": "260",
+        "kd": "12",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "hazleton": [
+      {
+        "keyword": "emergency vet hazleton pa",
+        "volume": "40",
+        "kd": "12",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "plains": [
+      {
+        "keyword": "emergency vet plains pa",
+        "volume": "170",
+        "kd": "14",
+        "intent": "Informational, Transactional",
+        "cpc": null
+      }
+    ],
+    "quakertown": [
+      {
+        "keyword": "emergency vet quakertown pa",
+        "volume": "140",
+        "kd": "14",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "bloomsburg": [
+      {
+        "keyword": "emergency vet bloomsburg pa",
+        "volume": "30",
+        "kd": "15",
+        "intent": "Informational, Transactional",
+        "cpc": null
+      }
+    ],
+    "clarks summit": [
+      {
+        "keyword": "emergency vet clarks summit pa",
+        "volume": "90",
+        "kd": "16",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "havertown": [
+      {
+        "keyword": "emergency vet havertown pa",
+        "volume": "50",
+        "kd": "16",
+        "intent": "Informational",
+        "cpc": null
+      }
+    ],
+    "lancaster": [
+      {
+        "keyword": "emergency vet in lancaster pa",
+        "volume": "110",
+        "kd": "16",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "pittsburgh": [
+      {
+        "keyword": "emergency vet pittsburgh pa",
+        "volume": "390",
+        "kd": "17",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "harrisburg": [
+      {
+        "keyword": "emergency vet harrisburg pa",
+        "volume": "140",
+        "kd": "18",
+        "intent": "Informational",
+        "cpc": null
+      }
+    ],
+    "monroeville": [
+      {
+        "keyword": "emergency vet monroeville pa",
+        "volume": "140",
+        "kd": "18",
+        "intent": "Informational",
+        "cpc": null
+      }
+    ],
+    "scranton": [
+      {
+        "keyword": "emergency vet scranton pa",
+        "volume": "90",
+        "kd": "20",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "west chester": [
+      {
+        "keyword": "emergency vet west chester pa",
+        "volume": "90",
+        "kd": "20",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "erie": [
+      {
+        "keyword": "emergency vet erie pa",
+        "volume": "480",
+        "kd": "24",
+        "intent": "Informational",
+        "cpc": null
+      }
+    ],
+    "watsontown": [
+      {
+        "keyword": "emergency vet watsontown pa",
+        "volume": "140",
+        "kd": "24",
+        "intent": "Navigational",
+        "cpc": null
+      }
+    ],
+    "stroudsburg": [
+      {
+        "keyword": "emergency vet stroudsburg pa",
+        "volume": "50",
+        "kd": "25",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "washington": [
+      {
+        "keyword": "emergency vet washington pa",
+        "volume": "170",
+        "kd": "27",
+        "intent": "Informational",
+        "cpc": null
+      }
+    ],
+    "downingtown": [
+      {
+        "keyword": "emergency vet downingtown pa",
+        "volume": "40",
+        "kd": "28",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "greensburg": [
+      {
+        "keyword": "emergency vet greensburg pa",
+        "volume": "110",
+        "kd": "28",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "new castle": [
+      {
+        "keyword": "emergency vet new castle pa",
+        "volume": "40",
+        "kd": "29",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "robinson": [
+      {
+        "keyword": "emergency vet robinson pa",
+        "volume": "90",
+        "kd": "29",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "shippensburg": [
+      {
+        "keyword": "emergency vet shippensburg pa",
+        "volume": "30",
+        "kd": "29",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ]
+  },
+  "VT": {
+    "rutland": [
+      {
+        "keyword": "emergency vet rutland vt",
+        "volume": "70",
+        "kd": "1",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "williston": [
+      {
+        "keyword": "emergency vet williston vt",
+        "volume": "40",
+        "kd": "9",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "newport": [
+      {
+        "keyword": "emergency vet newport vt",
+        "volume": "40",
+        "kd": "11",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "burlington": [
+      {
+        "keyword": "emergency vet burlington vt",
+        "volume": "90",
+        "kd": "21",
+        "intent": "Navigational",
+        "cpc": null
+      }
+    ]
+  },
+  "NJ": {
+    "barnegat": [
+      {
+        "keyword": "emergency vet barnegat nj",
+        "volume": "90",
+        "kd": "2",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "wayne": [
+      {
+        "keyword": "emergency vet wayne nj",
+        "volume": "40",
+        "kd": "5",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "millville": [
+      {
+        "keyword": "emergency vet millville nj",
+        "volume": "30",
+        "kd": "6",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "randolph": [
+      {
+        "keyword": "emergency vet randolph nj",
+        "volume": "30",
+        "kd": "6",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "tinton falls": [
+      {
+        "keyword": "emergency vet tinton falls nj",
+        "volume": "90",
+        "kd": "6",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "fairfield": [
+      {
+        "keyword": "emergency vet fairfield nj",
+        "volume": "90",
+        "kd": "9",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "union": [
+      {
+        "keyword": "emergency vet union nj",
+        "volume": "70",
+        "kd": "10",
+        "intent": "Informational",
+        "cpc": null
+      }
+    ],
+    "lakewood": [
+      {
+        "keyword": "emergency vet lakewood nj",
+        "volume": "70",
+        "kd": "12",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "toms river": [
+      {
+        "keyword": "emergency vet toms river nj",
+        "volume": "210",
+        "kd": "16",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "westfield": [
+      {
+        "keyword": "emergency vet westfield nj",
+        "volume": "50",
+        "kd": "17",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "mt laurel": [
+      {
+        "keyword": "emergency vet mt laurel nj",
+        "volume": "70",
+        "kd": "19",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "manahawkin": [
+      {
+        "keyword": "emergency vet manahawkin nj",
+        "volume": "40",
+        "kd": "27",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "somerset": [
+      {
+        "keyword": "emergency vet somerset nj",
+        "volume": "30",
+        "kd": "27",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "williamstown": [
+      {
+        "keyword": "emergency vet williamstown nj",
+        "volume": "30",
+        "kd": "27",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "clifton": [
+      {
+        "keyword": "emergency vet clifton nj",
+        "volume": "90",
+        "kd": "29",
+        "intent": "Transactional",
+        "cpc": null
+      }
+    ]
+  },
+  "NM": {
+    "carlsbad": [
+      {
+        "keyword": "emergency vet carlsbad nm",
+        "volume": "30",
+        "kd": "2",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "alamogordo": [
+      {
+        "keyword": "emergency vet alamogordo nm",
+        "volume": "50",
+        "kd": "3",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "farmington": [
+      {
+        "keyword": "emergency vet farmington nm",
+        "volume": "140",
+        "kd": "3",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "las cruces": [
+      {
+        "keyword": "emergency vet las cruces nm",
+        "volume": "210",
+        "kd": "9",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "albuquerque": [
+      {
+        "keyword": "emergency vet in albuquerque nm",
+        "volume": "30",
+        "kd": "11",
+        "intent": "Commercial",
+        "cpc": null
+      },
+      {
+        "keyword": "emergency vet albuquerque nm",
+        "volume": "140",
+        "kd": "13",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "clovis": [
+      {
+        "keyword": "emergency vet clovis nm",
+        "volume": "40",
+        "kd": "22",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "roswell": [
+      {
+        "keyword": "emergency vet roswell nm",
+        "volume": "70",
+        "kd": "22",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ]
+  },
+  "WA": {
+    "federal way": [
+      {
+        "keyword": "emergency vet federal way wa",
+        "volume": "90",
+        "kd": "2",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "port": [
+      {
+        "keyword": "emergency vet port washington",
+        "volume": "70",
+        "kd": "2",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "poulsbo": [
+      {
+        "keyword": "emergency vet poulsbo wa",
+        "volume": "320",
+        "kd": "10",
+        "intent": "Navigational",
+        "cpc": null
+      }
+    ],
+    "lynnwood": [
+      {
+        "keyword": "emergency vet lynnwood wa",
+        "volume": "260",
+        "kd": "14",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "sequim": [
+      {
+        "keyword": "emergency vet sequim wa",
+        "volume": "50",
+        "kd": "15",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "aberdeen": [
+      {
+        "keyword": "emergency vet aberdeen wa",
+        "volume": "30",
+        "kd": "16",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "bellevue": [
+      {
+        "keyword": "emergency vet bellevue wa",
+        "volume": "170",
+        "kd": "18",
+        "intent": "Navigational",
+        "cpc": null
+      }
+    ],
+    "renton": [
+      {
+        "keyword": "emergency vet renton wa",
+        "volume": "110",
+        "kd": "20",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "bellingham": [
+      {
+        "keyword": "emergency vet bellingham wa",
+        "volume": "210",
+        "kd": "21",
+        "intent": "Informational, Transactional",
+        "cpc": null
+      }
+    ],
+    "silverdale": [
+      {
+        "keyword": "emergency vet silverdale wa",
+        "volume": "90",
+        "kd": "23",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "spokane": [
+      {
+        "keyword": "emergency vet spokane wa",
+        "volume": "40",
+        "kd": "26",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "yakima": [
+      {
+        "keyword": "emergency vet yakima wa",
+        "volume": "140",
+        "kd": "26",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "mount vernon": [
+      {
+        "keyword": "emergency vet mount vernon wa",
+        "volume": "170",
+        "kd": "27",
+        "intent": "Navigational",
+        "cpc": null
+      }
+    ],
+    "pasco": [
+      {
+        "keyword": "emergency vet pasco wa",
+        "volume": "170",
+        "kd": "28",
+        "intent": "Navigational",
+        "cpc": null
+      }
+    ],
+    "auburn": [
+      {
+        "keyword": "emergency vet auburn wa",
+        "volume": "50",
+        "kd": "29",
+        "intent": "Navigational",
+        "cpc": null
+      }
+    ],
+    "kent": [
+      {
+        "keyword": "emergency vet in kent wa",
+        "volume": "50",
+        "kd": "29",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ]
+  },
+  "AZ": {
+    "flagstaff": [
+      {
+        "keyword": "emergency vet flagstaff az",
+        "volume": "170",
+        "kd": "2",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "glendale": [
+      {
+        "keyword": "emergency vet glendale az",
+        "volume": "90",
+        "kd": "6",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "maricopa": [
+      {
+        "keyword": "emergency vet maricopa az",
+        "volume": "50",
+        "kd": "7",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "avondale": [
+      {
+        "keyword": "emergency vet avondale az",
+        "volume": "30",
+        "kd": "10",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "mesa": [
+      {
+        "keyword": "low cost emergency vet mesa az",
+        "volume": "50",
+        "kd": "16",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "queen creek": [
+      {
+        "keyword": "emergency vet queen creek az",
+        "volume": "140",
+        "kd": "17",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "gilbert": [
+      {
+        "keyword": "emergency vet gilbert az",
+        "volume": "260",
+        "kd": "23",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "lake havasu city": [
+      {
+        "keyword": "emergency vet lake havasu city az",
+        "volume": "40",
+        "kd": "26",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "prescott valley": [
+      {
+        "keyword": "emergency vet prescott valley az",
+        "volume": "90",
+        "kd": "26",
+        "intent": "Informational",
+        "cpc": null
+      }
+    ],
+    "show low": [
+      {
+        "keyword": "emergency vet show low az",
+        "volume": "40",
+        "kd": "28",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "cottonwood": [
+      {
+        "keyword": "emergency vet cottonwood az",
+        "volume": "30",
+        "kd": "29",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ]
+  },
+  "AR": {
+    "fort smith": [
+      {
+        "keyword": "emergency vet in fort smith ar",
+        "volume": "140",
+        "kd": "2",
+        "intent": "Commercial",
+        "cpc": null
+      },
+      {
+        "keyword": "emergency vet fort smith ar",
+        "volume": "260",
+        "kd": "19",
+        "intent": "Informational",
+        "cpc": null
+      }
+    ],
+    "hot springs": [
+      {
+        "keyword": "24 hour emergency vet hot springs ar",
+        "volume": "50",
+        "kd": "5",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "north little rock": [
+      {
+        "keyword": "emergency vet north little rock ar",
+        "volume": "90",
+        "kd": "8",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "benton": [
+      {
+        "keyword": "emergency vet benton ar",
+        "volume": "40",
+        "kd": "9",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "russellville": [
+      {
+        "keyword": "emergency vet russellville ar",
+        "volume": "50",
+        "kd": "21",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "springdale": [
+      {
+        "keyword": "emergency vet springdale ar",
+        "volume": "390",
+        "kd": "25",
+        "intent": "Navigational",
+        "cpc": null
+      }
+    ],
+    "bryant": [
+      {
+        "keyword": "emergency vet bryant ar",
+        "volume": "30",
+        "kd": "26",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "little rock": [
+      {
+        "keyword": "emergency vet little rock ar",
+        "volume": "110",
+        "kd": "29",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ]
+  },
+  "AL": {
+    "huntsville": [
+      {
+        "keyword": "emergency vet in huntsville al",
+        "volume": "70",
+        "kd": "2",
+        "intent": "Informational",
+        "cpc": null
+      },
+      {
+        "keyword": "emergency vet huntsville al",
+        "volume": "480",
+        "kd": "3",
+        "intent": "Informational",
+        "cpc": null
+      },
+      {
+        "keyword": "best emergency vet huntsville al",
+        "volume": "30",
+        "kd": "19",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "anniston": [
+      {
+        "keyword": "emergency vet anniston al",
+        "volume": "50",
+        "kd": "3",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "dothan": [
+      {
+        "keyword": "emergency vet dothan al",
+        "volume": "90",
+        "kd": "4",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "athens": [
+      {
+        "keyword": "emergency vet athens al",
+        "volume": "70",
+        "kd": "5",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "auburn": [
+      {
+        "keyword": "emergency vet auburn al",
+        "volume": "40",
+        "kd": "8",
+        "intent": "Navigational",
+        "cpc": null
+      }
+    ],
+    "hoover": [
+      {
+        "keyword": "emergency vet hoover al",
+        "volume": "70",
+        "kd": "12",
+        "intent": "Informational",
+        "cpc": null
+      }
+    ],
+    "jasper": [
+      {
+        "keyword": "emergency vet jasper al",
+        "volume": "30",
+        "kd": "13",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "montgomery": [
+      {
+        "keyword": "emergency vet montgomery al",
+        "volume": "140",
+        "kd": "13",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "gadsden": [
+      {
+        "keyword": "emergency vet gadsden al",
+        "volume": "90",
+        "kd": "15",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "mobile": [
+      {
+        "keyword": "emergency vet mobile al",
+        "volume": "210",
+        "kd": "16",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "oxford": [
+      {
+        "keyword": "emergency vet oxford al",
+        "volume": "40",
+        "kd": "19",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "bessemer": [
+      {
+        "keyword": "emergency vet bessemer al",
+        "volume": "40",
+        "kd": "25",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "birmingham": [
+      {
+        "keyword": "emergency vet birmingham al",
+        "volume": "260",
+        "kd": "28",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ]
+  },
+  "NY": {
+    "massena": [
+      {
+        "keyword": "emergency vet massena ny",
+        "volume": "30",
+        "kd": "2",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "latham": [
+      {
+        "keyword": "emergency vet latham new york",
+        "volume": "390",
+        "kd": "3",
+        "intent": "Commercial",
+        "cpc": null
+      },
+      {
+        "keyword": "24 hour emergency vet latham ny",
+        "volume": "50",
+        "kd": "9",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "baldwinsville": [
+      {
+        "keyword": "emergency vet baldwinsville ny",
+        "volume": "70",
+        "kd": "4",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "queensbury": [
+      {
+        "keyword": "emergency vet queensbury ny",
+        "volume": "50",
+        "kd": "4",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "white plains": [
+      {
+        "keyword": "emergency vet white plains ny",
+        "volume": "110",
+        "kd": "4",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "middletown": [
+      {
+        "keyword": "emergency vet middletown ny",
+        "volume": "260",
+        "kd": "5",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "buffalo": [
+      {
+        "keyword": "24 hour emergency vet buffalo ny",
+        "volume": "40",
+        "kd": "6",
+        "intent": "Commercial",
+        "cpc": null
+      },
+      {
+        "keyword": "emergency vet buffalo ny",
+        "volume": "480",
+        "kd": "9",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "cheektowaga": [
+      {
+        "keyword": "emergency vet cheektowaga ny",
+        "volume": "90",
+        "kd": "6",
+        "intent": "Informational",
+        "cpc": null
+      }
+    ],
+    "kingston": [
+      {
+        "keyword": "emergency vet kingston ny",
+        "volume": "210",
+        "kd": "6",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "selden": [
+      {
+        "keyword": "emergency vet selden ny",
+        "volume": "70",
+        "kd": "6",
+        "intent": "Informational",
+        "cpc": null
+      }
+    ],
+    "syracuse": [
+      {
+        "keyword": "emergency vet syracuse ny",
+        "volume": "590",
+        "kd": "8",
+        "intent": "Informational",
+        "cpc": null
+      }
+    ],
+    "rochester": [
+      {
+        "keyword": "24 hour emergency vet rochester ny",
+        "volume": "40",
+        "kd": "9",
+        "intent": "Commercial",
+        "cpc": null
+      },
+      {
+        "keyword": "emergency vet rochester ny",
+        "volume": "1300",
+        "kd": "10",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "henrietta": [
+      {
+        "keyword": "emergency vet henrietta ny",
+        "volume": "90",
+        "kd": "9",
+        "intent": "Informational",
+        "cpc": null
+      }
+    ],
+    "olean": [
+      {
+        "keyword": "emergency vet olean ny",
+        "volume": "140",
+        "kd": "9",
+        "intent": "Navigational",
+        "cpc": null
+      }
+    ],
+    "webster": [
+      {
+        "keyword": "emergency vet webster ny",
+        "volume": "110",
+        "kd": "9",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "westchester": [
+      {
+        "keyword": "emergency vet westchester ny",
+        "volume": "50",
+        "kd": "12",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "auburn": [
+      {
+        "keyword": "emergency vet auburn ny",
+        "volume": "210",
+        "kd": "13",
+        "intent": "Informational",
+        "cpc": null
+      }
+    ],
+    "oceanside": [
+      {
+        "keyword": "emergency vet oceanside ny",
+        "volume": "30",
+        "kd": "15",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "albany": [
+      {
+        "keyword": "emergency vet albany ny",
+        "volume": "260",
+        "kd": "17",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "dewitt": [
+      {
+        "keyword": "emergency vet dewitt ny",
+        "volume": "70",
+        "kd": "17",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "farmingdale": [
+      {
+        "keyword": "emergency vet farmingdale ny",
+        "volume": "40",
+        "kd": "18",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "geneva": [
+      {
+        "keyword": "emergency vet geneva ny",
+        "volume": "30",
+        "kd": "19",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "clifton park": [
+      {
+        "keyword": "emergency vet clifton park ny",
+        "volume": "40",
+        "kd": "20",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "jamestown": [
+      {
+        "keyword": "emergency vet jamestown ny",
+        "volume": "70",
+        "kd": "22",
+        "intent": "Informational",
+        "cpc": null
+      }
+    ],
+    "utica": [
+      {
+        "keyword": "emergency vet utica ny",
+        "volume": "90",
+        "kd": "24",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "oneonta": [
+      {
+        "keyword": "emergency vet oneonta ny",
+        "volume": "40",
+        "kd": "25",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "schenectady": [
+      {
+        "keyword": "emergency vet schenectady ny",
+        "volume": "70",
+        "kd": "27",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "liverpool": [
+      {
+        "keyword": "emergency vet liverpool ny",
+        "volume": "30",
+        "kd": "28",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ]
+  },
+  "KS": {
+    "wichita": [
+      {
+        "keyword": "24 hour emergency vet wichita ks",
+        "volume": "90",
+        "kd": "3",
+        "intent": "Commercial",
+        "cpc": null
+      },
+      {
+        "keyword": "emergency vet in wichita ks",
+        "volume": "40",
+        "kd": "6",
+        "intent": "Commercial",
+        "cpc": null
+      },
+      {
+        "keyword": "emergency vet wichita kansas",
+        "volume": "70",
+        "kd": "12",
+        "intent": "Commercial",
+        "cpc": null
+      },
+      {
+        "keyword": "emergency vet wichita ks",
+        "volume": "720",
+        "kd": "17",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "pittsburg": [
+      {
+        "keyword": "emergency vet pittsburg ks",
+        "volume": "30",
+        "kd": "4",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "clinic topeka": [
+      {
+        "keyword": "emergency vet clinic topeka ks",
+        "volume": "140",
+        "kd": "8",
+        "intent": "Informational",
+        "cpc": null
+      }
+    ],
+    "hospital wichita": [
+      {
+        "keyword": "emergency vet hospital wichita ks",
+        "volume": "390",
+        "kd": "14",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "clinic wichita": [
+      {
+        "keyword": "emergency vet clinic wichita ks",
+        "volume": "390",
+        "kd": "17",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "manhattan": [
+      {
+        "keyword": "emergency vet manhattan ks",
+        "volume": "70",
+        "kd": "17",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "olathe": [
+      {
+        "keyword": "emergency vet olathe ks",
+        "volume": "50",
+        "kd": "18",
+        "intent": "Informational",
+        "cpc": null
+      }
+    ],
+    "salina": [
+      {
+        "keyword": "emergency vet salina ks",
+        "volume": "50",
+        "kd": "19",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ]
+  },
+  "CT": {
+    "avon": [
+      {
+        "keyword": "emergency vet avon ct",
+        "volume": "90",
+        "kd": "3",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "norwalk": [
+      {
+        "keyword": "emergency vet norwalk ct",
+        "volume": "260",
+        "kd": "4",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "cheshire": [
+      {
+        "keyword": "emergency vet cheshire ct",
+        "volume": "40",
+        "kd": "8",
+        "intent": "Informational",
+        "cpc": null
+      }
+    ],
+    "canton emergency vet": [
+      {
+        "keyword": "canton emergency vet ct",
+        "volume": "260",
+        "kd": "9",
+        "intent": "Navigational",
+        "cpc": null
+      }
+    ],
+    "north haven": [
+      {
+        "keyword": "emergency vet north haven ct",
+        "volume": "110",
+        "kd": "9",
+        "intent": "Navigational, Commercial",
+        "cpc": null
+      }
+    ],
+    "middletown": [
+      {
+        "keyword": "emergency vet middletown ct",
+        "volume": "50",
+        "kd": "11",
+        "intent": "Navigational",
+        "cpc": null
+      }
+    ],
+    "newtown": [
+      {
+        "keyword": "emergency vet newtown ct",
+        "volume": "170",
+        "kd": "12",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "plainville": [
+      {
+        "keyword": "emergency vet plainville ct",
+        "volume": "50",
+        "kd": "12",
+        "intent": "Navigational, Commercial",
+        "cpc": null
+      }
+    ],
+    "guilford": [
+      {
+        "keyword": "emergency vet guilford ct",
+        "volume": "40",
+        "kd": "15",
+        "intent": "Navigational",
+        "cpc": null
+      }
+    ],
+    "windsor": [
+      {
+        "keyword": "emergency vet windsor ct",
+        "volume": "70",
+        "kd": "20",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "shelton": [
+      {
+        "keyword": "emergency vet shelton ct",
+        "volume": "110",
+        "kd": "23",
+        "intent": "Informational",
+        "cpc": null
+      }
+    ],
+    "southington": [
+      {
+        "keyword": "emergency vet southington ct",
+        "volume": "30",
+        "kd": "23",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "canton": [
+      {
+        "keyword": "emergency vet canton ct",
+        "volume": "320",
+        "kd": "28",
+        "intent": "Navigational",
+        "cpc": null
+      }
+    ],
+    "emergency vets in": [
+      {
+        "keyword": "emergency vets in ct",
+        "volume": "50",
+        "kd": "28",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "cheshire emergency vet": [
+      {
+        "keyword": "cheshire emergency vet ct",
+        "volume": "40",
+        "kd": "29",
+        "intent": "Informational, Transactional",
+        "cpc": null
+      }
+    ],
+    "torrington": [
+      {
+        "keyword": "emergency vet torrington ct",
+        "volume": "30",
+        "kd": "29",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ]
+  },
+  "OK": {
+    "clinic norman": [
+      {
+        "keyword": "emergency vet clinic norman ok",
+        "volume": "140",
+        "kd": "3",
+        "intent": "Informational",
+        "cpc": null
+      }
+    ],
+    "norman": [
+      {
+        "keyword": "emergency vet norman ok",
+        "volume": "140",
+        "kd": "4",
+        "intent": "Informational",
+        "cpc": null
+      }
+    ],
+    "durant": [
+      {
+        "keyword": "emergency vet durant ok",
+        "volume": "40",
+        "kd": "10",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "ardmore": [
+      {
+        "keyword": "emergency vet ardmore ok",
+        "volume": "40",
+        "kd": "17",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ]
+  },
+  "KY": {
+    "pikeville": [
+      {
+        "keyword": "emergency vet pikeville ky",
+        "volume": "50",
+        "kd": "3",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "paducah": [
+      {
+        "keyword": "emergency vet paducah ky",
+        "volume": "110",
+        "kd": "4",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "winchester": [
+      {
+        "keyword": "emergency vet winchester ky",
+        "volume": "30",
+        "kd": "6",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "henderson": [
+      {
+        "keyword": "emergency vet henderson ky",
+        "volume": "40",
+        "kd": "9",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "bowling green": [
+      {
+        "keyword": "emergency vet bowling green ky",
+        "volume": "260",
+        "kd": "13",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "florence": [
+      {
+        "keyword": "emergency vet florence ky",
+        "volume": "70",
+        "kd": "24",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "london": [
+      {
+        "keyword": "emergency vet london ky",
+        "volume": "30",
+        "kd": "24",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "danville": [
+      {
+        "keyword": "emergency vet danville ky",
+        "volume": "30",
+        "kd": "25",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "elizabethtown": [
+      {
+        "keyword": "emergency vet elizabethtown ky",
+        "volume": "70",
+        "kd": "27",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ]
+  },
+  "MA": {
+    "shrewsbury": [
+      {
+        "keyword": "emergency vet shrewsbury ma",
+        "volume": "110",
+        "kd": "3",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "newton": [
+      {
+        "keyword": "emergency vet newton ma",
+        "volume": "40",
+        "kd": "7",
+        "intent": "Informational",
+        "cpc": null
+      }
+    ],
+    "walpole": [
+      {
+        "keyword": "emergency vet walpole ma",
+        "volume": "40",
+        "kd": "7",
+        "intent": "Navigational",
+        "cpc": null
+      }
+    ],
+    "beverly": [
+      {
+        "keyword": "emergency vet beverly ma",
+        "volume": "40",
+        "kd": "9",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "deerfield": [
+      {
+        "keyword": "emergency vet deerfield ma",
+        "volume": "210",
+        "kd": "9",
+        "intent": "Informational",
+        "cpc": null
+      }
+    ],
+    "swansea": [
+      {
+        "keyword": "emergency vet in swansea ma",
+        "volume": "30",
+        "kd": "14",
+        "intent": "Commercial",
+        "cpc": null
+      },
+      {
+        "keyword": "emergency vet swansea ma",
+        "volume": "210",
+        "kd": "16",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "natick": [
+      {
+        "keyword": "emergency vet natick ma",
+        "volume": "70",
+        "kd": "15",
+        "intent": "Navigational",
+        "cpc": null
+      }
+    ],
+    "dennis": [
+      {
+        "keyword": "emergency vet dennis ma",
+        "volume": "90",
+        "kd": "16",
+        "intent": "Navigational, Commercial",
+        "cpc": null
+      }
+    ],
+    "westford": [
+      {
+        "keyword": "emergency vet westford ma",
+        "volume": "70",
+        "kd": "16",
+        "intent": "Navigational",
+        "cpc": null
+      }
+    ],
+    "boston": [
+      {
+        "keyword": "emergency vet boston ma",
+        "volume": "170",
+        "kd": "17",
+        "intent": "Informational",
+        "cpc": null
+      }
+    ],
+    "woburn": [
+      {
+        "keyword": "emergency vet woburn ma",
+        "volume": "110",
+        "kd": "17",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "easton": [
+      {
+        "keyword": "emergency vet easton ma",
+        "volume": "30",
+        "kd": "20",
+        "intent": "Informational, Transactional",
+        "cpc": null
+      }
+    ],
+    "worcester": [
+      {
+        "keyword": "emergency vet worcester ma",
+        "volume": "40",
+        "kd": "20",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "springfield": [
+      {
+        "keyword": "emergency vet springfield ma",
+        "volume": "90",
+        "kd": "22",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "burlington": [
+      {
+        "keyword": "emergency vet burlington ma",
+        "volume": "30",
+        "kd": "25",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "salem": [
+      {
+        "keyword": "emergency vet salem ma",
+        "volume": "50",
+        "kd": "25",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "waltham": [
+      {
+        "keyword": "emergency vet waltham ma",
+        "volume": "40",
+        "kd": "27",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "pittsfield": [
+      {
+        "keyword": "emergency vet pittsfield ma",
+        "volume": "70",
+        "kd": "28",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ]
+  },
+  "IN": {
+    "auburn": [
+      {
+        "keyword": "emergency vet auburn indiana",
+        "volume": "30",
+        "kd": "4",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "connersville": [
+      {
+        "keyword": "emergency vet connersville indiana",
+        "volume": "40",
+        "kd": "5",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "carmel": [
+      {
+        "keyword": "emergency vet carmel indiana",
+        "volume": "50",
+        "kd": "9",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "terre haute": [
+      {
+        "keyword": "emergency vet terre haute indiana",
+        "volume": "140",
+        "kd": "9",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "greenfield": [
+      {
+        "keyword": "emergency vet greenfield indiana",
+        "volume": "30",
+        "kd": "10",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "highland": [
+      {
+        "keyword": "emergency vet highland indiana",
+        "volume": "210",
+        "kd": "10",
+        "intent": "Informational, Transactional",
+        "cpc": null
+      }
+    ],
+    "kokomo": [
+      {
+        "keyword": "emergency vet kokomo indiana",
+        "volume": "90",
+        "kd": "10",
+        "intent": "Informational",
+        "cpc": null
+      }
+    ],
+    "muncie": [
+      {
+        "keyword": "emergency vet muncie indiana",
+        "volume": "50",
+        "kd": "12",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "new albany": [
+      {
+        "keyword": "emergency vet new albany indiana",
+        "volume": "40",
+        "kd": "12",
+        "intent": "Informational",
+        "cpc": null
+      }
+    ],
+    "greencastle": [
+      {
+        "keyword": "emergency vet greencastle indiana",
+        "volume": "30",
+        "kd": "15",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "greenwood": [
+      {
+        "keyword": "emergency vet greenwood indiana",
+        "volume": "70",
+        "kd": "18",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "mishawaka": [
+      {
+        "keyword": "emergency vet mishawaka indiana",
+        "volume": "210",
+        "kd": "19",
+        "intent": "Informational, Transactional",
+        "cpc": null
+      }
+    ],
+    "evansville": [
+      {
+        "keyword": "emergency vet evansville indiana",
+        "volume": "320",
+        "kd": "21",
+        "intent": "Informational",
+        "cpc": null
+      }
+    ],
+    "south bend": [
+      {
+        "keyword": "emergency vet south bend indiana",
+        "volume": "110",
+        "kd": "23",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "bloomington": [
+      {
+        "keyword": "emergency vet bloomington indiana",
+        "volume": "110",
+        "kd": "24",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "anderson": [
+      {
+        "keyword": "emergency vet anderson indiana",
+        "volume": "140",
+        "kd": "28",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "fishers": [
+      {
+        "keyword": "emergency vet fishers indiana",
+        "volume": "110",
+        "kd": "28",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ]
+  },
+  "OH": {
+    "clinic mentor": [
+      {
+        "keyword": "emergency vet clinic mentor ohio",
+        "volume": "70",
+        "kd": "5",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "st clairsville": [
+      {
+        "keyword": "emergency vet st clairsville ohio",
+        "volume": "30",
+        "kd": "5",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "akron": [
+      {
+        "keyword": "emergency vet akron oh",
+        "volume": "110",
+        "kd": "6",
+        "intent": "Commercial",
+        "cpc": null
+      },
+      {
+        "keyword": "emergency vet akron ohio",
+        "volume": "260",
+        "kd": "7",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "copley": [
+      {
+        "keyword": "emergency vet copley ohio",
+        "volume": "40",
+        "kd": "6",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "lima": [
+      {
+        "keyword": "emergency vet lima ohio",
+        "volume": "210",
+        "kd": "7",
+        "intent": "Informational",
+        "cpc": null
+      }
+    ],
+    "girard": [
+      {
+        "keyword": "emergency vet girard ohio",
+        "volume": "110",
+        "kd": "8",
+        "intent": "Informational",
+        "cpc": null
+      }
+    ],
+    "marion": [
+      {
+        "keyword": "emergency vet marion ohio",
+        "volume": "40",
+        "kd": "13",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "marietta": [
+      {
+        "keyword": "emergency vet marietta ohio",
+        "volume": "70",
+        "kd": "14",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "salem": [
+      {
+        "keyword": "emergency vet salem ohio",
+        "volume": "30",
+        "kd": "14",
+        "intent": "Informational, Transactional",
+        "cpc": null
+      }
+    ],
+    "stark county": [
+      {
+        "keyword": "emergency vet stark county ohio",
+        "volume": "70",
+        "kd": "14",
+        "intent": "Navigational",
+        "cpc": null
+      }
+    ],
+    "cleveland": [
+      {
+        "keyword": "emergency vet cleveland ohio",
+        "volume": "260",
+        "kd": "17",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "west chester": [
+      {
+        "keyword": "emergency vet west chester ohio",
+        "volume": "50",
+        "kd": "17",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "columbus": [
+      {
+        "keyword": "24 hour emergency vet columbus ohio",
+        "volume": "70",
+        "kd": "19",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "ashtabula": [
+      {
+        "keyword": "emergency vet ashtabula ohio",
+        "volume": "40",
+        "kd": "19",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "dublin": [
+      {
+        "keyword": "emergency vet dublin ohio",
+        "volume": "50",
+        "kd": "20",
+        "intent": "Informational",
+        "cpc": null
+      }
+    ],
+    "mentor": [
+      {
+        "keyword": "emergency vet mentor ohio",
+        "volume": "40",
+        "kd": "21",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "zanesville": [
+      {
+        "keyword": "emergency vet zanesville ohio",
+        "volume": "70",
+        "kd": "22",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "athens": [
+      {
+        "keyword": "emergency vet athens ohio",
+        "volume": "50",
+        "kd": "23",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "toledo": [
+      {
+        "keyword": "emergency vet toledo ohio",
+        "volume": "320",
+        "kd": "29",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ]
+  },
+  "IL": {
+    "clinic peoria": [
+      {
+        "keyword": "emergency vet clinic peoria il",
+        "volume": "170",
+        "kd": "5",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "grayslake": [
+      {
+        "keyword": "emergency vet grayslake il",
+        "volume": "110",
+        "kd": "7",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "schaumburg": [
+      {
+        "keyword": "emergency vet schaumburg il",
+        "volume": "70",
+        "kd": "8",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "carbondale": [
+      {
+        "keyword": "emergency vet carbondale il",
+        "volume": "110",
+        "kd": "11",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "collinsville": [
+      {
+        "keyword": "emergency vet collinsville il",
+        "volume": "140",
+        "kd": "11",
+        "intent": "Informational, Transactional",
+        "cpc": null
+      }
+    ],
+    "kankakee": [
+      {
+        "keyword": "emergency vet kankakee il",
+        "volume": "40",
+        "kd": "11",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "st charles": [
+      {
+        "keyword": "emergency vet st charles il",
+        "volume": "260",
+        "kd": "11",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "peoria": [
+      {
+        "keyword": "emergency vet peoria il",
+        "volume": "320",
+        "kd": "12",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "arlington heights": [
+      {
+        "keyword": "emergency vet arlington heights il",
+        "volume": "50",
+        "kd": "13",
+        "intent": "Informational, Commercial",
+        "cpc": null
+      }
+    ],
+    "champaign": [
+      {
+        "keyword": "emergency vet champaign il",
+        "volume": "170",
+        "kd": "13",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "lisle": [
+      {
+        "keyword": "emergency vet lisle il",
+        "volume": "140",
+        "kd": "14",
+        "intent": "Navigational",
+        "cpc": null
+      }
+    ],
+    "services st charles": [
+      {
+        "keyword": "emergency vet services st charles il",
+        "volume": "50",
+        "kd": "14",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "antioch": [
+      {
+        "keyword": "emergency vet antioch il",
+        "volume": "30",
+        "kd": "15",
+        "intent": "Informational, Transactional",
+        "cpc": null
+      }
+    ],
+    "mokena": [
+      {
+        "keyword": "emergency vet mokena il",
+        "volume": "210",
+        "kd": "15",
+        "intent": "Navigational",
+        "cpc": null
+      }
+    ],
+    "marion": [
+      {
+        "keyword": "emergency vet marion il",
+        "volume": "70",
+        "kd": "16",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "aurora": [
+      {
+        "keyword": "emergency vet aurora il",
+        "volume": "70",
+        "kd": "20",
+        "intent": "Transactional",
+        "cpc": null
+      }
+    ],
+    "crystal lake": [
+      {
+        "keyword": "emergency vet crystal lake il",
+        "volume": "140",
+        "kd": "20",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "jacksonville": [
+      {
+        "keyword": "emergency vet jacksonville il",
+        "volume": "30",
+        "kd": "20",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "naperville": [
+      {
+        "keyword": "emergency vet naperville il",
+        "volume": "50",
+        "kd": "20",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "springfield": [
+      {
+        "keyword": "emergency vet springfield il",
+        "volume": "480",
+        "kd": "20",
+        "intent": "Navigational, Commercial",
+        "cpc": null
+      }
+    ],
+    "bloomington": [
+      {
+        "keyword": "emergency vet bloomington il",
+        "volume": "390",
+        "kd": "21",
+        "intent": "Informational",
+        "cpc": null
+      }
+    ],
+    "rockford": [
+      {
+        "keyword": "emergency vet rockford il",
+        "volume": "480",
+        "kd": "26",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "alton": [
+      {
+        "keyword": "emergency vet alton il",
+        "volume": "30",
+        "kd": "27",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "plainfield": [
+      {
+        "keyword": "emergency vet plainfield il",
+        "volume": "260",
+        "kd": "27",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "quincy": [
+      {
+        "keyword": "emergency vet quincy il",
+        "volume": "70",
+        "kd": "27",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ]
+  },
+  "MN": {
+    "golden valley": [
+      {
+        "keyword": "emergency vet golden valley mn",
+        "volume": "90",
+        "kd": "6",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "stewartville": [
+      {
+        "keyword": "emergency vet stewartville mn",
+        "volume": "90",
+        "kd": "6",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "woodbury": [
+      {
+        "keyword": "emergency vet woodbury mn",
+        "volume": "110",
+        "kd": "6",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "clinic rochester": [
+      {
+        "keyword": "emergency vet clinic rochester mn",
+        "volume": "170",
+        "kd": "12",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "savage": [
+      {
+        "keyword": "emergency vet savage mn",
+        "volume": "50",
+        "kd": "15",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "eden prairie": [
+      {
+        "keyword": "emergency vet eden prairie minnesota",
+        "volume": "140",
+        "kd": "19",
+        "intent": "Informational",
+        "cpc": null
+      }
+    ],
+    "mankato": [
+      {
+        "keyword": "emergency vet mankato mn",
+        "volume": "90",
+        "kd": "20",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "apple valley": [
+      {
+        "keyword": "emergency vet apple valley mn",
+        "volume": "140",
+        "kd": "21",
+        "intent": "Navigational",
+        "cpc": null
+      }
+    ],
+    "st paul": [
+      {
+        "keyword": "emergency vet st paul mn",
+        "volume": "110",
+        "kd": "21",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "alexandria": [
+      {
+        "keyword": "emergency vet alexandria mn",
+        "volume": "30",
+        "kd": "22",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "coon rapids": [
+      {
+        "keyword": "emergency vet coon rapids mn",
+        "volume": "90",
+        "kd": "23",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "plymouth": [
+      {
+        "keyword": "emergency vet plymouth mn",
+        "volume": "40",
+        "kd": "25",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "oakdale emergency vet": [
+      {
+        "keyword": "oakdale emergency vet mn",
+        "volume": "260",
+        "kd": "25",
+        "intent": "Informational",
+        "cpc": null
+      }
+    ],
+    "minneapolis": [
+      {
+        "keyword": "emergency vet minneapolis mn",
+        "volume": "90",
+        "kd": "27",
+        "intent": "Informational",
+        "cpc": null
+      }
+    ],
+    "oakdale": [
+      {
+        "keyword": "emergency vet oakdale minnesota",
+        "volume": "260",
+        "kd": "27",
+        "intent": "Informational",
+        "cpc": null
+      },
+      {
+        "keyword": "emergency vet oakdale mn",
+        "volume": "260",
+        "kd": "27",
+        "intent": "Informational",
+        "cpc": null
+      }
+    ],
+    "blaine": [
+      {
+        "keyword": "emergency vet blaine mn",
+        "volume": "70",
+        "kd": "28",
+        "intent": "Informational",
+        "cpc": null
+      }
+    ]
+  },
+  "ID": {
+    "post falls": [
+      {
+        "keyword": "emergency vet post falls idaho",
+        "volume": "70",
+        "kd": "6",
+        "intent": "Navigational",
+        "cpc": null
+      },
+      {
+        "keyword": "emergency vet post falls id",
+        "volume": "70",
+        "kd": "8",
+        "intent": "Informational",
+        "cpc": null
+      }
+    ],
+    "nampa": [
+      {
+        "keyword": "emergency vet nampa idaho",
+        "volume": "70",
+        "kd": "20",
+        "intent": "Informational, Transactional",
+        "cpc": null
+      }
+    ],
+    "caldwell": [
+      {
+        "keyword": "emergency vet caldwell idaho",
+        "volume": "70",
+        "kd": "24",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ]
+  },
+  "CO": {
+    "westminster": [
+      {
+        "keyword": "emergency vet westminster co",
+        "volume": "30",
+        "kd": "6",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "wheat ridge": [
+      {
+        "keyword": "emergency vet wheat ridge co",
+        "volume": "70",
+        "kd": "7",
+        "intent": "Navigational",
+        "cpc": null
+      }
+    ],
+    "durango": [
+      {
+        "keyword": "emergency vet durango co",
+        "volume": "90",
+        "kd": "10",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "littleton": [
+      {
+        "keyword": "emergency vet littleton co",
+        "volume": "90",
+        "kd": "10",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "loveland": [
+      {
+        "keyword": "emergency vet loveland co",
+        "volume": "110",
+        "kd": "10",
+        "intent": "Informational",
+        "cpc": null
+      }
+    ],
+    "windsor": [
+      {
+        "keyword": "emergency vet windsor co",
+        "volume": "30",
+        "kd": "10",
+        "intent": "Informational",
+        "cpc": null
+      }
+    ],
+    "clifton": [
+      {
+        "keyword": "emergency vet clifton co",
+        "volume": "30",
+        "kd": "12",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "thornton": [
+      {
+        "keyword": "emergency vet thornton co",
+        "volume": "90",
+        "kd": "12",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "broomfield": [
+      {
+        "keyword": "emergency vet broomfield co",
+        "volume": "50",
+        "kd": "13",
+        "intent": "Informational",
+        "cpc": null
+      }
+    ],
+    "highlands ranch": [
+      {
+        "keyword": "emergency vet highlands ranch co",
+        "volume": "70",
+        "kd": "14",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "boulder": [
+      {
+        "keyword": "emergency vet boulder colorado",
+        "volume": "30",
+        "kd": "15",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "lafayette": [
+      {
+        "keyword": "emergency vet lafayette co",
+        "volume": "30",
+        "kd": "15",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "arvada": [
+      {
+        "keyword": "emergency vet arvada co",
+        "volume": "90",
+        "kd": "17",
+        "intent": "Informational",
+        "cpc": null
+      }
+    ]
+  },
+  "UT": {
+    "sunset": [
+      {
+        "keyword": "emergency vet sunset utah",
+        "volume": "70",
+        "kd": "7",
+        "intent": "Informational",
+        "cpc": null
+      }
+    ],
+    "sandy": [
+      {
+        "keyword": "emergency vet sandy utah",
+        "volume": "70",
+        "kd": "25",
+        "intent": "Informational",
+        "cpc": null
+      }
+    ],
+    "salt lake city": [
+      {
+        "keyword": "emergency vet salt lake city utah",
+        "volume": "90",
+        "kd": "26",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "orem": [
+      {
+        "keyword": "emergency vet orem utah",
+        "volume": "90",
+        "kd": "27",
+        "intent": "Informational",
+        "cpc": null
+      }
+    ]
+  },
+  "ME": {
+    "warren": [
+      {
+        "keyword": "emergency vet warren maine",
+        "volume": "140",
+        "kd": "7",
+        "intent": "Navigational",
+        "cpc": null
+      }
+    ],
+    "ellsworth": [
+      {
+        "keyword": "emergency vet ellsworth maine",
+        "volume": "40",
+        "kd": "8",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "for rabbits near": [
+      {
+        "keyword": "emergency vet for rabbits near me",
+        "volume": "50",
+        "kd": "8",
+        "intent": "Transactional",
+        "cpc": null
+      }
+    ],
+    "freeport": [
+      {
+        "keyword": "emergency vet freeport maine",
+        "volume": "70",
+        "kd": "8",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "brewer": [
+      {
+        "keyword": "emergency vet brewer maine",
+        "volume": "590",
+        "kd": "11",
+        "intent": "Navigational",
+        "cpc": null
+      }
+    ],
+    "rockland": [
+      {
+        "keyword": "emergency vet rockland maine",
+        "volume": "30",
+        "kd": "11",
+        "intent": "Navigational, Commercial",
+        "cpc": null
+      }
+    ],
+    "clinic brewer": [
+      {
+        "keyword": "emergency vet clinic brewer maine",
+        "volume": "40",
+        "kd": "12",
+        "intent": "Navigational, Commercial",
+        "cpc": null
+      }
+    ],
+    "euthanasia near": [
+      {
+        "keyword": "emergency vet euthanasia near me",
+        "volume": "40",
+        "kd": "13",
+        "intent": "Transactional",
+        "cpc": null
+      }
+    ],
+    "with payment plan near": [
+      {
+        "keyword": "emergency vet with payment plan near me",
+        "volume": "260",
+        "kd": "13",
+        "intent": "Transactional",
+        "cpc": null
+      }
+    ],
+    "hr emergency vets near": [
+      {
+        "keyword": "24hr emergency vets near me",
+        "volume": "260",
+        "kd": "21",
+        "intent": "Transactional",
+        "cpc": null
+      }
+    ],
+    "scarborough": [
+      {
+        "keyword": "emergency vet scarborough maine",
+        "volume": "590",
+        "kd": "22",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "emergency mobile vets near": [
+      {
+        "keyword": "emergency mobile vets near me",
+        "volume": "50",
+        "kd": "25",
+        "intent": "Transactional",
+        "cpc": null
+      }
+    ],
+    "bangor": [
+      {
+        "keyword": "emergency vet bangor maine",
+        "volume": "260",
+        "kd": "25",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "dental near": [
+      {
+        "keyword": "emergency vet dental near me",
+        "volume": "30",
+        "kd": "25",
+        "intent": "Transactional",
+        "cpc": null
+      }
+    ],
+    "augusta": [
+      {
+        "keyword": "emergency vet augusta maine",
+        "volume": "140",
+        "kd": "26",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "jobs near": [
+      {
+        "keyword": "emergency vet jobs near me",
+        "volume": "70",
+        "kd": "27",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ]
+  },
+  "ND": {
+    "williston": [
+      {
+        "keyword": "emergency vet williston nd",
+        "volume": "40",
+        "kd": "7",
+        "intent": "Informational",
+        "cpc": null
+      }
+    ],
+    "fargo": [
+      {
+        "keyword": "emergency vet fargo nd",
+        "volume": "260",
+        "kd": "9",
+        "intent": "Navigational",
+        "cpc": null
+      }
+    ],
+    "minot": [
+      {
+        "keyword": "emergency vet minot nd",
+        "volume": "70",
+        "kd": "21",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "bismarck": [
+      {
+        "keyword": "emergency vet bismarck nd",
+        "volume": "90",
+        "kd": "28",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ]
+  },
+  "OR": {
+    "coos bay": [
+      {
+        "keyword": "emergency vet coos bay oregon",
+        "volume": "70",
+        "kd": "9",
+        "intent": "Informational",
+        "cpc": null
+      }
+    ],
+    "corvallis": [
+      {
+        "keyword": "emergency vet corvallis oregon",
+        "volume": "110",
+        "kd": "10",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "florence": [
+      {
+        "keyword": "emergency vet florence oregon",
+        "volume": "30",
+        "kd": "11",
+        "intent": "Informational",
+        "cpc": null
+      }
+    ],
+    "portland": [
+      {
+        "keyword": "24 hour emergency vet portland oregon",
+        "volume": "70",
+        "kd": "14",
+        "intent": "Commercial",
+        "cpc": null
+      },
+      {
+        "keyword": "24 hour emergency vet portland or",
+        "volume": "30",
+        "kd": "28",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "bend": [
+      {
+        "keyword": "emergency vet bend oregon",
+        "volume": "480",
+        "kd": "15",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "medford": [
+      {
+        "keyword": "emergency vet medford oregon",
+        "volume": "320",
+        "kd": "15",
+        "intent": "Commercial",
+        "cpc": null
+      },
+      {
+        "keyword": "emergency vet medford or",
+        "volume": "140",
+        "kd": "19",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "salem": [
+      {
+        "keyword": "emergency vet salem oregon",
+        "volume": "390",
+        "kd": "16",
+        "intent": "Commercial",
+        "cpc": null
+      },
+      {
+        "keyword": "emergency vet salem or",
+        "volume": "140",
+        "kd": "19",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "newport": [
+      {
+        "keyword": "emergency vet newport oregon",
+        "volume": "50",
+        "kd": "21",
+        "intent": "Informational, Commercial",
+        "cpc": null
+      }
+    ]
+  },
+  "DE": {
+    "dover": [
+      {
+        "keyword": "emergency vet dover de",
+        "volume": "90",
+        "kd": "9",
+        "intent": "Navigational, Commercial",
+        "cpc": null
+      }
+    ],
+    "middletown": [
+      {
+        "keyword": "emergency vet middletown de",
+        "volume": "90",
+        "kd": "14",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ]
+  },
+  "AK": {
+    "anchorage": [
+      {
+        "keyword": "emergency vet anchorage ak",
+        "volume": "140",
+        "kd": "11",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "fairbanks": [
+      {
+        "keyword": "emergency vet fairbanks ak",
+        "volume": "110",
+        "kd": "19",
+        "intent": "Informational",
+        "cpc": null
+      }
+    ]
+  },
+  "NV": {
+    "reno": [
+      {
+        "keyword": "emergency vet reno nevada",
+        "volume": "110",
+        "kd": "11",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "henderson": [
+      {
+        "keyword": "emergency vet henderson nv",
+        "volume": "170",
+        "kd": "18",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "sparks": [
+      {
+        "keyword": "low cost emergency vet sparks nv",
+        "volume": "30",
+        "kd": "24",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ]
+  },
+  "MT": {
+    "great falls": [
+      {
+        "keyword": "emergency vet great falls mt",
+        "volume": "70",
+        "kd": "12",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "missoula": [
+      {
+        "keyword": "emergency vet missoula mt",
+        "volume": "260",
+        "kd": "23",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "butte": [
+      {
+        "keyword": "emergency vet butte mt",
+        "volume": "30",
+        "kd": "24",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ]
+  },
+  "SD": {
+    "brookings": [
+      {
+        "keyword": "emergency vet brookings sd",
+        "volume": "50",
+        "kd": "13",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ],
+    "rapid city": [
+      {
+        "keyword": "emergency vet rapid city sd",
+        "volume": "260",
+        "kd": "28",
+        "intent": "Commercial",
+        "cpc": null
+      }
+    ]
+  }
+}

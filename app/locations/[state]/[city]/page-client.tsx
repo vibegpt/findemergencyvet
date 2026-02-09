@@ -2,6 +2,7 @@
 
 import Link from 'next/link'
 import { useState } from 'react'
+import ClinicCard from '@/components/clinic/ClinicCard'
 
 type Clinic = {
   id: string
@@ -15,14 +16,18 @@ type Clinic = {
   longitude: number | null
   is_24_7: boolean
   current_status: string
-  has_surgery_suite: boolean
-  has_icu: boolean
   has_exotic_specialist: boolean
-  accepts_care_credit: boolean
   google_rating: number | null
   google_review_count: number | null
   exotic_pets_accepted: string[]
   availability_type: string | null
+  accepts_walk_ins?: boolean | null
+  requires_call_ahead?: boolean | null
+  parking_type?: string | null
+  wheelchair_accessible?: boolean | null
+  has_separate_cat_entrance?: boolean | null
+  has_isolation_rooms?: boolean | null
+  slug?: string
 }
 
 type City = {
@@ -91,9 +96,9 @@ export default function CityPage({
         {/* HERO - Above the Fold */}
         <header className="bg-gradient-to-r from-[#137fec] to-[#0d5bbd] px-6 py-8 md:py-12">
           <div className="flex flex-col gap-4">
-            <h1 className="text-white text-2xl md:text-4xl font-black leading-tight">
-              24 Hour Emergency Vet in {city.name}, {city.state}
-            </h1>
+          <h1 className="text-white text-2xl md:text-4xl font-black leading-tight font-display">
+            24 Hour Emergency Vet in {city.name}, {city.state}
+          </h1>
             <p className="text-white/90 text-base md:text-lg">
               If your pet needs urgent medical care in {city.name}, use the list below to find open emergency vets and animal hospitals right now.
             </p>
@@ -156,87 +161,7 @@ export default function CityPage({
 
           <div className="space-y-4">
             {filteredClinics.map(clinic => (
-              <article key={clinic.id} className="bg-white dark:bg-slate-800 rounded-xl border border-gray-100 dark:border-slate-700 p-4 shadow-sm">
-                <div className="flex justify-between items-start gap-3 mb-3">
-                  <div>
-                    <h3 className="text-[#0d141b] dark:text-white text-lg font-bold">{clinic.name}</h3>
-                    <div className="flex flex-wrap gap-2 mt-1">
-                      {clinic.is_24_7 && (
-                        <span className="inline-flex items-center gap-1 bg-green-500 text-white text-[10px] font-bold px-2 py-0.5 rounded-full">
-                          <span className="h-1.5 w-1.5 rounded-full bg-white animate-pulse" aria-hidden="true"></span>
-                          24/7
-                        </span>
-                      )}
-                      {clinic.has_exotic_specialist && (
-                        <span className="bg-purple-100 dark:bg-purple-900/30 text-purple-700 dark:text-purple-300 text-[10px] font-bold px-2 py-0.5 rounded-full">
-                          EXOTICS
-                        </span>
-                      )}
-                      {clinic.availability_type === 'on-call-24-7' && (
-                        <span className="bg-yellow-100 dark:bg-yellow-900/30 text-yellow-700 dark:text-yellow-300 text-[10px] font-bold px-2 py-0.5 rounded-full">
-                          CALL FIRST
-                        </span>
-                      )}
-                    </div>
-                  </div>
-                  {clinic.google_rating && (
-                    <div className={`flex items-center gap-1 px-2 py-1 rounded-lg text-sm font-bold ${
-                      clinic.google_rating >= 4.5 ? 'bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-400'
-                      : clinic.google_rating >= 3.5 ? 'bg-yellow-100 dark:bg-yellow-900/30 text-yellow-700 dark:text-yellow-400'
-                      : 'bg-red-100 dark:bg-red-900/30 text-red-700 dark:text-red-400'
-                    }`}>
-                      <span className="material-symbols-outlined text-[16px]" style={{fontVariationSettings: "'FILL' 1"}} aria-hidden="true">star</span>
-                      {clinic.google_rating}
-                      {clinic.google_review_count && (
-                        <span className="text-xs font-normal opacity-70">({clinic.google_review_count})</span>
-                      )}
-                    </div>
-                  )}
-                </div>
-
-                <p className="text-gray-600 dark:text-gray-400 text-sm mb-1">
-                  <strong>Address:</strong> {clinic.address}, {clinic.city}, {clinic.state} {clinic.zip_code}
-                </p>
-                <p className="text-gray-600 dark:text-gray-400 text-sm mb-1">
-                  <strong>Phone:</strong> <a href={`tel:${clinic.phone}`} className="text-[#137fec] hover:underline">{clinic.phone}</a>
-                </p>
-                <p className="text-gray-600 dark:text-gray-400 text-sm mb-4">
-                  <strong>Hours:</strong> {clinic.is_24_7 ? '24/7 Emergency Care' : 'Call for hours'}
-                </p>
-
-                {/* Service Tags */}
-                <div className="flex flex-wrap gap-2 mb-4">
-                  {clinic.has_surgery_suite && (
-                    <span className="bg-gray-100 dark:bg-slate-700 text-gray-700 dark:text-gray-300 px-2 py-1 rounded text-[11px] font-semibold">SURGERY</span>
-                  )}
-                  {clinic.has_icu && (
-                    <span className="bg-gray-100 dark:bg-slate-700 text-gray-700 dark:text-gray-300 px-2 py-1 rounded text-[11px] font-semibold">ICU</span>
-                  )}
-                  {clinic.accepts_care_credit && (
-                    <span className="bg-gray-100 dark:bg-slate-700 text-gray-700 dark:text-gray-300 px-2 py-1 rounded text-[11px] font-semibold">CARECREDIT</span>
-                  )}
-                </div>
-
-                {/* Action Buttons */}
-                <div className="grid grid-cols-2 gap-3">
-                  <a
-                    href={`tel:${clinic.phone}`}
-                    className="flex items-center justify-center gap-2 h-12 rounded-lg bg-[#137fec] text-white font-bold hover:bg-[#137fec]/90 focus:ring-2 focus:ring-[#137fec] focus:ring-offset-2"
-                  >
-                    <span className="material-symbols-outlined text-[20px]" aria-hidden="true">call</span>
-                    Call Now
-                  </a>
-                  <a
-                    href={`https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(`${clinic.address}, ${clinic.city}, ${clinic.state}`)}`}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center justify-center gap-2 h-12 rounded-lg border-2 border-red-500 text-red-500 font-bold hover:bg-red-50 dark:hover:bg-red-900/20 focus:ring-2 focus:ring-red-500 focus:ring-offset-2"
-                  >
-                    <span className="material-symbols-outlined text-[20px]" style={{fontVariationSettings: "'FILL' 1"}} aria-hidden="true">location_on</span>
-                    Directions
-                  </a>
-                </div>
-              </article>
+              <ClinicCard key={clinic.id} clinic={clinic} />
             ))}
           </div>
 

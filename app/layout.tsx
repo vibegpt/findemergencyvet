@@ -1,9 +1,17 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Fraunces, Space_Grotesk } from "next/font/google";
 import Script from "next/script";
 import "./globals.css";
 
-const inter = Inter({ subsets: ["latin"] });
+const bodyFont = Space_Grotesk({
+  subsets: ["latin"],
+  variable: "--font-body",
+});
+
+const displayFont = Fraunces({
+  subsets: ["latin"],
+  variable: "--font-display",
+});
 
 export const metadata: Metadata = {
   title: "FindEmergencyVet.com - Emergency Veterinary Care Near You",
@@ -23,7 +31,7 @@ export default function RootLayout({
           rel="stylesheet"
         />
       </head>
-      <body className={`${inter.className} bg-[#f6f7f8] dark:bg-[#101922]`}>
+      <body className={`${bodyFont.variable} ${displayFont.variable} bg-[#f6f7f8] dark:bg-[#101922]`}>
         {/* Google Analytics */}
         <Script
           src="https://www.googletagmanager.com/gtag/js?id=G-1ZWQKBJHXM"

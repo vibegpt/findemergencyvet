@@ -2,6 +2,7 @@ import { supabase } from '@/lib/supabase'
 import { notFound } from 'next/navigation'
 import { Metadata } from 'next'
 import Link from 'next/link'
+import ClinicCard from '@/components/clinic/ClinicCard'
 
 export async function generateMetadata({
   params,
@@ -52,7 +53,7 @@ export default async function NewYorkCityPage({
   // Fetch clinics
   const { data: clinics } = await supabase
     .from('clinics')
-    .select('id, name, address, city, state, zip_code, phone, is_24_7, current_status, has_surgery_suite, has_icu, has_exotic_specialist, accepts_care_credit, google_rating, google_review_count, availability_type, special_notes, is_featured, accepts_walk_ins, requires_call_ahead')
+    .select('id, slug, name, address, city, state, zip_code, phone, is_24_7, current_status, has_exotic_specialist, google_rating, google_review_count, availability_type, accepts_walk_ins, requires_call_ahead, exotic_pets_accepted, parking_type, wheelchair_accessible, has_separate_cat_entrance, has_isolation_rooms')
     .eq('city', city.name)
     .eq('state', 'NY')
     .eq('is_active', true)
@@ -167,7 +168,7 @@ export default async function NewYorkCityPage({
 
         <main className="max-w-4xl mx-auto px-4 py-8">
           {/* H1 */}
-          <h1 className="text-[#0d141b] dark:text-white text-3xl md:text-4xl font-black mb-4">
+          <h1 className="text-[#0d141b] dark:text-white text-3xl md:text-4xl font-black mb-4 font-display">
             Emergency Vet in {city.name}, New York — Open Now
           </h1>
 
@@ -182,117 +183,18 @@ export default async function NewYorkCityPage({
             <section className="mb-10">
               <div className="space-y-4">
                 {clinics.map(clinic => (
-                  <article key={clinic.id} className="bg-white dark:bg-slate-800 rounded-xl border border-gray-100 dark:border-slate-700 p-5 shadow-sm">
-                    <div className="flex justify-between items-start gap-3 mb-3">
-                      <div>
-                        <h3 className="text-[#0d141b] dark:text-white text-xl font-bold">{clinic.name}</h3>
-                        <div className="flex flex-wrap gap-2 mt-2">
-                          {clinic.is_24_7 && (
-                            <span className="inline-flex items-center gap-1 bg-green-500 text-white text-xs font-bold px-2 py-1 rounded-full">
-                              <span className="h-2 w-2 rounded-full bg-white animate-pulse"></span>
-                              24/7
-                            </span>
-                          )}
-                          {clinic.has_exotic_specialist && (
-                            <span className="bg-purple-100 dark:bg-purple-900/30 text-purple-700 dark:text-purple-300 text-xs font-bold px-2 py-1 rounded-full">EXOTICS</span>
-                          )}
-                          {clinic.accepts_walk_ins && (
-                            <span className="bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 text-xs font-bold px-2 py-1 rounded-full">WALK-INS</span>
-                          )}
-                          {clinic.requires_call_ahead && (
-                            <span className="bg-orange-100 dark:bg-orange-900/30 text-orange-700 dark:text-orange-300 text-xs font-bold px-2 py-1 rounded-full">CALL AHEAD</span>
-                          )}
-                          {clinic.availability_type === 'on-call-24-7' && !clinic.requires_call_ahead && (
-                            <span className="bg-yellow-100 dark:bg-yellow-900/30 text-yellow-700 dark:text-yellow-300 text-xs font-bold px-2 py-1 rounded-full">CALL FIRST</span>
-                          )}
-                          {clinic.availability_type === 'extended-hours' && (
-                            <span className="bg-amber-100 dark:bg-amber-900/30 text-amber-700 dark:text-amber-300 text-xs font-bold px-2 py-1 rounded-full">EXTENDED HRS</span>
-                          )}
-                          {clinic.availability_type === 'urgent-care' && (
-                            <span className="bg-teal-100 dark:bg-teal-900/30 text-teal-700 dark:text-teal-300 text-xs font-bold px-2 py-1 rounded-full">URGENT CARE</span>
-                          )}
-                        </div>
-                      </div>
-                      {clinic.google_rating && (
-                        <div className={`flex items-center gap-1 px-2 py-1 rounded-lg font-bold text-sm ${
-                          clinic.google_rating >= 4.5 ? 'bg-green-100 text-green-700' : 'bg-yellow-100 text-yellow-700'
-                        }`}>
-                          <span className="material-symbols-outlined text-[16px]" style={{fontVariationSettings: "'FILL' 1"}}>star</span>
-                          {clinic.google_rating}
-                          {clinic.google_review_count ? (
-                            <span className="text-xs font-normal opacity-70">({clinic.google_review_count})</span>
-                          ) : null}
-                        </div>
-                      )}
-                    </div>
-
-                    <p className="text-gray-600 dark:text-gray-400 text-sm mb-1">
-                      <strong>Address:</strong> {clinic.address}, {clinic.city}, {clinic.state} {clinic.zip_code}
-                    </p>
-                    <p className="text-gray-600 dark:text-gray-400 text-sm mb-1">
-                      <strong>Phone:</strong> <a href={`tel:${clinic.phone}`} className="text-[#137fec] hover:underline">{clinic.phone}</a>
-                    </p>
-                    <p className="text-gray-600 dark:text-gray-400 text-sm mb-4">
-                      <strong>Hours:</strong> {clinic.is_24_7 ? '24/7 Emergency Care' : 'Call for hours'}
-                    </p>
-
-                    <div className="flex flex-wrap gap-2 mb-4">
-                      {clinic.has_surgery_suite && <span className="bg-gray-100 dark:bg-slate-700 text-gray-700 dark:text-gray-300 px-2 py-1 rounded text-xs font-semibold">SURGERY</span>}
-                      {clinic.has_icu && <span className="bg-gray-100 dark:bg-slate-700 text-gray-700 dark:text-gray-300 px-2 py-1 rounded text-xs font-semibold">ICU</span>}
-                      {clinic.accepts_care_credit && <span className="bg-gray-100 dark:bg-slate-700 text-gray-700 dark:text-gray-300 px-2 py-1 rounded text-xs font-semibold">CARECREDIT</span>}
-                    </div>
-
-                    {/* Special Notes */}
-                    {clinic.special_notes && (
-                      <div className="bg-blue-50 dark:bg-blue-900/20 border border-blue-100 dark:border-blue-900/30 rounded-lg p-3 mb-4">
-                        <div className="flex items-start gap-2">
-                          <span className="material-symbols-outlined text-blue-600 dark:text-blue-400 text-[18px] mt-0.5">info</span>
-                          <p className="text-blue-800 dark:text-blue-200 text-sm">{clinic.special_notes}</p>
-                        </div>
-                      </div>
-                    )}
-
-                    <div className="grid grid-cols-2 gap-3">
-                      <a
-                        href={`tel:${clinic.phone}`}
-                        className="flex items-center justify-center gap-2 h-12 rounded-lg bg-[#137fec] text-white font-bold hover:bg-[#137fec]/90"
-                      >
-                        <span className="material-symbols-outlined text-[20px]">call</span>
-                        Call Now
-                      </a>
-                      <a
-                        href={`https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(`${clinic.address}, ${clinic.city}, ${clinic.state}`)}`}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="flex items-center justify-center gap-2 h-12 rounded-lg border-2 border-red-500 text-red-500 font-bold hover:bg-red-50 dark:hover:bg-red-900/20"
-                      >
-                        <span className="material-symbols-outlined text-[20px]" style={{fontVariationSettings: "'FILL' 1"}}>location_on</span>
-                        Directions
-                      </a>
-                    </div>
-                  </article>
+                  <ClinicCard key={clinic.id} clinic={clinic} />
                 ))}
               </div>
             </section>
           ) : (
-            /* Coming Soon */
-            <section className="mb-10">
-              <div className="bg-[#137fec]/5 border-2 border-dashed border-[#137fec]/30 rounded-xl p-8 text-center">
-                <span className="material-symbols-outlined text-5xl text-[#137fec] mb-4">add_location</span>
-                <h3 className="text-xl font-bold text-[#0d141b] dark:text-white mb-2">Coming Soon</h3>
-                <p className="text-gray-600 dark:text-gray-400 mb-4">
-                  We&apos;re actively adding emergency veterinary clinics in {city.name}. In the meantime, try searching Google Maps.
-                </p>
-                <a
-                  href={`https://www.google.com/maps/search/emergency+vet+${encodeURIComponent(city.name + ' New York')}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 px-4 py-2 bg-[#137fec] text-white font-bold rounded-lg"
-                >
-                  <span className="material-symbols-outlined text-[18px]">map</span>
-                  Search Google Maps
-                </a>
-              </div>
+            <section className="mb-10 bg-yellow-50 dark:bg-yellow-900/20 border border-yellow-100 dark:border-yellow-900/30 rounded-xl p-6">
+              <h2 className="text-[#0d141b] dark:text-white text-xl font-bold mb-2">
+                Emergency Vet Clinics Coming Soon
+              </h2>
+              <p className="text-gray-700 dark:text-gray-300">
+                We’re currently adding emergency veterinary clinics in {city.name}. In the meantime, check nearby cities below or call your regular vet for the closest emergency referral.
+              </p>
             </section>
           )}
 
@@ -302,10 +204,9 @@ export default async function NewYorkCityPage({
               Emergency Veterinary Services in {city.name}
             </h2>
             <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
-              Emergency vets in {city.name} treat urgent, life-threatening conditions that cannot wait for a regular appointment. These facilities are equipped for advanced diagnostics, emergency surgery, and overnight critical care monitoring.
+              Emergency vets in {city.name} treat urgent, life-threatening conditions that cannot wait for a regular appointment. These facilities are equipped for advanced diagnostics, surgery, and overnight care.
             </p>
           </section>
-
           {/* H2: Common Reasons */}
           <section id="emergency-reasons" className="mb-10 bg-white dark:bg-slate-800 rounded-xl p-6 border border-gray-100 dark:border-slate-700">
             <h2 className="text-[#0d141b] dark:text-white text-2xl font-bold mb-4">

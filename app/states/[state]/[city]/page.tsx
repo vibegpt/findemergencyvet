@@ -2,48 +2,8 @@ import { supabase } from '@/lib/supabase'
 import { notFound } from 'next/navigation'
 import { Metadata } from 'next'
 import Link from 'next/link'
-
-const stateNames: Record<string, string> = {
-  'new-york': 'New York', ny: 'New York',
-  california: 'California', ca: 'California',
-  texas: 'Texas', tx: 'Texas',
-  florida: 'Florida', fl: 'Florida',
-  georgia: 'Georgia', ga: 'Georgia',
-  virginia: 'Virginia', va: 'Virginia',
-  'south-carolina': 'South Carolina', sc: 'South Carolina',
-  'north-carolina': 'North Carolina', nc: 'North Carolina',
-  minnesota: 'Minnesota', mn: 'Minnesota',
-  missouri: 'Missouri', mo: 'Missouri',
-  mississippi: 'Mississippi', ms: 'Mississippi',
-  michigan: 'Michigan', mi: 'Michigan',
-  louisiana: 'Louisiana', la: 'Louisiana',
-  oregon: 'Oregon', or: 'Oregon',
-  iowa: 'Iowa', ia: 'Iowa',
-  alabama: 'Alabama', al: 'Alabama',
-  arkansas: 'Arkansas', ar: 'Arkansas',
-  tennessee: 'Tennessee', tn: 'Tennessee',
-  maryland: 'Maryland', md: 'Maryland',
-  'west-virginia': 'West Virginia', wv: 'West Virginia',
-  vermont: 'Vermont', vt: 'Vermont',
-  'new-hampshire': 'New Hampshire', nh: 'New Hampshire',
-  'new-jersey': 'New Jersey', nj: 'New Jersey',
-  connecticut: 'Connecticut', ct: 'Connecticut',
-  pennsylvania: 'Pennsylvania', pa: 'Pennsylvania',
-  maine: 'Maine', me: 'Maine',
-  wisconsin: 'Wisconsin', wi: 'Wisconsin',
-  nebraska: 'Nebraska', ne: 'Nebraska',
-  oklahoma: 'Oklahoma', ok: 'Oklahoma',
-}
-
-const stateAbbreviations: Record<string, string> = {
-  'new-york': 'NY', california: 'CA', texas: 'TX', florida: 'FL',
-  georgia: 'GA', virginia: 'VA', 'south-carolina': 'SC', 'north-carolina': 'NC',
-  minnesota: 'MN', missouri: 'MO', mississippi: 'MS', michigan: 'MI',
-  louisiana: 'LA', oregon: 'OR', iowa: 'IA', alabama: 'AL',
-  arkansas: 'AR', tennessee: 'TN', maryland: 'MD', 'west-virginia': 'WV',
-  vermont: 'VT', 'new-hampshire': 'NH', 'new-jersey': 'NJ', connecticut: 'CT',
-  pennsylvania: 'PA', maine: 'ME', wisconsin: 'WI', nebraska: 'NE', oklahoma: 'OK',
-}
+import ClinicCard from '@/components/clinic/ClinicCard'
+import { stateNameBySlug, stateAbbrBySlug } from '@/lib/state-data'
 
 export async function generateMetadata({
   params,
@@ -62,7 +22,7 @@ export async function generateMetadata({
     return { title: 'Emergency Vet Finder' }
   }
 
-  const stateName = stateNames[state] || city.state
+  const stateName = stateNameBySlug[state] || city.state
 
   return {
     title: `Emergency Vet in ${city.name}, ${stateName} — Open Now | Emergency Vet Finder`,
@@ -90,13 +50,13 @@ export default async function CityPage({
 
   if (!city) notFound()
 
-  const stateName = stateNames[state] || city.state
-  const stateAbbr = stateAbbreviations[state] || city.state
+  const stateName = stateNameBySlug[state] || city.state
+  const stateAbbr = stateAbbrBySlug[state] || city.state
 
   // Fetch clinics
   const { data: clinics } = await supabase
     .from('clinics')
-    .select('id, name, address, city, state, zip_code, phone, is_24_7, current_status, has_surgery_suite, has_icu, has_exotic_specialist, accepts_care_credit, google_rating, google_review_count, availability_type, special_notes, is_featured, accepts_walk_ins, requires_call_ahead')
+    .select('id, slug, name, address, city, state, zip_code, phone, is_24_7, current_status, has_exotic_specialist, google_rating, google_review_count, availability_type, accepts_walk_ins, requires_call_ahead, exotic_pets_accepted, parking_type, wheelchair_accessible, has_separate_cat_entrance, has_isolation_rooms')
     .eq('city', city.name)
     .eq('state', city.state)
     .eq('is_active', true)
@@ -132,6 +92,16 @@ export default async function CityPage({
     })) || [],
   }
 
+  const breadcrumbData = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://findemergencyvet.com' },
+      { '@type': 'ListItem', position: 2, name: stateName, item: `https://findemergencyvet.com/states/${state}` },
+      { '@type': 'ListItem', position: 3, name: `${city.name}, ${stateAbbr}`, item: `https://findemergencyvet.com/states/${state}/${citySlug}` },
+    ],
+  }
+
   const hasClinics = clinics && clinics.length > 0
 
   return (
@@ -139,6 +109,10 @@ export default async function CityPage({
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbData) }}
       />
 
       <div className="min-h-screen bg-[#f6f7f8] dark:bg-[#101922]">
@@ -166,7 +140,7 @@ export default async function CityPage({
 
         <main className="max-w-4xl mx-auto px-4 py-8">
           {/* H1 */}
-          <h1 className="text-[#0d141b] dark:text-white text-3xl md:text-4xl font-black mb-4">
+          <h1 className="text-[#0d141b] dark:text-white text-3xl md:text-4xl font-black mb-4 font-display">
             Emergency Vet in {city.name}, {stateName} — Open Now
           </h1>
 
@@ -181,86 +155,7 @@ export default async function CityPage({
             <section className="mb-10">
               <div className="space-y-4">
                 {clinics.map(clinic => (
-                  <article key={clinic.id} className="bg-white dark:bg-slate-800 rounded-xl border border-gray-100 dark:border-slate-700 p-5 shadow-sm">
-                    <div className="flex justify-between items-start gap-3 mb-3">
-                      <div>
-                        <h3 className="text-[#0d141b] dark:text-white text-xl font-bold">{clinic.name}</h3>
-                        <div className="flex flex-wrap gap-2 mt-2">
-                          {clinic.is_24_7 && (
-                            <span className="inline-flex items-center gap-1 bg-green-500 text-white text-xs font-bold px-2 py-1 rounded-full">
-                              <span className="h-2 w-2 rounded-full bg-white animate-pulse"></span>
-                              24/7
-                            </span>
-                          )}
-                          {clinic.has_exotic_specialist && (
-                            <span className="bg-purple-100 dark:bg-purple-900/30 text-purple-700 dark:text-purple-300 text-xs font-bold px-2 py-1 rounded-full">EXOTICS</span>
-                          )}
-                          {clinic.accepts_walk_ins && (
-                            <span className="bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 text-xs font-bold px-2 py-1 rounded-full">WALK-INS</span>
-                          )}
-                          {clinic.requires_call_ahead && (
-                            <span className="bg-orange-100 dark:bg-orange-900/30 text-orange-700 dark:text-orange-300 text-xs font-bold px-2 py-1 rounded-full">CALL AHEAD</span>
-                          )}
-                          {clinic.availability_type === 'on-call-24-7' && !clinic.requires_call_ahead && (
-                            <span className="bg-yellow-100 dark:bg-yellow-900/30 text-yellow-700 dark:text-yellow-300 text-xs font-bold px-2 py-1 rounded-full">CALL FIRST</span>
-                          )}
-                        </div>
-                      </div>
-                      {clinic.google_rating && (
-                        <div className={`flex items-center gap-1 px-2 py-1 rounded-lg font-bold ${
-                          clinic.google_rating >= 4.5 ? 'bg-green-100 text-green-700' : 'bg-yellow-100 text-yellow-700'
-                        }`}>
-                          <span className="material-symbols-outlined text-[16px]" style={{fontVariationSettings: "'FILL' 1"}}>star</span>
-                          {clinic.google_rating}
-                        </div>
-                      )}
-                    </div>
-
-                    <p className="text-gray-600 dark:text-gray-400 text-sm mb-1">
-                      <strong>Address:</strong> {clinic.address}, {clinic.city}, {clinic.state} {clinic.zip_code}
-                    </p>
-                    <p className="text-gray-600 dark:text-gray-400 text-sm mb-1">
-                      <strong>Phone:</strong> <a href={`tel:${clinic.phone}`} className="text-[#137fec] hover:underline">{clinic.phone}</a>
-                    </p>
-                    <p className="text-gray-600 dark:text-gray-400 text-sm mb-4">
-                      <strong>Hours:</strong> {clinic.is_24_7 ? '24/7 Emergency Care' : 'Call for hours'}
-                    </p>
-
-                    <div className="flex flex-wrap gap-2 mb-4">
-                      {clinic.has_surgery_suite && <span className="bg-gray-100 dark:bg-slate-700 text-gray-700 dark:text-gray-300 px-2 py-1 rounded text-xs font-semibold">SURGERY</span>}
-                      {clinic.has_icu && <span className="bg-gray-100 dark:bg-slate-700 text-gray-700 dark:text-gray-300 px-2 py-1 rounded text-xs font-semibold">ICU</span>}
-                      {clinic.accepts_care_credit && <span className="bg-gray-100 dark:bg-slate-700 text-gray-700 dark:text-gray-300 px-2 py-1 rounded text-xs font-semibold">CARECREDIT</span>}
-                    </div>
-
-                    {/* Special Notes */}
-                    {clinic.special_notes && (
-                      <div className="bg-blue-50 dark:bg-blue-900/20 border border-blue-100 dark:border-blue-900/30 rounded-lg p-3 mb-4">
-                        <div className="flex items-start gap-2">
-                          <span className="material-symbols-outlined text-blue-600 dark:text-blue-400 text-[18px] mt-0.5">info</span>
-                          <p className="text-blue-800 dark:text-blue-200 text-sm">{clinic.special_notes}</p>
-                        </div>
-                      </div>
-                    )}
-
-                    <div className="grid grid-cols-2 gap-3">
-                      <a
-                        href={`tel:${clinic.phone}`}
-                        className="flex items-center justify-center gap-2 h-12 rounded-lg bg-[#137fec] text-white font-bold hover:bg-[#137fec]/90"
-                      >
-                        <span className="material-symbols-outlined text-[20px]">call</span>
-                        Call Now
-                      </a>
-                      <a
-                        href={`https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(`${clinic.address}, ${clinic.city}, ${clinic.state}`)}`}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="flex items-center justify-center gap-2 h-12 rounded-lg border-2 border-red-500 text-red-500 font-bold hover:bg-red-50"
-                      >
-                        <span className="material-symbols-outlined text-[20px]" style={{fontVariationSettings: "'FILL' 1"}}>location_on</span>
-                        Directions
-                      </a>
-                    </div>
-                  </article>
+                  <ClinicCard key={clinic.id} clinic={clinic} />
                 ))}
               </div>
             </section>
@@ -285,6 +180,37 @@ export default async function CityPage({
               </div>
             </section>
           )}
+
+          <section className="mb-10 bg-white dark:bg-slate-800 rounded-2xl p-6 border border-gray-100 dark:border-slate-700">
+            <h2 className="text-[#0d141b] dark:text-white text-2xl font-bold mb-3 font-display">
+              Emergency Care Guides for Pet Owners
+            </h2>
+            <p className="text-gray-600 dark:text-gray-400 mb-4">
+              Step-by-step guidance for what to do before, during, and after you reach the clinic.
+            </p>
+            <div className="grid sm:grid-cols-2 gap-3">
+              <Link href="/guides/triage" className="flex items-center justify-between p-4 rounded-xl border border-gray-100 dark:border-slate-700 hover:border-[#137fec]">
+                <span className="font-semibold text-[#0d141b] dark:text-white">Emergency triage basics</span>
+                <span className="material-symbols-outlined text-[#137fec]" aria-hidden="true">chevron_right</span>
+              </Link>
+              <Link href="/guides/pet-cpr" className="flex items-center justify-between p-4 rounded-xl border border-gray-100 dark:border-slate-700 hover:border-[#137fec]">
+                <span className="font-semibold text-[#0d141b] dark:text-white">Pet CPR essentials</span>
+                <span className="material-symbols-outlined text-[#137fec]" aria-hidden="true">chevron_right</span>
+              </Link>
+              <Link href="/guides/transport-to-vet" className="flex items-center justify-between p-4 rounded-xl border border-gray-100 dark:border-slate-700 hover:border-[#137fec]">
+                <span className="font-semibold text-[#0d141b] dark:text-white">Safe transport to the vet</span>
+                <span className="material-symbols-outlined text-[#137fec]" aria-hidden="true">chevron_right</span>
+              </Link>
+              <Link href="/guides/poison-ingestion" className="flex items-center justify-between p-4 rounded-xl border border-gray-100 dark:border-slate-700 hover:border-[#137fec]">
+                <span className="font-semibold text-[#0d141b] dark:text-white">Poison ingestion steps</span>
+                <span className="material-symbols-outlined text-[#137fec]" aria-hidden="true">chevron_right</span>
+              </Link>
+              <Link href="/guides/what-to-expect-at-triage" className="flex items-center justify-between p-4 rounded-xl border border-gray-100 dark:border-slate-700 hover:border-[#137fec]">
+                <span className="font-semibold text-[#0d141b] dark:text-white">What happens at triage</span>
+                <span className="material-symbols-outlined text-[#137fec]" aria-hidden="true">chevron_right</span>
+              </Link>
+            </div>
+          </section>
 
           {/* H2: Emergency Veterinary Services */}
           <section className="mb-10">

@@ -20,7 +20,11 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     { url: `${BASE_URL}/locations`, changeFrequency: 'weekly', priority: 0.8 },
     { url: `${BASE_URL}/triage`, changeFrequency: 'monthly', priority: 0.7 },
     { url: `${BASE_URL}/costs`, changeFrequency: 'monthly', priority: 0.6 },
-    { url: `${BASE_URL}/new-york`, changeFrequency: 'weekly', priority: 0.9 },
+    { url: `${BASE_URL}/guides/triage`, changeFrequency: 'monthly', priority: 0.7 },
+    { url: `${BASE_URL}/guides/pet-cpr`, changeFrequency: 'monthly', priority: 0.7 },
+    { url: `${BASE_URL}/guides/transport-to-vet`, changeFrequency: 'monthly', priority: 0.7 },
+    { url: `${BASE_URL}/guides/poison-ingestion`, changeFrequency: 'monthly', priority: 0.7 },
+    { url: `${BASE_URL}/guides/what-to-expect-at-triage`, changeFrequency: 'monthly', priority: 0.7 },
   ]
 
   // Fetch all cities
@@ -39,27 +43,16 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
     statesWithCities.add(city.state)
 
-    if (city.state === 'NY') {
-      // NY uses /new-york/{slug}
-      cityPages.push({
-        url: `${BASE_URL}/new-york/${city.slug}`,
-        changeFrequency: 'weekly',
-        priority: 0.8,
-      })
-    } else {
-      // Other states use /states/{state}/{slug}
-      cityPages.push({
-        url: `${BASE_URL}/states/${stateSlug}/${city.slug}`,
-        changeFrequency: 'weekly',
-        priority: 0.7,
-      })
-    }
+    cityPages.push({
+      url: `${BASE_URL}/states/${stateSlug}/${city.slug}`,
+      changeFrequency: 'weekly',
+      priority: 0.7,
+    })
   }
 
-  // State hub pages (excluding NY which is handled above as /new-york)
+  // State hub pages
   const statePages: MetadataRoute.Sitemap = []
   for (const stateAbbr of statesWithCities) {
-    if (stateAbbr === 'NY') continue
     const stateSlug = stateAbbrToSlug[stateAbbr]
     if (!stateSlug) continue
 
@@ -70,5 +63,16 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     })
   }
 
-  return [...staticPages, ...statePages, ...cityPages]
+  const { data: clinics } = await supabase
+    .from('clinics')
+    .select('slug')
+    .eq('is_active', true)
+
+  const clinicPages: MetadataRoute.Sitemap = (clinics || []).map(clinic => ({
+    url: `${BASE_URL}/clinics/${clinic.slug}`,
+    changeFrequency: 'weekly',
+    priority: 0.6,
+  }))
+
+  return [...staticPages, ...statePages, ...cityPages, ...clinicPages]
 }

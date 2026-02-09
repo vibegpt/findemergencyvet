@@ -2,6 +2,12 @@
 
 :root {
   --primary: #137fec;
+  --ink: #0b1220;
+  --mist: #eef2f6;
+  --sun: #f7c948;
+  --navy: #0b1526;
+  --steel: #1f2a44;
+  --ice: #f4f7fb;
 }
 
 @theme inline {
@@ -11,6 +17,13 @@
 
 body {
   min-height: 100dvh;
+  font-family: var(--font-body), "Space Grotesk", "Segoe UI", sans-serif;
+  color: var(--ink);
+  background: var(--ice);
+}
+
+.font-display {
+  font-family: var(--font-display), "Fraunces", "Georgia", serif;
 }
 
 .material-symbols-outlined {
