@@ -51,7 +51,7 @@ export default async function CityPageWrapper({
   // Fetch clinics with additional fields
   const { data: clinics } = await supabase
     .from('clinics')
-    .select('id, slug, name, address, city, state, zip_code, phone, latitude, longitude, is_24_7, current_status, has_exotic_specialist, google_rating, google_review_count, exotic_pets_accepted, availability_type, accepts_walk_ins, requires_call_ahead, parking_type, wheelchair_accessible, has_separate_cat_entrance, has_isolation_rooms')
+    .select('id, slug, name, address, city, state, zip_code, phone, latitude, longitude, is_24_7, current_status, verification_status, has_exotic_specialist, google_rating, google_review_count, exotic_pets_accepted, availability_type, accepts_walk_ins, requires_call_ahead, parking_type, wheelchair_accessible, has_separate_cat_entrance, has_isolation_rooms')
     .eq('city', city.name)
     .eq('state', city.state)
     .eq('is_active', true)

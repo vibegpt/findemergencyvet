@@ -16,6 +16,7 @@ type Clinic = {
   longitude: number | null
   is_24_7: boolean
   current_status: string
+  verification_status?: string | null
   has_exotic_specialist: boolean
   google_rating: number | null
   google_review_count: number | null
@@ -38,6 +39,45 @@ type City = {
   clinic_count: number
 }
 
+type FilterKey = 'all' | '24_7' | 'walk_ins' | 'exotic'
+
+const filters: { key: FilterKey; label: string }[] = [
+  { key: 'all', label: 'All' },
+  { key: '24_7', label: 'Open 24/7' },
+  { key: 'walk_ins', label: 'Walk-ins OK' },
+  { key: 'exotic', label: 'Exotic Pets' },
+]
+
+/* ── FAQ data (city-generic, used for FAQPage schema + accordions) ── */
+
+function getFaqs(cityName: string, state: string, count24_7: number) {
+  const has24_7 = count24_7 > 0
+  return [
+    {
+      question: `Is there a 24-hour emergency vet in ${cityName}?`,
+      answer: has24_7
+        ? `Yes. ${cityName}, ${state} has ${count24_7} true 24/7 emergency veterinary ${count24_7 === 1 ? 'hospital' : 'hospitals'} with on-site staff around the clock. These facilities are listed first on this page with a green "Open 24/7" badge.`
+        : `${cityName}, ${state} does not currently have a true 24/7 emergency vet. The area is served by after-hours emergency clinics with specific evening, overnight, and weekend schedules. Always call ahead to confirm availability.`,
+    },
+    {
+      question: `How much does an emergency vet visit cost in ${cityName}?`,
+      answer: `Emergency vet exam fees in ${cityName} typically range from $125–$500 for the initial consultation, depending on the facility and time of visit. Total costs including diagnostics and treatment can range from $200–$5,000+. Most clinics accept credit cards and CareCredit. Ask about payment options before treatment begins.`,
+    },
+    {
+      question: 'How do I know if my pet needs emergency care?',
+      answer: 'Seek immediate veterinary care if your pet shows: difficulty breathing, severe bleeding, collapse or inability to stand, seizures lasting more than 2 minutes, suspected poisoning, bloated or distended abdomen, inability to urinate, or trauma from a fall or vehicle accident.',
+    },
+    {
+      question: 'Do emergency vets accept walk-ins?',
+      answer: 'Most emergency veterinary clinics accept walk-ins for true emergencies, but calling ahead helps them prepare for your arrival and may reduce wait times. In life-threatening situations, go directly to the nearest facility.',
+    },
+    {
+      question: `What should I bring to an emergency vet in ${cityName}?`,
+      answer: "Bring your pet's medical records or medication list if available, a form of payment (credit card, CareCredit), any substance your pet may have ingested, and a carrier or leash. If your pet is injured, use a blanket or towel for safe transport.",
+    },
+  ]
+}
+
 export default function CityPage({
   city,
   allClinics,
@@ -47,116 +87,132 @@ export default function CityPage({
   allClinics: Clinic[]
   nearbyCities?: City[]
 }) {
-  const [filter24_7, setFilter24_7] = useState(false)
-  const [filterExotic, setFilterExotic] = useState(false)
+  const [activeFilter, setActiveFilter] = useState<FilterKey>('all')
 
-  // Apply filters
   const filteredClinics = allClinics.filter(clinic => {
-    if (filter24_7 && !clinic.is_24_7) return false
-    if (filterExotic && !clinic.has_exotic_specialist) return false
+    if (activeFilter === '24_7') return clinic.is_24_7
+    if (activeFilter === 'walk_ins') return clinic.accepts_walk_ins
+    if (activeFilter === 'exotic') return clinic.has_exotic_specialist
     return true
   })
 
   const count24_7 = allClinics.filter(c => c.is_24_7).length
+  const faqs = getFaqs(city.name, city.state, count24_7)
+
+  // FAQPage JSON-LD
+  const faqSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: faqs.map(faq => ({
+      '@type': 'Question',
+      name: faq.question,
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: faq.answer,
+      },
+    })),
+  }
 
   return (
-    <div className="min-h-screen bg-[#f6f7f8] dark:bg-[#101922]">
-      {/* Skip Link */}
-      <a href="#clinics" className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:px-4 focus:py-2 focus:bg-[#137fec] focus:text-white focus:rounded-lg">
+    <div className="min-h-screen bg-white dark:bg-[#1d1d1f]">
+      {/* FAQPage Schema */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
+
+      {/* Skip link */}
+      <a href="#clinics" className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:px-4 focus:py-2 focus:bg-[#1d1d1f] focus:text-white focus:rounded-lg">
         Skip to clinic listings
       </a>
 
-      {/* Emergency Banner */}
-      <div className="bg-red-600 text-white py-2 px-4 text-center text-sm font-bold">
-        <span className="material-symbols-outlined text-sm align-middle mr-1" aria-hidden="true">emergency</span>
-        CRITICAL EMERGENCY?
-        <a href="#emergency-signs" className="underline ml-2 focus:ring-2 focus:ring-white">
-          Check symptoms below
-        </a>
-      </div>
-
-      {/* Navigation */}
-      <nav className="sticky top-0 z-50 bg-[#f6f7f8]/80 dark:bg-[#101922]/80 backdrop-blur-md border-b border-gray-200 dark:border-gray-800">
-        <div className="flex items-center p-4 justify-between max-w-3xl mx-auto">
-          <Link href="/" className="flex items-center gap-2 focus:ring-2 focus:ring-[#137fec] rounded">
-            <span className="material-symbols-outlined text-[#137fec] text-2xl" aria-hidden="true">medical_services</span>
-            <span className="text-[#0d141b] dark:text-white font-bold hidden sm:inline">FindEmergencyVet.com</span>
+      {/* ── Navigation ── */}
+      <nav className="fixed top-0 left-0 right-0 h-[52px] bg-white/80 dark:bg-[#1d1d1f]/80 backdrop-blur-xl backdrop-saturate-[180%] z-50 border-b border-black/[0.08] dark:border-white/[0.08]">
+        <div className="max-w-3xl mx-auto h-full flex items-center justify-between px-6">
+          <Link href="/" className="text-lg font-semibold tracking-tight text-[#1d1d1f] dark:text-white">
+            Find<span className="text-[#ff3b30]">Emergency</span>Vet
           </Link>
-          <Link
-            href="/triage"
-            className="flex items-center gap-1 px-3 py-2 rounded-lg bg-red-100 dark:bg-red-900/30 text-red-600 dark:text-red-400 text-sm font-bold hover:bg-red-200 dark:hover:bg-red-900/50 focus:ring-2 focus:ring-red-500"
-          >
-            <span className="material-symbols-outlined text-[18px]" aria-hidden="true">emergency</span>
-            Triage
-          </Link>
+          <div className="flex items-center gap-4">
+            <Link href="/guides" className="text-sm text-[#6e6e73] hover:text-[#1d1d1f] dark:hover:text-white transition-colors hidden sm:block">
+              Resources
+            </Link>
+            <Link href="/locations" className="text-sm text-[#6e6e73] hover:text-[#1d1d1f] dark:hover:text-white transition-colors hidden sm:block">
+              All Locations
+            </Link>
+          </div>
         </div>
       </nav>
 
-      <main className="max-w-3xl mx-auto">
-        {/* HERO - Above the Fold */}
-        <header className="bg-gradient-to-r from-[#137fec] to-[#0d5bbd] px-6 py-8 md:py-12">
-          <div className="flex flex-col gap-4">
-          <h1 className="text-white text-2xl md:text-4xl font-black leading-tight font-display">
-            24 Hour Emergency Vet in {city.name}, {city.state}
+      <main className="max-w-3xl mx-auto pt-[52px]">
+        {/* ── Hero ── */}
+        <header className="px-6 pt-12 pb-8">
+          <div className="flex items-center gap-2 text-sm text-[#6e6e73] mb-6">
+            <Link href="/" className="hover:text-[#1d1d1f] dark:hover:text-white transition-colors">Home</Link>
+            <span>/</span>
+            <Link href="/locations" className="hover:text-[#1d1d1f] dark:hover:text-white transition-colors">Locations</Link>
+            <span>/</span>
+            <span className="text-[#1d1d1f] dark:text-white font-medium">{city.name}, {city.state}</span>
+          </div>
+
+          <h1 className="font-display text-3xl md:text-4xl font-semibold tracking-tight text-[#1d1d1f] dark:text-white leading-tight mb-4">
+            Emergency Vets in {city.name}, {city.state}
           </h1>
-            <p className="text-white/90 text-base md:text-lg">
-              If your pet needs urgent medical care in {city.name}, use the list below to find open emergency vets and animal hospitals right now.
-            </p>
-            <a
-              href="#clinics"
-              className="inline-flex items-center justify-center gap-2 w-fit px-6 py-3 bg-white text-[#137fec] font-bold rounded-lg hover:bg-gray-100 focus:ring-2 focus:ring-white shadow-lg"
-            >
-              <span className="material-symbols-outlined text-[20px]" aria-hidden="true">search</span>
-              Find Open Emergency Vets Now
-            </a>
+
+          <p className="text-[#6e6e73] text-base md:text-lg leading-relaxed max-w-xl">
+            {count24_7 > 0
+              ? `${count24_7} true 24/7 ${count24_7 === 1 ? 'facility' : 'facilities'} with on-site staff. ${allClinics.length} total emergency options.`
+              : `${allClinics.length} emergency veterinary ${allClinics.length === 1 ? 'clinic' : 'clinics'} serving ${city.name}. Call ahead to confirm availability.`
+            }
+          </p>
+
+          {/* Trust indicators */}
+          <div className="flex flex-wrap gap-x-6 gap-y-2 mt-6 text-sm text-[#86868b]">
+            <span className="flex items-center gap-1.5">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" width="16" height="16">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12c0 1.268-.63 2.39-1.593 3.068a3.745 3.745 0 01-1.043 3.296 3.745 3.745 0 01-3.296 1.043A3.745 3.745 0 0112 21c-1.268 0-2.39-.63-3.068-1.593a3.746 3.746 0 01-3.296-1.043 3.745 3.745 0 01-1.043-3.296A3.745 3.745 0 013 12c0-1.268.63-2.39 1.593-3.068a3.745 3.745 0 011.043-3.296 3.746 3.746 0 013.296-1.043A3.746 3.746 0 0112 3c1.268 0 2.39.63 3.068 1.593a3.746 3.746 0 013.296 1.043 3.746 3.746 0 011.043 3.296A3.745 3.745 0 0121 12z" />
+              </svg>
+              Verified hours
+            </span>
+            <span className="flex items-center gap-1.5">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" width="16" height="16">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+              True 24/7 vs after-hours
+            </span>
+            <span className="flex items-center gap-1.5">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" width="16" height="16">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z" />
+              </svg>
+              Direct phone numbers
+            </span>
           </div>
         </header>
 
-        {/* EMERGENCY DISCLAIMER */}
-        <section className="bg-red-50 dark:bg-red-900/20 border-l-4 border-red-500 px-4 py-3 mx-4 mt-4 rounded-r-lg">
-          <p className="text-red-800 dark:text-red-200 text-sm flex items-start gap-2">
-            <span className="material-symbols-outlined text-red-500 text-[20px] shrink-0 mt-0.5" aria-hidden="true">warning</span>
-            <span>
-              <strong>Warning:</strong> If your pet is experiencing severe bleeding, difficulty breathing, seizures, or collapse, contact an emergency veterinarian immediately before traveling.
-            </span>
-          </p>
-        </section>
-
-        {/* FILTER CHIPS */}
-        <div className="flex gap-2 px-4 py-4 overflow-x-auto" role="group" aria-label="Filter clinics">
-          <button
-            onClick={() => setFilter24_7(!filter24_7)}
-            className={`flex h-10 shrink-0 items-center gap-2 rounded-full px-4 border-2 font-bold text-sm focus:outline-none focus:ring-2 focus:ring-[#137fec] transition-colors ${
-              filter24_7
-                ? 'bg-[#137fec] text-white border-[#137fec]'
-                : 'bg-white dark:bg-slate-800 text-[#0d141b] dark:text-white border-gray-200 dark:border-slate-700 hover:border-[#137fec]'
-            }`}
-            aria-pressed={filter24_7}
-          >
-            24/7 Only ({count24_7})
-            {filter24_7 && <span className="material-symbols-outlined text-[16px]" aria-hidden="true">check</span>}
-          </button>
-          <button
-            onClick={() => setFilterExotic(!filterExotic)}
-            className={`flex h-10 shrink-0 items-center gap-2 rounded-full px-4 border-2 font-bold text-sm focus:outline-none focus:ring-2 focus:ring-purple-500 transition-colors ${
-              filterExotic
-                ? 'bg-purple-600 text-white border-purple-600'
-                : 'bg-white dark:bg-slate-800 text-[#0d141b] dark:text-white border-gray-200 dark:border-slate-700 hover:border-purple-500'
-            }`}
-            aria-pressed={filterExotic}
-          >
-            Exotic Pets
-            {filterExotic && <span className="material-symbols-outlined text-[16px]" aria-hidden="true">check</span>}
-          </button>
+        {/* ── Filter Chips ── */}
+        <div className="sticky top-[52px] z-40 bg-white/80 dark:bg-[#1d1d1f]/80 backdrop-blur-xl backdrop-saturate-[180%] border-b border-black/[0.08] dark:border-white/[0.08]">
+          <div className="flex gap-2 px-6 py-3 overflow-x-auto hide-scrollbar" role="group" aria-label="Filter clinics">
+            {filters.map(f => (
+              <button
+                key={f.key}
+                onClick={() => setActiveFilter(f.key)}
+                className={`shrink-0 px-4 py-2 rounded-full text-sm font-medium transition-all ${
+                  activeFilter === f.key
+                    ? 'bg-[#1d1d1f] dark:bg-white text-white dark:text-[#1d1d1f]'
+                    : 'bg-[#f5f5f7] dark:bg-[#2d2d2f] text-[#6e6e73] hover:text-[#1d1d1f] dark:hover:text-white'
+                }`}
+                aria-pressed={activeFilter === f.key}
+              >
+                {f.label}
+                {f.key === '24_7' && ` (${count24_7})`}
+              </button>
+            ))}
+          </div>
         </div>
 
-        {/* CLINIC DIRECTORY */}
-        <section id="clinics" className="px-4 pb-6">
-          <h2 className="text-[#0d141b] dark:text-white text-xl font-bold mb-1">
-            Emergency Veterinary Clinics Near {city.name}
-          </h2>
-          <p className="text-gray-600 dark:text-gray-400 text-sm mb-4">
-            {filteredClinics.length} clinic{filteredClinics.length !== 1 ? 's' : ''} available
+        {/* ── Clinic Listings ── */}
+        <section id="clinics" className="px-6 py-8">
+          <p className="text-sm text-[#86868b] mb-6">
+            Showing {filteredClinics.length} of {allClinics.length} {allClinics.length === 1 ? 'clinic' : 'clinics'}
           </p>
 
           <div className="space-y-4">
@@ -165,169 +221,174 @@ export default function CityPage({
             ))}
           </div>
 
-          {/* Coming Soon - No clinics in database yet */}
+          {/* No clinics at all */}
           {allClinics.length === 0 && (
-            <div className="bg-[#137fec]/5 dark:bg-[#137fec]/10 border-2 border-dashed border-[#137fec]/30 rounded-xl p-8 text-center">
-              <span className="material-symbols-outlined text-5xl text-[#137fec] mb-4" aria-hidden="true">add_location</span>
-              <h3 className="text-xl font-bold text-[#0d141b] dark:text-white mb-2">Coming Soon</h3>
-              <p className="text-gray-600 dark:text-gray-400 text-sm mb-4 max-w-md mx-auto">
-                We're actively adding emergency veterinary clinics in {city.name}, {city.state}.
-                In the meantime, try searching Google Maps or call a nearby city's emergency vet.
+            <div className="border-2 border-dashed border-[#d2d2d7] dark:border-[#2d2d2f] rounded-2xl p-10 text-center">
+              <h3 className="text-xl font-semibold text-[#1d1d1f] dark:text-white mb-2">Coming Soon</h3>
+              <p className="text-[#6e6e73] text-sm mb-6 max-w-md mx-auto">
+                We&apos;re adding emergency veterinary clinics in {city.name}, {city.state}.
+                In the meantime, try searching Google Maps.
               </p>
-              <div className="flex flex-col sm:flex-row gap-3 justify-center">
-                <a
-                  href={`https://www.google.com/maps/search/emergency+vet+${encodeURIComponent(city.name + ' ' + city.state)}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center justify-center gap-2 px-4 py-2 bg-white dark:bg-slate-800 border-2 border-gray-200 dark:border-slate-700 text-[#0d141b] dark:text-white font-bold rounded-lg hover:border-[#137fec]"
-                >
-                  <span className="material-symbols-outlined text-[18px]" aria-hidden="true">map</span>
-                  Search Google Maps
-                </a>
-                <Link
-                  href="/register"
-                  className="inline-flex items-center justify-center gap-2 px-4 py-2 bg-[#137fec] text-white font-bold rounded-lg hover:bg-[#137fec]/90"
-                >
-                  <span className="material-symbols-outlined text-[18px]" aria-hidden="true">add_business</span>
-                  Register Your Clinic
-                </Link>
-              </div>
+              <a
+                href={`https://www.google.com/maps/search/emergency+vet+${encodeURIComponent(city.name + ' ' + city.state)}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 px-5 py-2.5 bg-[#f5f5f7] dark:bg-[#2d2d2f] text-[#1d1d1f] dark:text-white font-medium rounded-xl hover:bg-[#d2d2d7] dark:hover:bg-[#3d3d3f] transition-colors"
+              >
+                Search Google Maps
+              </a>
             </div>
           )}
 
-          {/* Filtered results empty */}
+          {/* Filter empty state */}
           {allClinics.length > 0 && filteredClinics.length === 0 && (
-            <div className="bg-gray-100 dark:bg-slate-800 rounded-xl p-8 text-center">
-              <span className="material-symbols-outlined text-5xl text-gray-400 mb-4" aria-hidden="true">search_off</span>
-              <h3 className="text-lg font-bold text-gray-700 dark:text-gray-300 mb-2">No clinics match your filters</h3>
+            <div className="bg-[#f5f5f7] dark:bg-[#2d2d2f] rounded-2xl p-10 text-center">
+              <h3 className="text-lg font-semibold text-[#1d1d1f] dark:text-white mb-2">No clinics match this filter</h3>
+              <p className="text-[#6e6e73] text-sm mb-4">Try a different filter to see more results.</p>
               <button
-                onClick={() => { setFilter24_7(false); setFilterExotic(false); }}
-                className="px-6 py-2 bg-[#137fec] text-white font-bold rounded-lg hover:bg-[#137fec]/90"
+                onClick={() => setActiveFilter('all')}
+                className="px-5 py-2.5 bg-[#1d1d1f] dark:bg-white text-white dark:text-[#1d1d1f] font-medium rounded-xl hover:opacity-90 transition-opacity"
               >
-                Clear Filters
+                Show All Clinics
               </button>
             </div>
           )}
         </section>
 
-        {/* WHEN IS IT AN EMERGENCY? */}
-        <section id="emergency-signs" className="px-4 py-6 bg-white dark:bg-slate-800 border-y border-gray-100 dark:border-slate-700">
-          <h2 className="text-[#0d141b] dark:text-white text-xl font-bold mb-4">
-            When to Visit an Emergency Vet
-          </h2>
-          <ul className="space-y-2 text-gray-700 dark:text-gray-300 text-sm mb-4">
-            <li className="flex items-start gap-2">
-              <span className="material-symbols-outlined text-red-500 text-[18px] mt-0.5" aria-hidden="true">emergency</span>
-              Difficulty breathing or choking
-            </li>
-            <li className="flex items-start gap-2">
-              <span className="material-symbols-outlined text-red-500 text-[18px] mt-0.5" aria-hidden="true">emergency</span>
-              Severe bleeding or trauma
-            </li>
-            <li className="flex items-start gap-2">
-              <span className="material-symbols-outlined text-red-500 text-[18px] mt-0.5" aria-hidden="true">emergency</span>
-              Seizures or loss of consciousness
-            </li>
-            <li className="flex items-start gap-2">
-              <span className="material-symbols-outlined text-red-500 text-[18px] mt-0.5" aria-hidden="true">emergency</span>
-              Sudden paralysis or collapse
-            </li>
-            <li className="flex items-start gap-2">
-              <span className="material-symbols-outlined text-red-500 text-[18px] mt-0.5" aria-hidden="true">emergency</span>
-              Ingestion of toxic substances
-            </li>
-          </ul>
-          <p className="text-gray-600 dark:text-gray-400 text-sm">
-            If you are unsure, it is always safer to call an emergency veterinary clinic for guidance.
-          </p>
-          <Link
-            href="/triage"
-            className="inline-flex items-center gap-2 mt-4 px-4 py-2 bg-red-600 text-white font-bold rounded-lg hover:bg-red-700 focus:ring-2 focus:ring-red-500"
-          >
-            <span className="material-symbols-outlined text-[18px]" aria-hidden="true">medical_information</span>
-            Use Quick Triage Tool
-          </Link>
-        </section>
-
-        {/* CITY CONTEXT */}
-        <section className="px-4 py-6">
-          <h2 className="text-[#0d141b] dark:text-white text-xl font-bold mb-3">
-            Emergency Vet Care in {city.name}, {city.state}
-          </h2>
-          <p className="text-gray-700 dark:text-gray-300 text-sm leading-relaxed">
-            Emergency veterinary services in {city.name} provide urgent care for pets outside of regular clinic hours.
-            Availability may vary on holidays and overnight, so calling ahead is strongly recommended.
-            Most clinics accept walk-ins for true emergencies, but wait times can be significant during peak hours.
-          </p>
-        </section>
-
-        {/* INTERNAL LINKING */}
-        <section className="px-4 py-6 bg-gray-50 dark:bg-slate-800/50 border-t border-gray-100 dark:border-slate-700">
-          <h3 className="text-[#0d141b] dark:text-white text-lg font-bold mb-3">
-            Nearby Emergency Vet Locations
-          </h3>
-          {nearbyCities.length > 0 ? (
-            <ul className="space-y-2 mb-4">
-              {nearbyCities.map(nearbyCity => (
-                <li key={nearbyCity.id}>
-                  <Link
-                    href={`/locations/${nearbyCity.state.toLowerCase()}/${nearbyCity.slug}`}
-                    className="text-[#137fec] hover:underline focus:ring-2 focus:ring-[#137fec] rounded"
-                  >
-                    Emergency Vet in {nearbyCity.name}, {nearbyCity.state}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          ) : (
-            <p className="text-gray-600 dark:text-gray-400 text-sm mb-4">More locations coming soon.</p>
-          )}
-          <div className="space-y-2">
-            <Link
-              href={`/locations/${city.state.toLowerCase()}`}
-              className="block text-[#137fec] hover:underline focus:ring-2 focus:ring-[#137fec] rounded"
-            >
-              View all emergency vets in {city.state}
-            </Link>
-            <Link
-              href="/triage"
-              className="block text-[#137fec] hover:underline focus:ring-2 focus:ring-[#137fec] rounded"
-            >
-              What to Do in a Pet Emergency
-            </Link>
+        {/* ── ASPCA Poison Control Banner ── */}
+        <section className="mx-6 mb-8 bg-amber-50 dark:bg-amber-900/20 border border-amber-200 dark:border-amber-800 rounded-2xl p-5">
+          <div className="flex items-start gap-3">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" width="22" height="22" className="text-amber-600 shrink-0 mt-0.5">
+              <path strokeLinecap="round" strokeLinejoin="round" d="M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126zM12 15.75h.007v.008H12v-.008z" />
+            </svg>
+            <div>
+              <p className="text-amber-900 dark:text-amber-200 text-sm font-semibold mb-1">
+                Think your pet was poisoned?
+              </p>
+              <p className="text-amber-800 dark:text-amber-300 text-sm">
+                Call the ASPCA Animal Poison Control Center:{' '}
+                <a href="tel:8884264435" className="font-bold underline whitespace-nowrap">(888) 426-4435</a>
+                <span className="text-amber-600 dark:text-amber-400 text-xs ml-1">(consultation fee may apply)</span>
+              </p>
+            </div>
           </div>
         </section>
 
-        {/* FOOTER DISCLAIMER */}
-        <footer className="px-4 py-6 text-center">
-          <p className="text-gray-500 dark:text-gray-400 text-xs leading-relaxed">
-            FindEmergencyVet.com is an independent directory. Availability and hours may change.
-            Always call the clinic to confirm emergency services before traveling.
+        {/* ── Emergency Signs ── */}
+        <section className="px-6 py-8 border-t border-[#d2d2d7]/50 dark:border-[#2d2d2f]">
+          <h2 className="text-[#1d1d1f] dark:text-white text-xl font-semibold mb-4">
+            When to Visit an Emergency Vet
+          </h2>
+          <ul className="space-y-2.5 text-sm text-[#6e6e73] dark:text-[#86868b]">
+            {[
+              'Difficulty breathing or choking',
+              'Severe bleeding or open wounds',
+              'Seizures or loss of consciousness',
+              'Sudden collapse or inability to stand',
+              'Suspected poisoning or toxin ingestion',
+              'Bloated, distended, or painful abdomen',
+            ].map(item => (
+              <li key={item} className="flex items-center gap-2.5">
+                <span className="w-1.5 h-1.5 rounded-full bg-[#ff3b30] shrink-0" />
+                {item}
+              </li>
+            ))}
+          </ul>
+        </section>
+
+        {/* ── FAQ Section (with schema) ── */}
+        <section className="px-6 py-8 bg-[#f5f5f7] dark:bg-[#0d0d0d] border-t border-[#d2d2d7]/50 dark:border-[#2d2d2f]">
+          <h2 className="text-[#1d1d1f] dark:text-white text-xl font-semibold mb-6 text-center">
+            Frequently Asked Questions
+          </h2>
+          <div className="space-y-3 max-w-2xl mx-auto">
+            {faqs.map((faq, i) => (
+              <details
+                key={i}
+                className="group bg-white dark:bg-[#1d1d1f] border border-[#d2d2d7] dark:border-[#2d2d2f] rounded-xl overflow-hidden"
+              >
+                <summary className="flex items-center justify-between p-4 cursor-pointer list-none hover:bg-[#f5f5f7] dark:hover:bg-[#2d2d2f] transition-colors select-none">
+                  <h3 className="font-medium text-[#1d1d1f] dark:text-white pr-4 text-sm">
+                    {faq.question}
+                  </h3>
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" width="18" height="18" className="text-[#86868b] shrink-0 group-open:rotate-180 transition-transform">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
+                  </svg>
+                </summary>
+                <div className="px-4 pb-4 text-sm text-[#6e6e73] dark:text-[#86868b] leading-relaxed border-t border-[#d2d2d7]/50 dark:border-[#2d2d2f] pt-3">
+                  {faq.answer}
+                </div>
+              </details>
+            ))}
+          </div>
+        </section>
+
+        {/* ── Nearby Cities ── */}
+        <section className="px-6 py-8 border-t border-[#d2d2d7]/50 dark:border-[#2d2d2f]">
+          <h3 className="text-[#1d1d1f] dark:text-white text-lg font-semibold mb-4">
+            Nearby Emergency Vet Locations
+          </h3>
+          {nearbyCities.length > 0 ? (
+            <div className="flex flex-wrap gap-2 mb-4">
+              {nearbyCities.map(nearbyCity => (
+                <Link
+                  key={nearbyCity.id}
+                  href={`/locations/${nearbyCity.state.toLowerCase()}/${nearbyCity.slug}`}
+                  className="px-4 py-2 bg-[#f5f5f7] dark:bg-[#2d2d2f] text-[#6e6e73] hover:text-[#1d1d1f] dark:hover:text-white text-sm rounded-full transition-colors"
+                >
+                  {nearbyCity.name}, {nearbyCity.state}
+                </Link>
+              ))}
+            </div>
+          ) : (
+            <p className="text-[#86868b] text-sm mb-4">More locations coming soon.</p>
+          )}
+          <Link
+            href={`/locations/${city.state.toLowerCase()}`}
+            className="text-sm text-[#6e6e73] hover:text-[#1d1d1f] dark:hover:text-white transition-colors underline"
+          >
+            View all emergency vets in {city.state} &rarr;
+          </Link>
+        </section>
+
+        {/* ── Footer Disclaimer ── */}
+        <footer className="px-6 py-8 border-t border-[#d2d2d7]/50 dark:border-[#2d2d2f] text-center">
+          <p className="text-[#86868b] text-xs leading-relaxed max-w-lg mx-auto">
+            FindEmergencyVet.com is an independent directory. Availability and hours may change without notice.
+            Always call the clinic to confirm emergency services before traveling. Last verified February 2026.
+          </p>
+          <p className="text-[#86868b] text-xs mt-2">
+            &copy; 2026 FindEmergencyVet.com
           </p>
         </footer>
       </main>
 
-      {/* BOTTOM NAV - Mobile */}
-      <nav className="md:hidden fixed bottom-0 left-0 right-0 z-50 bg-white/90 dark:bg-slate-900/90 backdrop-blur-md border-t border-gray-200 dark:border-slate-800 px-6 py-3 flex justify-between items-center" aria-label="Bottom navigation">
-        <Link href="/" className="flex flex-col items-center gap-1 text-gray-400 hover:text-[#137fec] min-w-[48px] min-h-[48px] justify-center focus:ring-2 focus:ring-[#137fec] rounded">
-          <span className="material-symbols-outlined" aria-hidden="true">home</span>
-          <span className="text-[10px] font-bold">Home</span>
-        </Link>
-        <Link href="/triage" className="flex flex-col items-center gap-1 text-gray-400 hover:text-[#137fec] min-w-[48px] min-h-[48px] justify-center focus:ring-2 focus:ring-[#137fec] rounded">
-          <span className="material-symbols-outlined" aria-hidden="true">medical_information</span>
-          <span className="text-[10px] font-bold">Triage</span>
-        </Link>
-        <Link href="/costs" className="flex flex-col items-center gap-1 text-gray-400 hover:text-[#137fec] min-w-[48px] min-h-[48px] justify-center focus:ring-2 focus:ring-[#137fec] rounded">
-          <span className="material-symbols-outlined" aria-hidden="true">payments</span>
-          <span className="text-[10px] font-bold">Costs</span>
-        </Link>
-        <Link href="/locations" className="flex flex-col items-center gap-1 text-[#137fec] min-w-[48px] min-h-[48px] justify-center focus:ring-2 focus:ring-[#137fec] rounded">
-          <span className="material-symbols-outlined" style={{fontVariationSettings: "'FILL' 1"}} aria-hidden="true">map</span>
-          <span className="text-[10px] font-bold">Locations</span>
-        </Link>
+      {/* ── Mobile Bottom Nav ── */}
+      <nav className="md:hidden fixed bottom-0 left-0 right-0 z-50 bg-white/90 dark:bg-[#1d1d1f]/90 backdrop-blur-xl border-t border-black/[0.08] dark:border-white/[0.08] px-6 py-2.5 pb-[max(0.625rem,env(safe-area-inset-bottom))]" aria-label="Bottom navigation">
+        <div className="flex justify-around items-center max-w-md mx-auto">
+          <Link href="/" className="flex flex-col items-center gap-0.5 text-[#86868b] hover:text-[#1d1d1f] dark:hover:text-white min-w-[48px] min-h-[48px] justify-center transition-colors">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" width="24" height="24">
+              <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 12l8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25" />
+            </svg>
+            <span className="text-[10px] font-bold">Home</span>
+          </Link>
+          <Link href="/guides" className="flex flex-col items-center gap-0.5 text-[#86868b] hover:text-[#1d1d1f] dark:hover:text-white min-w-[48px] min-h-[48px] justify-center transition-colors">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" width="24" height="24">
+              <path strokeLinecap="round" strokeLinejoin="round" d="M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18a8.967 8.967 0 00-6 2.292m0-14.25v14.25" />
+            </svg>
+            <span className="text-[10px] font-bold">Guides</span>
+          </Link>
+          <Link href="/locations" className="flex flex-col items-center gap-0.5 text-[#ff3b30] min-w-[48px] min-h-[48px] justify-center">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="24" height="24">
+              <path fillRule="evenodd" d="M11.54 22.351l.07.04.028.016a.76.76 0 00.723 0l.028-.015.071-.041a16.975 16.975 0 001.144-.742 19.58 19.58 0 002.683-2.282c1.944-1.99 3.963-4.98 3.963-8.827a8.25 8.25 0 00-16.5 0c0 3.846 2.02 6.837 3.963 8.827a19.58 19.58 0 002.682 2.282 16.975 16.975 0 001.145.742zM12 13.5a3 3 0 100-6 3 3 0 000 6z" clipRule="evenodd" />
+            </svg>
+            <span className="text-[10px] font-bold">Locations</span>
+          </Link>
+        </div>
       </nav>
 
-      <div className="h-20 md:h-0"></div>
+      {/* Bottom nav spacer */}
+      <div className="h-20 md:h-0" />
     </div>
   )
 }
