@@ -122,7 +122,7 @@ export default function HomePage({
     if (cityMatch) {
       const slug = stateSlugByAbbr[cityMatch.state]
       if (slug) {
-        router.push(`/states/${slug}/${cityMatch.slug}`)
+        router.push(`/${slug}/${cityMatch.slug}`)
         return
       }
     }
@@ -132,7 +132,7 @@ export default function HomePage({
     )
     if (stateMatch) {
       const slug = stateSlugByAbbr[stateMatch[0]]
-      router.push(`/states/${slug}`)
+      router.push(`/${slug}`)
       return
     }
 
@@ -141,12 +141,12 @@ export default function HomePage({
 
   const navigateToCity = (city: City) => {
     const slug = stateSlugByAbbr[city.state]
-    if (slug) router.push(`/states/${slug}/${city.slug}`)
+    if (slug) router.push(`/${slug}/${city.slug}`)
   }
 
   const navigateToState = (abbr: string) => {
     const slug = stateSlugByAbbr[abbr]
-    if (slug) router.push(`/states/${slug}`)
+    if (slug) router.push(`/${slug}`)
   }
 
   return (
@@ -231,7 +231,7 @@ export default function HomePage({
             {quickLinkCities.map(city => (
               <Link
                 key={city.id}
-                href={`/states/${stateSlugByAbbr[city.state]}/${city.slug}`}
+                href={`/${stateSlugByAbbr[city.state]}/${city.slug}`}
                 className="quick-link"
               >
                 {city.name}, {city.state}
@@ -274,7 +274,7 @@ export default function HomePage({
           {stateStats.map((state, i) => (
             <Link
               key={state.abbr}
-              href={`/states/${state.slug}`}
+              href={`/${state.slug}`}
               className={`state-card${i < 2 ? ' featured' : ''}`}
             >
               <div className="state-name">{state.name}</div>
@@ -297,7 +297,7 @@ export default function HomePage({
           {popularCities.map(city => (
             <Link
               key={city.id}
-              href={`/states/${stateSlugByAbbr[city.state]}/${city.slug}`}
+              href={`/${stateSlugByAbbr[city.state]}/${city.slug}`}
               className="city-card"
             >
               <div className="city-header">
@@ -393,7 +393,7 @@ export default function HomePage({
             <ul>
               {stateStats.slice(0, 4).map(state => (
                 <li key={state.abbr}>
-                  <Link href={`/states/${state.slug}`}>{state.name}</Link>
+                  <Link href={`/${state.slug}`}>{state.name}</Link>
                 </li>
               ))}
             </ul>
