@@ -12,21 +12,18 @@ const nextConfig: NextConfig = {
   async redirects() {
     return [
       // ============================================
-      // NY hierarchical URL redirects
+      // NY-specific redirects (must be BEFORE generic)
       // ============================================
-      // State hub (old /states/ path)
       {
         source: '/states/new-york',
         destination: '/new-york',
         permanent: true,
       },
-      // Old /states/new-york/:city → new /new-york/:city
       {
         source: '/states/new-york/:city',
         destination: '/new-york/:city',
         permanent: true,
       },
-      // Old abbreviation redirects for NY
       {
         source: '/locations/ny/:city',
         destination: '/new-york/:city',
@@ -37,7 +34,7 @@ const nextConfig: NextConfig = {
         destination: '/new-york',
         permanent: true,
       },
-      // Old flat URLs → new hierarchical URLs
+      // Old flat NY URLs
       {
         source: '/westchester-ny',
         destination: '/new-york/westchester',
@@ -78,284 +75,303 @@ const nextConfig: NextConfig = {
         destination: '/new-york/ithaca',
         permanent: true,
       },
+
+      // ============================================
+      // Generic /states/ → / redirects (all states)
+      // NY is already handled above, so these catch the rest
+      // ============================================
+      {
+        source: '/states/:state/:city',
+        destination: '/:state/:city',
+        permanent: true,
+      },
+      {
+        source: '/states/:state',
+        destination: '/:state',
+        permanent: true,
+      },
+
+      // ============================================
+      // /locations/:abbr → /:state redirects
+      // ============================================
       {
         source: '/locations/ca/:city',
-        destination: '/states/california/:city',
+        destination: '/california/:city',
         permanent: true,
       },
       {
         source: '/locations/ca',
-        destination: '/states/california',
+        destination: '/california',
         permanent: true,
       },
       {
         source: '/locations/tx/:city',
-        destination: '/states/texas/:city',
+        destination: '/texas/:city',
         permanent: true,
       },
       {
         source: '/locations/tx',
-        destination: '/states/texas',
+        destination: '/texas',
         permanent: true,
       },
       {
         source: '/locations/fl/:city',
-        destination: '/states/florida/:city',
+        destination: '/florida/:city',
         permanent: true,
       },
       {
         source: '/locations/fl',
-        destination: '/states/florida',
+        destination: '/florida',
         permanent: true,
       },
       {
         source: '/locations/ga/:city',
-        destination: '/states/georgia/:city',
+        destination: '/georgia/:city',
         permanent: true,
       },
       {
         source: '/locations/ga',
-        destination: '/states/georgia',
+        destination: '/georgia',
         permanent: true,
       },
       {
         source: '/locations/va/:city',
-        destination: '/states/virginia/:city',
+        destination: '/virginia/:city',
         permanent: true,
       },
       {
         source: '/locations/va',
-        destination: '/states/virginia',
+        destination: '/virginia',
         permanent: true,
       },
       {
         source: '/locations/sc/:city',
-        destination: '/states/south-carolina/:city',
+        destination: '/south-carolina/:city',
         permanent: true,
       },
       {
         source: '/locations/sc',
-        destination: '/states/south-carolina',
+        destination: '/south-carolina',
         permanent: true,
       },
       {
         source: '/locations/nc/:city',
-        destination: '/states/north-carolina/:city',
+        destination: '/north-carolina/:city',
         permanent: true,
       },
       {
         source: '/locations/nc',
-        destination: '/states/north-carolina',
+        destination: '/north-carolina',
         permanent: true,
       },
       {
         source: '/locations/mn/:city',
-        destination: '/states/minnesota/:city',
+        destination: '/minnesota/:city',
         permanent: true,
       },
       {
         source: '/locations/mn',
-        destination: '/states/minnesota',
+        destination: '/minnesota',
         permanent: true,
       },
       {
         source: '/locations/mo/:city',
-        destination: '/states/missouri/:city',
+        destination: '/missouri/:city',
         permanent: true,
       },
       {
         source: '/locations/mo',
-        destination: '/states/missouri',
+        destination: '/missouri',
         permanent: true,
       },
       {
         source: '/locations/ms/:city',
-        destination: '/states/mississippi/:city',
+        destination: '/mississippi/:city',
         permanent: true,
       },
       {
         source: '/locations/ms',
-        destination: '/states/mississippi',
+        destination: '/mississippi',
         permanent: true,
       },
       {
         source: '/locations/mi/:city',
-        destination: '/states/michigan/:city',
+        destination: '/michigan/:city',
         permanent: true,
       },
       {
         source: '/locations/mi',
-        destination: '/states/michigan',
+        destination: '/michigan',
         permanent: true,
       },
       {
         source: '/locations/la/:city',
-        destination: '/states/louisiana/:city',
+        destination: '/louisiana/:city',
         permanent: true,
       },
       {
         source: '/locations/la',
-        destination: '/states/louisiana',
+        destination: '/louisiana',
         permanent: true,
       },
       {
         source: '/locations/or/:city',
-        destination: '/states/oregon/:city',
+        destination: '/oregon/:city',
         permanent: true,
       },
       {
         source: '/locations/or',
-        destination: '/states/oregon',
+        destination: '/oregon',
         permanent: true,
       },
       {
         source: '/locations/ia/:city',
-        destination: '/states/iowa/:city',
+        destination: '/iowa/:city',
         permanent: true,
       },
       {
         source: '/locations/ia',
-        destination: '/states/iowa',
+        destination: '/iowa',
         permanent: true,
       },
       {
         source: '/locations/al/:city',
-        destination: '/states/alabama/:city',
+        destination: '/alabama/:city',
         permanent: true,
       },
       {
         source: '/locations/al',
-        destination: '/states/alabama',
+        destination: '/alabama',
         permanent: true,
       },
       {
         source: '/locations/ar/:city',
-        destination: '/states/arkansas/:city',
+        destination: '/arkansas/:city',
         permanent: true,
       },
       {
         source: '/locations/ar',
-        destination: '/states/arkansas',
+        destination: '/arkansas',
         permanent: true,
       },
       {
         source: '/locations/tn/:city',
-        destination: '/states/tennessee/:city',
+        destination: '/tennessee/:city',
         permanent: true,
       },
       {
         source: '/locations/tn',
-        destination: '/states/tennessee',
+        destination: '/tennessee',
         permanent: true,
       },
       {
         source: '/locations/md/:city',
-        destination: '/states/maryland/:city',
+        destination: '/maryland/:city',
         permanent: true,
       },
       {
         source: '/locations/md',
-        destination: '/states/maryland',
+        destination: '/maryland',
         permanent: true,
       },
       {
         source: '/locations/wv/:city',
-        destination: '/states/west-virginia/:city',
+        destination: '/west-virginia/:city',
         permanent: true,
       },
       {
         source: '/locations/wv',
-        destination: '/states/west-virginia',
+        destination: '/west-virginia',
         permanent: true,
       },
       {
         source: '/locations/vt/:city',
-        destination: '/states/vermont/:city',
+        destination: '/vermont/:city',
         permanent: true,
       },
       {
         source: '/locations/vt',
-        destination: '/states/vermont',
+        destination: '/vermont',
         permanent: true,
       },
       {
         source: '/locations/nh/:city',
-        destination: '/states/new-hampshire/:city',
+        destination: '/new-hampshire/:city',
         permanent: true,
       },
       {
         source: '/locations/nh',
-        destination: '/states/new-hampshire',
+        destination: '/new-hampshire',
         permanent: true,
       },
       {
         source: '/locations/nj/:city',
-        destination: '/states/new-jersey/:city',
+        destination: '/new-jersey/:city',
         permanent: true,
       },
       {
         source: '/locations/nj',
-        destination: '/states/new-jersey',
+        destination: '/new-jersey',
         permanent: true,
       },
       {
         source: '/locations/ct/:city',
-        destination: '/states/connecticut/:city',
+        destination: '/connecticut/:city',
         permanent: true,
       },
       {
         source: '/locations/ct',
-        destination: '/states/connecticut',
+        destination: '/connecticut',
         permanent: true,
       },
       {
         source: '/locations/pa/:city',
-        destination: '/states/pennsylvania/:city',
+        destination: '/pennsylvania/:city',
         permanent: true,
       },
       {
         source: '/locations/pa',
-        destination: '/states/pennsylvania',
+        destination: '/pennsylvania',
         permanent: true,
       },
       {
         source: '/locations/me/:city',
-        destination: '/states/maine/:city',
+        destination: '/maine/:city',
         permanent: true,
       },
       {
         source: '/locations/me',
-        destination: '/states/maine',
+        destination: '/maine',
         permanent: true,
       },
       {
         source: '/locations/wi/:city',
-        destination: '/states/wisconsin/:city',
+        destination: '/wisconsin/:city',
         permanent: true,
       },
       {
         source: '/locations/wi',
-        destination: '/states/wisconsin',
+        destination: '/wisconsin',
         permanent: true,
       },
       {
         source: '/locations/ne/:city',
-        destination: '/states/nebraska/:city',
+        destination: '/nebraska/:city',
         permanent: true,
       },
       {
         source: '/locations/ne',
-        destination: '/states/nebraska',
+        destination: '/nebraska',
         permanent: true,
       },
       {
         source: '/locations/ok/:city',
-        destination: '/states/oklahoma/:city',
+        destination: '/oklahoma/:city',
         permanent: true,
       },
       {
         source: '/locations/ok',
-        destination: '/states/oklahoma',
+        destination: '/oklahoma',
         permanent: true,
       },
     ];
