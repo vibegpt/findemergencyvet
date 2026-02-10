@@ -4,6 +4,8 @@ import { Metadata } from 'next'
 import Link from 'next/link'
 import { stateNameBySlug, stateAbbrBySlug } from '@/lib/state-data'
 
+export const dynamic = 'force-dynamic'
+
 export async function generateMetadata({
   params,
 }: {

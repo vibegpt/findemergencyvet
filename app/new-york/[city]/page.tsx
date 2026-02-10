@@ -4,6 +4,8 @@ import { Metadata } from 'next'
 import Link from 'next/link'
 import ClinicCard from '@/components/clinic/ClinicCard'
 
+export const dynamic = 'force-dynamic'
+
 export async function generateMetadata({
   params,
 }: {

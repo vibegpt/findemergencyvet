@@ -4,6 +4,8 @@ import { Metadata } from 'next'
 import { stateNameBySlug, stateAbbrBySlug } from '@/lib/state-data'
 import StateCityPage from './page-client'
 
+export const dynamic = 'force-dynamic'
+
 export async function generateMetadata({
   params,
 }: {
