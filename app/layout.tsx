@@ -31,7 +31,7 @@ export default function RootLayout({
           rel="stylesheet"
         />
       </head>
-      <body className={`${bodyFont.variable} ${displayFont.variable} bg-[#f6f7f8] dark:bg-[#101922]`}>
+      <body className={`${bodyFont.variable} ${displayFont.variable} bg-[#f6f7f8]`}>
         {/* Google Analytics */}
         <Script
           src="https://www.googletagmanager.com/gtag/js?id=G-1ZWQKBJHXM"

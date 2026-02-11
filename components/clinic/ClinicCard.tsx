@@ -129,10 +129,10 @@ export default function ClinicCard({ clinic }: { clinic: Clinic }) {
   const mapsUrl = `https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(fullAddress)}`
 
   return (
-    <article className="bg-white dark:bg-[#1d1d1f] border border-[#d2d2d7] dark:border-[#2d2d2f] rounded-2xl p-5 transition-shadow hover:shadow-lg">
+    <article className="bg-white border border-[#d2d2d7] rounded-2xl p-5 transition-shadow hover:shadow-lg">
       {/* Row 1: Name + Status Badge */}
       <div className="flex items-start justify-between gap-3 mb-3">
-        <h3 className="text-[#1d1d1f] dark:text-white text-lg font-semibold leading-snug">
+        <h3 className="text-[#1d1d1f] text-lg font-semibold leading-snug">
           {clinic.name}
         </h3>
         <StatusBadge clinic={clinic} />
@@ -145,7 +145,7 @@ export default function ClinicCard({ clinic }: { clinic: Clinic }) {
           href={mapsUrl}
           target="_blank"
           rel="noopener noreferrer"
-          className="text-sm text-[#6e6e73] dark:text-[#86868b] hover:text-[#1d1d1f] dark:hover:text-white transition-colors"
+          className="text-sm text-[#6e6e73] hover:text-[#1d1d1f] transition-colors"
         >
           {fullAddress}
         </a>
@@ -154,34 +154,34 @@ export default function ClinicCard({ clinic }: { clinic: Clinic }) {
       {/* Row 3: Hours */}
       <div className="flex items-start gap-2 mb-4">
         <ClockIcon className="text-[#86868b] shrink-0 mt-0.5" />
-        <span className="text-sm text-[#6e6e73] dark:text-[#86868b]">{hoursText}</span>
+        <span className="text-sm text-[#6e6e73]">{hoursText}</span>
       </div>
 
       {/* Row 4: Feature Badges */}
       <div className="flex flex-wrap gap-2 mb-4">
         {clinic.is_24_7 && (
-          <span className="inline-flex items-center gap-1 bg-green-50 dark:bg-green-900/20 text-green-700 dark:text-green-400 text-xs font-semibold px-2.5 py-1 rounded-full">
+          <span className="inline-flex items-center gap-1 bg-green-50 text-green-700 text-xs font-semibold px-2.5 py-1 rounded-full">
             True 24/7
           </span>
         )}
         {clinic.verification_status === 'verified' && (
-          <span className="inline-flex items-center gap-1 bg-blue-50 dark:bg-blue-900/20 text-blue-600 dark:text-blue-400 text-xs font-semibold px-2.5 py-1 rounded-full">
+          <span className="inline-flex items-center gap-1 bg-blue-50 text-blue-600 text-xs font-semibold px-2.5 py-1 rounded-full">
             <CheckBadgeIcon />
             Verified
           </span>
         )}
         {clinic.accepts_walk_ins && (
-          <span className="inline-flex items-center gap-1 bg-teal-50 dark:bg-teal-900/20 text-teal-700 dark:text-teal-400 text-xs font-semibold px-2.5 py-1 rounded-full">
+          <span className="inline-flex items-center gap-1 bg-teal-50 text-teal-700 text-xs font-semibold px-2.5 py-1 rounded-full">
             Walk-ins Welcome
           </span>
         )}
         {clinic.has_exotic_specialist && (
-          <span className="inline-flex items-center gap-1 bg-purple-50 dark:bg-purple-900/20 text-purple-700 dark:text-purple-400 text-xs font-semibold px-2.5 py-1 rounded-full">
+          <span className="inline-flex items-center gap-1 bg-purple-50 text-purple-700 text-xs font-semibold px-2.5 py-1 rounded-full">
             Exotic Pets
           </span>
         )}
         {clinic.requires_call_ahead && (
-          <span className="inline-flex items-center gap-1 bg-amber-50 dark:bg-amber-900/20 text-amber-700 dark:text-amber-400 text-xs font-semibold px-2.5 py-1 rounded-full">
+          <span className="inline-flex items-center gap-1 bg-amber-50 text-amber-700 text-xs font-semibold px-2.5 py-1 rounded-full">
             Call Ahead
           </span>
         )}
@@ -209,7 +209,7 @@ export default function ClinicCard({ clinic }: { clinic: Clinic }) {
           href={mapsUrl}
           target="_blank"
           rel="noopener noreferrer"
-          className="flex items-center justify-center gap-2 h-12 rounded-xl border border-[#d2d2d7] dark:border-[#2d2d2f] text-[#1d1d1f] dark:text-white text-sm font-bold hover:bg-[#f5f5f7] dark:hover:bg-[#2d2d2f] active:scale-[0.98] transition-all"
+          className="flex items-center justify-center gap-2 h-12 rounded-xl border border-[#d2d2d7] text-[#1d1d1f] text-sm font-bold hover:bg-[#f5f5f7] active:scale-[0.98] transition-all"
         >
           <ArrowTopRightIcon />
           Directions

@@ -118,7 +118,7 @@ export default function StateCityPage({
   }
 
   return (
-    <div className="min-h-screen bg-white dark:bg-[#1d1d1f]">
+    <div className="min-h-screen bg-white">
       {/* FAQPage Schema */}
       <script
         type="application/ld+json"
@@ -131,16 +131,16 @@ export default function StateCityPage({
       </a>
 
       {/* ── Navigation ── */}
-      <nav className="fixed top-0 left-0 right-0 h-[52px] bg-white/80 dark:bg-[#1d1d1f]/80 backdrop-blur-xl backdrop-saturate-[180%] z-50 border-b border-black/[0.08] dark:border-white/[0.08]">
+      <nav className="fixed top-0 left-0 right-0 h-[52px] bg-white/80 backdrop-blur-xl backdrop-saturate-[180%] z-50 border-b border-black/[0.08]">
         <div className="max-w-3xl mx-auto h-full flex items-center justify-between px-6">
-          <Link href="/" className="text-lg font-semibold tracking-tight text-[#1d1d1f] dark:text-white">
+          <Link href="/" className="text-lg font-semibold tracking-tight text-[#1d1d1f]">
             Find<span className="text-[#ff3b30]">Emergency</span>Vet
           </Link>
           <div className="flex items-center gap-4">
-            <Link href="/guides" className="text-sm text-[#6e6e73] hover:text-[#1d1d1f] dark:hover:text-white transition-colors hidden sm:block">
+            <Link href="/guides" className="text-sm text-[#6e6e73] hover:text-[#1d1d1f] transition-colors hidden sm:block">
               Resources
             </Link>
-            <Link href="/locations" className="text-sm text-[#6e6e73] hover:text-[#1d1d1f] dark:hover:text-white transition-colors hidden sm:block">
+            <Link href="/locations" className="text-sm text-[#6e6e73] hover:text-[#1d1d1f] transition-colors hidden sm:block">
               All Locations
             </Link>
           </div>
@@ -151,14 +151,14 @@ export default function StateCityPage({
         {/* ── Hero ── */}
         <header className="px-6 pt-12 pb-8">
           <div className="flex items-center gap-2 text-sm text-[#6e6e73] mb-6">
-            <Link href="/" className="hover:text-[#1d1d1f] dark:hover:text-white transition-colors">Home</Link>
+            <Link href="/" className="hover:text-[#1d1d1f] transition-colors">Home</Link>
             <span>/</span>
-            <Link href={`/${stateSlug}`} className="hover:text-[#1d1d1f] dark:hover:text-white transition-colors">{stateName}</Link>
+            <Link href={`/${stateSlug}`} className="hover:text-[#1d1d1f] transition-colors">{stateName}</Link>
             <span>/</span>
-            <span className="text-[#1d1d1f] dark:text-white font-medium">{city.name}, {stateAbbr}</span>
+            <span className="text-[#1d1d1f] font-medium">{city.name}, {stateAbbr}</span>
           </div>
 
-          <h1 className="font-display text-3xl md:text-4xl font-semibold tracking-tight text-[#1d1d1f] dark:text-white leading-tight mb-4">
+          <h1 className="font-display text-3xl md:text-4xl font-semibold tracking-tight text-[#1d1d1f] leading-tight mb-4">
             Emergency Vets in {city.name}, {stateName}
           </h1>
 
@@ -193,7 +193,7 @@ export default function StateCityPage({
         </header>
 
         {/* ── Filter Chips ── */}
-        <div className="sticky top-[52px] z-40 bg-white/80 dark:bg-[#1d1d1f]/80 backdrop-blur-xl backdrop-saturate-[180%] border-b border-black/[0.08] dark:border-white/[0.08]">
+        <div className="sticky top-[52px] z-40 bg-white/80 backdrop-blur-xl backdrop-saturate-[180%] border-b border-black/[0.08]">
           <div className="flex gap-2 px-6 py-3 overflow-x-auto hide-scrollbar" role="group" aria-label="Filter clinics">
             {filters.map(f => (
               <button
@@ -201,8 +201,8 @@ export default function StateCityPage({
                 onClick={() => setActiveFilter(f.key)}
                 className={`shrink-0 px-4 py-2 rounded-full text-sm font-medium transition-all ${
                   activeFilter === f.key
-                    ? 'bg-[#1d1d1f] dark:bg-white text-white dark:text-[#1d1d1f]'
-                    : 'bg-[#f5f5f7] dark:bg-[#2d2d2f] text-[#6e6e73] hover:text-[#1d1d1f] dark:hover:text-white'
+                    ? 'bg-[#1d1d1f] text-white'
+                    : 'bg-[#f5f5f7] text-[#6e6e73] hover:text-[#1d1d1f]'
                 }`}
                 aria-pressed={activeFilter === f.key}
               >
@@ -227,8 +227,8 @@ export default function StateCityPage({
 
           {/* No clinics at all */}
           {allClinics.length === 0 && (
-            <div className="border-2 border-dashed border-[#d2d2d7] dark:border-[#2d2d2f] rounded-2xl p-10 text-center">
-              <h3 className="text-xl font-semibold text-[#1d1d1f] dark:text-white mb-2">Coming Soon</h3>
+            <div className="border-2 border-dashed border-[#d2d2d7] rounded-2xl p-10 text-center">
+              <h3 className="text-xl font-semibold text-[#1d1d1f] mb-2">Coming Soon</h3>
               <p className="text-[#6e6e73] text-sm mb-6 max-w-md mx-auto">
                 We&apos;re adding emergency veterinary clinics in {city.name}, {stateName}.
                 In the meantime, try searching Google Maps.
@@ -237,7 +237,7 @@ export default function StateCityPage({
                 href={`https://www.google.com/maps/search/emergency+vet+${encodeURIComponent(city.name + ' ' + stateName)}`}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-5 py-2.5 bg-[#f5f5f7] dark:bg-[#2d2d2f] text-[#1d1d1f] dark:text-white font-medium rounded-xl hover:bg-[#d2d2d7] dark:hover:bg-[#3d3d3f] transition-colors"
+                className="inline-flex items-center gap-2 px-5 py-2.5 bg-[#f5f5f7] text-[#1d1d1f] font-medium rounded-xl hover:bg-[#d2d2d7] transition-colors"
               >
                 Search Google Maps
               </a>
@@ -246,12 +246,12 @@ export default function StateCityPage({
 
           {/* Filter empty state */}
           {allClinics.length > 0 && filteredClinics.length === 0 && (
-            <div className="bg-[#f5f5f7] dark:bg-[#2d2d2f] rounded-2xl p-10 text-center">
-              <h3 className="text-lg font-semibold text-[#1d1d1f] dark:text-white mb-2">No clinics match this filter</h3>
+            <div className="bg-[#f5f5f7] rounded-2xl p-10 text-center">
+              <h3 className="text-lg font-semibold text-[#1d1d1f] mb-2">No clinics match this filter</h3>
               <p className="text-[#6e6e73] text-sm mb-4">Try a different filter to see more results.</p>
               <button
                 onClick={() => setActiveFilter('all')}
-                className="px-5 py-2.5 bg-[#1d1d1f] dark:bg-white text-white dark:text-[#1d1d1f] font-medium rounded-xl hover:opacity-90 transition-opacity"
+                className="px-5 py-2.5 bg-[#1d1d1f] text-white font-medium rounded-xl hover:opacity-90 transition-opacity"
               >
                 Show All Clinics
               </button>
@@ -260,30 +260,30 @@ export default function StateCityPage({
         </section>
 
         {/* ── ASPCA Poison Control Banner ── */}
-        <section className="mx-6 mb-8 bg-amber-50 dark:bg-amber-900/20 border border-amber-200 dark:border-amber-800 rounded-2xl p-5">
+        <section className="mx-6 mb-8 bg-amber-50 border border-amber-200 rounded-2xl p-5">
           <div className="flex items-start gap-3">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" width="22" height="22" className="text-amber-600 shrink-0 mt-0.5">
               <path strokeLinecap="round" strokeLinejoin="round" d="M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126zM12 15.75h.007v.008H12v-.008z" />
             </svg>
             <div>
-              <p className="text-amber-900 dark:text-amber-200 text-sm font-semibold mb-1">
+              <p className="text-amber-900 text-sm font-semibold mb-1">
                 Think your pet was poisoned?
               </p>
-              <p className="text-amber-800 dark:text-amber-300 text-sm">
+              <p className="text-amber-800 text-sm">
                 Call the ASPCA Animal Poison Control Center:{' '}
                 <a href="tel:8884264435" className="font-bold underline whitespace-nowrap">(888) 426-4435</a>
-                <span className="text-amber-600 dark:text-amber-400 text-xs ml-1">(consultation fee may apply)</span>
+                <span className="text-amber-600 text-xs ml-1">(consultation fee may apply)</span>
               </p>
             </div>
           </div>
         </section>
 
         {/* ── Emergency Signs ── */}
-        <section className="px-6 py-8 border-t border-[#d2d2d7]/50 dark:border-[#2d2d2f]">
-          <h2 className="text-[#1d1d1f] dark:text-white text-xl font-semibold mb-4">
+        <section className="px-6 py-8 border-t border-[#d2d2d7]/50">
+          <h2 className="text-[#1d1d1f] text-xl font-semibold mb-4">
             When to Visit an Emergency Vet
           </h2>
-          <ul className="space-y-2.5 text-sm text-[#6e6e73] dark:text-[#86868b]">
+          <ul className="space-y-2.5 text-sm text-[#6e6e73]">
             {[
               'Difficulty breathing or choking',
               'Severe bleeding or open wounds',
@@ -301,25 +301,25 @@ export default function StateCityPage({
         </section>
 
         {/* ── FAQ Section (with schema) ── */}
-        <section className="px-6 py-8 bg-[#f5f5f7] dark:bg-[#0d0d0d] border-t border-[#d2d2d7]/50 dark:border-[#2d2d2f]">
-          <h2 className="text-[#1d1d1f] dark:text-white text-xl font-semibold mb-6 text-center">
+        <section className="px-6 py-8 bg-[#f5f5f7] border-t border-[#d2d2d7]/50">
+          <h2 className="text-[#1d1d1f] text-xl font-semibold mb-6 text-center">
             Frequently Asked Questions
           </h2>
           <div className="space-y-3 max-w-2xl mx-auto">
             {faqs.map((faq, i) => (
               <details
                 key={i}
-                className="group bg-white dark:bg-[#1d1d1f] border border-[#d2d2d7] dark:border-[#2d2d2f] rounded-xl overflow-hidden"
+                className="group bg-white border border-[#d2d2d7] rounded-xl overflow-hidden"
               >
-                <summary className="flex items-center justify-between p-4 cursor-pointer list-none hover:bg-[#f5f5f7] dark:hover:bg-[#2d2d2f] transition-colors select-none">
-                  <h3 className="font-medium text-[#1d1d1f] dark:text-white pr-4 text-sm">
+                <summary className="flex items-center justify-between p-4 cursor-pointer list-none hover:bg-[#f5f5f7] transition-colors select-none">
+                  <h3 className="font-medium text-[#1d1d1f] pr-4 text-sm">
                     {faq.question}
                   </h3>
                   <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" width="18" height="18" className="text-[#86868b] shrink-0 group-open:rotate-180 transition-transform">
                     <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
                   </svg>
                 </summary>
-                <div className="px-4 pb-4 text-sm text-[#6e6e73] dark:text-[#86868b] leading-relaxed border-t border-[#d2d2d7]/50 dark:border-[#2d2d2f] pt-3">
+                <div className="px-4 pb-4 text-sm text-[#6e6e73] leading-relaxed border-t border-[#d2d2d7]/50 pt-3">
                   {faq.answer}
                 </div>
               </details>
@@ -328,8 +328,8 @@ export default function StateCityPage({
         </section>
 
         {/* ── Nearby Cities ── */}
-        <section className="px-6 py-8 border-t border-[#d2d2d7]/50 dark:border-[#2d2d2f]">
-          <h3 className="text-[#1d1d1f] dark:text-white text-lg font-semibold mb-4">
+        <section className="px-6 py-8 border-t border-[#d2d2d7]/50">
+          <h3 className="text-[#1d1d1f] text-lg font-semibold mb-4">
             Nearby Emergency Vet Locations
           </h3>
           {nearbyCities.length > 0 ? (
@@ -338,7 +338,7 @@ export default function StateCityPage({
                 <Link
                   key={nearbyCity.id}
                   href={`/${stateSlug}/${nearbyCity.slug}`}
-                  className="px-4 py-2 bg-[#f5f5f7] dark:bg-[#2d2d2f] text-[#6e6e73] hover:text-[#1d1d1f] dark:hover:text-white text-sm rounded-full transition-colors"
+                  className="px-4 py-2 bg-[#f5f5f7] text-[#6e6e73] hover:text-[#1d1d1f] text-sm rounded-full transition-colors"
                 >
                   {nearbyCity.name}, {stateAbbr}
                 </Link>
@@ -349,14 +349,14 @@ export default function StateCityPage({
           )}
           <Link
             href={`/${stateSlug}`}
-            className="text-sm text-[#6e6e73] hover:text-[#1d1d1f] dark:hover:text-white transition-colors underline"
+            className="text-sm text-[#6e6e73] hover:text-[#1d1d1f] transition-colors underline"
           >
             View all emergency vets in {stateName} &rarr;
           </Link>
         </section>
 
         {/* ── Footer Disclaimer ── */}
-        <footer className="px-6 py-8 border-t border-[#d2d2d7]/50 dark:border-[#2d2d2f] text-center">
+        <footer className="px-6 py-8 border-t border-[#d2d2d7]/50 text-center">
           <p className="text-[#86868b] text-xs leading-relaxed max-w-lg mx-auto">
             FindEmergencyVet.com is an independent directory. Availability and hours may change without notice.
             Always call the clinic to confirm emergency services before traveling. Last verified February 2026.
@@ -368,15 +368,15 @@ export default function StateCityPage({
       </main>
 
       {/* ── Mobile Bottom Nav ── */}
-      <nav className="md:hidden fixed bottom-0 left-0 right-0 z-50 bg-white/90 dark:bg-[#1d1d1f]/90 backdrop-blur-xl border-t border-black/[0.08] dark:border-white/[0.08] px-6 py-2.5 pb-[max(0.625rem,env(safe-area-inset-bottom))]" aria-label="Bottom navigation">
+      <nav className="md:hidden fixed bottom-0 left-0 right-0 z-50 bg-white/90 backdrop-blur-xl border-t border-black/[0.08] px-6 py-2.5 pb-[max(0.625rem,env(safe-area-inset-bottom))]" aria-label="Bottom navigation">
         <div className="flex justify-around items-center max-w-md mx-auto">
-          <Link href="/" className="flex flex-col items-center gap-0.5 text-[#86868b] hover:text-[#1d1d1f] dark:hover:text-white min-w-[48px] min-h-[48px] justify-center transition-colors">
+          <Link href="/" className="flex flex-col items-center gap-0.5 text-[#86868b] hover:text-[#1d1d1f] min-w-[48px] min-h-[48px] justify-center transition-colors">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" width="24" height="24">
               <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 12l8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25" />
             </svg>
             <span className="text-[10px] font-bold">Home</span>
           </Link>
-          <Link href="/guides" className="flex flex-col items-center gap-0.5 text-[#86868b] hover:text-[#1d1d1f] dark:hover:text-white min-w-[48px] min-h-[48px] justify-center transition-colors">
+          <Link href="/guides" className="flex flex-col items-center gap-0.5 text-[#86868b] hover:text-[#1d1d1f] min-w-[48px] min-h-[48px] justify-center transition-colors">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" width="24" height="24">
               <path strokeLinecap="round" strokeLinejoin="round" d="M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18a8.967 8.967 0 00-6 2.292m0-14.25v14.25" />
             </svg>

@@ -130,7 +130,7 @@ export default async function NewYorkCityPage({
         dangerouslySetInnerHTML={{ __html: JSON.stringify(clinicSchema) }}
       />
 
-      <div className="min-h-screen bg-[#f6f7f8] dark:bg-[#101922]">
+      <div className="min-h-screen bg-[#f6f7f8]">
         {/* Emergency Banner */}
         <div className="bg-red-600 text-white py-2 px-4 text-center text-sm font-bold">
           <span className="material-symbols-outlined text-sm align-middle mr-1" aria-hidden="true">emergency</span>
@@ -139,15 +139,15 @@ export default async function NewYorkCityPage({
         </div>
 
         {/* Navigation */}
-        <nav className="sticky top-0 z-50 bg-[#f6f7f8]/80 dark:bg-[#101922]/80 backdrop-blur-md border-b border-gray-200 dark:border-gray-800">
+        <nav className="sticky top-0 z-50 bg-[#f6f7f8]/80 backdrop-blur-md border-b border-gray-200">
           <div className="flex items-center p-4 justify-between max-w-4xl mx-auto">
             <Link href="/" className="flex items-center gap-2">
               <span className="material-symbols-outlined text-[#137fec] text-2xl" aria-hidden="true">medical_services</span>
-              <span className="text-[#0d141b] dark:text-white font-bold hidden sm:inline">FindEmergencyVet.com</span>
+              <span className="text-[#0d141b] font-bold hidden sm:inline">FindEmergencyVet.com</span>
             </Link>
             <Link
               href="/triage"
-              className="flex items-center gap-1 px-3 py-2 rounded-lg bg-red-100 dark:bg-red-900/30 text-red-600 dark:text-red-400 text-sm font-bold"
+              className="flex items-center gap-1 px-3 py-2 rounded-lg bg-red-100 text-red-600 text-sm font-bold"
             >
               <span className="material-symbols-outlined text-[18px]" aria-hidden="true">emergency</span>
               Triage
@@ -157,25 +157,25 @@ export default async function NewYorkCityPage({
 
         {/* Breadcrumb */}
         <div className="max-w-4xl mx-auto px-4 pt-4">
-          <nav aria-label="Breadcrumb" className="text-sm text-gray-500 dark:text-gray-400">
+          <nav aria-label="Breadcrumb" className="text-sm text-gray-500">
             <ol className="flex items-center gap-1">
               <li><Link href="/" className="hover:text-[#137fec]">Home</Link></li>
               <li><span className="mx-1">/</span></li>
               <li><Link href="/new-york" className="hover:text-[#137fec]">New York</Link></li>
               <li><span className="mx-1">/</span></li>
-              <li className="font-semibold text-[#0d141b] dark:text-white">{city.name}</li>
+              <li className="font-semibold text-[#0d141b]">{city.name}</li>
             </ol>
           </nav>
         </div>
 
         <main className="max-w-4xl mx-auto px-4 py-8">
           {/* H1 */}
-          <h1 className="text-[#0d141b] dark:text-white text-3xl md:text-4xl font-black mb-4 font-display">
+          <h1 className="text-[#0d141b] text-3xl md:text-4xl font-black mb-4 font-display">
             Emergency Vet in {city.name}, New York — Open Now
           </h1>
 
           {/* Intro Paragraph */}
-          <p className="text-gray-700 dark:text-gray-300 text-lg mb-8 leading-relaxed">
+          <p className="text-gray-700 text-lg mb-8 leading-relaxed">
             Need an emergency veterinarian in {city.name}, New York?
             Emergency Vet Finder helps you locate open emergency and referral veterinary hospitals serving {city.name} and surrounding areas — with phone numbers, directions, and hours.
           </p>
@@ -190,11 +190,11 @@ export default async function NewYorkCityPage({
               </div>
             </section>
           ) : (
-            <section className="mb-10 bg-yellow-50 dark:bg-yellow-900/20 border border-yellow-100 dark:border-yellow-900/30 rounded-xl p-6">
-              <h2 className="text-[#0d141b] dark:text-white text-xl font-bold mb-2">
+            <section className="mb-10 bg-yellow-50 border border-yellow-100 rounded-xl p-6">
+              <h2 className="text-[#0d141b] text-xl font-bold mb-2">
                 Emergency Vet Clinics Coming Soon
               </h2>
-              <p className="text-gray-700 dark:text-gray-300">
+              <p className="text-gray-700">
                 We’re currently adding emergency veterinary clinics in {city.name}. In the meantime, check nearby cities below or call your regular vet for the closest emergency referral.
               </p>
             </section>
@@ -202,19 +202,19 @@ export default async function NewYorkCityPage({
 
           {/* H2: Emergency Veterinary Services */}
           <section className="mb-10">
-            <h2 className="text-[#0d141b] dark:text-white text-2xl font-bold mb-4">
+            <h2 className="text-[#0d141b] text-2xl font-bold mb-4">
               Emergency Veterinary Services in {city.name}
             </h2>
-            <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
+            <p className="text-gray-700 leading-relaxed">
               Emergency vets in {city.name} treat urgent, life-threatening conditions that cannot wait for a regular appointment. These facilities are equipped for advanced diagnostics, surgery, and overnight care.
             </p>
           </section>
           {/* H2: Common Reasons */}
-          <section id="emergency-reasons" className="mb-10 bg-white dark:bg-slate-800 rounded-xl p-6 border border-gray-100 dark:border-slate-700">
-            <h2 className="text-[#0d141b] dark:text-white text-2xl font-bold mb-4">
+          <section id="emergency-reasons" className="mb-10 bg-white rounded-xl p-6 border border-gray-100">
+            <h2 className="text-[#0d141b] text-2xl font-bold mb-4">
               Common Reasons to Visit an Emergency Vet in {city.name}
             </h2>
-            <ul className="space-y-3 text-gray-700 dark:text-gray-300">
+            <ul className="space-y-3 text-gray-700">
               <li className="flex items-start gap-3">
                 <span className="material-symbols-outlined text-red-500 mt-0.5">emergency</span>
                 Accidents, falls, or trauma (hit by car, attacked by another animal)
@@ -248,23 +248,23 @@ export default async function NewYorkCityPage({
 
           {/* H2: After-Hours & Urgent Care */}
           <section className="mb-10">
-            <h2 className="text-[#0d141b] dark:text-white text-2xl font-bold mb-4">
+            <h2 className="text-[#0d141b] text-2xl font-bold mb-4">
               After-Hours &amp; Urgent Care in {city.name}
             </h2>
-            <p className="text-gray-700 dark:text-gray-300 leading-relaxed mb-4">
-              Not every situation requires a 24/7 emergency hospital. Some conditions — like minor limping, mild vomiting, or small wounds — may be handled by an urgent care or after-hours clinic at a lower cost. Look for clinics marked <span className="font-semibold text-teal-700 dark:text-teal-300">URGENT CARE</span> or <span className="font-semibold text-amber-700 dark:text-amber-300">EXTENDED HRS</span> in our listings above.
+            <p className="text-gray-700 leading-relaxed mb-4">
+              Not every situation requires a 24/7 emergency hospital. Some conditions — like minor limping, mild vomiting, or small wounds — may be handled by an urgent care or after-hours clinic at a lower cost. Look for clinics marked <span className="font-semibold text-teal-700">URGENT CARE</span> or <span className="font-semibold text-amber-700">EXTENDED HRS</span> in our listings above.
             </p>
-            <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
+            <p className="text-gray-700 leading-relaxed">
               If you&apos;re unsure whether your pet needs emergency care or urgent care, call the nearest facility. Most will help you triage over the phone.
             </p>
           </section>
 
           {/* H2: How to Get There */}
-          <section className="mb-10 bg-white dark:bg-slate-800 rounded-xl p-6 border border-gray-100 dark:border-slate-700">
-            <h2 className="text-[#0d141b] dark:text-white text-2xl font-bold mb-4">
+          <section className="mb-10 bg-white rounded-xl p-6 border border-gray-100">
+            <h2 className="text-[#0d141b] text-2xl font-bold mb-4">
               How to Get to an Emergency Vet in {city.name}
             </h2>
-            <ul className="space-y-3 text-gray-700 dark:text-gray-300">
+            <ul className="space-y-3 text-gray-700">
               <li className="flex items-start gap-3">
                 <span className="material-symbols-outlined text-[#137fec] mt-0.5">directions_car</span>
                 <span>Use the <strong>Directions</strong> button on any listing above to open Google Maps navigation directly</span>
@@ -286,47 +286,47 @@ export default async function NewYorkCityPage({
 
           {/* H2: What to Bring */}
           <section className="mb-10">
-            <h2 className="text-[#0d141b] dark:text-white text-2xl font-bold mb-4">
+            <h2 className="text-[#0d141b] text-2xl font-bold mb-4">
               What to Bring to the Emergency Vet
             </h2>
             <div className="grid sm:grid-cols-2 gap-4">
-              <div className="bg-white dark:bg-slate-800 rounded-xl p-4 border border-gray-100 dark:border-slate-700">
-                <h3 className="font-bold text-[#0d141b] dark:text-white mb-2 flex items-center gap-2">
+              <div className="bg-white rounded-xl p-4 border border-gray-100">
+                <h3 className="font-bold text-[#0d141b] mb-2 flex items-center gap-2">
                   <span className="material-symbols-outlined text-[#137fec] text-[20px]">folder_open</span>
                   Medical Records
                 </h3>
-                <p className="text-gray-600 dark:text-gray-400 text-sm">Vaccination history, current medications, and your regular vet&apos;s contact info</p>
+                <p className="text-gray-600 text-sm">Vaccination history, current medications, and your regular vet&apos;s contact info</p>
               </div>
-              <div className="bg-white dark:bg-slate-800 rounded-xl p-4 border border-gray-100 dark:border-slate-700">
-                <h3 className="font-bold text-[#0d141b] dark:text-white mb-2 flex items-center gap-2">
+              <div className="bg-white rounded-xl p-4 border border-gray-100">
+                <h3 className="font-bold text-[#0d141b] mb-2 flex items-center gap-2">
                   <span className="material-symbols-outlined text-[#137fec] text-[20px]">credit_card</span>
                   Payment Method
                 </h3>
-                <p className="text-gray-600 dark:text-gray-400 text-sm">Credit card, CareCredit, or pet insurance info — most require payment at time of service</p>
+                <p className="text-gray-600 text-sm">Credit card, CareCredit, or pet insurance info — most require payment at time of service</p>
               </div>
-              <div className="bg-white dark:bg-slate-800 rounded-xl p-4 border border-gray-100 dark:border-slate-700">
-                <h3 className="font-bold text-[#0d141b] dark:text-white mb-2 flex items-center gap-2">
+              <div className="bg-white rounded-xl p-4 border border-gray-100">
+                <h3 className="font-bold text-[#0d141b] mb-2 flex items-center gap-2">
                   <span className="material-symbols-outlined text-[#137fec] text-[20px]">science</span>
                   Toxin Sample
                 </h3>
-                <p className="text-gray-600 dark:text-gray-400 text-sm">If poisoning is suspected, bring the packaging, label, or a sample of what was ingested</p>
+                <p className="text-gray-600 text-sm">If poisoning is suspected, bring the packaging, label, or a sample of what was ingested</p>
               </div>
-              <div className="bg-white dark:bg-slate-800 rounded-xl p-4 border border-gray-100 dark:border-slate-700">
-                <h3 className="font-bold text-[#0d141b] dark:text-white mb-2 flex items-center gap-2">
+              <div className="bg-white rounded-xl p-4 border border-gray-100">
+                <h3 className="font-bold text-[#0d141b] mb-2 flex items-center gap-2">
                   <span className="material-symbols-outlined text-[#137fec] text-[20px]">pets</span>
                   Carrier or Leash
                 </h3>
-                <p className="text-gray-600 dark:text-gray-400 text-sm">Keep your pet safely contained — a carrier for cats and small animals, a leash for dogs</p>
+                <p className="text-gray-600 text-sm">Keep your pet safely contained — a carrier for cats and small animals, a leash for dogs</p>
               </div>
             </div>
           </section>
 
           {/* H2: Nearby Emergency Vet Options */}
           <section className="mb-10">
-            <h2 className="text-[#0d141b] dark:text-white text-2xl font-bold mb-4">
+            <h2 className="text-[#0d141b] text-2xl font-bold mb-4">
               Nearby Emergency Vet Options
             </h2>
-            <p className="text-gray-700 dark:text-gray-300 mb-4">
+            <p className="text-gray-700 mb-4">
               If no emergency clinic is immediately available in {city.name}, expanding your search to nearby areas may be necessary.
             </p>
             {nearbyCities && nearbyCities.length > 0 ? (
@@ -335,7 +335,7 @@ export default async function NewYorkCityPage({
                   <Link
                     key={nearbyCity.id}
                     href={`/new-york/${nearbyCity.slug}`}
-                    className="flex items-center justify-between bg-white dark:bg-slate-800 rounded-lg p-3 border border-gray-100 dark:border-slate-700 hover:border-[#137fec] transition-colors"
+                    className="flex items-center justify-between bg-white rounded-lg p-3 border border-gray-100 hover:border-[#137fec] transition-colors"
                   >
                     <span className="text-[#137fec] font-semibold">
                       Emergency Vets in {nearbyCity.name}, NY
@@ -362,17 +362,17 @@ export default async function NewYorkCityPage({
           </section>
 
           {/* H2: When to Call Before You Go */}
-          <section className="mb-10 bg-gray-50 dark:bg-slate-800/50 rounded-xl p-6">
-            <h2 className="text-[#0d141b] dark:text-white text-2xl font-bold mb-4">
+          <section className="mb-10 bg-gray-50 rounded-xl p-6">
+            <h2 className="text-[#0d141b] text-2xl font-bold mb-4">
               When to Call Before You Go
             </h2>
-            <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
+            <p className="text-gray-700 leading-relaxed">
               Calling ahead helps confirm availability and allows staff to prepare for your pet&apos;s arrival. This is especially important during peak hours (evenings, weekends, holidays) or if your pet requires specialized care such as exotic animal treatment or advanced surgery. In true life-threatening emergencies, go directly to the nearest facility — they will triage upon arrival.
             </p>
           </section>
 
           {/* Back Links */}
-          <div className="pt-8 border-t border-gray-200 dark:border-slate-700 flex justify-between items-center">
+          <div className="pt-8 border-t border-gray-200 flex justify-between items-center">
             <Link href="/new-york" className="text-[#137fec] hover:underline font-semibold">
               &larr; All New York emergency vets
             </Link>
@@ -383,14 +383,14 @@ export default async function NewYorkCityPage({
 
           {/* Footer */}
           <footer className="mt-8 text-center">
-            <p className="text-gray-500 dark:text-gray-400 text-xs">
+            <p className="text-gray-500 text-xs">
               Emergency Vet Finder is an independent directory. Availability may change. Always call to confirm.
             </p>
           </footer>
         </main>
 
         {/* Bottom Nav */}
-        <nav className="md:hidden fixed bottom-0 left-0 right-0 z-50 bg-white/90 dark:bg-slate-900/90 backdrop-blur-md border-t border-gray-200 dark:border-slate-800 px-6 py-3 flex justify-between items-center" aria-label="Bottom navigation">
+        <nav className="md:hidden fixed bottom-0 left-0 right-0 z-50 bg-white/90 backdrop-blur-md border-t border-gray-200 px-6 py-3 flex justify-between items-center" aria-label="Bottom navigation">
           <Link href="/" className="flex flex-col items-center gap-1 text-gray-400 hover:text-[#137fec] min-w-[48px] min-h-[48px] justify-center">
             <span className="material-symbols-outlined" aria-hidden="true">home</span>
             <span className="text-[10px] font-bold">Home</span>
