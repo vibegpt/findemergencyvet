@@ -29,7 +29,7 @@ INSERT INTO cities (name, state, slug, clinic_count) VALUES
   ('Jacksonville Beach', 'FL', 'jacksonville-beach', 0),
   ('Chesapeake', 'VA', 'chesapeake', 0),
   ('Myrtle Beach', 'SC', 'myrtle-beach', 0),
-  ('Springfield', 'MO', 'springfield-mo', 0),
+  ('Springfield', 'MO', 'springfield', 0),
   ('Lake Charles', 'LA', 'lake-charles', 0),
   ('Port Charlotte', 'FL', 'port-charlotte', 0)
 ON CONFLICT (slug) DO NOTHING;
