@@ -44,7 +44,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     statesWithCities.add(city.state)
 
     cityPages.push({
-      url: `${BASE_URL}/states/${stateSlug}/${city.slug}`,
+      url: `${BASE_URL}/${stateSlug}/${city.slug}`,
       changeFrequency: 'weekly',
       priority: 0.7,
     })
@@ -57,7 +57,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     if (!stateSlug) continue
 
     statePages.push({
-      url: `${BASE_URL}/states/${stateSlug}`,
+      url: `${BASE_URL}/${stateSlug}`,
       changeFrequency: 'weekly',
       priority: 0.8,
     })
