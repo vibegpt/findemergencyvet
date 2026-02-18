@@ -28,6 +28,7 @@ type Clinic = {
   wheelchair_accessible?: boolean | null
   has_separate_cat_entrance?: boolean | null
   has_isolation_rooms?: boolean | null
+  hours_description?: string | null
   slug?: string
 }
 

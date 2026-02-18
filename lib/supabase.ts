@@ -34,6 +34,7 @@ export type Clinic = {
   current_status: 'confirmed-open' | 'likely-open' | 'call-to-confirm' | 'closed' | 'at-capacity' | 'unknown'
   google_rating: number | null
   google_review_count: number
+  hours_description: string | null
   verification_status: 'verified' | 'unverified' | 'pending' | 'outdated'
   created_at: string
   updated_at: string

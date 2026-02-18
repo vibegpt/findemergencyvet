@@ -65,7 +65,7 @@ export default async function CityPage({
   // Fetch clinics with verification_status
   const { data: clinics } = await supabase
     .from('clinics')
-    .select('id, slug, name, address, city, state, zip_code, phone, is_24_7, current_status, verification_status, has_exotic_specialist, google_rating, google_review_count, availability_type, accepts_walk_ins, requires_call_ahead, exotic_pets_accepted, parking_type, wheelchair_accessible, has_separate_cat_entrance, has_isolation_rooms')
+    .select('id, slug, name, address, city, state, zip_code, phone, is_24_7, current_status, verification_status, has_exotic_specialist, google_rating, google_review_count, availability_type, accepts_walk_ins, requires_call_ahead, exotic_pets_accepted, parking_type, wheelchair_accessible, has_separate_cat_entrance, has_isolation_rooms, hours_description')
     .eq('city', city.name)
     .eq('state', stateAbbr)
     .eq('is_active', true)

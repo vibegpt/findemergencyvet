@@ -19,6 +19,7 @@ type Clinic = {
   requires_call_ahead?: boolean | null
   google_rating?: number | null
   google_review_count?: number | null
+  hours_description?: string | null
 }
 
 const availabilityLabels: Record<string, string> = {
@@ -121,11 +122,13 @@ function StatusBadge({ clinic }: { clinic: Clinic }) {
 /* ── Main component ── */
 
 export default function ClinicCard({ clinic }: { clinic: Clinic }) {
-  const hoursText = clinic.is_24_7
-    ? 'Open 24 hours, 7 days a week'
-    : clinic.availability_type
-      ? availabilityLabels[clinic.availability_type] || 'Call for hours'
-      : 'Call for hours'
+  const hoursText = clinic.hours_description
+    ? clinic.hours_description
+    : clinic.is_24_7
+      ? 'Open 24 hours, 7 days a week'
+      : clinic.availability_type
+        ? availabilityLabels[clinic.availability_type] || 'Call for hours'
+        : 'Call for hours'
 
   const fullAddress = `${clinic.address}, ${clinic.city}, ${clinic.state}${clinic.zip_code ? ` ${clinic.zip_code}` : ''}`
   const mapsUrl = `https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(fullAddress)}`
