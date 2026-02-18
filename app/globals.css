@@ -1,35 +1,68 @@
 @import "tailwindcss";
 
+/* =============================================
+   FindEmergencyVet Design System
+   Apple-inspired minimalist tokens
+   ============================================= */
+
 :root {
-  --primary: #137fec;
-  --ink: #0b1220;
-  --mist: #eef2f6;
-  --sun: #f7c948;
-  --navy: #0b1526;
-  --steel: #1f2a44;
-  --ice: #f4f7fb;
+  /* Background */
+  --bg-page: #FAFAFA;
+  --bg-card: #FFFFFF;
+
+  /* Gray scale */
+  --gray-50: #F5F5F7;
+  --gray-100: #E8E8ED;
+  --gray-200: #D2D2D7;
+  --gray-300: #AEAEB2;
+  --gray-400: #86868B;
+  --gray-500: #6E6E73;
+  --gray-600: #48484A;
+  --gray-700: #363638;
+  --gray-800: #2C2C2E;
+  --gray-900: #1D1D1F;
+
+  /* Accent colors */
+  --blue: #0071E3;
+  --green: #1B7A1B;
+  --green-bg: #E8F5E8;
+  --green-dot: #30D158;
+  --red: #C41E1E;
+  --red-bg: #FDE8E8;
+  --red-dot: #FF453A;
+  --amber: #B8730E;
+  --amber-bg: #FFF3E0;
+  --amber-dot: #FF9F0A;
+
+  /* Shadows */
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.06);
+
+  /* Borders */
+  --border-color: #E8E8ED;
+  --border-radius-card: 16px;
+  --border-radius-button: 12px;
+  --border-radius-pill: 100px;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
+  --color-background: var(--bg-page);
+  --color-foreground: var(--gray-900);
+}
+
+* {
+  box-sizing: border-box;
 }
 
 body {
   min-height: 100dvh;
-  font-family: var(--font-body), "Space Grotesk", "Segoe UI", sans-serif;
-  color: var(--ink);
-  background: var(--ice);
+  font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  color: var(--gray-900);
+  background: var(--bg-page);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-.font-display {
-  font-family: var(--font-display), "Fraunces", "Georgia", serif;
-}
-
-.material-symbols-outlined {
-  font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
-}
-
+/* Hide scrollbar utility */
 .hide-scrollbar::-webkit-scrollbar {
   display: none;
 }
@@ -37,4 +70,10 @@ body {
 .hide-scrollbar {
   -ms-overflow-style: none;
   scrollbar-width: none;
+}
+
+/* Pulse animation for status dots */
+@keyframes pulse-dot {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.4; }
 }

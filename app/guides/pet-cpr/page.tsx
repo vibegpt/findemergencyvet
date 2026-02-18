@@ -32,14 +32,14 @@ export default function PetCprGuidePage() {
         subtitle="A fast, simple checklist to keep you focused during a critical emergency."
       >
         <section>
-          <h2 className="text-xl font-bold text-[#0d141b] dark:text-white font-display">Check responsiveness</h2>
+          <h2 className="text-[24px] font-bold tracking-[-0.02em] text-[#1D1D1F]">Check responsiveness</h2>
           <p className="mt-3">
             Tap, call their name, and check breathing. If no breathing or heartbeat, start CPR immediately.
           </p>
         </section>
 
         <section>
-          <h2 className="text-xl font-bold text-[#0d141b] dark:text-white font-display">Chest compressions</h2>
+          <h2 className="text-[24px] font-bold tracking-[-0.02em] text-[#1D1D1F]">Chest compressions</h2>
           <ul className="list-disc pl-6 mt-3">
             <li>Place your hands over the widest part of the chest.</li>
             <li>Compress 1/3 to 1/2 chest depth.</li>
@@ -48,7 +48,7 @@ export default function PetCprGuidePage() {
         </section>
 
         <section>
-          <h2 className="text-xl font-bold text-[#0d141b] dark:text-white font-display">Rescue breaths</h2>
+          <h2 className="text-[24px] font-bold tracking-[-0.02em] text-[#1D1D1F]">Rescue breaths</h2>
           <p className="mt-3">
             Give 2 breaths after every 30 compressions. Seal the mouth and breathe into the nose.
           </p>

@@ -25,6 +25,10 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     { url: `${BASE_URL}/guides/transport-to-vet`, changeFrequency: 'monthly', priority: 0.7 },
     { url: `${BASE_URL}/guides/poison-ingestion`, changeFrequency: 'monthly', priority: 0.7 },
     { url: `${BASE_URL}/guides/what-to-expect-at-triage`, changeFrequency: 'monthly', priority: 0.7 },
+    { url: `${BASE_URL}/guides`, changeFrequency: 'monthly', priority: 0.7 },
+    { url: `${BASE_URL}/about`, changeFrequency: 'monthly', priority: 0.5 },
+    { url: `${BASE_URL}/contact`, changeFrequency: 'monthly', priority: 0.4 },
+    { url: `${BASE_URL}/privacy`, changeFrequency: 'monthly', priority: 0.3 },
   ]
 
   // Fetch all cities

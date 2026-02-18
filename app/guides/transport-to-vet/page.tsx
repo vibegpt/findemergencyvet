@@ -32,14 +32,14 @@ export default function TransportGuidePage() {
         subtitle="Reduce stress and prevent further injury with these transport tips."
       >
         <section>
-          <h2 className="text-xl font-bold text-[#0d141b] dark:text-white font-display">Keep pets calm and secure</h2>
+          <h2 className="text-[24px] font-bold tracking-[-0.02em] text-[#1D1D1F]">Keep pets calm and secure</h2>
           <p className="mt-3">
             Speak calmly, minimize noise, and secure your pet in a carrier or with a seatbelt harness.
           </p>
         </section>
 
         <section>
-          <h2 className="text-xl font-bold text-[#0d141b] dark:text-white font-display">Support injuries</h2>
+          <h2 className="text-[24px] font-bold tracking-[-0.02em] text-[#1D1D1F]">Support injuries</h2>
           <ul className="list-disc pl-6 mt-3">
             <li>Use a blanket as a stretcher for large dogs.</li>
             <li>Keep the head and spine aligned if trauma is suspected.</li>
@@ -48,7 +48,7 @@ export default function TransportGuidePage() {
         </section>
 
         <section>
-          <h2 className="text-xl font-bold text-[#0d141b] dark:text-white font-display">Call ahead</h2>
+          <h2 className="text-[24px] font-bold tracking-[-0.02em] text-[#1D1D1F]">Call ahead</h2>
           <p className="mt-3">
             Let the clinic know what is happening so they can prepare and advise you.
           </p>

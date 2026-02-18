@@ -32,21 +32,21 @@ export default function WhatToExpectGuidePage() {
         subtitle="Knowing the triage process can reduce stress and help you advocate for your pet."
       >
         <section>
-          <h2 className="text-xl font-bold text-[#0d141b] dark:text-white font-display">Triage happens immediately</h2>
+          <h2 className="text-[24px] font-bold tracking-[-0.02em] text-[#1D1D1F]">Triage happens immediately</h2>
           <p className="mt-3">
             A technician or veterinarian will assess breathing, circulation, and pain to determine urgency.
           </p>
         </section>
 
         <section>
-          <h2 className="text-xl font-bold text-[#0d141b] dark:text-white font-display">Critical cases go first</h2>
+          <h2 className="text-[24px] font-bold tracking-[-0.02em] text-[#1D1D1F]">Critical cases go first</h2>
           <p className="mt-3">
             Emergency hospitals see the most critical pets first, even if others arrived earlier.
           </p>
         </section>
 
         <section>
-          <h2 className="text-xl font-bold text-[#0d141b] dark:text-white font-display">Be ready to share details</h2>
+          <h2 className="text-[24px] font-bold tracking-[-0.02em] text-[#1D1D1F]">Be ready to share details</h2>
           <p className="mt-3">
             Share symptoms, time of onset, medications, and any possible toxins or trauma.
           </p>

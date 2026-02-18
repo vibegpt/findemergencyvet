@@ -29,7 +29,7 @@ const availabilityLabels: Record<string, string> = {
   'urgent-care': 'Urgent Care',
 }
 
-/* ── Inline SVG icons (heroicons outline, 18×18) ── */
+/* ── Inline SVG icons (18x18) ── */
 
 function PhoneIcon({ className }: { className?: string }) {
   return (
@@ -77,10 +77,10 @@ function CheckBadgeIcon({ className }: { className?: string }) {
 function StatusBadge({ clinic }: { clinic: Clinic }) {
   if (clinic.is_24_7) {
     return (
-      <span className="inline-flex items-center gap-1.5 bg-green-600 text-white text-xs font-bold px-2.5 py-1 rounded-full whitespace-nowrap">
+      <span className="inline-flex items-center gap-1.5 text-xs font-semibold px-2.5 py-1 rounded-full whitespace-nowrap" style={{ background: '#E8F5E8', color: '#1B7A1B' }}>
         <span className="relative flex h-2 w-2">
-          <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-white opacity-75" />
-          <span className="relative inline-flex rounded-full h-2 w-2 bg-white" />
+          <span className="animate-ping absolute inline-flex h-full w-full rounded-full opacity-75" style={{ background: '#30D158' }} />
+          <span className="relative inline-flex rounded-full h-2 w-2" style={{ background: '#30D158' }} />
         </span>
         Open 24/7
       </span>
@@ -89,7 +89,8 @@ function StatusBadge({ clinic }: { clinic: Clinic }) {
 
   if (clinic.current_status === 'closed') {
     return (
-      <span className="inline-flex items-center gap-1.5 bg-red-600 text-white text-xs font-bold px-2.5 py-1 rounded-full whitespace-nowrap">
+      <span className="inline-flex items-center gap-1.5 text-xs font-semibold px-2.5 py-1 rounded-full whitespace-nowrap" style={{ background: '#FDE8E8', color: '#C41E1E' }}>
+        <span className="inline-flex rounded-full h-2 w-2" style={{ background: '#FF453A' }} />
         Closed
       </span>
     )
@@ -97,10 +98,10 @@ function StatusBadge({ clinic }: { clinic: Clinic }) {
 
   if (clinic.current_status === 'confirmed-open') {
     return (
-      <span className="inline-flex items-center gap-1.5 bg-green-600 text-white text-xs font-bold px-2.5 py-1 rounded-full whitespace-nowrap">
+      <span className="inline-flex items-center gap-1.5 text-xs font-semibold px-2.5 py-1 rounded-full whitespace-nowrap" style={{ background: '#E8F5E8', color: '#1B7A1B' }}>
         <span className="relative flex h-2 w-2">
-          <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-white opacity-75" />
-          <span className="relative inline-flex rounded-full h-2 w-2 bg-white" />
+          <span className="animate-ping absolute inline-flex h-full w-full rounded-full opacity-75" style={{ background: '#30D158' }} />
+          <span className="relative inline-flex rounded-full h-2 w-2" style={{ background: '#30D158' }} />
         </span>
         Open Now
       </span>
@@ -110,7 +111,8 @@ function StatusBadge({ clinic }: { clinic: Clinic }) {
   // After-hours / urgent care / extended hours
   const label = clinic.availability_type ? availabilityLabels[clinic.availability_type] : 'Call for Hours'
   return (
-    <span className="inline-flex items-center gap-1.5 bg-amber-500 text-white text-xs font-bold px-2.5 py-1 rounded-full whitespace-nowrap">
+    <span className="inline-flex items-center gap-1.5 text-xs font-semibold px-2.5 py-1 rounded-full whitespace-nowrap" style={{ background: '#FFF3E0', color: '#B8730E' }}>
+      <span className="inline-flex rounded-full h-2 w-2" style={{ background: '#FF9F0A' }} />
       {label}
     </span>
   )
@@ -129,10 +131,10 @@ export default function ClinicCard({ clinic }: { clinic: Clinic }) {
   const mapsUrl = `https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(fullAddress)}`
 
   return (
-    <article className="bg-white border border-[#d2d2d7] rounded-2xl p-5 transition-shadow hover:shadow-lg">
+    <article className="bg-white border border-[#E8E8ED] rounded-2xl p-5" style={{ boxShadow: '0 2px 8px rgba(0,0,0,0.06)' }}>
       {/* Row 1: Name + Status Badge */}
       <div className="flex items-start justify-between gap-3 mb-3">
-        <h3 className="text-[#1d1d1f] text-lg font-semibold leading-snug">
+        <h3 className="text-[#1D1D1F] text-lg leading-snug" style={{ fontWeight: 600 }}>
           {clinic.name}
         </h3>
         <StatusBadge clinic={clinic} />
@@ -140,12 +142,12 @@ export default function ClinicCard({ clinic }: { clinic: Clinic }) {
 
       {/* Row 2: Address */}
       <div className="flex items-start gap-2 mb-2">
-        <MapPinIcon className="text-[#86868b] shrink-0 mt-0.5" />
+        <MapPinIcon className="text-[#86868B] shrink-0 mt-0.5" />
         <a
           href={mapsUrl}
           target="_blank"
           rel="noopener noreferrer"
-          className="text-sm text-[#6e6e73] hover:text-[#1d1d1f] transition-colors"
+          className="text-sm text-[#6E6E73] hover:text-[#1D1D1F] transition-colors"
         >
           {fullAddress}
         </a>
@@ -153,35 +155,35 @@ export default function ClinicCard({ clinic }: { clinic: Clinic }) {
 
       {/* Row 3: Hours */}
       <div className="flex items-start gap-2 mb-4">
-        <ClockIcon className="text-[#86868b] shrink-0 mt-0.5" />
-        <span className="text-sm text-[#6e6e73]">{hoursText}</span>
+        <ClockIcon className="text-[#86868B] shrink-0 mt-0.5" />
+        <span className="text-sm text-[#6E6E73]">{hoursText}</span>
       </div>
 
       {/* Row 4: Feature Badges */}
       <div className="flex flex-wrap gap-2 mb-4">
         {clinic.is_24_7 && (
-          <span className="inline-flex items-center gap-1 bg-green-50 text-green-700 text-xs font-semibold px-2.5 py-1 rounded-full">
+          <span className="inline-flex items-center gap-1 bg-[#F5F5F7] text-[#6E6E73] text-xs font-medium px-2.5 py-1 rounded-full border border-[#E8E8ED]">
             True 24/7
           </span>
         )}
         {clinic.verification_status === 'verified' && (
-          <span className="inline-flex items-center gap-1 bg-blue-50 text-blue-600 text-xs font-semibold px-2.5 py-1 rounded-full">
-            <CheckBadgeIcon />
+          <span className="inline-flex items-center gap-1 bg-[#F5F5F7] text-[#6E6E73] text-xs font-medium px-2.5 py-1 rounded-full border border-[#E8E8ED]">
+            <CheckBadgeIcon className="text-[#0071E3]" />
             Verified
           </span>
         )}
         {clinic.accepts_walk_ins && (
-          <span className="inline-flex items-center gap-1 bg-teal-50 text-teal-700 text-xs font-semibold px-2.5 py-1 rounded-full">
+          <span className="inline-flex items-center gap-1 bg-[#F5F5F7] text-[#6E6E73] text-xs font-medium px-2.5 py-1 rounded-full border border-[#E8E8ED]">
             Walk-ins Welcome
           </span>
         )}
         {clinic.has_exotic_specialist && (
-          <span className="inline-flex items-center gap-1 bg-purple-50 text-purple-700 text-xs font-semibold px-2.5 py-1 rounded-full">
+          <span className="inline-flex items-center gap-1 bg-[#F5F5F7] text-[#6E6E73] text-xs font-medium px-2.5 py-1 rounded-full border border-[#E8E8ED]">
             Exotic Pets
           </span>
         )}
         {clinic.requires_call_ahead && (
-          <span className="inline-flex items-center gap-1 bg-amber-50 text-amber-700 text-xs font-semibold px-2.5 py-1 rounded-full">
+          <span className="inline-flex items-center gap-1 bg-[#F5F5F7] text-[#6E6E73] text-xs font-medium px-2.5 py-1 rounded-full border border-[#E8E8ED]">
             Call Ahead
           </span>
         )}
@@ -200,7 +202,7 @@ export default function ClinicCard({ clinic }: { clinic: Clinic }) {
       <div className="grid grid-cols-2 gap-3">
         <a
           href={`tel:${clinic.phone}`}
-          className="flex items-center justify-center gap-2 h-12 rounded-xl bg-[#1B7A1B] text-white text-sm font-bold shadow-sm hover:bg-[#156115] active:scale-[0.98] transition-all"
+          className="flex items-center justify-center gap-2 h-12 rounded-xl bg-[#1B7A1B] text-white text-sm font-semibold hover:opacity-90 active:scale-[0.98] transition-all"
         >
           <PhoneIcon className="text-white" />
           Call Now
@@ -209,7 +211,7 @@ export default function ClinicCard({ clinic }: { clinic: Clinic }) {
           href={mapsUrl}
           target="_blank"
           rel="noopener noreferrer"
-          className="flex items-center justify-center gap-2 h-12 rounded-xl border border-[#d2d2d7] text-[#1d1d1f] text-sm font-bold hover:bg-[#f5f5f7] active:scale-[0.98] transition-all"
+          className="flex items-center justify-center gap-2 h-12 rounded-xl border border-[#E8E8ED] text-[#1D1D1F] text-sm font-semibold hover:bg-[#F5F5F7] active:scale-[0.98] transition-all"
         >
           <ArrowTopRightIcon />
           Directions

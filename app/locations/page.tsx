@@ -69,57 +69,54 @@ export default async function LocationsPage() {
   const flatUrlStates = new Set(['NY'])
 
   return (
-    <div className="min-h-screen bg-[#f6f7f8] dark:bg-[#101922]">
-      {/* Emergency Banner */}
-      <div className="bg-red-600 text-white py-2 px-4 text-center text-sm font-bold">
-        <span className="material-symbols-outlined text-sm align-middle mr-1" aria-hidden="true">emergency</span>
-        CRITICAL EMERGENCY?
-        <Link href="/triage" className="underline ml-2 focus:ring-2 focus:ring-white">
-          Go to your nearest emergency vet immediately
-        </Link>
-      </div>
-
+    <div className="min-h-screen bg-[#FAFAFA]">
       {/* Navigation */}
-      <nav className="sticky top-0 z-50 bg-[#f6f7f8]/80 dark:bg-[#101922]/80 backdrop-blur-md border-b border-gray-200 dark:border-gray-800">
-        <div className="flex items-center p-4 justify-between max-w-5xl mx-auto">
-          <Link href="/" className="flex items-center gap-2 focus:ring-2 focus:ring-[#137fec] rounded">
-            <span className="material-symbols-outlined text-[#137fec] text-2xl" aria-hidden="true">medical_services</span>
-            <span className="text-[#0d141b] dark:text-white font-bold">FindEmergencyVet.com</span>
+      <nav className="fixed top-0 left-0 right-0 h-[60px] z-50 border-b border-[#E8E8ED]" style={{ background: 'rgba(250,250,250,0.8)', backdropFilter: 'saturate(180%) blur(20px)', WebkitBackdropFilter: 'saturate(180%) blur(20px)' }}>
+        <div className="max-w-3xl mx-auto h-full flex items-center justify-between px-5">
+          <Link href="/" className="flex items-center gap-2.5">
+            <span className="w-8 h-8 bg-[#0071E3] rounded-lg flex items-center justify-center">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="white" width="18" height="18"><path strokeLinecap="round" strokeLinejoin="round" d="M12 4.5v15m7.5-7.5h-15" /></svg>
+            </span>
+            <span className="text-base font-semibold tracking-tight text-[#1D1D1F]">FindEmergencyVet</span>
           </Link>
-          <Link
-            href="/triage"
-            className="flex items-center gap-1 px-3 py-2 rounded-lg bg-red-100 dark:bg-red-900/30 text-red-600 dark:text-red-400 text-sm font-bold"
-          >
-            <span className="material-symbols-outlined text-[18px]" aria-hidden="true">emergency</span>
-            Triage
-          </Link>
+          <div className="flex items-center gap-6">
+            <Link href="/guides" className="text-sm text-[#6E6E73] hover:text-[#1D1D1F] transition-colors hidden sm:block">Resources</Link>
+            <Link href="/locations" className="text-sm text-[#6E6E73] hover:text-[#1D1D1F] transition-colors hidden sm:block">All Locations</Link>
+          </div>
         </div>
       </nav>
 
-      <main className="max-w-5xl mx-auto px-4 py-8">
+      <main className="max-w-3xl mx-auto px-5 pt-[60px] py-8">
+        {/* Breadcrumb */}
+        <div className="flex items-center gap-1.5 text-[13px] text-[#86868B] mb-6 pt-4">
+          <Link href="/" className="hover:text-[#1D1D1F] transition-colors">Home</Link>
+          <span>&rsaquo;</span>
+          <span className="text-[#1D1D1F] font-medium">All Locations</span>
+        </div>
+
         {/* Hero */}
-        <div className="text-center mb-8">
-          <h1 className="text-[#0d141b] dark:text-white text-3xl md:text-4xl font-black mb-3">
+        <div className="mb-8">
+          <h1 className="text-[32px] md:text-[40px] font-bold tracking-[-0.03em] text-[#1D1D1F] leading-tight mb-3">
             Emergency Vet Locations
           </h1>
-          <p className="text-gray-600 dark:text-gray-400 text-lg">
+          <p className="text-[#6E6E73] text-lg">
             {totalClinics} emergency veterinary clinics across {activeCities} cities
           </p>
         </div>
 
         {/* Stats */}
         <div className="grid grid-cols-3 gap-4 mb-8">
-          <div className="bg-white dark:bg-slate-800 rounded-xl p-4 text-center border border-gray-100 dark:border-slate-700">
-            <div className="text-2xl font-black text-[#137fec]">{totalClinics}</div>
-            <div className="text-xs text-gray-600 dark:text-gray-400 font-medium">Total Clinics</div>
+          <div className="bg-white border border-[#E8E8ED] rounded-2xl p-4 text-center" style={{ boxShadow: '0 2px 8px rgba(0,0,0,0.06)' }}>
+            <div className="text-2xl font-bold text-[#1D1D1F]">{totalClinics}</div>
+            <div className="text-xs text-[#6E6E73] font-medium">Total Clinics</div>
           </div>
-          <div className="bg-white dark:bg-slate-800 rounded-xl p-4 text-center border border-gray-100 dark:border-slate-700">
-            <div className="text-2xl font-black text-[#137fec]">{activeCities}</div>
-            <div className="text-xs text-gray-600 dark:text-gray-400 font-medium">Active Cities</div>
+          <div className="bg-white border border-[#E8E8ED] rounded-2xl p-4 text-center" style={{ boxShadow: '0 2px 8px rgba(0,0,0,0.06)' }}>
+            <div className="text-2xl font-bold text-[#1D1D1F]">{activeCities}</div>
+            <div className="text-xs text-[#6E6E73] font-medium">Active Cities</div>
           </div>
-          <div className="bg-white dark:bg-slate-800 rounded-xl p-4 text-center border border-gray-100 dark:border-slate-700">
-            <div className="text-2xl font-black text-[#137fec]">{sortedStates.length}</div>
-            <div className="text-xs text-gray-600 dark:text-gray-400 font-medium">States</div>
+          <div className="bg-white border border-[#E8E8ED] rounded-2xl p-4 text-center" style={{ boxShadow: '0 2px 8px rgba(0,0,0,0.06)' }}>
+            <div className="text-2xl font-bold text-[#1D1D1F]">{sortedStates.length}</div>
+            <div className="text-xs text-[#6E6E73] font-medium">States</div>
           </div>
         </div>
 
@@ -132,21 +129,21 @@ export default async function LocationsPage() {
             return (
               <div
                 key={state}
-                className="bg-white dark:bg-slate-800 rounded-xl border border-gray-100 dark:border-slate-700 overflow-hidden"
+                className="bg-white border border-[#E8E8ED] rounded-2xl overflow-hidden"
               >
-                <div className="flex items-center justify-between p-4 bg-gray-50 dark:bg-slate-700/50 border-b border-gray-100 dark:border-slate-700">
+                <div className="flex items-center justify-between p-4 bg-[#F5F5F7] border-b border-[#E8E8ED]">
                   <div>
-                    <h2 className="text-[#0d141b] dark:text-white font-bold text-lg">
+                    <h2 className="text-[#1D1D1F] font-bold text-lg">
                       {stateNames[state] || state}
                     </h2>
-                    <span className="text-gray-500 dark:text-gray-400 text-sm">
-                      {stateCities.length} {stateCities.length === 1 ? 'city' : 'cities'} • {totalInState} {totalInState === 1 ? 'clinic' : 'clinics'}
+                    <span className="text-[#86868B] text-sm">
+                      {stateCities.length} {stateCities.length === 1 ? 'city' : 'cities'} &bull; {totalInState} {totalInState === 1 ? 'clinic' : 'clinics'}
                     </span>
                   </div>
                   {hasActiveCities && (
                     <Link
                       href={flatUrlStates.has(state) ? `/${stateSlugs[state]}` : `/states/${stateSlugs[state] || state.toLowerCase()}`}
-                      className="text-[#137fec] text-sm font-bold hover:underline"
+                      className="text-[#0071E3] text-sm font-semibold hover:underline"
                     >
                       View all
                     </Link>
@@ -158,29 +155,29 @@ export default async function LocationsPage() {
                     <Link
                       key={city.id}
                       href={flatUrlStates.has(state) ? `/new-york/${city.slug}` : `/states/${stateSlugs[state] || state.toLowerCase()}/${city.slug}`}
-                      className={`flex items-center justify-between p-3 hover:bg-gray-50 dark:hover:bg-slate-700/30 transition-colors ${
+                      className={`flex items-center justify-between p-3 hover:bg-[#F5F5F7] transition-colors ${
                         city.clinic_count === 0 ? 'opacity-60' : ''
                       }`}
                     >
                       <div className="flex items-center gap-2">
-                        <span className="text-[#0d141b] dark:text-white font-medium text-sm">
+                        <span className="text-[#1D1D1F] font-medium text-sm">
                           {city.name}
                         </span>
                         {city.clinic_count === 0 && (
-                          <span className="text-[9px] font-bold px-1.5 py-0.5 rounded bg-gray-100 dark:bg-slate-700 text-gray-500 dark:text-gray-400">
+                          <span className="text-[9px] font-bold px-1.5 py-0.5 rounded bg-[#F5F5F7] text-[#86868B]">
                             SOON
                           </span>
                         )}
                       </div>
                       <div className="flex items-center gap-1">
                         {city.clinic_count > 0 && (
-                          <span className="text-green-600 dark:text-green-400 text-xs font-bold">
+                          <span className="text-[#1B7A1B] text-xs font-bold">
                             {city.clinic_count}
                           </span>
                         )}
-                        <span className="material-symbols-outlined text-gray-400 text-[16px]" aria-hidden="true">
-                          chevron_right
-                        </span>
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" width="14" height="14" className="text-[#86868B]">
+                          <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
+                        </svg>
                       </div>
                     </Link>
                   ))}
@@ -192,56 +189,69 @@ export default async function LocationsPage() {
 
         {/* Coming Soon CTA */}
         {totalCities > activeCities && (
-          <div className="mt-8 bg-[#137fec]/10 dark:bg-[#137fec]/20 rounded-xl p-6 text-center">
-            <span className="material-symbols-outlined text-[#137fec] text-4xl mb-2" aria-hidden="true">add_location</span>
-            <h3 className="text-[#0d141b] dark:text-white font-bold text-lg mb-2">
+          <div className="mt-8 bg-[#F5F5F7] border border-[#E8E8ED] rounded-2xl p-6 text-center">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" width="40" height="40" className="text-[#86868B] mx-auto mb-2">
+              <path strokeLinecap="round" strokeLinejoin="round" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z" />
+              <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z" />
+            </svg>
+            <h3 className="text-[#1D1D1F] font-bold text-lg mb-2">
               More Locations Coming Soon
             </h3>
-            <p className="text-gray-600 dark:text-gray-400 text-sm mb-4">
-              We're actively adding emergency vet clinics in {totalCities - activeCities} new cities.
+            <p className="text-[#6E6E73] text-sm mb-4">
+              We&apos;re actively adding emergency vet clinics in {totalCities - activeCities} new cities.
             </p>
             <Link
-              href="/register"
-              className="inline-flex items-center gap-2 px-4 py-2 bg-[#137fec] text-white font-bold rounded-lg hover:bg-[#137fec]/90"
+              href="/contact"
+              className="inline-flex items-center gap-2 px-4 py-2 bg-[#1D1D1F] text-white font-medium rounded-xl hover:opacity-90 transition-opacity text-sm"
             >
-              <span className="material-symbols-outlined text-[18px]" aria-hidden="true">add_business</span>
-              Register Your Clinic
+              List Your Clinic
             </Link>
           </div>
         )}
 
         {/* Back Link */}
-        <div className="mt-8 pt-8 border-t border-gray-200 dark:border-slate-700">
+        <div className="mt-8 pt-8 border-t border-[#E8E8ED]">
           <Link
             href="/"
-            className="text-[#137fec] hover:underline focus:ring-2 focus:ring-[#137fec] rounded"
+            className="text-[#0071E3] hover:underline"
           >
             &larr; Back to home
           </Link>
         </div>
       </main>
 
-      {/* Bottom Nav - Mobile */}
-      <nav className="md:hidden fixed bottom-0 left-0 right-0 z-50 bg-white/90 dark:bg-slate-900/90 backdrop-blur-md border-t border-gray-200 dark:border-slate-800 px-6 py-3 flex justify-between items-center" aria-label="Bottom navigation">
-        <Link href="/" className="flex flex-col items-center gap-1 text-gray-400 hover:text-[#137fec] min-w-[48px] min-h-[48px] justify-center">
-          <span className="material-symbols-outlined" aria-hidden="true">home</span>
-          <span className="text-[10px] font-bold">Home</span>
-        </Link>
-        <Link href="/triage" className="flex flex-col items-center gap-1 text-gray-400 hover:text-[#137fec] min-w-[48px] min-h-[48px] justify-center">
-          <span className="material-symbols-outlined" aria-hidden="true">medical_information</span>
-          <span className="text-[10px] font-bold">Triage</span>
-        </Link>
-        <Link href="/costs" className="flex flex-col items-center gap-1 text-gray-400 hover:text-[#137fec] min-w-[48px] min-h-[48px] justify-center">
-          <span className="material-symbols-outlined" aria-hidden="true">payments</span>
-          <span className="text-[10px] font-bold">Costs</span>
-        </Link>
-        <Link href="/locations" className="flex flex-col items-center gap-1 text-[#137fec] min-w-[48px] min-h-[48px] justify-center">
-          <span className="material-symbols-outlined" style={{fontVariationSettings: "'FILL' 1"}} aria-hidden="true">map</span>
-          <span className="text-[10px] font-bold">Locations</span>
-        </Link>
-      </nav>
+      {/* Footer */}
+      <footer className="px-5 py-8 border-t border-[#E8E8ED] text-center">
+        <p className="text-[#86868B] text-xs leading-relaxed max-w-lg mx-auto">
+          FindEmergencyVet.com is an independent directory. Availability and hours may change without notice.
+          Always call the clinic to confirm emergency services before traveling.
+        </p>
+        <div className="flex justify-center gap-4 mt-3 text-[#86868B] text-xs">
+          <Link href="/about" className="hover:text-[#1D1D1F] transition-colors">About</Link>
+          <Link href="/contact" className="hover:text-[#1D1D1F] transition-colors">Contact</Link>
+          <Link href="/privacy" className="hover:text-[#1D1D1F] transition-colors">Privacy</Link>
+        </div>
+        <p className="text-[#86868B] text-xs mt-2">&copy; 2026 FindEmergencyVet.com</p>
+      </footer>
 
-      <div className="h-20 md:h-0"></div>
+      {/* Mobile Bottom Nav */}
+      <nav className="md:hidden fixed bottom-0 left-0 right-0 z-50 border-t border-[#E8E8ED] px-5 py-2.5 pb-[max(0.625rem,env(safe-area-inset-bottom))]" style={{ background: 'rgba(255,255,255,0.9)', backdropFilter: 'blur(20px)', WebkitBackdropFilter: 'blur(20px)' }} aria-label="Bottom navigation">
+        <div className="flex justify-around items-center max-w-md mx-auto">
+          <Link href="/" className="flex flex-col items-center gap-0.5 text-[#86868B] hover:text-[#1D1D1F] min-w-[48px] min-h-[48px] justify-center transition-colors">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" width="24" height="24"><path strokeLinecap="round" strokeLinejoin="round" d="M2.25 12l8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25" /></svg>
+            <span className="text-[10px] font-medium">Home</span>
+          </Link>
+          <Link href="/guides" className="flex flex-col items-center gap-0.5 text-[#86868B] hover:text-[#1D1D1F] min-w-[48px] min-h-[48px] justify-center transition-colors">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" width="24" height="24"><path strokeLinecap="round" strokeLinejoin="round" d="M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18a8.967 8.967 0 00-6 2.292m0-14.25v14.25" /></svg>
+            <span className="text-[10px] font-medium">Guides</span>
+          </Link>
+          <Link href="/locations" className="flex flex-col items-center gap-0.5 text-[#0071E3] min-w-[48px] min-h-[48px] justify-center">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="24" height="24"><path fillRule="evenodd" d="M11.54 22.351l.07.04.028.016a.76.76 0 00.723 0l.028-.015.071-.041a16.975 16.975 0 001.144-.742 19.58 19.58 0 002.683-2.282c1.944-1.99 3.963-4.98 3.963-8.827a8.25 8.25 0 00-16.5 0c0 3.846 2.02 6.837 3.963 8.827a19.58 19.58 0 002.682 2.282 16.975 16.975 0 001.145.742zM12 13.5a3 3 0 100-6 3 3 0 000 6z" clipRule="evenodd" /></svg>
+            <span className="text-[10px] font-medium">Locations</span>
+          </Link>
+        </div>
+      </nav>
+      <div className="h-20 md:h-0" />
     </div>
   )
 }

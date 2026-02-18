@@ -32,7 +32,7 @@ export default function TriageGuidePage() {
         subtitle="Use this quick triage checklist to decide how urgent the situation is and what to do next."
       >
         <section>
-          <h2 className="text-xl font-bold text-[#0d141b] dark:text-white font-display">Step 1: Look for critical signs</h2>
+          <h2 className="text-[24px] font-bold tracking-[-0.02em] text-[#1D1D1F]">Step 1: Look for critical signs</h2>
           <ul className="list-disc pl-6 mt-3">
             <li>Difficulty breathing or choking</li>
             <li>Severe bleeding or trauma</li>
@@ -42,14 +42,14 @@ export default function TriageGuidePage() {
         </section>
 
         <section>
-          <h2 className="text-xl font-bold text-[#0d141b] dark:text-white font-display">Step 2: Call the nearest emergency vet</h2>
+          <h2 className="text-[24px] font-bold tracking-[-0.02em] text-[#1D1D1F]">Step 2: Call the nearest emergency vet</h2>
           <p className="mt-3">
             Even if you plan to drive immediately, a quick call can alert the team and reduce wait time.
           </p>
         </section>
 
         <section>
-          <h2 className="text-xl font-bold text-[#0d141b] dark:text-white font-display">Step 3: Transport safely</h2>
+          <h2 className="text-[24px] font-bold tracking-[-0.02em] text-[#1D1D1F]">Step 3: Transport safely</h2>
           <p className="mt-3">
             Keep your pet warm and calm, use a blanket as a stretcher for larger dogs, and avoid giving food or water unless advised.
           </p>

@@ -154,7 +154,14 @@ export default function HomePage({
       {/* Navigation */}
       <nav>
         <div className="nav-inner">
-          <Link href="/" className="logo">Find<span>Emergency</span>Vet</Link>
+          <Link href="/" className="logo">
+            <span className="logo-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="white" width="18" height="18">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+              </svg>
+            </span>
+            FindEmergencyVet
+          </Link>
           <ul className="nav-links">
             <li><Link href="/guides">Resources</Link></li>
             <li><Link href="/locations">All Locations</Link></li>
@@ -384,7 +391,14 @@ export default function HomePage({
       <footer>
         <div className="footer-inner">
           <div className="footer-brand">
-            <Link href="/" className="logo">Find<span>Emergency</span>Vet</Link>
+            <Link href="/" className="logo">
+              <span className="logo-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="white" width="18" height="18">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+                </svg>
+              </span>
+              FindEmergencyVet
+            </Link>
             <p>Helping pet owners find emergency veterinary care when every minute counts. Verified clinic information across the United States.</p>
           </div>
 
