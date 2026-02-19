@@ -1,4 +1,12 @@
 User-agent: *
 Allow: /
 
+# Block internal Next.js paths
+Disallow: /_next/
+Disallow: /api/
+
+# Block legacy redirect paths (these 301 to canonical URLs — no need to crawl)
+Disallow: /locations/
+Disallow: /states/
+
 Sitemap: https://findemergencyvet.com/sitemap.xml
