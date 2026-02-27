@@ -72,7 +72,9 @@ export default async function StateHubPage({
     .eq('state', stateAbbr)
     .order('clinic_count', { ascending: false })
 
-  if (!cities || cities.length === 0) notFound()
+  // Guard: state page requires at least one city with 2+ clinics to be worth indexing.
+  // A state with only 0- or 1-clinic cities has no meaningful directory content.
+  if (!cities || !cities.some(c => c.clinic_count >= 2)) notFound()
 
   const totalClinics = cities.reduce((sum, c) => sum + (c.clinic_count || 0), 0)
   const activeCities = cities.filter(c => c.clinic_count > 0)

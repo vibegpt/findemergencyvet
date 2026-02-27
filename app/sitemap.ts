@@ -21,11 +21,14 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     { url: `${BASE_URL}/privacy`, changeFrequency: 'monthly', priority: 0.3 },
   ]
 
-  // Fetch only cities that have clinics
+  // SITEMAP FILTER: Only include city pages with 2+ clinics.
+  // - 0-clinic pages: no content, pure crawl budget waste — return notFound() at the page level.
+  // - 1-clinic pages: noindexed at the page level — no sitemap entry needed.
+  // Do NOT lower this threshold without also updating the noindex guard in app/[state]/[city]/page.tsx.
   const { data: cities } = await supabase
     .from('cities')
     .select('slug, state, clinic_count')
-    .gt('clinic_count', 0)
+    .gte('clinic_count', 2)
     .order('state')
     .order('slug')
 
@@ -43,16 +46,25 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     })
   }
 
+  // SITEMAP FILTER: Only include state pages that have at least one city with 2+ clinics.
+  // State pages with no qualifying cities are noindexed at the page level.
   const statePages: MetadataRoute.Sitemap = Array.from(statesWithCities).map(stateSlug => ({
     url: `${BASE_URL}/${stateSlug}`,
     changeFrequency: 'weekly' as const,
     priority: 0.8,
   }))
 
+  // SITEMAP FILTER: Only include clinic profiles with all four required fields populated.
+  // Profiles missing name, phone, address, or hours provide no value to users and waste crawl budget.
+  // Do not remove these filters — incomplete profiles must never appear in the sitemap.
   const { data: clinics } = await supabase
     .from('clinics')
     .select('slug')
     .eq('is_active', true)
+    .not('name', 'is', null)
+    .not('phone', 'is', null)
+    .not('address', 'is', null)
+    .not('hours_detail', 'is', null)
 
   const clinicPages: MetadataRoute.Sitemap = (clinics || []).map(clinic => ({
     url: `${BASE_URL}/clinics/${clinic.slug}`,

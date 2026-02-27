@@ -1,10 +1,12 @@
 import { supabase } from '@/lib/supabase'
+import { computeClinicStatus, HoursDetail } from '@/lib/clinic-status'
 import { notFound } from 'next/navigation'
 import { Metadata } from 'next'
 import { stateNameBySlug, stateAbbrBySlug } from '@/lib/state-data'
 import StateCityPage from './page-client'
 
-export const dynamic = 'force-dynamic'
+// ISR: revalidate hourly for open/closed accuracy
+export const revalidate = 3600
 
 export async function generateMetadata({
   params,
@@ -18,7 +20,7 @@ export async function generateMetadata({
 
   const { data: city } = await supabase
     .from('cities')
-    .select('name, state')
+    .select('name, state, clinic_count')
     .eq('slug', citySlug)
     .eq('state', stateAbbr)
     .single()
@@ -38,6 +40,9 @@ export async function generateMetadata({
       description: `Find open emergency veterinary hospitals in ${city.name}, ${stateName}. Call directly, no delays.`,
       type: 'website',
     },
+    // Noindex single-clinic pages — not enough content to merit indexing.
+    // Paired with the sitemap filter (gte clinic_count 2) in app/sitemap.ts.
+    ...(city.clinic_count === 1 && { robots: { index: false, follow: true } }),
   }
 }
 
@@ -63,17 +68,31 @@ export default async function CityPage({
   if (!city) notFound()
 
   // Fetch clinics with verification_status
-  const { data: clinics } = await supabase
+  const { data: rawClinics } = await supabase
     .from('clinics')
-    .select('id, slug, name, address, city, state, zip_code, phone, is_24_7, current_status, verification_status, has_exotic_specialist, google_rating, google_review_count, availability_type, accepts_walk_ins, requires_call_ahead, exotic_pets_accepted, parking_type, wheelchair_accessible, has_separate_cat_entrance, has_isolation_rooms, hours_description')
+    .select('id, slug, name, address, city, state, zip_code, phone, is_24_7, hours_detail, hours_description, availability_type, timezone, verification_status, has_exotic_specialist, google_rating, google_review_count, accepts_walk_ins, requires_call_ahead, exotic_pets_accepted, parking_type, wheelchair_accessible, has_separate_cat_entrance, has_isolation_rooms')
     .eq('city', city.name)
     .eq('state', stateAbbr)
     .eq('is_active', true)
     .order('is_featured', { ascending: false })
     .order('is_24_7', { ascending: false })
-    .order('google_rating', { ascending: false, nullsFirst: false })
 
-  // Fetch nearby cities (same state)
+  const clinics = (rawClinics || []).map(clinic => ({
+    ...clinic,
+    computedStatus: computeClinicStatus(
+      clinic.is_24_7,
+      clinic.hours_detail as HoursDetail | null,
+      clinic.availability_type,
+      clinic.hours_description,
+      clinic.state,
+      clinic.timezone,
+    ),
+  }))
+
+  // Guard: 0-clinic pages have no content — return 404 rather than render an empty page.
+  // This is the runtime safety net if bad data bypasses the sitemap filter.
+  if (clinics.length === 0) notFound()
+
   const { data: nearbyCities } = await supabase
     .from('cities')
     .select('id, name, state, slug, clinic_count')
@@ -131,7 +150,7 @@ export default async function CityPage({
       />
       <StateCityPage
         city={city}
-        allClinics={clinics || []}
+        allClinics={clinics}
         nearbyCities={nearbyCities || []}
         stateSlug={state}
         stateName={stateName}

@@ -1,10 +1,12 @@
 import { supabase } from '@/lib/supabase'
+import { computeClinicStatus, HoursDetail } from '@/lib/clinic-status'
 import { notFound } from 'next/navigation'
 import { Metadata } from 'next'
 import Link from 'next/link'
-import ClinicCard from '@/components/clinic/ClinicCard'
+import ClinicCard, { ClinicCardData } from '@/components/clinic/ClinicCard'
 
-export const dynamic = 'force-dynamic'
+// ISR: revalidate hourly for open/closed accuracy
+export const revalidate = 3600
 
 export async function generateMetadata({
   params,
@@ -15,7 +17,7 @@ export async function generateMetadata({
 
   const { data: city } = await supabase
     .from('cities')
-    .select('name, state')
+    .select('name, state, clinic_count')
     .eq('slug', citySlug)
     .eq('state', 'NY')
     .single()
@@ -33,6 +35,7 @@ export async function generateMetadata({
       description: `Find open emergency veterinary hospitals in ${city.name}, New York. Call directly, get directions.`,
       type: 'website',
     },
+    ...(city.clinic_count === 1 && { robots: { index: false, follow: true } }),
   }
 }
 
@@ -53,15 +56,28 @@ export default async function NewYorkCityPage({
   if (!city) notFound()
 
   // Fetch clinics
-  const { data: clinics } = await supabase
+  const { data: rawClinics } = await supabase
     .from('clinics')
-    .select('id, slug, name, address, city, state, zip_code, phone, is_24_7, current_status, has_exotic_specialist, google_rating, google_review_count, availability_type, accepts_walk_ins, requires_call_ahead, exotic_pets_accepted, parking_type, wheelchair_accessible, has_separate_cat_entrance, has_isolation_rooms, hours_description')
+    .select('id, slug, name, address, city, state, zip_code, phone, is_24_7, hours_detail, hours_description, availability_type, timezone, has_exotic_specialist, google_rating, google_review_count, accepts_walk_ins, requires_call_ahead, exotic_pets_accepted, parking_type, wheelchair_accessible, has_separate_cat_entrance, has_isolation_rooms, verification_status')
     .eq('city', city.name)
     .eq('state', 'NY')
     .eq('is_active', true)
     .order('is_featured', { ascending: false })
     .order('is_24_7', { ascending: false })
-    .order('google_rating', { ascending: false, nullsFirst: false })
+
+  const clinics = (rawClinics || []).map(clinic => ({
+    ...clinic,
+    computedStatus: computeClinicStatus(
+      clinic.is_24_7,
+      clinic.hours_detail as HoursDetail | null,
+      clinic.availability_type,
+      clinic.hours_description,
+      clinic.state,
+      clinic.timezone,
+    ),
+  }))
+
+  if (clinics.length === 0) notFound()
 
   // Fetch nearby cities for internal linking
   const { data: nearbyCities } = await supabase
