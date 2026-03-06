@@ -8,6 +8,14 @@ import ClinicCard, { ClinicCardData } from '@/components/clinic/ClinicCard'
 // ISR: revalidate hourly for open/closed accuracy
 export const revalidate = 3600
 
+// Per-city metadata overrides for high-priority NY SEO targets.
+const nyMetaOverrides: Record<string, { title: string; description: string }> = {
+  'syracuse': {
+    title: 'Emergency Vet Syracuse NY | 24/7 Animal Hospital | FindEmergencyVet',
+    description: 'Find emergency veterinary clinics in Syracuse, NY. Verified hours, open/closed status, and tap-to-call for 24/7 animal hospitals in Syracuse. Updated 2026.',
+  },
+}
+
 export async function generateMetadata({
   params,
 }: {
@@ -24,15 +32,17 @@ export async function generateMetadata({
 
   if (!city) return { title: 'Emergency Vet Finder' }
 
+  const override = nyMetaOverrides[citySlug]
+
   return {
-    title: `Emergency Vet in ${city.name}, New York — Open Now | Find Emergency Vet`,
-    description: `Need an emergency vet in ${city.name}, New York? Find open 24/7 emergency veterinary hospitals with phone numbers, directions, hours, and walk-in policies.`,
+    title: override?.title ?? `Emergency Vets in ${city.name}, NY | 24/7 Animal Hospital | FindEmergencyVet`,
+    description: override?.description ?? `Find emergency veterinary clinics in ${city.name}, NY. Verified hours, open/closed status, and tap-to-call for 24/7 animal hospitals in ${city.name}. Updated 2026.`,
     alternates: {
       canonical: `https://findemergencyvet.com/new-york/${citySlug}`,
     },
     openGraph: {
-      title: `Emergency Vet in ${city.name}, New York — Open Now`,
-      description: `Find open emergency veterinary hospitals in ${city.name}, New York. Call directly, get directions.`,
+      title: override?.title ?? `Emergency Vets in ${city.name}, NY | FindEmergencyVet`,
+      description: override?.description ?? `Find emergency veterinary clinics in ${city.name}, NY. Tap-to-call, verified hours, open now.`,
       type: 'website',
     },
     ...(city.clinic_count === 1 && { robots: { index: false, follow: true } }),
@@ -175,13 +185,12 @@ export default async function NewYorkCityPage({
 
           {/* H1 */}
           <h1 className="text-[32px] md:text-[40px] font-bold tracking-[-0.03em] text-[#1D1D1F] mb-4">
-            Emergency Vet in {city.name}, New York — Open Now
+            Emergency Vets in {city.name}, NY
           </h1>
 
           {/* Intro Paragraph */}
           <p className="text-[#6E6E73] text-lg mb-8 leading-relaxed">
-            Need an emergency veterinarian in {city.name}, New York?
-            Emergency Vet Finder helps you locate open emergency and referral veterinary hospitals serving {city.name} and surrounding areas — with phone numbers, directions, and hours.
+            Need an emergency vet in {city.name}, NY? Find verified 24/7 animal hospitals and emergency vet clinics in {city.name}, New York — tap-to-call phone numbers, confirmed hours, and directions.
           </p>
 
           {/* Clinic Listings */}

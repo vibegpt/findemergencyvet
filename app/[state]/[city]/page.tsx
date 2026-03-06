@@ -8,6 +8,29 @@ import StateCityPage from './page-client'
 // ISR: revalidate hourly for open/closed accuracy
 export const revalidate = 3600
 
+// Per-city metadata overrides for high-priority SEO targets.
+// Key format: "{state-slug}/{city-slug}"
+// Add new entries here as priority cities are identified — do not modify the
+// fallback template in generateMetadata unless changing the site-wide default.
+const cityMetaOverrides: Record<string, { title: string; description: string }> = {
+  'georgia/gainesville': {
+    title: 'Emergency Vet Gainesville GA | 24/7 Animal Hospital | FindEmergencyVet',
+    description: 'Find emergency veterinary clinics in Gainesville, GA. Verified hours, open/closed status, and tap-to-call for 24/7 animal hospitals in Gainesville. Updated 2026.',
+  },
+  'virginia/richmond': {
+    title: 'Emergency Vet Richmond VA | 24/7 Animal Hospital | FindEmergencyVet',
+    description: 'Find emergency veterinary clinics in Richmond, VA. Verified hours, open/closed status, and tap-to-call for 24/7 animal hospitals in Richmond. Updated 2026.',
+  },
+  'missouri/springfield': {
+    title: 'Emergency Vet Springfield MO | 24/7 Animal Hospital | FindEmergencyVet',
+    description: 'Find emergency veterinary clinics in Springfield, MO. Verified hours, open/closed status, and tap-to-call for 24/7 emergency animal hospitals. Updated 2026.',
+  },
+  'florida/port-charlotte': {
+    title: 'Emergency Vet Port Charlotte FL | 24/7 Animal Care | FindEmergencyVet',
+    description: 'Find emergency veterinary clinics in Port Charlotte, FL. Verified hours, open/closed status, and tap-to-call for 24/7 emergency animal hospitals. Updated 2026.',
+  },
+}
+
 export async function generateMetadata({
   params,
 }: {
@@ -28,16 +51,17 @@ export async function generateMetadata({
   if (!city) return { title: 'Emergency Vet Finder' }
 
   const stateName = stateNameBySlug[state] || city.state
+  const override = cityMetaOverrides[`${state}/${citySlug}`]
 
   return {
-    title: `Emergency Vet in ${city.name}, ${stateName} — Open Now | FindEmergencyVet.com`,
-    description: `Find open 24/7 emergency vets and animal hospitals in ${city.name}, ${stateName}. Call now for immediate care, directions, and after-hours availability.`,
+    title: override?.title ?? `Emergency Vet in ${city.name}, ${stateName} — Open Now | FindEmergencyVet.com`,
+    description: override?.description ?? `Find open 24/7 emergency vets and animal hospitals in ${city.name}, ${stateName}. Call now for immediate care, directions, and after-hours availability.`,
     alternates: {
       canonical: `https://findemergencyvet.com/${state}/${citySlug}`,
     },
     openGraph: {
-      title: `Emergency Vet in ${city.name}, ${stateName} — Open Now`,
-      description: `Find open emergency veterinary hospitals in ${city.name}, ${stateName}. Call directly, no delays.`,
+      title: override?.title ?? `Emergency Vet in ${city.name}, ${stateName} — Open Now`,
+      description: override?.description ?? `Find open emergency veterinary hospitals in ${city.name}, ${stateName}. Call directly, no delays.`,
       type: 'website',
     },
     // Noindex single-clinic pages — not enough content to merit indexing.

@@ -1,0 +1,55 @@
+{
+  "redirects": [
+    {
+      "source": "/:path*",
+      "has": [{ "type": "host", "value": "www.findemergencyvet.com" }],
+      "destination": "https://findemergencyvet.com/:path*",
+      "permanent": true
+    },
+    {
+      "source": "/states/south-carolina/rock-hill",
+      "destination": "/south-carolina/rock-hill",
+      "permanent": true
+    },
+    {
+      "source": "/states/tennessee/hermitage",
+      "destination": "/tennessee/hermitage",
+      "permanent": true
+    },
+    {
+      "source": "/states/west-virginia",
+      "destination": "/west-virginia",
+      "permanent": true
+    },
+    {
+      "source": "/states/michigan/madison-heights",
+      "destination": "/michigan/madison-heights",
+      "permanent": true
+    },
+    {
+      "source": "/states/wisconsin/mosinee",
+      "destination": "/wisconsin/mosinee",
+      "permanent": true
+    },
+    {
+      "source": "/states/oklahoma",
+      "destination": "/oklahoma",
+      "permanent": true
+    },
+    {
+      "source": "/states/louisiana/lake-charles",
+      "destination": "/louisiana/lake-charles",
+      "permanent": true
+    },
+    {
+      "source": "/states/pennsylvania",
+      "destination": "/pennsylvania",
+      "permanent": true
+    },
+    {
+      "source": "/georgia/gainesville-ga",
+      "destination": "/georgia/gainesville",
+      "permanent": true
+    }
+  ]
+}

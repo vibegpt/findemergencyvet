@@ -26,6 +26,9 @@ export async function generateMetadata({
   return {
     title: `${clinic.name} | Emergency Vet in ${clinic.city}, ${stateName}`,
     description: `Call ${clinic.name} for emergency veterinary care in ${clinic.city}, ${stateName}. See hours, walk-in policy, exotic pet support, and amenities.`,
+    alternates: {
+      canonical: `https://findemergencyvet.com/clinics/${clinicSlug}`,
+    },
   }
 }
 

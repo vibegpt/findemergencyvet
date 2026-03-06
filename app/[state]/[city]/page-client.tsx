@@ -2,33 +2,9 @@
 
 import Link from 'next/link'
 import { useState } from 'react'
-import ClinicCard from '@/components/clinic/ClinicCard'
+import ClinicCard, { ClinicCardData } from '@/components/clinic/ClinicCard'
 
-type Clinic = {
-  id: string
-  name: string
-  address: string
-  city: string
-  state: string
-  zip_code: string | null
-  phone: string
-  is_24_7: boolean
-  current_status: string | null
-  verification_status?: string | null
-  has_exotic_specialist: boolean
-  google_rating: number | null
-  google_review_count: number | null
-  exotic_pets_accepted?: string[] | null
-  availability_type: string | null
-  accepts_walk_ins?: boolean | null
-  requires_call_ahead?: boolean | null
-  parking_type?: string | null
-  wheelchair_accessible?: boolean | null
-  has_separate_cat_entrance?: boolean | null
-  has_isolation_rooms?: boolean | null
-  hours_description?: string | null
-  slug?: string
-}
+type Clinic = ClinicCardData
 
 type City = {
   id: string
@@ -101,7 +77,7 @@ export default function StateCityPage({
     return true
   })
 
-  const count24_7 = allClinics.filter(c => c.is_24_7).length
+  const count24_7 = allClinics.filter(c => c.computedStatus.status === 'open-24-7').length
   const faqs = getFaqs(city.name, stateName, count24_7)
 
   // FAQPage JSON-LD
@@ -165,13 +141,13 @@ export default function StateCityPage({
           </div>
 
           <h1 className="text-[32px] md:text-[40px] font-bold tracking-[-0.03em] text-[#1D1D1F] leading-tight mb-4">
-            Emergency Vets in {city.name}, {stateName}
+            Emergency Vets in {city.name}, {stateAbbr}
           </h1>
 
           <p className="text-[#6E6E73] text-base md:text-lg leading-relaxed max-w-xl">
             {count24_7 > 0
-              ? `${count24_7} true 24/7 ${count24_7 === 1 ? 'facility' : 'facilities'} with on-site staff. ${allClinics.length} total emergency options.`
-              : `${allClinics.length} emergency veterinary ${allClinics.length === 1 ? 'clinic' : 'clinics'} serving ${city.name}. Call ahead to confirm availability.`
+              ? `Find an emergency vet in ${city.name}, ${stateAbbr} — ${count24_7} true 24/7 ${count24_7 === 1 ? 'animal hospital' : 'animal hospitals'} with on-site staff. ${allClinics.length} total emergency options listed below.`
+              : `Find an emergency vet in ${city.name}, ${stateAbbr} — ${allClinics.length} verified emergency ${allClinics.length === 1 ? 'clinic' : 'clinics'} listed below. Call ahead to confirm availability.`
             }
           </p>
 
