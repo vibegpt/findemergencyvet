@@ -97,7 +97,7 @@ UPDATE clinics SET hours_detail = '{
   "saturday":  {"open": "08:00", "close": "17:00", "overnight": false},
   "sunday":    {"open": "08:00", "close": "17:00", "overnight": false}
 }'::jsonb
-WHERE slug = 'namc-lincoln-ne';
+WHERE slug = 'nebraska-animal-medical-lincoln';
 
 -- =================================================================
 -- SPRINGFIELD, MO
@@ -153,7 +153,7 @@ UPDATE clinics SET hours_detail = '{
   "saturday":  {"open": "10:00", "close": "20:00", "overnight": false},
   "sunday":    {"open": "10:00", "close": "20:00", "overnight": false}
 }'::jsonb
-WHERE slug = 'urgentvet-carytown-va';
+WHERE slug = 'urgentvet-carytown-richmond';
 
 -- =================================================================
 -- PORT CHARLOTTE, FL
