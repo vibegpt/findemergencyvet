@@ -47,6 +47,11 @@
       "permanent": true
     },
     {
+      "source": "/states/new-jersey/lyndhurst",
+      "destination": "/new-jersey/lyndhurst",
+      "permanent": true
+    },
+    {
       "source": "/georgia/gainesville-ga",
       "destination": "/georgia/gainesville",
       "permanent": true
