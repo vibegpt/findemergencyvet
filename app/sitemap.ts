@@ -59,18 +59,35 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   // Do not remove these filters — incomplete profiles must never appear in the sitemap.
   const { data: clinics } = await supabase
     .from('clinics')
-    .select('slug')
+    .select('slug, city, state')
     .eq('is_active', true)
     .not('name', 'is', null)
     .not('phone', 'is', null)
     .not('address', 'is', null)
     .not('hours_detail', 'is', null)
 
-  const clinicPages: MetadataRoute.Sitemap = (clinics || []).map(clinic => ({
-    url: `${BASE_URL}/clinics/${clinic.slug}`,
-    changeFrequency: 'weekly' as const,
-    priority: 0.6,
-  }))
+  // Fetch all cities to map city name → slug for building clinic profile URLs
+  // (some clinic cities may not have 2+ clinics and aren't in the cities query above)
+  const { data: allCities } = await supabase
+    .from('cities')
+    .select('name, state, slug')
+
+  const cityNameMap = new Map<string, string>()
+  for (const city of allCities || []) {
+    cityNameMap.set(`${city.name}:${city.state}`, city.slug)
+  }
+
+  const clinicPages: MetadataRoute.Sitemap = (clinics || []).flatMap(clinic => {
+    const stateSlug = stateSlugByAbbr[clinic.state]
+    if (!stateSlug) return []
+    const citySlug = cityNameMap.get(`${clinic.city}:${clinic.state}`)
+      ?? clinic.city.toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, '')
+    return [{
+      url: `${BASE_URL}/${stateSlug}/${citySlug}/${clinic.slug}`,
+      changeFrequency: 'weekly' as const,
+      priority: 0.6,
+    }]
+  })
 
   return [...staticPages, ...statePages, ...cityPages, ...clinicPages]
 }

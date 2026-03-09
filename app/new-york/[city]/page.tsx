@@ -85,6 +85,7 @@ export default async function NewYorkCityPage({
       clinic.state,
       clinic.timezone,
     ),
+    detailUrl: clinic.slug ? `/new-york/${citySlug}/${clinic.slug}` : null,
   }))
 
   if (clinics.length === 0) notFound()

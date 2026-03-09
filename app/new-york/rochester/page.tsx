@@ -80,6 +80,7 @@ export default async function RochesterPage() {
         clinic.state,
         clinic.timezone,
       ),
+      detailUrl: clinic.slug ? `/new-york/rochester/${clinic.slug}` : null,
     }))
 
   const { data: nearbyCities } = await supabase

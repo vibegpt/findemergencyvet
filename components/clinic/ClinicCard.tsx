@@ -1,4 +1,5 @@
 'use client'
+import Link from 'next/link'
 import { ComputedStatus } from '@/lib/clinic-status'
 
 export type ClinicCardData = {
@@ -19,6 +20,7 @@ export type ClinicCardData = {
   requires_call_ahead?: boolean | null
   google_rating?: number | null
   google_review_count?: number | null
+  detailUrl?: string | null  // ← canonical profile URL for internal linking
 }
 
 /* ── Inline SVG icons (18x18) ── */
@@ -119,7 +121,13 @@ export default function ClinicCard({ clinic }: { clinic: ClinicCardData }) {
       {/* Row 1: Name + Status Badge */}
       <div className="flex items-start justify-between gap-3 mb-3">
         <h3 className="text-[#1D1D1F] text-lg leading-snug" style={{ fontWeight: 600 }}>
-          {clinic.name}
+          {clinic.detailUrl ? (
+            <Link href={clinic.detailUrl} className="hover:text-[#0071E3] transition-colors">
+              {clinic.name}
+            </Link>
+          ) : (
+            clinic.name
+          )}
         </h3>
         <StatusBadge status={clinic.computedStatus} />
       </div>

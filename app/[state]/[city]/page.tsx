@@ -111,6 +111,7 @@ export default async function CityPage({
       clinic.state,
       clinic.timezone,
     ),
+    detailUrl: clinic.slug ? `/${state}/${citySlug}/${clinic.slug}` : null,
   }))
 
   // Guard: 0-clinic pages have no content — return 404 rather than render an empty page.
