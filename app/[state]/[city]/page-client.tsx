@@ -174,32 +174,36 @@ export default function StateCityPage({
           </div>
         </header>
 
-        {/* ── Filter Chips ── */}
-        <div className="sticky top-[60px] z-40 border-b border-[#E8E8ED]" style={{ background: 'rgba(250,250,250,0.8)', backdropFilter: 'saturate(180%) blur(20px)', WebkitBackdropFilter: 'saturate(180%) blur(20px)' }}>
-          <div className="flex gap-2 px-5 py-3 overflow-x-auto hide-scrollbar" role="group" aria-label="Filter clinics">
-            {filters.map(f => (
-              <button
-                key={f.key}
-                onClick={() => setActiveFilter(f.key)}
-                className={`shrink-0 px-4 py-2 rounded-full text-sm font-medium transition-all ${
-                  activeFilter === f.key
-                    ? 'bg-[#1D1D1F] text-white'
-                    : 'bg-white text-[#6E6E73] border border-[#E8E8ED] hover:text-[#1D1D1F]'
-                }`}
-                aria-pressed={activeFilter === f.key}
-              >
-                {f.label}
-                {f.key === '24_7' && ` (${count24_7})`}
-              </button>
-            ))}
+        {/* ── Filter Chips (hidden when no clinics) ── */}
+        {allClinics.length > 0 && (
+          <div className="sticky top-[60px] z-40 border-b border-[#E8E8ED]" style={{ background: 'rgba(250,250,250,0.8)', backdropFilter: 'saturate(180%) blur(20px)', WebkitBackdropFilter: 'saturate(180%) blur(20px)' }}>
+            <div className="flex gap-2 px-5 py-3 overflow-x-auto hide-scrollbar" role="group" aria-label="Filter clinics">
+              {filters.map(f => (
+                <button
+                  key={f.key}
+                  onClick={() => setActiveFilter(f.key)}
+                  className={`shrink-0 px-4 py-2 rounded-full text-sm font-medium transition-all ${
+                    activeFilter === f.key
+                      ? 'bg-[#1D1D1F] text-white'
+                      : 'bg-white text-[#6E6E73] border border-[#E8E8ED] hover:text-[#1D1D1F]'
+                  }`}
+                  aria-pressed={activeFilter === f.key}
+                >
+                  {f.label}
+                  {f.key === '24_7' && ` (${count24_7})`}
+                </button>
+              ))}
+            </div>
           </div>
-        </div>
+        )}
 
         {/* ── Clinic Listings ── */}
         <section id="clinics" className="px-5 py-8">
-          <p className="text-sm text-[#86868B] mb-6">
-            Showing {filteredClinics.length} of {allClinics.length} {allClinics.length === 1 ? 'clinic' : 'clinics'}
-          </p>
+          {allClinics.length > 0 && (
+            <p className="text-sm text-[#86868B] mb-6">
+              Showing {filteredClinics.length} of {allClinics.length} {allClinics.length === 1 ? 'clinic' : 'clinics'}
+            </p>
+          )}
 
           <div className="space-y-4">
             {filteredClinics.map(clinic => (
@@ -209,20 +213,30 @@ export default function StateCityPage({
 
           {/* No clinics at all */}
           {allClinics.length === 0 && (
-            <div className="border-2 border-dashed border-[#E8E8ED] rounded-2xl p-10 text-center">
-              <h3 className="text-xl font-semibold text-[#1D1D1F] mb-2">Coming Soon</h3>
-              <p className="text-[#6E6E73] text-sm mb-6 max-w-md mx-auto">
-                We&apos;re adding emergency veterinary clinics in {city.name}, {stateName}.
-                In the meantime, try searching Google Maps.
+            <div className="rounded-2xl border border-[#E8E8ED] bg-white p-8">
+              <p className="text-[#1D1D1F] font-semibold mb-2">
+                No verified emergency vets listed for {city.name} yet.
               </p>
-              <a
-                href={`https://www.google.com/maps/search/emergency+vet+${encodeURIComponent(city.name + ' ' + stateName)}`}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-5 py-2.5 bg-white border border-[#E8E8ED] text-[#1D1D1F] font-medium rounded-xl hover:bg-[#F5F5F7] transition-colors"
-              >
-                Search Google Maps
-              </a>
+              <p className="text-[#6E6E73] text-sm mb-6">
+                We&apos;re working on adding verified clinic data for this area.
+                In the meantime, try nearby cities or search Google Maps.
+              </p>
+              <div className="flex flex-wrap gap-3">
+                <Link
+                  href={`/${stateSlug}`}
+                  className="inline-flex items-center gap-1.5 px-4 py-2.5 bg-[#1D1D1F] text-white text-sm font-semibold rounded-xl hover:opacity-90 transition-opacity"
+                >
+                  View all {stateName} emergency vets &rarr;
+                </Link>
+                <a
+                  href={`https://www.google.com/maps/search/emergency+vet+${encodeURIComponent(city.name + ' ' + stateName)}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-1.5 px-4 py-2.5 bg-white border border-[#E8E8ED] text-[#1D1D1F] text-sm font-semibold rounded-xl hover:bg-[#F5F5F7] transition-colors"
+                >
+                  Search Google Maps
+                </a>
+              </div>
             </div>
           )}
 

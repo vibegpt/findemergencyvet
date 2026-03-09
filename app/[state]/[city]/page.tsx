@@ -29,6 +29,11 @@ const cityMetaOverrides: Record<string, { title: string; description: string }> 
     title: 'Emergency Vet Port Charlotte FL | 24/7 Animal Care | FindEmergencyVet',
     description: 'Find emergency veterinary clinics in Port Charlotte, FL. Verified hours, open/closed status, and tap-to-call for 24/7 emergency animal hospitals. Updated 2026.',
   },
+  // Migrated from app/new-york/[city]/page.tsx (deleted — generic route handles all NY cities)
+  'new-york/syracuse': {
+    title: 'Emergency Vet Syracuse NY | 24/7 Animal Hospital | FindEmergencyVet',
+    description: 'Find emergency veterinary clinics in Syracuse, NY. Verified hours, open/closed status, and tap-to-call for 24/7 animal hospitals in Syracuse. Updated 2026.',
+  },
 }
 
 export async function generateMetadata({
@@ -64,9 +69,9 @@ export async function generateMetadata({
       description: override?.description ?? `Find open emergency veterinary hospitals in ${city.name}, ${stateName}. Call directly, no delays.`,
       type: 'website',
     },
-    // Noindex single-clinic pages — not enough content to merit indexing.
+    // Noindex pages with fewer than 2 clinics — not enough content.
     // Paired with the sitemap filter (gte clinic_count 2) in app/sitemap.ts.
-    ...(city.clinic_count === 1 && { robots: { index: false, follow: true } }),
+    ...(city.clinic_count < 2 && { robots: { index: false, follow: true } }),
   }
 }
 
@@ -113,10 +118,6 @@ export default async function CityPage({
     ),
     detailUrl: clinic.slug ? `/${state}/${citySlug}/${clinic.slug}` : null,
   }))
-
-  // Guard: 0-clinic pages have no content — return 404 rather than render an empty page.
-  // This is the runtime safety net if bad data bypasses the sitemap filter.
-  if (clinics.length === 0) notFound()
 
   const { data: nearbyCities } = await supabase
     .from('cities')
