@@ -1,5 +1,7 @@
 'use client'
 
+import Link from 'next/link'
+
 type Clinic = {
   id: string
   slug?: string
@@ -138,7 +140,13 @@ export default function ClinicCard({ clinic }: { clinic: Clinic }) {
       {/* Row 1: Name + Status Badge */}
       <div className="flex items-start justify-between gap-3 mb-3">
         <h3 className="text-[#1D1D1F] text-lg leading-snug" style={{ fontWeight: 600 }}>
-          {clinic.name}
+          {clinic.slug ? (
+            <Link href={`/clinics/${clinic.slug}`} className="hover:text-[#0071E3] transition-colors">
+              {clinic.name}
+            </Link>
+          ) : (
+            clinic.name
+          )}
         </h3>
         <StatusBadge clinic={clinic} />
       </div>
@@ -202,7 +210,7 @@ export default function ClinicCard({ clinic }: { clinic: Clinic }) {
       </a>
 
       {/* Row 5: Action Buttons */}
-      <div className="grid grid-cols-2 gap-3">
+      <div className={`grid gap-3 ${clinic.slug ? 'grid-cols-3' : 'grid-cols-2'}`}>
         <a
           href={`tel:${clinic.phone}`}
           className="flex items-center justify-center gap-2 h-12 rounded-xl bg-[#1B7A1B] text-white text-sm font-semibold hover:opacity-90 active:scale-[0.98] transition-all"
@@ -219,6 +227,14 @@ export default function ClinicCard({ clinic }: { clinic: Clinic }) {
           <ArrowTopRightIcon />
           Directions
         </a>
+        {clinic.slug && (
+          <Link
+            href={`/clinics/${clinic.slug}`}
+            className="flex items-center justify-center gap-2 h-12 rounded-xl border border-[#E8E8ED] text-[#0071E3] text-sm font-semibold hover:bg-[#F5F5F7] active:scale-[0.98] transition-all"
+          >
+            Details
+          </Link>
+        )}
       </div>
     </article>
   )

@@ -4,6 +4,8 @@ import { Metadata } from 'next'
 import Link from 'next/link'
 import { stateNameByAbbr, stateSlugByAbbr } from '@/lib/state-data'
 
+export const dynamic = 'force-dynamic'
+
 export async function generateMetadata({
   params,
 }: {
@@ -94,6 +96,25 @@ export default async function ClinicDetailPage({
         </nav>
 
         <main className="max-w-3xl mx-auto px-5 pt-[80px] pb-8">
+          {/* Breadcrumb */}
+          <div className="flex items-center gap-1.5 text-[13px] text-[#86868B] mb-6">
+            <Link href="/" className="hover:text-[#1D1D1F] transition-colors">Home</Link>
+            <span>&rsaquo;</span>
+            <Link href={`/${stateSlugByAbbr[clinic.state] || clinic.state.toLowerCase()}`} className="hover:text-[#1D1D1F] transition-colors">{stateName}</Link>
+            <span>&rsaquo;</span>
+            {(() => {
+              const stateSlug = stateSlugByAbbr[clinic.state] || clinic.state.toLowerCase()
+              const citySlug = clinic.city.toLowerCase().replace(/\s+/g, '-')
+              return (
+                <Link href={`/${stateSlug}/${citySlug}`} className="hover:text-[#1D1D1F] transition-colors">
+                  {clinic.city}
+                </Link>
+              )
+            })()}
+            <span>&rsaquo;</span>
+            <span className="text-[#1D1D1F] font-medium truncate max-w-[200px]">{clinic.name}</span>
+          </div>
+
           <h1 className="text-[32px] md:text-[40px] font-bold tracking-[-0.03em] text-[#1D1D1F] mb-3">
             {clinic.name}
           </h1>
