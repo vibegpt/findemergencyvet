@@ -3,6 +3,7 @@
 import Link from 'next/link'
 import { useState } from 'react'
 import ClinicCard from '@/components/clinic/ClinicCard'
+import StateFooterLinks from '@/components/StateFooterLinks'
 
 type Clinic = {
   id: string
@@ -360,6 +361,9 @@ export default function StateCityPage({
             View all emergency vets in {stateName} &rarr;
           </Link>
         </section>
+
+        {/* ── Browse by State ── */}
+        <StateFooterLinks />
 
         {/* ── Footer Disclaimer ── */}
         <footer className="px-5 py-8 border-t border-[#E8E8ED] text-center">

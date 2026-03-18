@@ -3,6 +3,7 @@ import { notFound } from 'next/navigation'
 import { Metadata } from 'next'
 import Link from 'next/link'
 import { stateNameBySlug, stateAbbrBySlug } from '@/lib/state-data'
+import StateFooterLinks from '@/components/StateFooterLinks'
 
 export const dynamic = 'force-dynamic'
 
@@ -73,6 +74,16 @@ export default async function StateHubPage({
     .order('clinic_count', { ascending: false })
 
   if (!cities || cities.length === 0) notFound()
+
+  // Fetch featured clinics for direct linking from state hub
+  const { data: featuredClinics } = await supabase
+    .from('clinics')
+    .select('slug, name, city, is_24_7, phone')
+    .eq('state', stateAbbr)
+    .eq('is_active', true)
+    .eq('is_24_7', true)
+    .order('google_rating', { ascending: false, nullsFirst: false })
+    .limit(5)
 
   const totalClinics = cities.reduce((sum, c) => sum + (c.clinic_count || 0), 0)
   const activeCities = cities.filter(c => c.clinic_count > 0)
@@ -216,6 +227,35 @@ export default async function StateHubPage({
             )}
           </section>
 
+          {/* ── Featured 24/7 Clinics ── */}
+          {featuredClinics && featuredClinics.length > 0 && (
+            <section className="px-5 py-8 border-t border-[#E8E8ED]">
+              <h2 className="text-[#1D1D1F] text-[24px] font-bold tracking-[-0.02em] mb-6">
+                24/7 Emergency Vets in {stateName}
+              </h2>
+              <div className="space-y-3">
+                {featuredClinics.map(fc => (
+                  <Link
+                    key={fc.slug}
+                    href={`/clinics/${fc.slug}`}
+                    className="flex items-center justify-between bg-white border border-[#E8E8ED] rounded-xl p-4 hover:bg-[#F5F5F7] transition-colors group"
+                  >
+                    <div>
+                      <span className="text-[#1D1D1F] font-semibold text-sm">{fc.name}</span>
+                      <span className="text-[#86868B] text-sm ml-2">{fc.city}</span>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <span className="text-xs font-semibold px-2 py-0.5 rounded-full bg-[#E8F5E8] text-[#1B7A1B]">24/7</span>
+                      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" width="18" height="18" className="text-[#86868B] group-hover:text-[#1D1D1F] transition-colors">
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
+                      </svg>
+                    </div>
+                  </Link>
+                ))}
+              </div>
+            </section>
+          )}
+
           {/* ── Emergency Vet Costs ── */}
           <section className="px-5 py-8 border-t border-[#E8E8ED]">
             <h2 className="text-[#1D1D1F] text-[24px] font-bold tracking-[-0.02em] mb-4">
@@ -355,6 +395,9 @@ export default async function StateHubPage({
               </Link>
             </div>
           </section>
+
+          {/* ── Browse by State ── */}
+          <StateFooterLinks />
 
           {/* ── Footer Disclaimer ── */}
           <footer className="px-5 py-8 border-t border-[#E8E8ED] text-center">

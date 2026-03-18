@@ -3,6 +3,7 @@ import { notFound } from 'next/navigation'
 import { Metadata } from 'next'
 import Link from 'next/link'
 import { stateNameByAbbr, stateSlugByAbbr } from '@/lib/state-data'
+import StateFooterLinks from '@/components/StateFooterLinks'
 
 export const dynamic = 'force-dynamic'
 
@@ -53,6 +54,17 @@ export default async function ClinicDetailPage({
     .single()
 
   if (!clinic) notFound()
+
+  // Fetch other clinics in the same city for cross-linking
+  const { data: otherClinics } = await supabase
+    .from('clinics')
+    .select('slug, name, is_24_7, availability_type')
+    .eq('city', clinic.city)
+    .eq('state', clinic.state)
+    .eq('is_active', true)
+    .neq('slug', clinicSlug)
+    .order('is_24_7', { ascending: false })
+    .limit(5)
 
   const stateName = stateNameByAbbr[clinic.state] || clinic.state
 
@@ -214,7 +226,46 @@ export default async function ClinicDetailPage({
               </ul>
             </section>
           </div>
+
+          {/* Other clinics in this city */}
+          {otherClinics && otherClinics.length > 0 && (
+            <section className="mt-8">
+              <h2 className="text-[24px] font-bold tracking-[-0.02em] text-[#1D1D1F] mb-4">
+                Other Emergency Vets in {clinic.city}
+              </h2>
+              <div className="space-y-3">
+                {otherClinics.map(other => (
+                  <Link
+                    key={other.slug}
+                    href={`/clinics/${other.slug}`}
+                    className="flex items-center justify-between bg-white border border-[#E8E8ED] rounded-xl p-4 hover:bg-[#F5F5F7] transition-colors group"
+                  >
+                    <div className="flex items-center gap-3">
+                      <span className="text-[#1D1D1F] font-semibold text-sm">{other.name}</span>
+                      {other.is_24_7 && (
+                        <span className="text-xs font-semibold px-2 py-0.5 rounded-full bg-[#E8F5E8] text-[#1B7A1B]">24/7</span>
+                      )}
+                    </div>
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" width="18" height="18" className="text-[#86868B] group-hover:text-[#1D1D1F] transition-colors shrink-0">
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
+                    </svg>
+                  </Link>
+                ))}
+              </div>
+              <Link
+                href={`/${stateSlugByAbbr[clinic.state] || clinic.state.toLowerCase()}/${clinic.city.toLowerCase().replace(/\s+/g, '-')}`}
+                className="inline-block mt-4 text-sm text-[#0071E3] hover:underline"
+              >
+                View all emergency vets in {clinic.city} &rarr;
+              </Link>
+            </section>
+          )}
         </main>
+
+        {/* Browse by State */}
+        <div className="max-w-3xl mx-auto">
+          <StateFooterLinks />
+        </div>
 
         {/* Footer */}
         <footer className="px-5 py-8 border-t border-[#E8E8ED] text-center">
