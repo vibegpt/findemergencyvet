@@ -1,0 +1,97 @@
+{
+  "url": "http://localhost:3000",
+  "site_type": "directory",
+  "timestamp": "2026-03-18T10:02:47.554419+00:00",
+  "ILS": 83.48,
+  "breakdown": {
+    "crawl_depth": {
+      "score": 40.0,
+      "max": 40,
+      "detail": {
+        "total_pages": 65,
+        "within_3_clicks": 65,
+        "pct_within_3": 100.0,
+        "score": 40.0
+      }
+    },
+    "orphan_rate": {
+      "score": 30.0,
+      "max": 30,
+      "detail": {
+        "total_pages": 65,
+        "orphan_count": 0,
+        "orphan_rate": 0.0,
+        "sample_orphans": [],
+        "score": 30.0
+      }
+    },
+    "pagerank_distribution": {
+      "score": 8.48,
+      "max": 20,
+      "detail": {
+        "gini_coefficient": 0.5762,
+        "top_10_pages": [
+          [
+            "http://localhost:3000/",
+            0.099377
+          ],
+          [
+            "http://localhost:3000/guides",
+            0.099377
+          ],
+          [
+            "http://localhost:3000/locations",
+            0.099377
+          ],
+          [
+            "http://localhost:3000/about",
+            0.076388
+          ],
+          [
+            "http://localhost:3000/contact",
+            0.076388
+          ],
+          [
+            "http://localhost:3000/privacy",
+            0.076388
+          ],
+          [
+            "http://localhost:3000/guides/triage",
+            0.017746
+          ],
+          [
+            "http://localhost:3000/guides/pet-cpr",
+            0.017746
+          ],
+          [
+            "http://localhost:3000/guides/poison-ingestion",
+            0.017746
+          ],
+          [
+            "http://localhost:3000/new-york",
+            0.015847
+          ]
+        ],
+        "score": 8.48
+      }
+    },
+    "hub_connectivity": {
+      "score": 5,
+      "max": 10,
+      "detail": {
+        "note": "Could not match city pages to state hubs.",
+        "state_hub_count": 12,
+        "city_page_count": 1
+      }
+    }
+  },
+  "page_count": 65,
+  "page_types": {
+    "homepage": 2,
+    "national_hub": 1,
+    "state_hub": 12,
+    "city": 1,
+    "clinic": 0,
+    "other": 49
+  }
+}

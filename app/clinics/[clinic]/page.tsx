@@ -1,4 +1,5 @@
 import { supabase } from '@/lib/supabase'
+<<<<<<< HEAD
 import { notFound } from 'next/navigation'
 import { Metadata } from 'next'
 import Link from 'next/link'
@@ -6,33 +7,15 @@ import { stateNameByAbbr, stateSlugByAbbr } from '@/lib/state-data'
 import StateFooterLinks from '@/components/StateFooterLinks'
 
 export const dynamic = 'force-dynamic'
+=======
+import { notFound, permanentRedirect } from 'next/navigation'
+import { stateSlugByAbbr } from '@/lib/state-data'
+>>>>>>> 0a8dcf2a77fccb6969c0707762eea5693f24567d
 
-export async function generateMetadata({
-  params,
-}: {
-  params: Promise<{ clinic: string }>
-}): Promise<Metadata> {
-  const { clinic: clinicSlug } = await params
+// This route now permanently redirects to the canonical clinic profile URL:
+// /clinics/{slug} → /{state}/{city-slug}/{slug}
 
-  const { data: clinic } = await supabase
-    .from('clinics')
-    .select('name, city, state')
-    .eq('slug', clinicSlug)
-    .single()
-
-  if (!clinic) {
-    return { title: 'Emergency Vet Finder' }
-  }
-
-  const stateName = stateNameByAbbr[clinic.state] || clinic.state
-
-  return {
-    title: `${clinic.name} | Emergency Vet in ${clinic.city}, ${stateName}`,
-    description: `Call ${clinic.name} for emergency veterinary care in ${clinic.city}, ${stateName}. See hours, walk-in policy, exotic pet support, and amenities.`,
-  }
-}
-
-export default async function ClinicDetailPage({
+export default async function ClinicRedirectPage({
   params,
 }: {
   params: Promise<{ clinic: string }>
@@ -41,20 +24,13 @@ export default async function ClinicDetailPage({
 
   const { data: clinic } = await supabase
     .from('clinics')
-    .select(`
-      id, slug, name, address, city, state, zip_code, phone, website,
-      is_24_7, availability_type, current_status, hours_detail, after_hours_entrance,
-      exotic_pets_accepted, has_exotic_specialist, exotic_pets_notes,
-      services_offered, has_surgery_suite, has_icu, has_specialists, specialists_available,
-      payment_methods, accepts_pet_insurance, accepts_care_credit, accepts_scratchpay, payment_plans_available,
-      accepts_walk_ins, requires_call_ahead, special_notes,
-      parking_type, parking_notes, wheelchair_accessible, has_separate_cat_entrance, has_isolation_rooms
-    `)
+    .select('slug, city, state')
     .eq('slug', clinicSlug)
     .single()
 
   if (!clinic) notFound()
 
+<<<<<<< HEAD
   // Fetch other clinics in the same city for cross-linking
   const { data: otherClinics } = await supabase
     .from('clinics')
@@ -67,46 +43,23 @@ export default async function ClinicDetailPage({
     .limit(5)
 
   const stateName = stateNameByAbbr[clinic.state] || clinic.state
+=======
+  const stateSlug = stateSlugByAbbr[clinic.state]
+  if (!stateSlug) notFound()
+>>>>>>> 0a8dcf2a77fccb6969c0707762eea5693f24567d
 
-  const structuredData = {
-    '@context': 'https://schema.org',
-    '@type': 'VeterinaryCare',
-    name: clinic.name,
-    address: {
-      '@type': 'PostalAddress',
-      streetAddress: clinic.address,
-      addressLocality: clinic.city,
-      addressRegion: clinic.state,
-      postalCode: clinic.zip_code || undefined,
-    },
-    telephone: clinic.phone,
-    openingHours: clinic.is_24_7 ? 'Mo-Su 00:00-23:59' : undefined,
-    url: clinic.website || undefined,
-  }
+  // Look up canonical city slug from cities table
+  const { data: cityRecord } = await supabase
+    .from('cities')
+    .select('slug')
+    .eq('name', clinic.city)
+    .eq('state', clinic.state)
+    .single()
 
-  return (
-    <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
-      />
-      <div className="min-h-screen bg-[#FAFAFA]">
-        {/* Navigation */}
-        <nav className="fixed top-0 left-0 right-0 h-[60px] z-50 border-b border-[#E8E8ED]" style={{ background: 'rgba(250,250,250,0.8)', backdropFilter: 'saturate(180%) blur(20px)', WebkitBackdropFilter: 'saturate(180%) blur(20px)' }}>
-          <div className="max-w-3xl mx-auto h-full flex items-center justify-between px-5">
-            <Link href="/" className="flex items-center gap-2.5">
-              <span className="w-8 h-8 bg-[#0071E3] rounded-lg flex items-center justify-center">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="white" width="18" height="18"><path strokeLinecap="round" strokeLinejoin="round" d="M12 4.5v15m7.5-7.5h-15" /></svg>
-              </span>
-              <span className="text-base font-semibold tracking-tight text-[#1D1D1F]">FindEmergencyVet</span>
-            </Link>
-            <div className="flex items-center gap-6">
-              <Link href="/guides" className="text-sm text-[#6E6E73] hover:text-[#1D1D1F] transition-colors hidden sm:block">Resources</Link>
-              <Link href="/locations" className="text-sm text-[#6E6E73] hover:text-[#1D1D1F] transition-colors hidden sm:block">All Locations</Link>
-            </div>
-          </div>
-        </nav>
+  // Fall back to slugifying the city name if no DB record found
+  const citySlug = cityRecord?.slug ?? clinic.city.toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, '')
 
+<<<<<<< HEAD
         <main className="max-w-3xl mx-auto px-5 pt-[80px] pb-8">
           {/* Breadcrumb */}
           <div className="flex items-center gap-1.5 text-[13px] text-[#86868B] mb-6">
@@ -302,4 +255,7 @@ export default async function ClinicDetailPage({
       </div>
     </>
   )
+=======
+  permanentRedirect(`/${stateSlug}/${citySlug}/${clinicSlug}`)
+>>>>>>> 0a8dcf2a77fccb6969c0707762eea5693f24567d
 }

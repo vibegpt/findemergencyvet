@@ -1,0 +1,97 @@
+{
+  "url": "http://localhost:3000",
+  "timestamp": "2026-03-18T10:36:17.521266+00:00",
+  "ILS": 87.4,
+  "breakdown": {
+    "crawl_depth": {
+      "score": 40.0,
+      "max": 40,
+      "detail": {
+        "total_pages": 119,
+        "within_3_clicks": 119,
+        "pct_within_3": 100.0,
+        "score": 40.0
+      }
+    },
+    "orphan_rate": {
+      "score": 30.0,
+      "max": 30,
+      "detail": {
+        "total_pages": 119,
+        "orphan_count": 0,
+        "orphan_rate": 0.0,
+        "sample_orphans": [],
+        "score": 30.0
+      }
+    },
+    "pagerank_distribution": {
+      "score": 7.4,
+      "max": 20,
+      "detail": {
+        "gini_coefficient": 0.6299,
+        "top_10_pages": [
+          [
+            "http://localhost:3000/",
+            0.089792
+          ],
+          [
+            "http://localhost:3000/guides",
+            0.089792
+          ],
+          [
+            "http://localhost:3000/locations",
+            0.089792
+          ],
+          [
+            "http://localhost:3000/about",
+            0.072855
+          ],
+          [
+            "http://localhost:3000/contact",
+            0.072855
+          ],
+          [
+            "http://localhost:3000/privacy",
+            0.072855
+          ],
+          [
+            "http://localhost:3000/new-york",
+            0.017753
+          ],
+          [
+            "http://localhost:3000/new-york/rochester",
+            0.012997
+          ],
+          [
+            "http://localhost:3000/guides/triage",
+            0.012805
+          ],
+          [
+            "http://localhost:3000/guides/pet-cpr",
+            0.012805
+          ]
+        ],
+        "score": 7.4
+      }
+    },
+    "hub_connectivity": {
+      "score": 10.0,
+      "max": 10,
+      "detail": {
+        "total_city_pages_checked": 21,
+        "hub_links_to_city_pct": 100.0,
+        "city_links_to_hub_pct": 100.0,
+        "score": 10.0
+      }
+    }
+  },
+  "page_count": 119,
+  "page_types": {
+    "homepage": 2,
+    "national_hub": 2,
+    "state_hub": 10,
+    "city": 21,
+    "clinic": 74,
+    "other": 10
+  }
+}

@@ -1,10 +1,40 @@
 import { supabase } from '@/lib/supabase'
+import { computeClinicStatus, HoursDetail } from '@/lib/clinic-status'
 import { notFound } from 'next/navigation'
 import { Metadata } from 'next'
 import { stateNameBySlug, stateAbbrBySlug } from '@/lib/state-data'
 import StateCityPage from './page-client'
 
-export const dynamic = 'force-dynamic'
+// ISR: revalidate hourly for open/closed accuracy
+export const revalidate = 3600
+
+// Per-city metadata overrides for high-priority SEO targets.
+// Key format: "{state-slug}/{city-slug}"
+// Add new entries here as priority cities are identified — do not modify the
+// fallback template in generateMetadata unless changing the site-wide default.
+const cityMetaOverrides: Record<string, { title: string; description: string }> = {
+  'georgia/gainesville': {
+    title: 'Emergency Vet Gainesville GA | 24/7 Animal Hospital | FindEmergencyVet',
+    description: 'Find emergency veterinary clinics in Gainesville, GA. Verified hours, open/closed status, and tap-to-call for 24/7 animal hospitals in Gainesville. Updated 2026.',
+  },
+  'virginia/richmond': {
+    title: 'Emergency Vet Richmond VA | 24/7 Animal Hospital | FindEmergencyVet',
+    description: 'Find emergency veterinary clinics in Richmond, VA. Verified hours, open/closed status, and tap-to-call for 24/7 animal hospitals in Richmond. Updated 2026.',
+  },
+  'missouri/springfield': {
+    title: 'Emergency Vet Springfield MO | 24/7 Animal Hospital | FindEmergencyVet',
+    description: 'Find emergency veterinary clinics in Springfield, MO. Verified hours, open/closed status, and tap-to-call for 24/7 emergency animal hospitals. Updated 2026.',
+  },
+  'florida/port-charlotte': {
+    title: 'Emergency Vet Port Charlotte FL | 24/7 Animal Care | FindEmergencyVet',
+    description: 'Find emergency veterinary clinics in Port Charlotte, FL. Verified hours, open/closed status, and tap-to-call for 24/7 emergency animal hospitals. Updated 2026.',
+  },
+  // Migrated from app/new-york/[city]/page.tsx (deleted — generic route handles all NY cities)
+  'new-york/syracuse': {
+    title: 'Emergency Vet Syracuse NY | 24/7 Animal Hospital | FindEmergencyVet',
+    description: 'Find emergency veterinary clinics in Syracuse, NY. Verified hours, open/closed status, and tap-to-call for 24/7 animal hospitals in Syracuse. Updated 2026.',
+  },
+}
 
 export async function generateMetadata({
   params,
@@ -18,7 +48,7 @@ export async function generateMetadata({
 
   const { data: city } = await supabase
     .from('cities')
-    .select('name, state')
+    .select('name, state, clinic_count')
     .eq('slug', citySlug)
     .eq('state', stateAbbr)
     .single()
@@ -26,18 +56,22 @@ export async function generateMetadata({
   if (!city) return { title: 'Emergency Vet Finder' }
 
   const stateName = stateNameBySlug[state] || city.state
+  const override = cityMetaOverrides[`${state}/${citySlug}`]
 
   return {
-    title: `Emergency Vet in ${city.name}, ${stateName} — Open Now | FindEmergencyVet.com`,
-    description: `Find open 24/7 emergency vets and animal hospitals in ${city.name}, ${stateName}. Call now for immediate care, directions, and after-hours availability.`,
+    title: override?.title ?? `Emergency Vet in ${city.name}, ${stateName} — Open Now | FindEmergencyVet.com`,
+    description: override?.description ?? `Find open 24/7 emergency vets and animal hospitals in ${city.name}, ${stateName}. Call now for immediate care, directions, and after-hours availability.`,
     alternates: {
       canonical: `https://findemergencyvet.com/${state}/${citySlug}`,
     },
     openGraph: {
-      title: `Emergency Vet in ${city.name}, ${stateName} — Open Now`,
-      description: `Find open emergency veterinary hospitals in ${city.name}, ${stateName}. Call directly, no delays.`,
+      title: override?.title ?? `Emergency Vet in ${city.name}, ${stateName} — Open Now`,
+      description: override?.description ?? `Find open emergency veterinary hospitals in ${city.name}, ${stateName}. Call directly, no delays.`,
       type: 'website',
     },
+    // Noindex pages with fewer than 2 clinics — not enough content.
+    // Paired with the sitemap filter (gte clinic_count 2) in app/sitemap.ts.
+    ...(city.clinic_count < 2 && { robots: { index: false, follow: true } }),
   }
 }
 
@@ -63,17 +97,28 @@ export default async function CityPage({
   if (!city) notFound()
 
   // Fetch clinics with verification_status
-  const { data: clinics } = await supabase
+  const { data: rawClinics } = await supabase
     .from('clinics')
-    .select('id, slug, name, address, city, state, zip_code, phone, is_24_7, current_status, verification_status, has_exotic_specialist, google_rating, google_review_count, availability_type, accepts_walk_ins, requires_call_ahead, exotic_pets_accepted, parking_type, wheelchair_accessible, has_separate_cat_entrance, has_isolation_rooms, hours_description')
+    .select('id, slug, name, address, city, state, zip_code, phone, is_24_7, hours_detail, hours_description, availability_type, timezone, verification_status, has_exotic_specialist, google_rating, google_review_count, accepts_walk_ins, requires_call_ahead, exotic_pets_accepted, parking_type, wheelchair_accessible, has_separate_cat_entrance, has_isolation_rooms')
     .eq('city', city.name)
     .eq('state', stateAbbr)
     .eq('is_active', true)
     .order('is_featured', { ascending: false })
     .order('is_24_7', { ascending: false })
-    .order('google_rating', { ascending: false, nullsFirst: false })
 
-  // Fetch nearby cities (same state)
+  const clinics = (rawClinics || []).map(clinic => ({
+    ...clinic,
+    computedStatus: computeClinicStatus(
+      clinic.is_24_7,
+      clinic.hours_detail as HoursDetail | null,
+      clinic.availability_type,
+      clinic.hours_description,
+      clinic.state,
+      clinic.timezone,
+    ),
+    detailUrl: clinic.slug ? `/${state}/${citySlug}/${clinic.slug}` : null,
+  }))
+
   const { data: nearbyCities } = await supabase
     .from('cities')
     .select('id, name, state, slug, clinic_count')
@@ -131,7 +176,7 @@ export default async function CityPage({
       />
       <StateCityPage
         city={city}
-        allClinics={clinics || []}
+        allClinics={clinics}
         nearbyCities={nearbyCities || []}
         stateSlug={state}
         stateName={stateName}

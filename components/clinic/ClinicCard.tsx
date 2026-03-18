@@ -1,8 +1,14 @@
 'use client'
+import Link from 'next/link'
+import { ComputedStatus } from '@/lib/clinic-status'
 
+<<<<<<< HEAD
 import Link from 'next/link'
 
 type Clinic = {
+=======
+export type ClinicCardData = {
+>>>>>>> 0a8dcf2a77fccb6969c0707762eea5693f24567d
   id: string
   slug?: string
   name: string
@@ -12,8 +18,7 @@ type Clinic = {
   zip_code: string | null
   phone: string
   is_24_7: boolean
-  availability_type: string | null
-  current_status: string | null
+  computedStatus: ComputedStatus   // ← replaces raw current_status
   verification_status?: string | null
   has_exotic_specialist: boolean
   exotic_pets_accepted?: string[] | null
@@ -21,19 +26,10 @@ type Clinic = {
   requires_call_ahead?: boolean | null
   google_rating?: number | null
   google_review_count?: number | null
-  hours_description?: string | null
-}
-
-const availabilityLabels: Record<string, string> = {
-  'true-24-7': '24/7 Emergency',
-  'on-call-24-7': 'On-call 24/7',
-  'extended-hours': 'Extended Hours',
-  'emergency-only': 'After-Hours Emergency',
-  'urgent-care': 'Urgent Care',
+  detailUrl?: string | null  // ← canonical profile URL for internal linking
 }
 
 /* ── Inline SVG icons (18x18) ── */
-
 function PhoneIcon({ className }: { className?: string }) {
   return (
     <svg className={className} xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" width="18" height="18">
@@ -75,63 +71,54 @@ function CheckBadgeIcon({ className }: { className?: string }) {
   )
 }
 
-/* ── Status badge logic ── */
-
-function StatusBadge({ clinic }: { clinic: Clinic }) {
-  if (clinic.is_24_7) {
-    return (
-      <span className="inline-flex items-center gap-1.5 text-xs font-semibold px-2.5 py-1 rounded-full whitespace-nowrap" style={{ background: '#E8F5E8', color: '#1B7A1B' }}>
-        <span className="relative flex h-2 w-2">
-          <span className="animate-ping absolute inline-flex h-full w-full rounded-full opacity-75" style={{ background: '#30D158' }} />
-          <span className="relative inline-flex rounded-full h-2 w-2" style={{ background: '#30D158' }} />
-        </span>
-        Open 24/7
-      </span>
-    )
-  }
-
-  if (clinic.current_status === 'closed') {
-    return (
-      <span className="inline-flex items-center gap-1.5 text-xs font-semibold px-2.5 py-1 rounded-full whitespace-nowrap" style={{ background: '#FDE8E8', color: '#C41E1E' }}>
-        <span className="inline-flex rounded-full h-2 w-2" style={{ background: '#FF453A' }} />
-        Closed
-      </span>
-    )
-  }
-
-  if (clinic.current_status === 'confirmed-open') {
-    return (
-      <span className="inline-flex items-center gap-1.5 text-xs font-semibold px-2.5 py-1 rounded-full whitespace-nowrap" style={{ background: '#E8F5E8', color: '#1B7A1B' }}>
-        <span className="relative flex h-2 w-2">
-          <span className="animate-ping absolute inline-flex h-full w-full rounded-full opacity-75" style={{ background: '#30D158' }} />
-          <span className="relative inline-flex rounded-full h-2 w-2" style={{ background: '#30D158' }} />
-        </span>
-        Open Now
-      </span>
-    )
-  }
-
-  // After-hours / urgent care / extended hours
-  const label = clinic.availability_type ? availabilityLabels[clinic.availability_type] : 'Call for Hours'
-  return (
-    <span className="inline-flex items-center gap-1.5 text-xs font-semibold px-2.5 py-1 rounded-full whitespace-nowrap" style={{ background: '#FFF3E0', color: '#B8730E' }}>
-      <span className="inline-flex rounded-full h-2 w-2" style={{ background: '#FF9F0A' }} />
-      {label}
+/* ── Status badge — driven entirely by server-computed status ── */
+function StatusBadge({ status }: { status: ComputedStatus }) {
+  const dotPulse = (
+    <span className="relative flex h-2 w-2">
+      <span className="animate-ping absolute inline-flex h-full w-full rounded-full opacity-75" style={{ background: '#30D158' }} />
+      <span className="relative inline-flex rounded-full h-2 w-2" style={{ background: '#30D158' }} />
     </span>
   )
+
+  const dotStatic = (color: string) => (
+    <span className="inline-flex rounded-full h-2 w-2" style={{ background: color }} />
+  )
+
+  switch (status.status) {
+    case 'open-24-7':
+    case 'open-now':
+      return (
+        <span className="inline-flex items-center gap-1.5 text-xs font-semibold px-2.5 py-1 rounded-full whitespace-nowrap" style={{ background: '#E8F5E8', color: '#1B7A1B' }}>
+          {dotPulse}
+          {status.label}
+        </span>
+      )
+    case 'closing-soon':
+      return (
+        <span className="inline-flex items-center gap-1.5 text-xs font-semibold px-2.5 py-1 rounded-full whitespace-nowrap" style={{ background: '#FFF3E0', color: '#B8730E' }}>
+          {dotStatic('#FF9F0A')}
+          {status.label}
+        </span>
+      )
+    case 'closed':
+      return (
+        <span className="inline-flex items-center gap-1.5 text-xs font-semibold px-2.5 py-1 rounded-full whitespace-nowrap" style={{ background: '#FDE8E8', color: '#C41E1E' }}>
+          {dotStatic('#FF453A')}
+          {status.label}
+        </span>
+      )
+    default: // call-for-hours
+      return (
+        <span className="inline-flex items-center gap-1.5 text-xs font-semibold px-2.5 py-1 rounded-full whitespace-nowrap" style={{ background: '#F5F5F7', color: '#6E6E73' }}>
+          {dotStatic('#86868B')}
+          {status.label}
+        </span>
+      )
+  }
 }
 
 /* ── Main component ── */
-
-export default function ClinicCard({ clinic }: { clinic: Clinic }) {
-  const hoursText = clinic.hours_description
-    ? clinic.hours_description
-    : clinic.is_24_7
-      ? 'Open 24 hours, 7 days a week'
-      : clinic.availability_type
-        ? availabilityLabels[clinic.availability_type] || 'Call for hours'
-        : 'Call for hours'
-
+export default function ClinicCard({ clinic }: { clinic: ClinicCardData }) {
   const fullAddress = `${clinic.address}, ${clinic.city}, ${clinic.state}${clinic.zip_code ? ` ${clinic.zip_code}` : ''}`
   const mapsUrl = `https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(fullAddress)}`
 
@@ -140,15 +127,20 @@ export default function ClinicCard({ clinic }: { clinic: Clinic }) {
       {/* Row 1: Name + Status Badge */}
       <div className="flex items-start justify-between gap-3 mb-3">
         <h3 className="text-[#1D1D1F] text-lg leading-snug" style={{ fontWeight: 600 }}>
+<<<<<<< HEAD
           {clinic.slug ? (
             <Link href={`/clinics/${clinic.slug}`} className="hover:text-[#0071E3] transition-colors">
+=======
+          {clinic.detailUrl ? (
+            <Link href={clinic.detailUrl} className="hover:text-[#0071E3] transition-colors">
+>>>>>>> 0a8dcf2a77fccb6969c0707762eea5693f24567d
               {clinic.name}
             </Link>
           ) : (
             clinic.name
           )}
         </h3>
-        <StatusBadge clinic={clinic} />
+        <StatusBadge status={clinic.computedStatus} />
       </div>
 
       {/* Row 2: Address */}
@@ -164,10 +156,10 @@ export default function ClinicCard({ clinic }: { clinic: Clinic }) {
         </a>
       </div>
 
-      {/* Row 3: Hours */}
+      {/* Row 3: Hours (from computed status) */}
       <div className="flex items-start gap-2 mb-4">
         <ClockIcon className="text-[#86868B] shrink-0 mt-0.5" />
-        <span className="text-sm text-[#6E6E73]">{hoursText}</span>
+        <span className="text-sm text-[#6E6E73]">{clinic.computedStatus.hoursText}</span>
       </div>
 
       {/* Row 4: Feature Badges */}
@@ -200,7 +192,7 @@ export default function ClinicCard({ clinic }: { clinic: Clinic }) {
         )}
       </div>
 
-      {/* Phone number (tappable text) */}
+      {/* Phone number (tappable text, no JS required) */}
       <a
         href={`tel:${clinic.phone}`}
         className="inline-flex items-center gap-1.5 text-[#1B7A1B] font-semibold text-sm mb-4 hover:underline"

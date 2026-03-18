@@ -1,0 +1,97 @@
+{
+  "url": "http://localhost:3000",
+  "timestamp": "2026-03-18T10:58:21.359745+00:00",
+  "ILS": 90.32,
+  "breakdown": {
+    "crawl_depth": {
+      "score": 40.0,
+      "max": 40,
+      "detail": {
+        "total_pages": 119,
+        "within_3_clicks": 119,
+        "pct_within_3": 100.0,
+        "score": 40.0
+      }
+    },
+    "orphan_rate": {
+      "score": 30.0,
+      "max": 30,
+      "detail": {
+        "total_pages": 119,
+        "orphan_count": 0,
+        "orphan_rate": 0.0,
+        "sample_orphans": [],
+        "score": 30.0
+      }
+    },
+    "pagerank_distribution": {
+      "score": 10.32,
+      "max": 20,
+      "detail": {
+        "gini_coefficient": 0.4842,
+        "top_10_pages": [
+          [
+            "http://localhost:3000/",
+            0.026082
+          ],
+          [
+            "http://localhost:3000/guides",
+            0.026082
+          ],
+          [
+            "http://localhost:3000/locations",
+            0.026082
+          ],
+          [
+            "http://localhost:3000/about",
+            0.019805
+          ],
+          [
+            "http://localhost:3000/contact",
+            0.019805
+          ],
+          [
+            "http://localhost:3000/privacy",
+            0.019805
+          ],
+          [
+            "http://localhost:3000/new-york",
+            0.00887
+          ],
+          [
+            "http://localhost:3000/alabama",
+            0.007042
+          ],
+          [
+            "http://localhost:3000/florida",
+            0.007042
+          ],
+          [
+            "http://localhost:3000/nebraska",
+            0.007042
+          ]
+        ],
+        "score": 10.32
+      }
+    },
+    "hub_connectivity": {
+      "score": 10.0,
+      "max": 10,
+      "detail": {
+        "total_city_pages_checked": 21,
+        "hub_links_to_city_pct": 100.0,
+        "city_links_to_hub_pct": 100.0,
+        "score": 10.0
+      }
+    }
+  },
+  "page_count": 119,
+  "page_types": {
+    "homepage": 2,
+    "national_hub": 2,
+    "state_hub": 10,
+    "city": 21,
+    "clinic": 74,
+    "other": 10
+  }
+}

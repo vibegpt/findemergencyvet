@@ -1,0 +1,45 @@
+{
+  "url": "http://localhost:3001",
+  "site_type": "directory",
+  "timestamp": "2026-03-18T09:41:12.839744+00:00",
+  "ILS": 25,
+  "breakdown": {
+    "crawl_depth": {
+      "score": 0,
+      "max": 40,
+      "detail": {}
+    },
+    "orphan_rate": {
+      "score": 0,
+      "max": 30,
+      "detail": {}
+    },
+    "pagerank_distribution": {
+      "score": 20,
+      "max": 20,
+      "detail": {
+        "gini_coefficient": 0,
+        "top_10_pages": [],
+        "score": 20
+      }
+    },
+    "hub_connectivity": {
+      "score": 5,
+      "max": 10,
+      "detail": {
+        "note": "Not enough state/city pages found.",
+        "state_hub_count": 0,
+        "city_page_count": 0
+      }
+    }
+  },
+  "page_count": 0,
+  "page_types": {
+    "homepage": 0,
+    "national_hub": 0,
+    "state_hub": 0,
+    "city": 0,
+    "clinic": 0,
+    "other": 0
+  }
+}

@@ -2,34 +2,14 @@
 
 import Link from 'next/link'
 import { useState } from 'react'
+<<<<<<< HEAD
 import ClinicCard from '@/components/clinic/ClinicCard'
 import StateFooterLinks from '@/components/StateFooterLinks'
+=======
+import ClinicCard, { ClinicCardData } from '@/components/clinic/ClinicCard'
+>>>>>>> 0a8dcf2a77fccb6969c0707762eea5693f24567d
 
-type Clinic = {
-  id: string
-  name: string
-  address: string
-  city: string
-  state: string
-  zip_code: string | null
-  phone: string
-  is_24_7: boolean
-  current_status: string | null
-  verification_status?: string | null
-  has_exotic_specialist: boolean
-  google_rating: number | null
-  google_review_count: number | null
-  exotic_pets_accepted?: string[] | null
-  availability_type: string | null
-  accepts_walk_ins?: boolean | null
-  requires_call_ahead?: boolean | null
-  parking_type?: string | null
-  wheelchair_accessible?: boolean | null
-  has_separate_cat_entrance?: boolean | null
-  has_isolation_rooms?: boolean | null
-  hours_description?: string | null
-  slug?: string
-}
+type Clinic = ClinicCardData
 
 type City = {
   id: string
@@ -102,7 +82,7 @@ export default function StateCityPage({
     return true
   })
 
-  const count24_7 = allClinics.filter(c => c.is_24_7).length
+  const count24_7 = allClinics.filter(c => c.computedStatus.status === 'open-24-7').length
   const faqs = getFaqs(city.name, stateName, count24_7)
 
   // FAQPage JSON-LD
@@ -166,13 +146,13 @@ export default function StateCityPage({
           </div>
 
           <h1 className="text-[32px] md:text-[40px] font-bold tracking-[-0.03em] text-[#1D1D1F] leading-tight mb-4">
-            Emergency Vets in {city.name}, {stateName}
+            Emergency Vets in {city.name}, {stateAbbr}
           </h1>
 
           <p className="text-[#6E6E73] text-base md:text-lg leading-relaxed max-w-xl">
             {count24_7 > 0
-              ? `${count24_7} true 24/7 ${count24_7 === 1 ? 'facility' : 'facilities'} with on-site staff. ${allClinics.length} total emergency options.`
-              : `${allClinics.length} emergency veterinary ${allClinics.length === 1 ? 'clinic' : 'clinics'} serving ${city.name}. Call ahead to confirm availability.`
+              ? `Find an emergency vet in ${city.name}, ${stateAbbr} — ${count24_7} true 24/7 ${count24_7 === 1 ? 'animal hospital' : 'animal hospitals'} with on-site staff. ${allClinics.length} total emergency options listed below.`
+              : `Find an emergency vet in ${city.name}, ${stateAbbr} — ${allClinics.length} verified emergency ${allClinics.length === 1 ? 'clinic' : 'clinics'} listed below. Call ahead to confirm availability.`
             }
           </p>
 
@@ -199,32 +179,36 @@ export default function StateCityPage({
           </div>
         </header>
 
-        {/* ── Filter Chips ── */}
-        <div className="sticky top-[60px] z-40 border-b border-[#E8E8ED]" style={{ background: 'rgba(250,250,250,0.8)', backdropFilter: 'saturate(180%) blur(20px)', WebkitBackdropFilter: 'saturate(180%) blur(20px)' }}>
-          <div className="flex gap-2 px-5 py-3 overflow-x-auto hide-scrollbar" role="group" aria-label="Filter clinics">
-            {filters.map(f => (
-              <button
-                key={f.key}
-                onClick={() => setActiveFilter(f.key)}
-                className={`shrink-0 px-4 py-2 rounded-full text-sm font-medium transition-all ${
-                  activeFilter === f.key
-                    ? 'bg-[#1D1D1F] text-white'
-                    : 'bg-white text-[#6E6E73] border border-[#E8E8ED] hover:text-[#1D1D1F]'
-                }`}
-                aria-pressed={activeFilter === f.key}
-              >
-                {f.label}
-                {f.key === '24_7' && ` (${count24_7})`}
-              </button>
-            ))}
+        {/* ── Filter Chips (hidden when no clinics) ── */}
+        {allClinics.length > 0 && (
+          <div className="sticky top-[60px] z-40 border-b border-[#E8E8ED]" style={{ background: 'rgba(250,250,250,0.8)', backdropFilter: 'saturate(180%) blur(20px)', WebkitBackdropFilter: 'saturate(180%) blur(20px)' }}>
+            <div className="flex gap-2 px-5 py-3 overflow-x-auto hide-scrollbar" role="group" aria-label="Filter clinics">
+              {filters.map(f => (
+                <button
+                  key={f.key}
+                  onClick={() => setActiveFilter(f.key)}
+                  className={`shrink-0 px-4 py-2 rounded-full text-sm font-medium transition-all ${
+                    activeFilter === f.key
+                      ? 'bg-[#1D1D1F] text-white'
+                      : 'bg-white text-[#6E6E73] border border-[#E8E8ED] hover:text-[#1D1D1F]'
+                  }`}
+                  aria-pressed={activeFilter === f.key}
+                >
+                  {f.label}
+                  {f.key === '24_7' && ` (${count24_7})`}
+                </button>
+              ))}
+            </div>
           </div>
-        </div>
+        )}
 
         {/* ── Clinic Listings ── */}
         <section id="clinics" className="px-5 py-8">
-          <p className="text-sm text-[#86868B] mb-6">
-            Showing {filteredClinics.length} of {allClinics.length} {allClinics.length === 1 ? 'clinic' : 'clinics'}
-          </p>
+          {allClinics.length > 0 && (
+            <p className="text-sm text-[#86868B] mb-6">
+              Showing {filteredClinics.length} of {allClinics.length} {allClinics.length === 1 ? 'clinic' : 'clinics'}
+            </p>
+          )}
 
           <div className="space-y-4">
             {filteredClinics.map(clinic => (
@@ -234,20 +218,30 @@ export default function StateCityPage({
 
           {/* No clinics at all */}
           {allClinics.length === 0 && (
-            <div className="border-2 border-dashed border-[#E8E8ED] rounded-2xl p-10 text-center">
-              <h3 className="text-xl font-semibold text-[#1D1D1F] mb-2">Coming Soon</h3>
-              <p className="text-[#6E6E73] text-sm mb-6 max-w-md mx-auto">
-                We&apos;re adding emergency veterinary clinics in {city.name}, {stateName}.
-                In the meantime, try searching Google Maps.
+            <div className="rounded-2xl border border-[#E8E8ED] bg-white p-8">
+              <p className="text-[#1D1D1F] font-semibold mb-2">
+                No verified emergency vets listed for {city.name} yet.
               </p>
-              <a
-                href={`https://www.google.com/maps/search/emergency+vet+${encodeURIComponent(city.name + ' ' + stateName)}`}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-5 py-2.5 bg-white border border-[#E8E8ED] text-[#1D1D1F] font-medium rounded-xl hover:bg-[#F5F5F7] transition-colors"
-              >
-                Search Google Maps
-              </a>
+              <p className="text-[#6E6E73] text-sm mb-6">
+                We&apos;re working on adding verified clinic data for this area.
+                In the meantime, try nearby cities or search Google Maps.
+              </p>
+              <div className="flex flex-wrap gap-3">
+                <Link
+                  href={`/${stateSlug}`}
+                  className="inline-flex items-center gap-1.5 px-4 py-2.5 bg-[#1D1D1F] text-white text-sm font-semibold rounded-xl hover:opacity-90 transition-opacity"
+                >
+                  View all {stateName} emergency vets &rarr;
+                </Link>
+                <a
+                  href={`https://www.google.com/maps/search/emergency+vet+${encodeURIComponent(city.name + ' ' + stateName)}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-1.5 px-4 py-2.5 bg-white border border-[#E8E8ED] text-[#1D1D1F] text-sm font-semibold rounded-xl hover:bg-[#F5F5F7] transition-colors"
+                >
+                  Search Google Maps
+                </a>
+              </div>
             </div>
           )}
 
